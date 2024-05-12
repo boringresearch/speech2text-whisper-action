@@ -25,11 +25,11 @@ jobs:
         youtube-dl -o 'youtube.mp4' '${{ github.event.inputs.youtube_url }}'
         ls
         # Convert video to wav
-        echo "y" | ffmpeg -i youtube* -ac 1 -ar 16000 -f wav youtube.wav
-        ls
+        ffmpeg -i youtube* -ac 1 -ar 16000 -f wav /tmp/youtube.wav
+        ls -lh /tmp
         # Transcribe wav to text using whisper
         cd /app
-        ./main -f youtube.wav -ocsv -oj -otxt -of output
+        ./main -f /tmp/youtube.wav -ocsv -oj -otxt -of output
 
     - name: Upload Output Files
       uses: actions/upload-artifact@v3
