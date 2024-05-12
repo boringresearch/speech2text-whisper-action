@@ -17,19 +17,16 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install youtube-dl and ffmpeg
-      run: |
-        apt-get update
-        apt-get install -y youtube-dl ffmpeg
-
     - name: Download and Transcribe YouTube Video
       run: |
         # Download YouTube video
+        mkdir youtube
+        cd youtube
         youtube-dl -o 'youtube.mp4' '${{ github.event.inputs.youtube_url }}'
-
+        ls
         # Convert video to wav
         echo "y" | ffmpeg -i youtube* -ac 1 -ar 16000 -f wav youtube.wav
-
+        ls
         # Transcribe wav to text using whisper
         cd /app
         ./main -f youtube.wav -ocsv -oj -otxt -of output
