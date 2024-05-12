@@ -1,0 +1,41 @@
+name: Transcript YouTube Video
+
+on:
+  workflow_dispatch:
+    inputs:
+      youtube_url:
+        description: 'YouTube Video URL'
+        required: true
+
+jobs:
+  youtube-2-video:
+    name: Transcript English Video
+    runs-on: ubuntu-latest
+    container: xihajun/whisper-yt-cpu:latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install youtube-dl and ffmpeg
+      run: |
+        apt-get update
+        apt-get install -y youtube-dl ffmpeg
+
+    - name: Download and Transcribe YouTube Video
+      run: |
+        # Download YouTube video
+        youtube-dl -o 'youtube.%(ext)s' '${{ github.event.inputs.youtube_url }}'
+
+        # Convert video to wav
+        echo "y" | ffmpeg -i youtube.* -ac 1 -ar 16000 -f wav youtube.wav
+
+        # Transcribe wav to text using whisper
+        cd /app
+        ./main -f youtube.wav -ocsv -oj -otxt -of output
+
+    - name: Upload Output Files
+      uses: actions/upload-artifact@v3
+      with:
+        name: transcription-output
+        path: /app/output.*
