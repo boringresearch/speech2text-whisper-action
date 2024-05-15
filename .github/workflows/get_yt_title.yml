@@ -1,0 +1,38 @@
+name: Get YouTube Title
+
+on:
+  workflow_dispatch:
+    inputs:
+      youtube_url:
+        description: 'YouTube URL'
+        required: true
+        default: 'https://www.youtube.com/watch?v=ZjM8Wq5pQ2o'
+
+jobs:
+  get-youtube-title:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install get-youtube-title
+
+      - name: Create a script to get YouTube title
+        run: |
+          echo "const getYoutubeTitle = require('get-youtube-title');" > get-title.js
+          echo "const url = '${{ github.event.inputs.youtube_url }}';" >> get-title.js
+          echo "const videoId = url.split('v=')[1].split('&')[0];" >> get-title.js
+          echo "getYoutubeTitle(videoId, function (err, title) {" >> get-title.js
+          echo "  if (err) return console.error(err);" >> get-title.js
+          echo "  console.log('YouTube Title:', title);" >> get-title.js
+          echo "});" >> get-title.js
+
+      - name: Run the script
+        run: node get-title.js
