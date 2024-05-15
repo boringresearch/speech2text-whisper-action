@@ -29,7 +29,7 @@ jobs:
         ls -lh /tmp
         # Transcribe wav to text using whisper
         cd /app
-        ./main -f /tmp/youtube.wav -ocsv -oj -otxt -osrt -of output
+        ./main -f /tmp/youtube.wav -ocsv -oj -otxt -osrt -olrc -of output
         # grep -oP '(?<=\[)\d{2}:\d{2}:\d{2}\.\d{3}(?= -->)|(?<=\]\s{3}).*' <<< "$(./main -f /tmp/youtube.wav -ocsv -oj -otxt -osrt -of output)" | sed 'N;s/\n/ /' | sed -E 's/(\[.*)\.\d{3}( -->.*)\.\d{3}(.*)/\1\2\3/' > output.extracted_text.txt
 
 
