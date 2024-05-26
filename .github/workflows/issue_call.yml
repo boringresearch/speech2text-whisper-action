@@ -1,0 +1,36 @@
+name: Process YouTube Links from Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  extract-and-transcribe:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Extract YouTube Links from Issue Body
+      id: extract_links
+      run: |
+        # Extract YouTube URLs from issue body
+        echo "${{ github.event.issue.body }}" | grep -Eo 'https://www.youtube.com/watch\?v=[^ ]+' > links.txt
+        echo "Extracted Links:"
+        cat links.txt
+
+    - name: Read Links
+      id: read_links
+      run: |
+        links=$(cat links.txt)
+        echo "::set-output name=links::${links}"
+
+    - name: Call Reusable Workflow for Each Link
+      run: |
+        links="${{ steps.read_links.outputs.links }}"
+        suffix="small"  # You can change this to get suffix dynamically if needed
+        for link in $links; do
+          echo "Processing $link"
+          gh workflow run .github/workflows/transcribe-youtube.yml --field youtube_url="$link" --field suffix="$suffix"
+        done

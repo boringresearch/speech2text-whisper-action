@@ -10,12 +10,22 @@ on:
         description: 'Suffix for the Whisper model (small or latest)'
         required: true
         default: 'small'
+  workflow_call:
+    inputs:
+      youtube_url:
+        description: 'YouTube Video URL'
+        required: true
+        type: string
+      suffix:
+        description: 'Suffix for the Whisper model (small or latest)'
+        required: true
+        type: string
+        default: 'small'
 
 jobs:
-  youtube-2-video:
-    name: Transcript English Video
+  transcribe:
     runs-on: ubuntu-latest
-    container: xihajun/whisper-cpp:${{ github.event.inputs.suffix }}
+    container: xihajun/whisper-cpp:${{ inputs.suffix }}
 
     steps:
     - name: Checkout
@@ -27,10 +37,10 @@ jobs:
         # Download YouTube video
         mkdir youtube
         cd youtube
-        youtube-dl -o 'youtube.mp4' '${{ github.event.inputs.youtube_url }}'
+        youtube-dl -o 'youtube.mp4' '${{ inputs.youtube_url }}'
 
         # Get the YouTube video title
-        video_title=$(youtube-dl --get-title '${{ github.event.inputs.youtube_url }}' | sed 's/[^a-zA-Z0-9]/_/g')
+        video_title=$(youtube-dl --get-title '${{ inputs.youtube_url }}' | sed 's/[^a-zA-Z0-9]/_/g')
         echo "video_title=${video_title}" >> $GITHUB_OUTPUT
         
         # Convert video to wav
@@ -39,7 +49,7 @@ jobs:
         # Transcribe wav to text using whisper
         cd /app/whisper.cpp
         ls
-        ./main -m /app/whisper.cpp/models/ggml-${{ github.event.inputs.suffix }}.bin -f /tmp/youtube.wav -ocsv -oj -otxt -osrt -olrc -of output
+        ./main -m /app/whisper.cpp/models/ggml-${{ inputs.suffix }}.bin -f /tmp/youtube.wav -ocsv -oj -otxt -osrt -olrc -of output
 
         # Rename output files with the video title
         mv /app/whisper.cpp/output.txt /app/"${video_title}.txt"
