@@ -16,7 +16,9 @@ jobs:
       id: extract_links
       run: |
         # Extract YouTube URLs from issue body
-        echo "${{ github.event.issue.body }}" | grep -Eo 'https://www.youtube.com/watch\?v=[^ ]+' > links.txt
+        cat <<EOF | grep -Eo 'https://(www.youtube.com/watch\?v=|youtu.be/)[^ ]+' > links.txt
+        ${{ github.event.issue.body }}
+        EOF
         echo "Extracted Links:"
         cat links.txt
 
@@ -26,11 +28,20 @@ jobs:
         links=$(cat links.txt)
         echo "::set-output name=links::${links}"
 
+    - name: Authenticate GitHub CLI
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        echo $GH_TOKEN | gh auth login --with-token
+
     - name: Call Reusable Workflow for Each Link
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         links="${{ steps.read_links.outputs.links }}"
         suffix="small"  # You can change this to get suffix dynamically if needed
-        for link in $links; do
+        IFS=$'\n' read -rd '' -a link_array <<< "$links"
+        for link in "${link_array[@]}"; do
           echo "Processing $link"
-          gh workflow run .github/workflows/transcribe-youtube.yml --field youtube_url="$link" --field suffix="$suffix"
+          gh workflow run .github/workflows/transcribe-youtube.yml --ref main --field youtube_url="$link" --field suffix="$suffix"
         done
