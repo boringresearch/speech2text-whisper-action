@@ -22,6 +22,9 @@ jobs:
         sudo apt-get install -y youtube-dl
         sudo apt-get install -y gh
 
+    - name: Update youtube-dl
+      run: sudo youtube-dl -U
+
     - name: Extract video URLs from playlist
       id: extract_links
       run: |
@@ -37,19 +40,22 @@ jobs:
         mkdir -p results
         touch results/with_links.txt
         touch results/all_videos.txt
-        
+
         while read -r link; do
-          youtube-dl -o 'metadata/%(id)s.%(ext)s' --write-info-json "$link"
+          youtube-dl -o 'metadata/%(id)s.%(ext)s' --write-info-json "$link" || echo "Failed to download metadata for $link" >> results/errors.txt
         done < links.txt
 
         # Extract titles and descriptions, filter those with links in descriptions
         for file in metadata/*.info.json; do
-          title=$(jq -r '.title' "$file")
-          description=$(jq -r '.description' "$file")
-          video_url="https://www.youtube.com/watch?v=$(jq -r '.id' "$file")"
-          echo -e "Title: $title\nDescription: $description\nURL: $video_url\n" >> results/all_videos.txt
-          if echo "$description" | grep -q -E 'http[s]?://[^ ]+'; then
-            echo -e "Title: $title\nDescription: $description\nURL: $video_url\n" >> results/with_links.txt
+          if [ -f "$file" ]; then
+            title=$(jq -r '.title' "$file")
+            description=$(jq -r '.description' "$file")
+            echo -e "Title: $title\nDescription: $description\nURL: ${file%.info.json}\n" >> results/all_videos.txt
+            if echo "$description" | grep -q -E 'http[s]?://[^ ]+'; then
+              echo -e "Title: $title\nDescription: $description\nURL: ${file%.info.json}\n" >> results/with_links.txt
+            fi
+          else
+            echo "Missing metadata for file: $file" >> results/errors.txt
           fi
         done
 
@@ -67,6 +73,13 @@ jobs:
       with:
         name: filtered_videos_with_links
         path: results/with_links.txt
+
+    - name: Upload error log
+      if: failure()
+      uses: actions/upload-artifact@v3
+      with:
+        name: errors
+        path: results/errors.txt
 
     - name: Create issues for each video with links
       env:
