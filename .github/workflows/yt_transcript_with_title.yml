@@ -1,0 +1,48 @@
+name: Transcript YouTube Video
+
+on:
+  workflow_dispatch:
+    inputs:
+      youtube_url:
+        description: 'YouTube Video URL'
+        required: true
+
+jobs:
+  youtube-2-video:
+    name: Transcript English Video
+    runs-on: ubuntu-latest
+    container: xihajun/whisper-yt-cpu:latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Download and Transcribe YouTube Video
+      run: |
+        # Download YouTube video
+        mkdir youtube
+        cd youtube
+        youtube-dl -o 'youtube.mp4' '${{ github.event.inputs.youtube_url }}'
+
+        # Get the YouTube video title
+        video_title=$(youtube-dl --get-title '${{ github.event.inputs.youtube_url }}' | sed 's/[^a-zA-Z0-9]/_/g')
+        
+        # Convert video to wav
+        ffmpeg -i youtube* -ac 1 -ar 16000 -f wav /tmp/youtube.wav
+        ls -lh /tmp
+        # Transcribe wav to text using whisper
+        cd /app
+        ./main -f /tmp/youtube.wav -ocsv -oj -otxt -osrt -olrc -of output
+
+        # Rename output files with the video title
+        mv /app/output.txt /app/"$video_title.txt"
+        mv /app/output.csv /app/"$video_title.csv"
+        mv /app/output.json /app/"$video_title.json"
+        mv /app/output.srt /app/"$video_title.srt"
+        mv /app/output.lrc /app/"$video_title.lrc"
+
+    - name: Upload Output Files
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ steps.download_and_transcribe.outputs.video_title }}
+        path: /app/*.*
