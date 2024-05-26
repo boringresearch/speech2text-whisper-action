@@ -22,15 +22,13 @@ jobs:
         EOF
         echo "Extracted Links:"
         cat links.txt
-        links=$(awk 'NF' links.txt | jq -R -s 'split("\n") | map(select(length > 0))')
-        echo "::set-output name=links::${links}"
-        echo "${links}" > links.json
+        awk 'NF' links.txt | jq -R -s 'split("\r\n") | map(select(length > 0))' > links.json
 
     - id: set-matrix
       run: |
         # Read links from JSON file
-        links=$(cat links.json)
-        echo "matrix=${links}" >> $GITHUB_OUTPUT
+        cat links.json
+        echo "matrix=$(cat links.json)" >> $GITHUB_OUTPUT
 
   run-transcriptions:
     needs: extract-and-run
