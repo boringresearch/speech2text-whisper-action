@@ -22,7 +22,7 @@ jobs:
         EOF
         echo "Extracted Links:"
         cat links.txt
-        awk 'NF' links.txt | jq -R -s 'split("\r\n") | map(select(length > 0))' > links.json
+        awk 'NF' links.txt | jq -c -R -s 'split("\r\n") | map(select(length > 0))' > links.json
 
     - id: set-matrix
       run: |
