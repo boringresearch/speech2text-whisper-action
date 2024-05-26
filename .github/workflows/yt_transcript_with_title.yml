@@ -1,4 +1,4 @@
-name: Transcript YouTube Video
+name: Transcript YouTube Video With Title
 
 on:
   workflow_dispatch:
