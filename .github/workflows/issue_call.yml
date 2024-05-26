@@ -7,7 +7,8 @@ on:
 jobs:
   extract-and-run:
     runs-on: ubuntu-latest
-
+    outputs: 
+      links: ${{ steps.set-matrix.outputs.matrix }}
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -21,19 +22,25 @@ jobs:
         EOF
         echo "Extracted Links:"
         cat links.txt
+        links=$(awk 'NF' links.txt | jq -R -s 'split("\n") | map(select(length > 0))')
+        echo "::set-output name=links::${links}"
+        echo "${links}" > links.json
 
-    - name: Read Links
-      id: read_links
+    - id: set-matrix
       run: |
-        links=$(cat links.txt | awk NF)
-        echo "::set-output name=links::$(jq -R -s -c 'split("\n") | map(select(length > 0))' <<< "$links")"
+        # Read links from JSON file
+        links=$(cat links.json)
+        echo "matrix=${links}" >> $GITHUB_OUTPUT
 
   run-transcriptions:
     needs: extract-and-run
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         link: ${{ fromJson(needs.extract-and-run.outputs.links) }}
-    uses: ./.github/workflows/transcribe-youtube.yml
-    with:
-      youtube_url: ${{ matrix.link }}
-      suffix: small
+    steps:
+    - name: Call Reusable Workflow for Each Link
+      uses: ./.github/workflows/transcribe-youtube.yml
+      with:
+        youtube_url: ${{ matrix.link }}
+        suffix: small
