@@ -1,0 +1,79 @@
+name: Process YouTube Playlist
+
+on:
+  workflow_dispatch:
+    inputs:
+      playlist_url:
+        description: 'YouTube Playlist URL'
+        required: true
+
+jobs:
+  extract-and-create-issues:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y jq
+        sudo apt-get install -y youtube-dl
+        sudo apt-get install -y gh
+
+    - name: Extract video URLs from playlist
+      id: extract_links
+      run: |
+        # Extract video URLs from playlist
+        youtube-dl -j --flat-playlist "${{ github.event.inputs.playlist_url }}" | jq -r '.id' | sed 's_^_https://www.youtube.com/watch?v=_' > links.txt
+        echo "Extracted Links:"
+        cat links.txt
+
+    - name: Download and process video metadata
+      id: process_metadata
+      run: |
+        mkdir -p metadata
+        mkdir -p results
+        touch results/with_links.txt
+        touch results/all_videos.txt
+        
+        while read -r link; do
+          youtube-dl -o 'metadata/%(id)s.%(ext)s' --write-info-json "$link"
+        done < links.txt
+
+        # Extract titles and descriptions, filter those with links in descriptions
+        for file in metadata/*.info.json; do
+          title=$(jq -r '.title' "$file")
+          description=$(jq -r '.description' "$file")
+          video_url="https://www.youtube.com/watch?v=$(jq -r '.id' "$file")"
+          echo -e "Title: $title\nDescription: $description\nURL: $video_url\n" >> results/all_videos.txt
+          if echo "$description" | grep -q -E 'http[s]?://[^ ]+'; then
+            echo -e "Title: $title\nDescription: $description\nURL: $video_url\n" >> results/with_links.txt
+          fi
+        done
+
+        # List files in results
+        ls -l results
+
+    - name: Upload all videos information
+      uses: actions/upload-artifact@v3
+      with:
+        name: all_videos
+        path: results/all_videos.txt
+
+    - name: Upload filtered videos with links
+      uses: actions/upload-artifact@v3
+      with:
+        name: filtered_videos_with_links
+        path: results/with_links.txt
+
+    - name: Create issues for each video with links
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        while read -r title; do
+          read -r description
+          read -r url
+          gh issue create --title "$title" --body "Description: $description\n\nLink: $url"
+        done < <(awk 'BEGIN { RS = ""; FS = "\n" } { print $2, $4, $6 }' results/with_links.txt)
