@@ -16,7 +16,7 @@ jobs:
       id: extract_links
       run: |
         # Extract YouTube URLs from issue body
-        cat <<EOF | grep -Eo 'https://(www.youtube.com/watch\?v=|youtu.be/)[^ ]+' > links.txt
+        cat <<EOF > links.txt
         ${{ github.event.issue.body }}
         EOF
         echo "Extracted Links:"
