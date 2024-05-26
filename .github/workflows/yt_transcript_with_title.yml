@@ -6,18 +6,23 @@ on:
       youtube_url:
         description: 'YouTube Video URL'
         required: true
+      suffix:
+        description: 'Suffix for the Whisper model (small or latest)'
+        required: true
+        default: 'small'
 
 jobs:
   youtube-2-video:
     name: Transcript English Video
     runs-on: ubuntu-latest
-    container: xihajun/whisper-yt-cpu:latest
+    container: xihajun/whisper-yt-cpu:${{ github.event.inputs.suffix }}
 
     steps:
     - name: Checkout
       uses: actions/checkout@v4
 
     - name: Download and Transcribe YouTube Video
+      id: download_and_transcribe
       run: |
         # Download YouTube video
         mkdir youtube
@@ -26,20 +31,21 @@ jobs:
 
         # Get the YouTube video title
         video_title=$(youtube-dl --get-title '${{ github.event.inputs.youtube_url }}' | sed 's/[^a-zA-Z0-9]/_/g')
+        echo "video_title=${video_title}" >> $GITHUB_OUTPUT
         
         # Convert video to wav
         ffmpeg -i youtube* -ac 1 -ar 16000 -f wav /tmp/youtube.wav
         ls -lh /tmp
         # Transcribe wav to text using whisper
         cd /app
-        ./main -f /tmp/youtube.wav -ocsv -oj -otxt -osrt -olrc -of output
+        ./main -m /app/whisper.cpp/models/ggml-${{ github.event.inputs.suffix }}.bin -f /tmp/youtube.wav -ocsv -oj -otxt -osrt -olrc -of output
 
         # Rename output files with the video title
-        mv /app/output.txt /app/"$video_title.txt"
-        mv /app/output.csv /app/"$video_title.csv"
-        mv /app/output.json /app/"$video_title.json"
-        mv /app/output.srt /app/"$video_title.srt"
-        mv /app/output.lrc /app/"$video_title.lrc"
+        mv /app/output.txt /app/"${video_title}.txt"
+        mv /app/output.csv /app/"${video_title}.csv"
+        mv /app/output.json /app/"${video_title}.json"
+        mv /app/output.srt /app/"${video_title}.srt"
+        mv /app/output.lrc /app/"${video_title}.lrc"
 
     - name: Upload Output Files
       uses: actions/upload-artifact@v3
