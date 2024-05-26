@@ -5,7 +5,7 @@ on:
     types: [opened]
 
 jobs:
-  extract-and-transcribe:
+  extract-and-run:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,23 +25,16 @@ jobs:
     - name: Read Links
       id: read_links
       run: |
-        links=$(cat links.txt)
+        links=$(cat links.txt | awk NF | jq -R -s -c 'split("\n") | map(select(length > 0))')
         echo "::set-output name=links::${links}"
 
-    # - name: Authenticate GitHub CLI
-    #   env:
-    #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
-    #   run: |
-    #     echo $GH_TOKEN | gh auth login --with-token
-
-    - name: Call Reusable Workflow for Each Link
-      # env:
-      #   GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: |
-        links="${{ steps.read_links.outputs.links }}"
-        suffix="small"  # You can change this to get suffix dynamically if needed
-        IFS=$'\n' read -rd '' -a link_array <<< "$links"
-        for link in "${link_array[@]}"; do
-          echo "Processing $link"
-          gh workflow run .github/workflows/transcribe-youtube.yml --ref main --field youtube_url="$link" --field suffix="$suffix"
-        done
+  run-transcriptions:
+    needs: extract-and-run
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        link: ${{ fromJson(needs.extract-and-run.outputs.links) }}
+    uses: ./.github/workflows/transcribe-youtube.yml
+    with:
+      youtube_url: ${{ matrix.link }}
+      suffix: small
