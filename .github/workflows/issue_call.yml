@@ -30,7 +30,6 @@ jobs:
 
   run-transcriptions:
     needs: extract-and-run
-    runs-on: ubuntu-latest
     strategy:
       matrix:
         link: ${{ fromJson(needs.extract-and-run.outputs.links) }}
