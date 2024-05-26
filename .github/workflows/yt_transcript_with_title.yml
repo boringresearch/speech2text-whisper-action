@@ -15,7 +15,7 @@ jobs:
   youtube-2-video:
     name: Transcript English Video
     runs-on: ubuntu-latest
-    container: xihajun/whisper-cpu:${{ github.event.inputs.suffix }}
+    container: xihajun/whisper-cpp:${{ github.event.inputs.suffix }}
 
     steps:
     - name: Checkout
