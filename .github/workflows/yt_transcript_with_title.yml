@@ -38,6 +38,7 @@ jobs:
         ls -lh /tmp
         # Transcribe wav to text using whisper
         cd /app
+        ls
         ./main -m /app/whisper.cpp/models/ggml-${{ github.event.inputs.suffix }}.bin -f /tmp/youtube.wav -ocsv -oj -otxt -osrt -olrc -of output
 
         # Rename output files with the video title
