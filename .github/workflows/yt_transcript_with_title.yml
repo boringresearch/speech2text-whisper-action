@@ -52,6 +52,7 @@ jobs:
         ./main -m /app/whisper.cpp/models/ggml-${{ inputs.suffix }}.bin -f /tmp/youtube.wav -ocsv -oj -otxt -osrt -olrc -of output
 
         # Rename output files with the video title
+        cat /app/whisper.cpp/output.txt
         mv /app/whisper.cpp/output.txt /app/"${video_title}.txt"
         mv /app/whisper.cpp/output.csv /app/"${video_title}.csv"
         mv /app/whisper.cpp/output.json /app/"${video_title}.json"
@@ -62,4 +63,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: ${{ steps.download_and_transcribe.outputs.video_title }}
-        path: /app/output.*
+        path: /app/*.txt
