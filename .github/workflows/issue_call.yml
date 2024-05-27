@@ -38,4 +38,4 @@ jobs:
     uses: ./.github/workflows/transcribe-youtube.yml
     with:
       youtube_url: ${{ matrix.link }}
-      suffix: small
+      suffix: medium
