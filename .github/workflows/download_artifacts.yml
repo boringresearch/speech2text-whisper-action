@@ -1,0 +1,51 @@
+name: Download Artifacts
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'The ID of the workflow run to download artifacts from'
+        required: true
+
+jobs:
+  download-artifacts:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Download Artifacts
+      run: |
+        # Fetch the artifacts list from the specified run ID
+        artifacts_url=$(curl -s \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.event.inputs.run_id }}/artifacts" \
+          | jq -r '.artifacts[].archive_download_url')
+
+        # Create a directory to store the downloaded artifacts
+        mkdir -p artifacts
+
+        # Download each artifact
+        for url in $artifacts_url; do
+          curl -sL -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -o artifacts/artifact.zip \
+            $url
+          unzip -o artifacts/artifact.zip -d artifacts
+          rm artifacts/artifact.zip
+        done
+
+    - name: List Downloaded Artifacts
+      run: |
+        ls -R artifacts
+
+    - name: Commit and Push Artifacts
+      run: |
+        # Set up Git
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+        # Add, commit, and push changes
+        git add .
+        git commit -m "Add downloaded artifacts from run ID ${{ github.event.inputs.run_id }}"
+        git push

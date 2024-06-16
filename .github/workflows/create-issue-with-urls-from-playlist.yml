@@ -1,4 +1,4 @@
-name: Process YouTube Playlist
+name: create-issue-with-urls-from-playlist
 
 on:
   workflow_dispatch:

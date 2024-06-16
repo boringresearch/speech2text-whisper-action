@@ -1,4 +1,4 @@
-name: Transcript YouTube Video With Title
+name: transcibe-url-with-title
 
 on:
   workflow_dispatch:
@@ -32,6 +32,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Download and Transcribe YouTube Video
+      continue-on-error: true
       id: download_and_transcribe
       run: |
         # Download YouTube video
@@ -49,7 +50,7 @@ jobs:
         # Transcribe wav to text using whisper
         cd /app/whisper.cpp
         ls
-        ./main -m /app/whisper.cpp/models/ggml-${{ inputs.suffix }}.bin -f /tmp/youtube.wav -ocsv -oj -otxt -osrt -olrc -of output
+        ./main -m /app/whisper.cpp/models/ggml-${{ inputs.suffix }}.bin -f /tmp/youtube.wav -l auto -ocsv -oj -otxt -osrt -olrc -of output
 
         # Rename output files with the video title
         cat /app/whisper.cpp/output.txt
@@ -60,6 +61,7 @@ jobs:
         mv /app/whisper.cpp/output.lrc /app/"${video_title}.lrc"
 
     - name: Upload Output Files
+      if: steps.download_and_transcribe.conclusion == 'success'
       uses: actions/upload-artifact@v3
       with:
         name: ${{ steps.download_and_transcribe.outputs.video_title }}
