@@ -1,0 +1,763 @@
+ >> Welcome to the third talk in the third day of the summer school. Today we have Carl
+ Friston, who is the director of the Wellcome Center for Human Neuroimaging Institute of
+ Neurology, UCL London. He's a theoretical scientist, neuroscientist, and authority on
+ brain imaging. He invented statistical parametric mapping called SPM, Vox cell-based morphometry
+ called VBM, and dynamic causal modeling, DCM. Mathematical contributions include variational
+ Laplacian procedures and generalized filtering for hierarchical Bayesian model inversion.
+ Carl currently works on models of functional integration in the human brain
+ and the principles that underline neuronal interactions. His main contribution to theoretical
+ neurology is a free energy principle for action and perception called active inference. Now this
+ is a summer school in which we've talked a lot about inference, so we're now going to hear from
+ somebody for whom inference is sort of the core of his approach. Carl, welcome, and it's yours.
+ Can you speak? Yes I can, sorry. Thank you very much for the introduction.
+ I'm just waiting for permission to share the screen.
+ Yes, I should have to, I have to get you that permission. I have to get off myself.
+ There you'll have it. Lovely, thank you.
+ Excellent, well let me start by thanking you for the opportunity to speak to you. I've learned an
+ enormous amount about not only large language models but language, and that probably reflects
+ the fact I have no foundational training in language, so my apologies for that. And I should
+ also confess I'm a large language model virgin. I've never actually used a large language model,
+ but I feel slightly enticed to do so having heard all about them. I'm going to, as such,
+ I'm going to take a very narrow brief and just pursue some of the elemental aspects of
+ communication and language as emergent properties of things that interact. And I'm going to premise
+ this, let me just put this in presentation. I'm going to premise the story, incidentally a story
+ I think that Daniel Dennett would very happily subscribe to. I'm going to premise this story on
+ a quote from Helmholtz that I'm reading as his take on symbol grounding and synchronization or
+ harmony of the kind that I'm going to use to illustrate the way that we make sense of our
+ world and our world makes sense of us and sometimes that world can be another person to whom we are
+ talking. So no perceptions obtained by the senses are merely sensations impressed upon our nervous
+ systems. A peculiar intellectual activity is required to pass from a nervous sensation to
+ the conception of an external object which has the sensation which the sensation has aroused.
+ The sensations of our nerves of sense are mere symbols indicating certain external objects
+ and it is usually only after considerable practice that we acquire the power of drawing
+ correct conclusions from our sensations respecting the corresponding objects. Now much of what I'm
+ going to say is based upon the insights and offerings both mathematical and narrative
+ of Helmholtz and I'm going to tell the story the backstory to this observation in two ways. I'm
+ going to start by just considering self-organization from the point of view of a physicist and talk
+ technically about the statistics of life and with a special emphasis on Markov blankets and
+ inference basic mechanics of the kind that we've been discussing and then I'm going to tell exactly
+ the same story from the point of view of predictive coding and neural networks and then I'm going to
+ close by essentially finding the common theme here which is this notion of synchronization
+ and how it can be read in terms of many of the ideas that we've already heard about for example
+ satisficing for example the importance of predictive coding in finding those minimum
+ description length or minimum message length representations of the things that we are trying
+ to infer in the world. So let me start with a question posed by Skrodinger. How can events
+ in space and time which take place within the spatial boundary of a living organism
+ be accounted for by physics and chemistry? Now we're not going to answer that question but what
+ I want to do is pick out the notion of a spatial boundary and emphasize that in order to talk about
+ me or you or anything I have to individuate myself from the rest of the universe and I'm going to
+ read that boundary in a statistical sense as a Markov blanket and for those of you who are not
+ familiar with the notion of Markov blankets they're very simple. Let's take some abstract universe
+ composed of various states of affairs and these states can influence other states and the
+ influences are denoted by these little arrows here and if I identify some set of states say my states
+ then my Markov blanket, the blanket states comprises the children,
+ the parents, the children and the parents of the children and the role of these states is to
+ separate me in a certain sense from the rest of the world. Technically the internal states are
+ conditionally independent of the external states if I knew the boundary states or the blanket states
+ and what that just means is that all the information about the rest of the universe
+ that is needed to predict how I am going to evolve is contained on these boundary states,
+ on my blanket states. I'm going to make a further move here which will be
+ evident why I'm doing that in the next slide. I'm just going to divide the blanket states
+ into sensory states that influence but are not influenced by the internal states and
+ active states that influence but are not influenced by the external states and so with this
+ particular partition I've now got a mathematical description of some entity, some thing, some
+ particle, some person that possesses internal states and their blanket states where the blanket
+ states can be divided into sensory and active states. So why sensory and active states? Well
+ if we think of my brain as the thing in question I can ascribe all my internal neuronal and synaptic
+ states to the internal states and then these internal states influence the active states,
+ say my actuators, my autonomic reflexes, my muscles that in turn influence but are not influenced by
+ the external states, could be my physiological states, it could be states of extra personal
+ space, it could be your states and these external states in turn influence the sensory states,
+ I'll say my sensory epithelia, my interception that then influence the internal states but are
+ not influenced by the internal states. So what I have here is a mathematical image of effectively
+ a system that has inputs and outputs so that the inside influences the outside
+ vicariously through the active states while the outside influences the inside through the sensory
+ states. If you like systems theory all we're doing really is defining a system in this instance a
+ brain in terms of its inputs and outputs and that is sufficient now to talk about something as
+ distinct from everything or nothing. What I want you to do now though is just to forget about the
+ Markov blanket for a moment we're going to do a very brief crash course in physics and then put
+ the Markov blanket back into play and see what happens. The physics we're going to briefly
+ rehearse starts off with a universal description of any random dynamical system or universe in terms
+ of changes in the states of this universe that depend lawfully of where I am by the state that
+ I'm currently in plus some random fluctuations. I've cartooned that here in terms of a trajectory
+ through some arbitrary state space you can have any space or time scale for example it could be
+ the oscillation of a cell in my hippocampus it could be my cardiac cycle or my respiratory cycle
+ or it could be me getting up in the morning and having a cup of coffee doing my emails and so
+ forth or it could be a life cycle. The key aspect is that if I can be described or any system can be
+ described in this way it keeps on returning to the neighborhood of states that it was was once in.
+ Technically this is called a pullback attractor or more simply just an attracting set of states
+ that characterize the kind of thing that I am. I am much more likely to be found in this state
+ than this state and indeed if I was found in this state I probably wouldn't be I wouldn't exist
+ in the form or the kind of thing that I am and I'm going to leverage that interpretation just by
+ thinking of these trajectories or their density in terms of probability that you would find me in
+ this state given I am me and I'm going to use that interpretation now because we know a lot or physics
+ knows a lot about how this probability density changes over time. I've written this down in
+ terms of a Fokker-Planck equation there are lots of other ways I could have written it down. The
+ maths doesn't really matter here the key point is that we know there's a lawful relationship
+ between the way these densities change over time even they exist even that I exist and the amplitude
+ of the random fluctuations and the dynamics or the flow that characterize this trajectory.
+ However I've just said that this density does not change with time because we keep revisiting the
+ same states so the rate of change the density dynamics is zero which means I can solve this
+ equation and people do this a lot this is a solution due to Helmholtz that is very in a
+ way that is very revealing. What it tells us is that my dynamics the way in which my states change
+ must be expressed effectively as a gradient flow on this quantity here and this quantity is just
+ the log probability of finding me in any particular state. The negative of this is self-information
+ but we will take a number of different perspectives on this in a second but I want to
+ emphasize here that this composition due to Helmholtz has two bits it has this sort of
+ gradient flow it looks as if this quantity is being maximized but there's also a quantity here
+ known as conservative flow a seronoidal flow which gives a biological or biotic at least
+ parametric aspect to the dynamics it means that there's going to be cycles in play
+ in virtue of this conservative part of the flow and we'll all be very familiar with this kind of
+ separation into downward flow here due to gravity as this water flows out of the bath but also the
+ circular flow as it swirls around during its descent and that's just what that Helmholtz
+ decomposition describes. So what about the Markov blanket? That law that rule that applies to any
+ system that possesses characteristic states that has this attracting set must hold for all the
+ partition of the Markov blanket including my internal states and my active states.
+ So what does that mean? Well it looks as if my internal states and the way that I act upon the
+ world is changing in a way to maximize this quantity here this log probability of states given
+ me for example here the sensory states and notice by construction because the external states
+ do not influence the internal active states this is just a function of my sensory states of the
+ sensory sector of my of my Markov blanket and what I'm going to say or try and convince you of that
+ this is a very simple mathematical expression of perception and action. So what explanations or
+ interpretations can we afford this log probability of sensory states given me? Well I've just said
+ that these are part of the attracting set these are the states that are characteristic of me
+ that it looks as if I aspire to these attracting sets they have value for me because they define
+ the kind of thing I am. So we can read this formulation of perception action in terms of
+ maximizing value and from that we could spin off reinforcement learning stories in behavioral
+ psychology if I was an engineer this would be a statement of optimal control theory if I was an
+ economist it would be a statement of expected utility theory. Another perspective would be
+ afforded by looking at this from the point of view of somebody doing information theory.
+ So the negative of this kind of value the plausibility of you finding me in in my
+ characteristic states in my attracting set is called self-information and information theory
+ sometimes surprise or more simply surprise. It just scores the unlikeliness the implausibility
+ that I would be found in this particular state and what this says is that both internal and active
+ states are trying to minimize surprise and from this we can read off things like the
+ principle of maximum mutual information minimum redundancy and the free energy principle and just
+ a an interesting point here that this I think relates very very closely to the arguments we
+ are hearing before about minimum description length. We can get into the maths and there
+ are many ways of expressing this in terms of things like algorithmic complexity which we're
+ trying to minimize to maximize the efficiency or minimize the redundancy and that leads through to
+ what we were talking about earlier on in terms of slum of induction and indeed universal computation.
+ It's also isomorphic with the free energy principle because the free energy principle
+ is effectively a mathematical score of the surprise or the surprizal that we're trying to
+ minimize and it looks as if we are minimizing. The average of surprise is entropy which means
+ that action and perception so articulated look as if they're trying to minimize entropy the
+ dispersion of my states and of course this is a holy grail of the physics of non-equilibria
+ for example synergetics of the kind introduced by Herman Haken but if I was a physiologist it
+ would just be a statement of homeostasis it's just trying to keep my central variables within
+ physiologically viable bounds to stop them dispersing through these gradient flows that
+ counter the random fluctuations. There's a final interpretation here which I want to leverage.
+ It's an interpretation that a statistician would bring to the table. She would interpret this
+ quantity as the probability or the likelihood of some sensory data given not me but me as a model
+ of how those data were caused and this is called model evidence in Bayesian statistics and what
+ this means is that perception and action is trying to maximize or looks as if it is trying
+ to maximize model evidence some people like to call this self-evidencing. From this we can
+ motivate the Bayesian brain hypothesis evidence accumulation and things like predictive coding
+ and indeed I will sort of unpack the predictive coding interpretation later on. So this simple
+ consequence of possessing in a sustainable way characteristic states in the context of me being
+ separate from the rest of the universe leads to a number of internally consistent views on
+ self-organization. Just to give you a numerical example of the kind of behavior that one emerges
+ from this kind of formulation what we've done here is simulate several hundred little macular
+ molecules that are equipped with strong repulsion and weak electrochemical attraction and the reason
+ that we did this is that we wrote down those equations of motion those dynamics technically
+ a Langevin equation and in so doing we now know exactly what influences what and now we can
+ identify a set of internal states for example and their Markov blanket and ask is there a little
+ thing is there a little subsystem living in this synthetic primordial soup and indeed there is this
+ is exactly the same simulation but what I've done here is color code the molecules in terms of
+ external molecules in cyan the sensory molecules or states in magenta that overlay the active
+ states in red that encompass the internal states and what we have is a little sort of viral like
+ particle wiggling around retaining what's technically known as a non-equilibrium steady
+ state relationship to its external world so the question now if this Bayesian interpretation if
+ this self-evidencing interpretation of the internal inactive states is true then it should
+ be evident that the internal states in some way represent the external states mathematically
+ hold Bayesian beliefs about the external states so is there any evidence that that is the case in
+ this simulation and there's ample evidence this is one example where what we've done is we've taken
+ a linear mixture of the internal states say a neural population in my brain and asked is there any
+ coupling any representation of a probabilistic sort of the motion of the external states
+ you know for example a visual motion if I was doing now studying visually evoked potentials
+ and what we see is that there is a very very accurate reconstruction at this non-equilibrium
+ steady state illustrated here by the prediction based upon the internal states with 90 percent
+ base incredible intervals and the actual fluctuation of the motion on the outside
+ and this is quite remarkable because remember these external dynamics these external states
+ can't directly influence these internal states these can only be seen through the blanket states
+ and through the sensory veil effectively that encompasses these internal states
+ if I now group together the peaks of these fluctuations when these little molecules are
+ spat out into the periphery and then are pulled back in again we get something looks remarkably
+ like event related potentials in electrophysiology research here's an empirical example from a small
+ animal study and here are the same data here so what are we looking at here in a sense we're
+ looking at something which has been well known for many centuries we're looking at a synchronization
+ of chaos or some people call it generalized synchronization of the kind first noted by
+ christian huygens who was the man who noted that if two or more clocks are suspended from the same
+ wall of the same beam they will inevitably start to swing in synchrony so they collapse to a
+ synchronization manifold and here's a drawing from huygens here of two clocks suspended from the same
+ beam and from our point of view we can regard one of the clocks as possessing the internal states
+ and the other clock as the external states the environment and the blanket states are constituted
+ by the beam that couples these two sets of separable states i like this drawing because it
+ emphasizes the mathematical symmetry so if you subscribe to the view that your internal states
+ are somehow representing or inferring your external states and it must also be the case
+ that the environment is inferring and trying to learn about you and that's not an a silly
+ notion in terms of niche construction and the like but that's not the subject of today's
+ presentation and so what i'm going to do now is effectively tell exactly the same story
+ but not now from the point of view of physics but from the point of view of psychology computational
+ neuroscience and neurobiology and particularly tell a story about predictive coding and how that
+ might play out on neuronal networks and this story probably goes right back to the students of plato
+ i'm picking out an example from 16th century here afforded by this oil painter famed for painting
+ still lives that when viewed from another perspective give you a very different visual
+ impression so previously you saw a bowl of fruit and now you see a face the point he's making here
+ is that you made that face you brought this as an a hypothesis or an explanation to the table to
+ explain this particular pattern of sensory impressions and indeed we've heard the phrase
+ earlier on today inference to the best explanation and i think this is exactly what this example
+ and this artist was was trying to communicate people like andy clark would would say that
+ the other brain is a statistical organ it's a constructive organ generating predictions
+ explanations fantasies in an inside out kind of way to try and make the best sense of the sensory
+ impressions in that view the brain is literally a fantastic organ a purveyor of fantasies apt for
+ trying to describe and make sense of what's going on out there in terms of what is causing
+ the sensations and of course this idea was articulated beautifully by helmholtz for example
+ objects are always imagined as being present in the field of vision as would have to be there in
+ order to produce the same impression on the nervous mechanism again what is saying it has to be on the
+ inside it has to you have to have the the the percept or the explanation the hypothesis in
+ order to use the sensory data either to confirm or disconfirm your hypothesis and of course that is
+ very close to the notion of people like say richard gregory in terms of perception or as hypothesis
+ testing and this basic notion has been used to great effect by many people i'm just picking out
+ here the an influential application of these ideas by people like jeffrey hinton and peter diane
+ indeed they built a helmholtz machine as a metaphor for the bayesian brain borrowing from
+ bayesian probability theory and in particular the work of richard feinman in finessing the
+ mathematical problem of doing this kind of bayesian inference let's just come back to helmholtz and the
+ notion of impressions on the nervous mechanism impressions on the sensory sector of my boundary
+ or blanket states my sensory veil that separates me on the inside of my brain from the the outside
+ and if this notion of self-evidencing the basic mechanics that is emerges from possessing a
+ mark of blanket is true what that means is one explanation for what's going on inside my head
+ is that i am compelled to represent or infer find the best explanation for the causes of these
+ sensory impressions or shadows so how could my brain be doing that well we already know how it's
+ doing that because my brain has to conform to this fundamental gradient flow this helmholtz decomposition
+ where the gradient gradients now expressed in terms of gradients on the free energy form of the
+ surprise or self-information and what i've done here is interpret the internal states as standing
+ in for the parameters of some bayesian beliefs some posterior approximate posterior beliefs
+ about the external states furthermore what i've done is rearrange this equation into a form
+ but if you were an engineer you would recognize you might recognize as something called a bayesian
+ filter or a kalman filter and all i've done is say associate the solenoidal part with a prediction
+ so what does that mean well if i have some expectation some representation
+ of the state of affairs out there causing my sensations i also have a prediction about how
+ those predictions are sense how those states of affairs are going to change the rate of change
+ that's what the dot means there so i have a prediction about what i'm going to see next
+ but i also have the opportunity to use my free energy gradients to update that prediction
+ by associating or interpreting these free energy gradients as a prediction error so what's a
+ prediction error well imagine i had this sensory impression on my retina or some sensory epithelia
+ and i have an expectation that it was caused by a howling dog and if i had a generative model
+ of what i would see if indeed my expectations were correct i can generate a prediction
+ of what i would see and compare it with what i'm actually seeing and the prediction error is simply
+ the difference it's simply the mismatch between my sensory input and that predicted under a
+ generative model given my current beliefs and all this equation is saying is that the prediction
+ error is then used to change or drive my beliefs to provide a better explanation until the prediction
+ error is suppressed or minimized and i found the minimum of my free energy at which points the
+ which point the gradient disappears so notice all we're describing here is a minimization of
+ prediction error we won't actually know what's happening or what actually caused our sensations
+ but that doesn't matter if we can keep our prediction errors small then that is sufficient
+ that satisfies us so we can forget about all the physics and now just reduce the imperative
+ for existence in terms of minimizing prediction error and that's nice because there are two ways
+ in which i can minimize my prediction error i can either change my mind to make my predictions more
+ like my sensations or i can act upon the world to sample those sensations that are more like my
+ predictions so this provides a very parsimonious view of action of perception that they're both
+ in the service of minimizing surprise free energy prediction error either by changing the
+ predictions or by actively sampling the world to try and make those predictions come true
+ so here's a slightly more neurobiologically plausible example of that looking at the visual
+ system so imagine we had some visual input from the retina and it comes in say to the lateral
+ geniculate bodies and it's in receipt of some top-down predictions from early visual cortex
+ and the sensory inputs and the top-down predictions are then used to form a prediction error
+ according to this equation and then this prediction error according to this fundamental
+ gradient flow is going to be used to update revise improve my expectations so that this
+ prediction error is minimized but of course these expectations can also be predicted by a second
+ order or a higher order area say v2 so that's sending down predictions as compared with the
+ actual expectations at this level we have the second order prediction error that is passed up
+ so all i'm describing is a hierarchical predictive coding network of the kind that fits very
+ comfortably with what we know about the neuroanatomy and the physiology and the laminar specificity of
+ extrinsic connections in the visual cortical hierarchy what i want to do now though is just
+ consider another kind of input that emphasizes the bilateral ways in which we can minimize
+ prediction error namely the active part imagine i had another kind of input that was from my
+ ocular motor system from my eye muscles say reporting the degree to which they were stretched
+ and this proprioceptive input will come in say to the pontine nuclei it would be met by top-down
+ predictions say ultimately from the frontal eye fields so i could form a prediction error now i
+ can eliminate this prediction error in one of two ways i can either use it to change my mind about
+ where my eyes are pointing or more simply i can simply simply send that prediction error back out
+ into the outside world to cause it to contract the muscle until the muscle reports that the same
+ as that which i predicted and this of course is just a classical reflex arc it's you know how we
+ actually move our bodies and you can also generalize this to the the control of our
+ autonomic nervous systems what we're saying here that this kind of action or this inactive
+ formulation of predictive coding is very simple all we're saying is that this deep hierarchical
+ processing that assimilates all the evidence and tries to make sense of it under this hierarchical
+ predictive coding or basin inference kind of architecture is just in the service of predicting
+ how i'm going to move next and these predictions provide set points that are fulfilled reflexively
+ through classical peripheral reflex arcs in a closed loop system but the the the predictions
+ inherit from a very open loop a lot of deep processing so that's basically predictive
+ coding with reflexes described by many people probably first by people like
+ david mumford in terms of the anatomy of belief updating in the brain
+ i'm now going to close with a couple of examples and try to now show how this would lead to
+ a certain kind of synchronization which would characterize or be one key aspect of communicative
+ interactions between two things that were sufficiently similar to conspecific so certainly
+ shared the same narrative or same generative model and the agenda here is really just to sort of
+ show you another example and another numerical example of synchronization of chaos of generalized
+ synchrony but now has all the hallmarks of communicative interaction so before we do that
+ though let's just look at an example which foregrounds the circular causality that is
+ inherent in this picture of how we establish and sense make this that rests explicitly on this
+ inactive component so what we've done here is simulate movement handwriting and its observation
+ by equipping a synthetic agent with an expressive generative model based upon a central pattern
+ generator and this agent thinks that this abstract movement is mapped to a point an invisible point
+ in extra personal space and furthermore this point is attached to the end of the agent's finger
+ by an invisible spring so the agent is now generating predictions both of what the agent
+ expects to feel in terms of feeling the finger being pulled around and also what the agent expects
+ to see in terms of seeing the finger being pulled around but because the agent's equipped with
+ reflexes those feelings are fulfilled and indeed the finger the agent's finger is actually pulled
+ around thereby generating the predicted visual input and this is the ensuing synthetic
+ handwriting that is caused by this just by integrating those fundamental equations of motion
+ that gradient flow which you can read as a predictive coding scheme and it produces a
+ lot of phenomena which we'll all be familiar with certainly as neurobiologists what I've done here
+ is just plot the activity of this unit here whenever it exceeds half maximum as a function
+ of where the finger is in space and we evince a characteristic specificity receptive field for
+ example a place cell like response profile that in fact also shows a direction selectivity in terms
+ of preferring the downstrokes to the upstrokes interestingly what we can do is we can remove
+ the proprioceptive input but retain the visual input so from the agent's point of view it would
+ be like seeing the same thing but with no sensory evidence that the agent actually caused this so
+ it would be as if somebody else is doing the writing but the agent already has exactly the
+ right mechanics and the right intrinsic dynamics and architecture to predict that writing and can
+ very quickly use exactly the same machinery to confirm the visual predictions so this is action
+ and this is observing the same action but without any action sensations and what we see is that the
+ agent indeed does use the same representation takes a little bit longer for the agent to recognize
+ the particular j and a writing here providing a very simple numerical model of mirror neuron
+ activity during action observation I want to close though with the new model of these emerging
+ behaviors that rest really upon the interaction between two of these
+ systems that are being understood in terms of predictive coding or making inferences
+ of an efficient sort about the causes of their sensorium what we've done here is effectively
+ create two little birds where each bird has one of these central pattern generators that has this
+ deep structure to generate predictions of heard song I don't know if you can hear this
+ I can hear it it's very sweet so what we've built a little synthetic song bird and what we're going
+ to do with basically is to use the those equations of motion that must be the case for anything that
+ has an attracting set but in this instance put two things together and they're both trying to
+ minimize their surprise they're both trying to minimize their prediction errors and the way that
+ they're going to do that is by committing to the same generative model so that as they are singing
+ they are also expecting to hear not only what they are singing but also what the other bird
+ is singing provided that they can hear each other so is the simulation of a situation in which the
+ two birds are generating their own song they're both singing alone but they can't hear each other
+ so they're not in a position to be able to predict the entire sensorium I should in these simulations
+ one bird first of all only one bird is allowed to sing at any one time using that removal of the
+ proprioceptive input that was illustrated in the previous handwriting example so
+ what would happen if we now put them in a situation where they could prompt each other
+ or they could hear each other and if I move the birds together within hearing range then what we
+ see is now exactly this synchronization of that we were illustrating using simulations of the
+ primordial soup so the point being made here is that we have an example where
+ a plausible interpretation of this generalized synchrony is in terms of two birds singing to
+ each other with a language that is predicated on a common generative model whose emergence
+ can be sufficiently explained by minimizing prediction error or minimizing surprise that
+ itself can also be interpreted in terms of finding explanations inferences to the best prediction
+ for the causes of sensations which in this instance the one bird was the other
+ bird and symmetrically vice versa so here's the synchronization manifold
+ depicted when they can't hear each other and when they can hear each other just to show how they
+ align in a certain kind of harmony where everything is now mutually predictable and in one sense
+ mutually understandable because they have this this synchronized dynamics inherent in their two
+ generative models. Was your prior illustration meant to be something that we could hear?
+ This was yes. But we didn't hear it. Oh my apologies. Well it may not be remediable but
+ then what you have to do is describe what we would have heard because we didn't hear anything.
+ I thought you were going to ask me to imitate it. You could. Which I can't do but I speak
+ have a slightly dry mouth so because I'm slightly nervous and I can't whistle but what I am hearing
+ is a very sweet little bird going tweety, tweety, tweety, tweety, tweety, tweety.
+ Then they can't hear each other. They're completely out of phase but as soon as they
+ can hear each other they accompany each other and there's lock phase so it's having two little birds
+ singing to each other and crucially they take it in turns and this is what the blue and the red
+ pink and blue here are meant to indicate so that one bird is picking up from the other bird
+ in succession as if they're singing from the same hymn sheet and that's what I'm hearing.
+ So I'm quite happy but I'm very yes I mean this never works on zoom for some reason it's not you
+ know this doesn't come across but trust me they sound they sound very happy in harmony and yeah
+ I was just wanted to nod to my colleague Takua who's taken this kind of synchronisation through
+ communication and interaction and emphasising the active aspect of this to sort of develop a theory
+ of social intelligence but what I want to do is to come back to this notion of being in harmony
+ through a shared narrative, a shared generative model that grounds you in the way that you can
+ now represent what's going on out there and of course when what's going on out there is somebody
+ doing exactly the same thing in terms of trying to understand you, you have this notion of
+ synchronisation or harmony so I'm just going to very briefly reread where we started.
+ No perceptions obtained by the senses are merely sensations impressed by our nervous systems.
+ A peculiar intellectual activity is required to pass from a nervous sensation to the conception
+ of an external object and I think we can read this as the inference to the best explanation,
+ abductive inference that is as efficient as possible that has this minimum description
+ length aspect or minimum complexity that underwrites sufficing which the sensation
+ has evoked or aroused and the sensations of our nerves have sent some mere symbols
+ they are the new internal neural dynamics are representations or encoding
+ Bayesian or conditional probabilistic beliefs about something outside and it is usually
+ only after considerable practice emphasizing the developmental and inactive underpinnings
+ of this kind of competence that we acquire the power of drawing correct conclusions from our
+ sensations respecting the corresponding objects and that's from on the physiological causes of
+ harmony so all that remains is for me to thank those people whose ideas I've been talking about
+ and of course to thank you for your attention thank you thank you very much indeed.
+ Okay the first question is from Steve Hansen. Steve turn on your sound
+ while Steven figures that out.
+ You have to put on your sound.
+ I don't know what to do about that. In the meanwhile
+ to get the discussion going among everybody I'll ask you a question that you've probably been asked
+ many times before we know that in the in physics there are interactions between dynamical systems
+ so so it's not new that there are interactions what extra and I warn you that when you answer
+ this question you're you're you're essentially giving a theory that is meant to be the solution
+ of the so-called hard problem but why is it that some of these interactions involve prediction and
+ expectation rather than just causation and interaction that's it that's the first question.
+ I think the best way of responding to that would be to say in terms of the story I was
+ talking about predictive coding and it is just a story it's a theological interpretation of the
+ causal dynamics so what the that sort of formulation the free energy principle just brings to the table
+ is a license to talk about prediction and Bayesian beliefs in a way that ascribes a certain
+ teleology of function to a description of the underlying causal dynamics so there's no pretense
+ that you that the actual dynamics on the inside of anything including my brain is doing prediction
+ it says I can describe it as such and in fact there's an interesting implication of the free
+ energy principle which means that because the internal states of something that is being observed
+ are unknowable because everything that you can observe in terms of this thing is expressed on its
+ surface or its mark of boundary that means you can never know what something else is doing or
+ thinking all you can do is infer that it looks as if this thing is sense making or doing predictive
+ coding or is behaving in a way that evinces that kind of predictive processing so that would be I
+ think as a deflationary answer it's just a story it's just an interpretation of the underlying
+ causal dynamics but you could go a bit further and say well what kind of internal interpretation
+ would lead to consciousness and I think you'd have to qualify them that the you know different
+ kinds of things and different kinds of implicit generative models that could or could not be
+ conscious or from your perspective may or may not be sentient but I think that's a different
+ discussion actually it's the same discussion but that's okay it's the same discussion because you
+ what you said was that I asked what what what more do we need than the causal story and you said well
+ this is not adding more this is just something that it's an interpretation of the causal story
+ that fits and I can give examples to show that sentience is part of it I know what it feels like
+ to expect something to predict something and to have the prediction not met and not etc so those
+ are all felt states and the question is what on earth are they for if all you have is a causal
+ story that can be by us feeling creatures given a felt interpretation
+ no are you well you you're tempting me to answer that yeah so that's the fact you know means that
+ your generative model has to have a model of yourself and self as agent I think that's the
+ bright light I was trying to speak to um saying that was there would be that your model would
+ have to have that if my interpretation were actually something other than just an interpretation
+ yes absolutely okay uh there is a question here do the song songbirds still change their songs
+ if they each already make a repetitive sound that fits each other like a line a line mod
+ each other so that the combination with no changes would already be easy to predict
+ apologies if I'm misunderstanding that's julia simmerman saying that julia do you want to say
+ it in person anyway did that make enough sense to you so you can say something about it um yes I
+ think so yes there's certainly a line um in your in the service of mutual predictability um so
+ you know the story here or the idea here is that um you become you would train each other you know
+ by in conversation you um effectively have a a kind of generalized synchrony whereby you're both
+ working through the same narrative or trajectories but in a way that now becomes entrenched uncoupled
+ through the sensory exchange and that means that as you work through these very itinerant
+ trajectories so the birdsong itself has quite a deep hierarchical structure it's not just a sort
+ regular periodic tweeting there are phrases and narratives with this deep temporal structure and
+ where you are in this narrative um now becomes aligned with the other bird so that you um I
+ repeat are literally seen from the same hymn sheet so that um the um my behavior becomes your
+ behavior um and it becomes our behavior or overt behavior so that the only thing that's left for me
+ to infer is whose turn is it to actually talk or put it in another way the only thing that I now
+ need to infer is to attribute the agency who's actually doing the talking at the moment because
+ I know exactly what you're saying because it's what I'm saying and vice versa
+ I have to speak aloud to Steve Henson who's trying desperately to ask you a question but
+ he's not getting any success I assume that Steve Henson hears me speaking even if he cannot himself
+ speak and he cannot show show his face what the technician says is that nothing has changed
+ since you were successful in doing that earlier this week so if there has been a changing
+ configuration it's not on this end uh so I can't respond to your tech either you guys have control
+ of my audio and video just turn it on no well anyway I there's nothing I could do with that
+ so I have to continue with the uh with what you are discussing
+ what is there another question where yeah
+ what's like all right nice and go ahead it's gary yeah yeah uh thank you for the
+ the talk uh I'm wondering if you can speak to how you view the relationship between prediction
+ and intelligence um so there is one perspective that views intelligence sort of defines intelligence
+ in terms of maximization of reward or lowering prediction error uh alternatively one could view
+ that as being the the mechanism by which intelligence arises so just wondering if you can speak to
+ how how you view uh this this theoretical construct of intelligence
+ um I guess from the point yeah from the point of view of artificial intelligence or natural
+ intelligence um I think we're we're probably um in the game of um talking about the intelligence of
+ things that that possess a non-trivial agency um so that immediately calls to mind questions about
+ the distinction between for example a what's governor or thermostat or a virus and you and me
+ you know what characterizes the would you call a thermostat intelligent I mean it certainly has
+ purpose it certainly has a goal um but does it uh can you interpret it really as um evincing a
+ true kind of intelligence um and I would argue probably not so what's the difference between a
+ thermostat and you and me and I think that the simple answer is that we plan so that comes back
+ to where you started with your question which was the notion of prediction as forecasting so now your
+ generative model acquires a temporal depth so now there is a horizon it's interesting you mentioned
+ reward because of course you know that always comes equipped with with you know a future horizon
+ so I think it's quite important to acknowledge that we're sort of um when the prediction becomes
+ future pointing I think we move away from simple reflexive merely reflexive kind of self-organization
+ and um into the realm of self-evidencing with true agency in the sense that there is a notion of a
+ counterfactual future that an agent can cause and just to speak to sit seven's uh point um if there
+ is a model of me causing that future as well then there may be some consciousness or true um you know
+ self-awareness um so I would say that intelligent the predict the kind of prediction that underwrites
+ truly or authentically intelligent behavior and rests upon having a generative model that includes
+ the consequences of your own action and then that affords the opportunity now to roll out into the
+ future and selecting among a number of counterfactual futures each of which is underwritten by a
+ particular policy and that in turn involves a Bayesian model selection of a selection of one
+ the best kind the best kind of policy so I think that's where it starts to get a little bit closer
+ to sort of um vanilla reinforcement or rewarding schedules as a sense of the discounted reward in
+ the future it's not quite how active inference works but it has the same sort of architecture
+ and there is this um futuristic um anticipatory uh prospective aspect to uh both um to yeah
+ effectively to to planning and that's very different from the kind of predictive coding
+ that you read about that would be entirely um fit for purpose in describing I repeat a thermostat
+ I mean I thought the prediction of a thermostat is the predicted um temperature at which I expect
+ to um exist and I just act upon the world in order to bring it back to the predicted one
+ but I think you're talking about a much more um a much more agentic kind of prediction
+ okay let's let's wait a second Gary because you had no problem at all getting through
+ Steve did he did the unexpected and he seems to have appeared can you also talk
+ I don't know can I yes go ahead well look at that that's amazing hi Carl how are you
+ that was a wonderful talk I've actually heard this talk at least once before but uh and I've
+ always liked the Markov blanket kind of setup you have here it's very uh interesting now this is the
+ Markov blanket in the sense of Judea Pearl right so this is a I'm going to take an acyclic graph
+ and then I'm going to find some rules to make boundaries on the graph and as you say the
+ parents the children the children this seems like an interesting mechanism if we go back to your
+ other uh line of work with brain imaging to do partialization of the brain if one you know laid
+ over like a Thomas Yeo kind of thousand node partialization and then tried to compute Markov
+ blankets on the same according to some kind of criterion obviously the criterion can vary quite
+ a bit it also struck me before I let you comment on that now one could use this in the attention
+ heads of an LLM I understand you haven't used LLMC4 so that may be confusing but the attention heads
+ are the part of the GPT that the LLM that basically are autoregressive they're really just autoregressive
+ structures and there's been recent proof showing that in fact they can emulate a recurrent neural
+ network a very very deep RNN so the dynamics that you're talking about are clearly inside this thing
+ and that's a very interesting application because there's another number of people in this summer
+ school and elsewhere that are looking at circuit structure inside of the LLM sort of like divining
+ it or you know digging for gold to find them wouldn't it be interesting to maybe use a Markov
+ blanket in this story to try to find to fit boundaries across these attention heads and
+ pull out more structure because the structure seems to be very similar to what neuroscientists
+ uh you may or may not agree friends of mine in the building here who work on single neurons or
+ hundreds of neurons at a time for the next 40 centuries right so it's they're not they're
+ going to find a hard time generating a functional account of how we order lunch much less than else
+ in my view but you may disagree so that was my thoughts yeah two sets of great thoughts there
+ and so yeah I likewise I thought there was a you know a very seductive opportunity to apply
+ Markov blankets empirically to try and parcellate at different scales the brain and in fact I spent
+ about six months doing so and wrote it up and it's called it was I think it was in I think it was in
+ network neuroscience it's called parcels and particles in the brain and it does that at
+ different scales so the whole point of Markov blankets is that there's no one unique Markov
+ blanket that you can just identify a certain set of internal states of interest at any particular
+ scale find the Markov blanket repeat that for the remaining external states and then just
+ tessellate at this scale and then you find Markov blankets and Markov blankets and move up scales
+ so it was a really seductive really interesting exercise applied to fmri time series and if you
+ look at the paper my favorite bit is you were able to empirically estimate what's known as a
+ renormalization group flow a scaling law which allows you to associate certain time and scale
+ time and space scales to the functional anatomy of the brain the problem was it was it's so
+ complicated we couldn't find anybody really who's ever going to use it and even if they could use it
+ it was so specific to an individual time series that you know it wasn't a useful data analysis
+ device but it was it was really entertaining the second thing though again it's a great point that
+ you know I was just thinking listening to some of the conversations about large language models
+ I can see in a few years there will be a journal on the cognitive neuroscience of large language
+ models and all the skills you know and people were asking you is it worth studying LLM theory
+ and understanding this and I thought this is exactly what we do in neuroscience we just take
+ this you know large neuronal network and try and ping it and measure it and look at its anatomy
+ and understand the computational architecture there's absolutely no difference I can guarantee
+ all of these analysis techniques you know that have been applied either in the small scale or
+ in neuroimaging will be applied and I think you're absolutely right you know for me one of the
+ biggest clues to the sort of the macroscopic functional architecture has been discerning
+ the hierarchical structure and of course what defines a hierarchy it's just the Markov blankets
+ that impose a conditional independence between the different levels so you know in a more
+ sort of generic sense you know the Markov blankets are if you like just a technical way of specifying
+ the kind of sparse structure that just is the designation of a deep architecture and all the
+ factorization or a Fodorian modularization if you like you know it's all about the Markov blankets
+ and trying to find those conditional independences so I think you're absolutely right yeah that's
+ right in fact you could imagine doing a deep learning kind of extraction if you will using
+ hidden Markov blankets as they maybe recursively cover some space but now is it the case the
+ Markov blanket itself do the nodes can you have conditional dependence within the Markov blanket
+ in other words rather I assume the factoring produces these conditionally independent things
+ but inside the blanket could you have high dependency structure that you could fit from
+ the boundary that you find in other words could you go back and if you know what I'm trying to say
+ here yeah well I mean I think in a sense that is the the basic mechanics that inherits from the
+ Fionnian principle that you know is understanding the coupling between the blanket and the internal
+ dynamics but I was reading your question is slightly more subtle now because you can have
+ nesting of Markov blankets so that same story carries all the way down or all the way in
+ from finite state machines to maybe context-free grammar within the Markov blanket that's sort of
+ where I was going with that in principle yeah I mean if I'm reading context-free grammars
+ in the right kind of way but certainly something with a stack something with a stack
+ because you know the this the tendency any space time scale you know including
+ structure learning including evolution including sort of developmental learning including sort of
+ in the moment inference it's all predicated on maximizing model evidence then it certainly will
+ have the structure of the model will entail a particular grammar and a particular message
+ passing that will be the most efficient if I read efficiency as that which maximizes accuracy whilst
+ minimizing complexity yeah so I know to me all of these objective functions whether they're sort of
+ com graph complexity measures or whether they're sort of minimum description length or minimum
+ message length or whether they're on and on yeah yeah and they should all when optimized give you
+ the perfect universal grammar to explain your world or ease articulate and interact with your
+ world yeah in principle sounds interesting thank you let's make it less esoteric uh Julia do you
+ want to ask you or Anna either one either of you I I was just wondering based on what you guys were
+ just saying like could you if you have a bunch of linguistic data can you use Markov blankets to find
+ the boundaries um that bracketing would find like the hierarchical structure that occurs there
+ um yeah yeah in principle absolutely I mean that would be one um you'd have to you mean what you
+ are asking is what is the right generative model that would properly um explain or predict or
+ provide an account of language um but certainly that specific um aspect of bracketing um has been
+ addressed in um both analytical and numerical studies not at the level of language which you're
+ probably interested in but just at the level of segmentation segmenting speech audio files
+ so you know if I've got a continuous stream so you know time frequency um stream from an audio file
+ I've now got the um I now have the problem of um segmenting into say phonemes and there are
+ multiple hypotheses the multiple ways I can do that um and that now effectively presents as a
+ Bayesian model comparison problem where the models are basically different alternative
+ ways of doing the segmentation so it's a kind of bracketing um and then if you've um if you can
+ solve that problem basically by um actually using something that is mathematically very similar to
+ attention heads in transformers when you're reading you know the deployment of an attention head
+ as doing a kind of um Bayesian model selection um or highlighting this particular uh this particular
+ thing if you can solve that then you can just rinse wash and repeat at the next level and then
+ I think you'd be very much closer then to uh the bracketing notion so um yeah
+ in one sense finding you know finding the the deep compositionality in time of certainly spoken
+ language is exactly the problem of finding the right generative model and then inverting that
+ generative model to infer the right you know to infer um the structure in terms of successively
+ coarse-grained representations that would be a that would be fit for purpose for generating
+ that particular speech for example. Anna Strasser has a question but before that I forgot
+ Virginia Valiant who had one even earlier. Virginia you want to do yours first?
+ No I'll wait thank you. Okay Anna go ahead. Okay can can you give me any allowance to
+ show my video as well? Yes definitely uh but what how do we what what what has to be done?
+ Yes. Okay she's but you're about to get have you known? Okay it's coming in.
+ Go ahead. Okay hi um hi Carl maybe you remember me so we we had a conference at the Berlin School
+ of Mind and Brain ages ago about predictive coding and I'm still very fascinated with your
+ story and I loved your talk and additionally I have to say it's great to see a person who claims that
+ he is a virgin with respect to large language models. I think this is a very fresh perspective
+ you can put on the whole thing because all the other people are sort of drawn in the into the
+ anthropomorphizing things which happen to people who are interacting with others. So my question is
+ maybe a little bit misled but I will try and I'm curious what you're going to say.
+ So if we try to apply the interpretation of a causal story to large language models I think
+ it's easy to apply it if you just look at the training phase of a large language model
+ where it is using the self-attention mechanism and there we can tell a story in the language
+ of predictive coding and but if we analyze the interactions between a large language model and
+ a human there I'm getting very skeptical whether this kind of story helps because it might be
+ questionable whether we can say something that there is a mutual predicting happening. So what
+ I would say is if I interact with a large language model I interact with something what I metaphorically
+ would call frozen intelligence. So this is not moving anymore it's like so I'm playing with a
+ frozen thing and then the predictive coding story doesn't help me anymore because I'm interacting
+ with something what is not interacting with me. What is your thought about that? Well I know I
+ agree entirely I mean in a sense that's why I was trying to emphasize the circular causality you get
+ with action and of course the issue with large language models is they're not agents they don't
+ act. So as a neuroscientist I'd be more interested in studying the prompt engineer than the large
+ language model because the prompt engineer is doing the action the foraging for information
+ peeing the world to see what happens but the large language model doesn't. So I think frozen
+ intelligence is a really nice way of stating that there is no agency in play there's no
+ you know there's no responding to any kind of affordance. So the inactive aspect of
+ predictive processing I think would have very little to say about large language models.
+ You know I can give you a cheeky answer I mean just to pick up on one of the assertions or
+ suggestions earlier on you know can we not use large language models as evidence for
+ a particular kind of self-organization and belief updating. I think you can I think but
+ you'd have to treat them as evidence of a particular kind of cultural niche construction.
+ These are artifacts you know like books or word processors or spell checkers and you have to
+ ask yourself why are they still around because if they survive in characteristic states that means
+ that they you have to explain why and assume that they are still around and I think you can
+ only explain that in terms of you know cultural niche construction niche construction they're
+ around because we use them but we are the agents not the large language models. So that puts a
+ certain if you like restriction on the application of active inference certainly to large language
+ models it just doesn't apply because large language models do not have agency they can't plan.
+ However I think you can still apply predictive coding because predictive coding does not necessarily
+ have an inactive aspect to it. You can still do lots of good sense making and learning from
+ predictive coding and in a sense if you read transformer architectures as if my friend Chris
+ Buckley likes to say if you can base explain them properly they do look very much like
+ sort of hierarchical or deep extended Kalman-Busey filters with really clever
+ attention heads that sort of optimize a Kalman gain in a semi-Markovian way.
+ So you know expressed like that I think there is a source of understanding that inherits from
+ a predictive coding based in filtering view of data assimilation evidence accumulation but it's
+ not inactive you know in the way that the story that I was telling. Is that what you were driving
+ up to? So as far as I could understand you you say you agree with me that if you look at the
+ training phase we can easily use the predictive coding story to describe what is happening there
+ but as long as our notion of agency excludes artificial systems which are just reacting on
+ prompts we cannot use the predictive coding story to describe an interaction between a human and a
+ tool. That's certainly well I think you can but then the large language model would be the tool
+ but I think you're right you're predictive coding by itself which is not active inference active
+ inference closes the circle but predictive coding by itself I think is a very good metaphor to try
+ and understand the computational architecture of large language models here you know and it goes a
+ long way beyond conventional Bayesian filtering versions of predictive coding and as you say
+ into the realm of learning as well because normally predictive coding is about data
+ assimilation and inference not about learning the actual parameters or the you know the
+ of the implicit state space model but the same principles can be applied at a slow time scale
+ I think that's a very useful perspective absolutely. And have you any idea what would
+ what should happen or could happen that you change your mind and think about whether large
+ language models could be agents? Well that's a great question yeah I think that's exactly what
+ people at the moment you know because we don't really have to worry about about whether they
+ are intelligent in the sense that we were discussing earlier on if intelligence entails agency because
+ large language models don't have agency but how would you equip them with agency and of course
+ that means you'd have to find or engineer a part of the deep structure that had a generative model
+ or the consequences of their action and it could be internal actually it could be you know how where
+ they deploy the attention heads it doesn't have to be overt action and then you start to think now
+ about you know having a hierarchical you know a more high bump yeah a separated temporal scales
+ within the within the large language model that can start to recognize its own behavior and start
+ to roll out into the future under different kinds of behavior so you know that would I think be the
+ line of thinking if you wanted to answer the question how would you make large language models
+ into true agents and what would that what kind of actions would they be would they be would they
+ start to now test out different prompts would you know would or would this be totally internal and
+ would they ignore some prompts and attend to some other prompts you know what kind of agency would
+ you want from a large language model I suppose the answer is exactly the kind of agency you'd want
+ from your children so let's go on let's go on to some other questions but uh Angkor do I'm sorry
+ wait I interrupted Gary and Virginia hasn't spoken yet so does either Gary or Virginia want to say
+ something because otherwise we have three people that want to ask questions I would go on go ahead
+ go go on you can you go I mean I in your place I would go on to the three people who
+ have questions okay okay thank you and Gary do you suggest the same thing you're quiet
+ I could yes yes please okay go ahead I'm Kourmali go ahead and ask your question
+ can you can you make yourself heard yeah hi can you hear me yes go ahead
+ yeah hi well nice to meet you so yeah one thing which you had discussion with Stephen right
+ using LLMs from the former language perspective but Transformers my point was Transformers in
+ the sense have limitations even understanding context free languages so don't you think if
+ we are using LLMs based on these architectures to derive the bound for Marker Blanket will lose the
+ credibility of Marker Blanket like it it won't give us the necessary action space which we need
+ to understand the perception and the prediction error of a system what's your take on that
+ and I'm not sure I fully understood the thrust of the question but certainly there is a danger
+ in using Transformers to try and I learn the right kind of structure the right kind of deep
+ architecture that would entail the you know a proper generative model and you know and the
+ solutions for which everybody's is searching in terms of the structure of language and I think
+ that danger is was nicely articulated in the second presentation today that at the moment the
+ learning is using the wrong objective function and I was just thinking about that because
+ one way you could read my presentation is there is only one objective function
+ and in a deflationary way it's not even really an objective function it's just that things that
+ are sustainable or things that in a sustainable way retain themselves in some characteristic
+ states can be described as optimizing the model evidence or the marginal likelihood
+ and the point being made earlier on is that the marginal likelihood of model evidence has this
+ complexity aspect to it which is missing in terms of the training objective in current Transformers
+ which means that you have to because you haven't got that complexity constraint in play that sort
+ of Occam's razor in play you are you there are no constraints on how large they can be I often
+ smile when I hear about large language models because in the title is a very fallacy large
+ they should be small they should be small as your children and I think in virtue of the fact until
+ somebody puts the right objective function in which is essentially is equipping the accuracy
+ or the the the prediction error if you like with a constraint on the model complexity either algorithmic
+ or in terms of the divergence between the poster in the prior I don't think there's
+ you're not going to be able to get the right structures out it's only when you
+ put that complexity constraint and you make it actually the model evidence that you're optimizing
+ should the structures emerge I'm sure that hasn't answered your question but
+ it was something going through my head when listening to the previous conversations
+ is that what you were driving at or did you do did you have some other angle in mind yeah this is
+ what I was doing like understanding the complexity and then deriving the learnability not just based
+ on a single objective function which just which does the next word prediction without understanding
+ the language yeah thank you Ben you can you can ask your question on condition you say your name
+ sure sure thing hi um I just had a quick question follow-up question
+ about the agents and lms and architectures and all of that it doesn't really seem so far-fetched to
+ think that we might not be so far off uh having uh being able to find a successful architecture
+ that would make them true agents in the in the sense you uh you talk about and I just I'd like
+ to know about um where do you think we're at in the roadmap you laid out in your white paper
+ about the designing ecosystems of intelligence from first principles do you still think we're
+ at the very first phase or are we progressing on that uh with lms and of course whatever work
+ you're of course doing with versus and all those great people um I still think we're very very
+ early stage so that roadmap actually spoke to to sort of a lot of the key issues that I think were
+ sort of addressing or are being addressed in the summer school um just inverted that we're talking
+ about the primary application of transformer architecture which is large language models I
+ don't think it's any coincidence that it's all about the kind of um content that uh that is
+ central to our cultural uh niche construction coevolution you know I think they are around
+ simply because they do actually generate uh language which is clearly speaks to um that sort
+ of uh the federated ambition of that roadmap but to be um you know an honest answer to your question
+ is I think we're a long way away from putting true agency into the um the incredible and
+ really impressive performance of large language models in terms of generating content um you know
+ um the question is how would you do that um um and I've asked that question before and you know what
+ would what would you want that agency to look like now from the point of view on the white paper you
+ um you refer to then the objective what you would want is it for uh to participate in an ecosystem
+ in which there was this generalized synchronization that I was illustrating in the in the presentation
+ which is just a joint free energy minimizing solution of all the participants in this
+ information ecosystem or language ecosystem which means that you would want to you would expect to
+ see the kind of agency that responded to the affordances to learn about how to integrate and
+ to harmonize or to synchronize with this particular uh set of users or system of users simply because
+ from the large language models point of view if it can predict how it is going to be used and use
+ um then it's minimizing its surprise and maxim and minimizing its free energy and that in in
+ principle is the um is the ultimate and the only sustainable solution okay we are a short way from
+ the from the break before the panelist but not so short three minutes that uh that virginia or garry
+ cannot have their their deferred due virgin i'll wait i'll wait until the panel i think that'll
+ gary you too um i i i can i guess make a short comment that um just concerning lms and um that
+ one of the surprising and remarkable things uh that i think that i take away from these advances
+ in um lm performance is just how much is learnable without agency that um as you say they're they're
+ not agents and yet basically through observational learning of agentic acts uh largely through
+ language natural language the models are learning uh and by minimizing surprise all the the models
+ are learning a lot of the structure of the world uh they're not learning it uh in the same way that
+ humans are they're not learning all the same things we wouldn't expect it to but that they are
+ learning uh so much structure at all is kind of right without being able to intervene uh is
+ remarkable i i wonder if you think it's also remarkable uh and what what's your take
+ are you surprised yeah yes but i think you've made the point uh but yes i will fully endorse
+ that it is remarkable and uh what i think is is also a testament to how remarkable language is
+ if language has evolved to be so rich a pure observational machine can reconstruct to a
+ certain extent some of the causal structure of our lived world that's a real testament
+ to the power of language in and of itself it was good steve it has to be really short otherwise
+ you could do it in the panel quick quick quick comment on uh grounding the chatbots there's a
+ number of groups out there including uh boston dynamics that have actually put chatbots into
+ robots and this makes it a little more interesting when you have sensor effector kinds of inputs that
+ are not yet under the control of the chatbot and there's a number of anecdotal stories about that
+ i don't have time to tell them but i urge you to look this up because this is moving very rapidly
+ every couple weeks there's something happening with robots and lms that are kind of uh you know
+ shocking i gotta say and that's all i had to say about that okay you have a microsecond to answer
+ or we'll go to you can continue in the panelist in the panel oh that doesn't need an answer i'm
+ going to go and look up look up uh the the daily advances in boston dynamics and putting large
+ language models into little dogs that sounds fascinating okay so uh thank you very much
+ well let's stay tuned we're going to be back in half an hour
+ okay

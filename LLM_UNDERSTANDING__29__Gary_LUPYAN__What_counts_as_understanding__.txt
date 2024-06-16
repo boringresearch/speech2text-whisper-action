@@ -1,0 +1,703 @@
+ is now I'll introduce him officially. He's a professor of psychology at the University
+ of Wisconsin in Madison. His work has focused on how natural language scaffolds and augments
+ human cognition, of course it's a part of human cognition also, and attempts to answer the question
+ of what the human mind would be like without language. I think this is a super important
+ question. He also studies the evolution of language and the ways that language adapts to the needs of
+ its learners and users, and a lot more. Go ahead. Thanks. Thanks, Dan. Thanks for organizing this
+ amazing talk series, Summer Institute. I've been learning a lot. I wanted to begin with a brief
+ with a few notes on Dan Dennett, to whom I owe a big intellectual debt. I've only met Dan once
+ in person, actually, when I was an undergrad at the very, very first conference that I attended,
+ which was the Language Evolution Conference in 2002. I exchanged a few words with him, and I
+ observed him ask Rizalati. At the time, mirror neurons were a big thing, and Dan asked Rizalati,
+ "So you think hamsters have them?" And he said, "Yeah, probably." So Dan's next point was, "So
+ what on earth does this have to do with language?" Which, of course, is true. It turns out very little
+ to do with language. So I remember early on in grad school, encountering this figure from
+ Consciousness Explained. The caption includes the phrase cognitive auto-stimulation. This idea
+ that there is no one place in the mind that has all that you know, and this idea that language
+ could be a kind of lingua franca of the brain, natural language, that has to connect otherwise
+ unconnected parts of your knowledge space. Dan also had an indirect influence on me through
+ Andy Clark. So these two papers were pretty foundational in my education, Andy's magic words,
+ and Clark and Karmelov-Smith, cognizers, innards. And in these papers, they express this idea of
+ linguistic inputs reprogramming the brain mind. And they ascribed it to Dan Dennett.
+ This idea is, again, the view seems to be held by Dan Dennett when he suggests that conscious
+ human minds are more or less serial virtual machines implemented inefficiently on the parallel
+ hardware that evolution has provided for us. And in a response, Dan agreed that that is indeed his
+ view. For a while, I would end my talks with this far-sight cartoon about how language in some
+ paradoxical ways can clear things up. And they're only paradoxical if we assume that language merely
+ picks up the natural joints of nature, that it reflects them as a mirror,
+ rather than producing its own joints in nature. So why should labeling a house as a house
+ matter if you already have the concept house? Well, the point is that language entrains us to
+ have many concepts, categories that we otherwise would not have. But that's not actually what I'll
+ be talking about today. Instead, more central to the theme of this Summer Institute, I'll talk
+ about understanding. And if you probably noticed, there is an odd dialectic that's been taking
+ place with the advent of large language models regarding what it is, if anything, that they
+ understand, what notion of understanding. I think Dave Chalmers' distinctions he discussed in his
+ talk are useful here. Mostly what I think people talk about, I'll put up some quotes, is not so
+ much phenomenal understanding, but it's sort of understanding as it pertains to use, to being able
+ to do things. Okay. Right. So here's one example of the, you know, they're just next token prediction
+ machines. How can you possibly think they understand anything? Sentiment, right? That you're a sucker
+ for being fooled, basically. Okay. The idea that, well, try it for yourself, right? If you are,
+ you don't get the feeling of understanding, you're missing something.
+ Okay. Large language models understands the same degree that astrological readings predict an
+ individual's future. These kinds of exchanges often quickly devolve into appeals to authority,
+ right? So will the people who actually build the models disagree? Okay.
+ Right. And then appeal, the counter appeal to truth, right? Doesn't matter what people think,
+ I have the truth. There've been various attempts to create metaphors, right? Metaphorical frames for
+ LLMs. One being that from Jaron Lanier, right? Well, we certainly don't think that a database,
+ no matter how complete any sort of understanding, well, LLMs are just fancy databases, right?
+ Dynamic, but still databases. Now there is increasing nuance. So Melanie Mitchell has
+ pulled out lots of great work. Ms. Vane and some others, Raphael Mulieri has some great papers.
+ Ron Stephen, an ad. And we now see the appearance of some benchmarks, at least aiming to rigorously
+ test for the presence of more than just better generalization, but tasks that at least on our
+ best theories would seem to require a model to have learned something like a situation model,
+ a world model that we, at least as cognitive scientists think is a prerequisite for anything
+ we might want to call understanding. So the basic argument of the talk is that,
+ as the title, the slide shows, that something has to give. And I agree with Yildirman Paul,
+ who claimed that we're in this Kuhnian moment where we are being forced to rethink
+ terms like knowledge, understanding, meaning in a way that is both scientifically rigorous and
+ satisfying and keeps true to the data. So I think this is well expressed. I don't know how much
+ intelligence there is in current AI systems, but if there is none and they can perform many human
+ tasks at a pretty decent level, what does it say about us humans? So something has to give. So if
+ knowledge, intelligence, meaning understanding, I'll focus here on understanding and these are
+ slippery terms. If it's required to do X and a system does X, we have a few responses. We have
+ a few options here. We might be skeptical as we should be whether the system is really doing X.
+ So in this talk series, there've been various examples of AI systems taking shortcuts.
+ So instead of learning something about what is the distinction between the malignant and
+ non-malignant tumor on a scan, it's learning that rulers are correlated to the malignant
+ tumors because that's part of the training set. And if that's all it is, then we're being fooled by
+ basically what is a poorly constructed test because it's being passed based on information that is
+ clearly spurious, confound. We would certainly not grant a person that would do such a thing
+ with understanding. Two, we might question the need for intelligence, understanding, whatever to do
+ X. If we at one time thought that the only way to play high level chess was to have this intrinsically
+ human way of navigating this problem space and any system that could beat a person in chess
+ would necessarily have to embody that kind of intelligence while we were wrong. So there are
+ other ways of solving the task that maybe don't require something that we would want to call
+ understanding. And then of course we could grant the system with knowledge, intelligence, meaning,
+ or understanding. And I won't pretend to have the final answer on any of this. I want to raise
+ questions. And I also want to do something that has been, I think, done too little in the machine
+ learning world, which is take human intelligence more seriously instead of idealizing it as the
+ kind of, you know, the natural general intelligence, right, or just general intelligence that it often
+ is. Lastly, right, we can redefine what it means to know or understand. Oh, you know, machines can do
+ this, you know, and the tests are good. Well, you know, let's not count that. Let's remove that sort
+ of ability from consideration because, you know, to not do that would threaten our humanity. Okay.
+ Okay, so I'll start by giving some apparent examples of not understanding. I'll then list
+ a few desiderata of, you know, what do we want? What do we expect from a system that understands
+ something? And I'll go through some examples where we misestimate machine understanding
+ and also misestimate human understanding. Then see if we have some recommendations for
+ making progress on these questions. And like I said, I don't have the answers here. I just
+ want to point out bits of data that might help those in the audience, those online, to connect
+ dots. Okay, so what doesn't count as understanding? So I mentioned the database, a lookup table.
+ I think for better or worse, there is sort of consensus, right, that if we define intelligence
+ understanding as just a lookup table, we're clearly missing something here, right? Because
+ we don't generally think of databases lookup tables as doing anything like reasoning, right?
+ I suppose you could say that databases learn if they're being an algorithm that automatically
+ populates it based on sense data or language, but at least our intuition is that this is not,
+ we're quick to rule out lookup tables as being capable of understanding, right? So
+ if you have a system that answers questions like this and answers them in a human-like way,
+ on its own, it's neither here nor there, right? Because that can be done as a lookup table.
+ And interestingly, when we ask LOMs questions like the second one, it's easier to sort of see
+ through it. It's like, well, obviously, it can't be drawing on its own experiences, right? So what's
+ behind it? A system that understands, I think, should not commit certain types of catastrophic
+ errors, right? And probing for catastrophic errors is one way of actually constructing better
+ queries, better benchmarks, right? So if you have a person that can tell you the capital of
+ various countries, but on further questioning, you realize that they don't actually know what
+ a capital is or even what a city is, right? We would, I think, rightly question their understanding
+ of what is behind a question like what is the capital of a country, right? Similarly,
+ for more complex cases, there are types of questions that people might ask, machines as well,
+ right? That display to us that their underlying knowledge mental model is off, right? And this
+ one I like. This is from Charles Babbage, who, among other things, invented the difference engine,
+ analog computer for computing values of polynomial functions. And he writes on being asked this
+ question, right? If you put into the machine the wrong figures, the wrong numbers, will the right
+ answer come out, right? And his inference there is that something went wrong here, right? Someone
+ who asks a question like that does not understand the basic principle of what this machine does,
+ right? Notice that someone might not actually know a lot of the details about how the machine works,
+ but understands that it's basically implementing an algorithm, right? And no,
+ the right answer won't come out if you put in the wrong inputs, okay?
+ And there are lots of examples of LLMs committing similar types of, at least what on the surface
+ seem like, catastrophic errors. So here is this, it went viral back in January. Okay, so this is the
+ generative image model, so Dolly, that was then integrated with GPT-4, but it's using, it's not
+ actually using GPT-4, right? It's using the Dolly language model. So Meika, where's Waldo picture?
+ Okay, here's your, where's Waldo style picture? Have fun trying to spot the character. Okay,
+ so something went wrong here. I tried this for myself. Make Waldo, the prompt here was
+ generate a where's Waldo display where Waldo is hard to find. Okay, what if we actually prompted to,
+ you know, just one, give me just one that is hard to find.
+ No, what seems to be going on here, and it would require obviously further work to diagnose,
+ is that Waldo is the point of a where's Waldo picture. And in some ways, in a human-like way,
+ right, you know, don't think of a pink elephant kind of thing, right? The salient thing is taking
+ up more representational space, okay, which in this case is manifested as actually physically
+ larger or smaller. People can override this, right? The model seemingly cannot or cannot
+ yet. Notice, though, that the easiest thing for it to do would be to simply regurgitate an existing
+ where's Waldo image. It does not do that, right? If it did that, we would think it was doing better,
+ but it's not doing that, right? It's generating something new. It's just not what we want. It's
+ missing the spirit of Waldo. Okay, now, when people are pushed to defend their claim that,
+ you know, anyone claiming to understand could be wrong, why? And Grady Bush is not a kind of
+ scientist, but still, right, understanding is meta-knowledge. I can understand that if, you know,
+ I can make predictions, okay, I understand some larger principles at work. In many of these cases,
+ these objections don't work, because as this person on Twitter says, well, positivity can do it.
+ Okay, so there's a confusion here between what Chalmers referred to as
+ e-understanding, explanatory understanding, right? LLMs can explain things actually quite well and
+ often better than people, but of course, that doesn't mean that that information is in some
+ usable form that can inform other queries. Okay, so here are three desiderata that we might want
+ from a system that I want to call, I want to say has understanding, right? So, flexible and appropriate
+ use of relevant knowledge, generalization, right, which is really sensitivity to what's task-relevant
+ abstraction over what's not, and consistency. And so what I'm going to do is go through these
+ desiderata to see how well do systems that we do endow with understanding humans, how well do they
+ fill these? Okay, oh, and I had an earlier and older version of the talk slide that Kyle
+ Mahalwald in his talk also went over, some joint work about grammatical knowledge in LLMs. I'm
+ going to skip over that, and this is something that I very much agree with, you know, Kyle and
+ Anya, for example, who grant LLMs with a lot of what they call formal linguistic competence, but
+ want to deny it to have anything like, you know, world models, or at least question it. And we say
+ that, yes, having very good grammatical knowledge does not actually entail that you, you know, know
+ what any of these things are. Okay, now, not that long ago, the case for language models, understanding,
+ you know, people even then were, you know, sometimes convinced that, okay, you know, a translation
+ system has to be able to understand something about the source language to translate it
+ appropriately. And from an article, when is this, from 2018, Doug Hofstadter said, well, no, you
+ don't actually need that, and the machines at the time clearly lack anything that human translators
+ bring to the table. And this sentiment projected to today would be something like the argument
+ that Emily Bender and others have made for stochastic parrots, right, that it's us that
+ are being fooled. But something really did change, right. So we have developed various tests,
+ right, that are predicated on the idea that to pass them requires something more than just
+ statistical prediction, requires having some kind of causal model. And one of these types of tests
+ relies on Winograd sentences or Winograd schemas. And so this was an example from Doug's argument,
+ right, that if you look at how machines in 2018 translate sentences, you find that they
+ make the kind of errors that you would expect if it's not actually building any sort of internal
+ model. Okay, so the sentence here is the trombone didn't fit in the suitcase because it was too small.
+ What is it referring to? The trombone or the suitcase, okay, people have no trouble with this,
+ right, because the sentence is constructing a mental schema. It doesn't have to be a visual image,
+ it can be much more abstract than that. But it's feeding into a more, a model that is interfacing
+ with the world, with one's world knowledge of what a suitcase is, right, that if a suitcase is too
+ small, then things won't fit. And if it's too large, well, yeah, things will fit, right. But
+ there is nothing about the grammar of the sentence here that tells you what it is referring to. But
+ in Spanish, because of gender markings, there is, right. So you have the masculine
+ trombone and the feminine suitcase. And so it has to agree with one or the other. And so,
+ well, in this case, the adjective small has to agree with one or the other. And in this case,
+ it incorrectly translates, right. It puts the wrong gender on small as agreeing with
+ trombone, right. So the trombone is too small. So you can diagnose, right, its lack of a situation
+ model by the error that it makes, this kind of error. And these kinds of tests have been around
+ in cognitive science for a while. So this is Dave Sloman, spoke in the 90s, using people's ability to
+ make sense of these kinds of sentences. Again, to not just talk about like, oh, isn't language
+ understanding clever, but to talk about, right, this is, to interpret this requires understanding,
+ really understanding what the sentence is about, having some kind of world model, right. Stephen
+ admires David because he's so candid. Stephen annoys David because he's so candid, right. He
+ refers to different people depending on the verb. Okay. And there's nothing about the form of the
+ sentence that tells you which it is, right. And a few years ago, language models couldn't make sense
+ of these sentences. And now they can. Okay. So, and this is not a question of like, did it, you know,
+ ingest Dave Sloman's book? It generalizes pretty well. And, right, so there's J.G.P.T.'s explanation.
+ We can construct our own. We can, and I'll show you briefly, probe the representations of the open
+ language models to see if kind of analogously to Othello J.P.T., which I think Melanie brought up,
+ so similar, conceptually similar explorations, right, where, okay, this representation seems
+ to be encoding, right, the part of the world model, right, that allows the language model
+ to link the pronoun to the appropriate subject. If we perturb it, does it make, does it change
+ the model's prediction in the way that we would expect? And it does. Okay. So if you're curious,
+ this is a paper that does this with sentences like this. I'll try to call George, but mask,
+ what should be predicted, wasn't successful or available.
+ Does the model predict, is the prediction closer to Paul or George?
+ Okay. All right. So, so there's still a gap here. So this is J.P.T. 4,
+ and COTs chain of thought, right? So still a gap, 67% versus 94% for people. But this is a very
+ rigorous test. You have to get both versions right for it to count.
+ And I gave a version of this talk earlier on in Stephen's seminar. There'll be new stuff,
+ though. So don't worry. And Rob Goldstone was in the audience and he said, "Well, you know,
+ Doug changed his mind." And then I went and there is, Doug did in fact change his mind. Oh,
+ I'm sure, oh, blocking the, well, that'll fix it. So in an interview from about a year ago,
+ you can find it pretty easily on YouTube. Doug is troubled because he did not change his mind
+ that passing these kinds of tests reveals some sort of understanding and the models
+ are passing the tests. So what does that mean? So let's go through a few of these cases,
+ flexible and appropriate use of relevant knowledge. Now for the next part of the talk,
+ we'll mostly have human performance. I talked about human experiments. Do systems we attribute
+ with understanding actually have these properties? And do systems which we think lack understanding
+ lack them? So there is unfortunately an insufficiently large overlap between people
+ in the AI space, people who do machine learning especially, and people who study or know much
+ about developmental psychology and, you know, unfortunately also have their own personal
+ experiences with developing systems like children, right? Such that there are double standards at
+ play that we should pause and consider. So often the kind of dialectic you see is, look, the system,
+ the AI system made a contradiction. It committed a catastrophic error. Any system
+ that has any sort of understanding would not do that. Therefore, right, the commission of
+ this catastrophic error, the contradiction tells us that there's no there there. But notice, right,
+ we don't apply the same standard to humans, to developing humans. So these are my kids from about
+ a year ago. Okay, here are some things that my kids and other people's kids say, and
+ development psychologists know this. None of this is a surprise. Okay, so they make assertions like
+ this. They say things like this about a babysitter. What's Anita's name? Okay, that's a bit like,
+ right, you know, saying what, you know, Paris is the capital of France. What's the capital? I have no idea,
+ right? Yeah, kids are in that situation a lot. Okay, here's an, you know, expressing
+ his knowledge of what half means. We can split it. We can both get the bigger piece.
+ Okay, my older one, when he was about five and a half, he made this really interesting analogy.
+ He said the planets are the sun's moons. Okay, and he didn't just mimic, I probed him, you know,
+ and he had a certain model, right, the moon orbits around the earth, right, the planets orbit around
+ the sun. So the planets are the sun's moons. In that same conversation, he also said the moons are
+ the moon is covered in craters. He had no idea what a crater was, just none. Okay, there we go.
+ So, oh, one more example. This is from Piaget
+ Children's, and there's a lot of this, this inspired a lot of work. Is there a way to...
+ Yeah, there seems to be.
+ See if I can...
+ Can you do that? Sorry.
+ You had a problem as I can't...
+ Okay, so children's beliefs about what it means to be alive. Okay, so if you ask kids,
+ and these are fairly old kids, so this is a seven and a half year old,
+ is a cat alive, is a snail, a table? No, why not? It can't move. Okay, bicycle line? Yes, it can go.
+ So there's a kind of animism that children subscribe to, and one might think that as children
+ learn the alternate worldview of what it means to be alive, they revisit these assumptions and they
+ shift their worldview. And in some ways they do, in that adults will not respond, at least
+ from Western adults, will not respond to these questions in this way.
+ What's interesting is that the underlying representations of aliveness don't seem to
+ change in the way one might expect. Okay, so I'll show you some data in a moment, right? So one
+ response to reconciling this might be that, well, we don't take children's errors and contradictions
+ and these bizarre gaps of knowledge as threatening the claim that people understand,
+ because we know children grow up to be adults who don't make these errors. Okay, and I want to show
+ you that that's not really the case. Okay, so let's look at adults. So these are data from
+ college undergrads on a task where they see words and have to classify them as whether the word
+ is naming something that is alive or not. Okay, and the task is moderately speeded.
+ Not, you know, usually so. And this is the kind of pattern you get. Animals, yes. Plants, not so much,
+ not as much. These are undergrads. In that same paper, and I don't know whether that was in
+ response to a reviewer or whether it was in the original version, they also tested another group
+ from the same university for biology professors. It's the same pattern. Okay, they're much slower.
+ Okay, so this pattern of reaction times is what you want to see. You want to see
+ that responses that are associated with lower accuracy also take more time. Otherwise,
+ it's a speed accuracy trade-off. So the reason that the group on the right is slower is that
+ they're older and they're slower at everything. So I am now quite a bit slower on these kinds of tasks
+ than the undergrads are. So notwithstanding their explanation, to the contrary, in people's minds,
+ plants are represented as less alive than animals. And we kind of have to override it,
+ right, to give the more normatively correct response, override that otherwise kind of a
+ continuous notion of aliveness that our minds seem to represent. This also, by the way, goes for
+ sensitivity from the same study of motion. So artifacts of natural kinds, things like rivers
+ and rocks and so on, are both not alive, but they are judged, they're more likely to be judged as
+ being alive if they move, right? So low accuracy here means that you're saying that a river is alive.
+ Okay, or a rock is alive, right? So you're less likely to say that a rock is alive than a river is
+ alive, right? Clouds are more alive than computers. And again, undergrads, biology professors, same
+ general pattern. Here's a bit from our own work, looking at categories that one might think
+ have crisp criteria, boundaries, there's nothing fuzzy about them. And descriptively, that's true,
+ cognitively, it is not true. They are as fuzzy and distributed and subject to prototype effects
+ as every other category. So what's a triangle? Okay, if you ask people, they give you the proper
+ definition, okay? They don't tell you that. I think in many hundreds of people we tested,
+ there was one person who said something like a triangle is something shaped like a pyramid.
+ So referring to a particular type of triangle in a particular orientation, right? Everyone else
+ just tells you parrots, maybe this kind of definition. But if you ask people to hear a
+ bunch of shapes, click on all the shapes that are triangles, what you find is that people
+ systematically leave out, if they leave anything out, right? The only shapes they leave out are
+ the atypical triangles. How do we know that it's atypical? Because there's a 0.95 correlation
+ between the errors and ratings of typicality. So these are the ones on the left are the most
+ typical triangles. No one thinks those are not triangles. The ones on the right are the
+ least typical triangles. And what about 15, 18% of people say that that's not really a triangle.
+ It doesn't, it goes beyond recognition. So if you give people a rule,
+ right? That most people already know, right? All triangles have angles that add up to 180 degrees.
+ And then you ask them to execute that rule. Okay, they are less likely to extend it to
+ atypical triangles. Why? You can ask them. They say things like it didn't look like the angles
+ added to 180 degrees. Okay. So, right, the point here is not that people are incapable of getting
+ this right. Clearly that's wrong. It's that when we get this right, we are kind of doing something
+ that's naturally kind of difficult for us. And it kind of goes back to this, that Dennett's idea,
+ right, of I think language, natural language plays a big role here. But even if you don't
+ think this has anything to do with language, right, this sort of formalization, this crispness
+ of categories is not something that we just start with. We have to do cognitive effort together.
+ Okay. Now, if one actually takes seriously the idea that natural, that vocabularies, that words,
+ right, don't just map onto pre-existing and well-formed categories, but are cultural
+ inventions, messy constructions, and through and through contextual, right, then one would not be
+ surprised by the data that I'm about to show you. But if you're everyone else, this is a surprise.
+ Okay. So this is from James Hampton, who's done some excellent work on this. There are a few
+ reviews, 2012, 2023, that I can paste in the chat if you want to read more. Okay. So we'll take a
+ sentence like a dog is a kind of mammal. So this seems like a simple case of inclusion, right? A
+ dog is a kind of mammal. We seem to allow for the inference that all dogs are mammals. Why? Right,
+ because mammal is a superordinate category, right, and it includes dogs. Okay.
+ A chair is a kind of furniture. That seems to express the same type of inclusion relation.
+ And what Hampton has done through many experiments is to show that this is actually
+ not the case. So a chair is a kind of furniture. Both of these are statements, of course, that,
+ you know, pretty much everyone would agree with. Okay. They would also, most people would agree
+ that a child's chair is a kind of chair. Okay. A car seat is a kind of chair. Okay. But a child's
+ chair is a kind of furniture. A car seat is a kind of furniture. Eh, no, not really. Right?
+ Here's another example. An elevator is a vehicle. Well, it's not obviously, you know, your
+ prototypical vehicle. So people are split. And here's a sample, about half. Endorse that?
+ An elevator is a machine that is a vehicle. Well, that's much better.
+ Okay. So more people think that an elevator is a machine and a vehicle than think that an elevator
+ is a vehicle. Why is that? Well, because in the context, in this more generic context, an elevator
+ is a vehicle, right? We are encouraged to think about the more prototypical kind of to instantiate
+ an elevator, right? In the context of, you know, more ordinary vehicles, right? Like cars. And it
+ doesn't share much with that, right? In the context of a machine, right? The salient properties are
+ things like that. It requires power, right? To do things. It's performing some kind of work,
+ right? It's moving. And an elevator does all of those things, right? So, you know, one more
+ example. Desk lamp is a type of furniture. Yup. A desk lamp is a household appliance that is not
+ furniture. Also, yes. Three quarters. Okay. Right? So natural language categories do not reduce to
+ well-behaved sets, right? And so when people do these seemingly illogical things, right,
+ that is very much in line with the kinds of entities that concepts are. And so if we find,
+ right, that an LLM, and as far as I know, no one has systematically tested it on these kinds of
+ problems, it would be fun to do. My hunch would be that it would approximate human behavior. It
+ depends on the model and probably how it's been reinforced also. But it would approximate it
+ pretty well, right? And so if we find that a language model is much better at doing this kind
+ of stuff than at doing proper set operations, right? Well, what's the conclusion, right? That
+ it's actually more like a human in its use of these sorts of categories. Of course, if you want to
+ deploy it, right, in a formal context where you expect it to do set operations, it's a bad model
+ for that, just as people are. Lack of consistency. So this has been a critique that's been raised by
+ a number of people. And it's an interesting one, right? We expect a machine with understanding to
+ have some stable way of responding to a query. And if it just changes its mind, seemingly on a whim,
+ well, maybe it's just a coincidence that it got it right when it did. And maybe it's relying,
+ it's learned some shortcut, right? And it's responding to something that is spurious.
+ And so in this paper, which is now in TICS, it's been published in TICS, they have the following
+ example where, and this domain actually is fascinating, right? So these are text-only
+ models, the text-only version of GPT-4. And it's able in some contexts to do these kinds of physical,
+ intuitive physics type problem solving. That was a surprise, I think, to everyone,
+ like balancing objects on top of one another in a stable configuration. Why is it surprising? Well,
+ because it doesn't have any experience manipulating objects. It's only learned about what shape and
+ materials things are from language. And one might think that that's not a rich enough stimulus input
+ to learn these things from. So what Yildirim and Paul point out, though, is that it doesn't have
+ this consistency that you would expect. So in their example, when they ask it which one is easier
+ balancing a ball and a box, or a box and a ball, that's 10 out of 10. Now you just replace ball
+ with sphere and box with cube, which of course GPT-4 would endorse, that yeah, a ball has a cube,
+ spherical and a box with a cube, it gets it right only 8 out of 10 times.
+ And they ascribe it to frequency, that maybe ball and box, because those are more frequent words,
+ it taps into a denser part of the training space, right? It has more examples that it can draw on,
+ so on. It's actually more interesting and confounding than that. So first, if we,
+ this is just some comparison siren, we compare GPT-3.5 and 4, there's a big difference. So 3.5
+ on this is a chance. 4 gets it right 100% of the time with balls and boxes, okay? It gets it,
+ actually does worse in my testing on spheres and cubes. So, and I'll show you why that it's not as
+ it seems. What about lack of consistency in people? Are there similar types of cases? Well,
+ if you ask people to define a ball, they might say that it's a spherical shape, among other things.
+ If you ask people to define a triangle, they tell you that it's a figure with three sides.
+ And yet, if you cue their knowledge with seemingly definitionally equivalent cues,
+ you don't get the same responses. So if you ask people to draw a figure with three sides,
+ they draw triangles, but they're systematically different than the triangles they draw when you
+ ask them to draw a triangle. And you can quantify this. I'm not cherry picking these data. This
+ really is what it looks like. You can quantify the regularity, the alignment, the similarity,
+ right? When asked to draw a triangle, people are more likely to draw a lateral and isosceles
+ triangles. They're more likely to make the base horizontal. And this is not just in production
+ again, it's also in speeded recognition. So triangle and three sides, three-sided polygon
+ activate different representations. So if you have people do a speeded recognition task as fast as
+ possible, they see a shape that's either a triangle or a rectangle, and it could have different
+ dimensions and sides. When cued with the word triangle, they're much more sensitive to
+ typicality than they are when they're cued with three sides. And notice that it's an overall
+ advantage, right? And so triangle, basically, this is consistent with the idea that triangle
+ activates a representation that's more like an equilateral triangle with a horizontal base.
+ When you actually see that image, there's a better match, and so you're faster to recognize.
+ Okay, now it turns out that in this case, it's not as simple as just like, it's not so good
+ with spheres and cubes. Because if you actually unpack performance by counterbalancing the order,
+ you find that balancing a sphere on a cube is, so if you ask the model, which is easier, balancing
+ a cube on a sphere or a sphere on a cube, it's 100% at that. If you reverse the order, which is
+ easier, sphere on a cube or cube on a sphere, it's systematically wrong. So the order, it's not cube
+ versus sphere, but there's an interaction with order. So when asked about balls and boxes,
+ order doesn't matter. When asked about cubes and spheres, order does matter. So one lesson is always
+ test for order effects. Now, is this just, I mean, this is an interesting thing one can
+ investigate why this is happening in the model, but is this kind of beyond the pale of human,
+ of what we might find in people? And the answer is no. Order effects are well known, and they're
+ often quite consequential. So this is an old example from a Gallup poll, and this has been
+ used in some research papers to model this, these kinds of effects. Okay, so do you think blank is
+ honest and trustworthy? Bill Clinton or Al Gore, right? So people had at the time a more favorable
+ opinion of Al Gore, the vice president. Okay, but does it matter which one you mentioned first? And
+ it does quite a bit, right? So Gore has an 18 point lead on this poll when he's mentioned first,
+ and it shrinks to 3% when he's mentioned second. Why? Because when he's mentioned second,
+ it's a more comparative context, and you end up emphasizing different kind of dimensions,
+ different features in that, in the similarity space. So these kinds of order effects, again,
+ are not in other contexts indicative of, oh, well, the model has clearly has no understanding.
+ It's just showing that there is more than just a simple readout of some static value.
+ Okay, so phrase frequency, there's even more to what one can dig into. So I showed you that
+ a sphere on a cube, cube in a sphere, the order matters here. Here is a version of the prompt
+ that GPT-4 gets right 100% of the time for both balls and boxes and cubes and spheres, regardless
+ of order. And it's, instead of asking which one will balance better, arrange the objects into a
+ stable vertical integration. And not only that, but when phrased in that way, GPT-3.5, which was
+ previously a chance, is now close to ceiling. So why is that? I don't know, right? How psychologically
+ real is this? Well, how you phrase the question really does matter. You know, one can also kind
+ of take a glass half empty approach and say, well, okay, even if people show some of these effects,
+ these models are more fragile, they're more sensitive to slight differences in prompts.
+ You can find cases, right, where capitalization or punctuation can really throw the model off.
+ And that's all true. And we need to understand that. But the idea that inconsistency or sensitivity
+ to order on its own shows that there's no there there. If we believe that, we would say that
+ people don't understand anything. Generalization. So in a recent review paper, where we synthesized
+ a bunch of work from different fields on the role of variability in learning, we wrote that people
+ have this tendency, this is not an original observation, to generalize conservatively,
+ to hug the data. So in many cases, you might call that overfitting. In other cases, you might call
+ it appropriate generalization to real world contexts in favor of learning idealized regularities,
+ right? I think there is a reason why we default to hugging the data. But let me just show you
+ one example of just how difficult this is. And I think Virginia Valiant talked about the difficulty
+ in the commentary, talked about the difficulty of relational reasoning for people. And this is an
+ example of that. Okay, so here is the task that they had participants learn. So now the under the
+ thing that the ground truth here, the category distinction, the abstract relation that people
+ are being tasked with learning is monotonicity, right? So the stimulus on the left is monotonic
+ in that the line height increases from left to right. Okay, could also decrease. And the
+ one on the right is non-monotonic. Participants aren't told that they have to learn it through
+ trial and error learning. Now, you notice also that there's other stuff going on. For example,
+ the stimuli on the left have more greens and reds, more warm colors. The ones on the right have more
+ cool colors. That's by design. They want to see are people more likely to go with that more surface
+ level and a feature match than the more abstract relational match? And then they're tested on stimuli
+ that violate the features but conform to the relations. And there's also a far transfer
+ condition I'll show you in a moment. Oh, there it is, right? So if you can do this, if you've
+ seemingly learned monotonicity in this context, can you transfer it to this context where now,
+ instead of line height, it is about lightness? So monotonic goes from dark to light or light to dark.
+ Non-monotonic doesn't. Everyone clear? Here's one visualization of the data. And what you see is
+ there is a whole lot of people in this part of the space. So dark here means more subjects
+ that get the features right. So they learned warm and cool colors but got the relation wrong.
+ So they're picking up on the more surface level thing, not the more abstract generality.
+ And this is a nine experiment or so paper where they look at how well they also do on transfer,
+ this far transfer. The answer is badly. And they have condition after condition where they give
+ various kinds of hints, where they point out this relation and some of this works. But even when it
+ works, performance on the far transfer is pretty poor. So again, it's not that this is outside of
+ people's capacity. Clearly not, I've just explained it to you. But in actual experimental contexts,
+ the default thing for people is one, to focus on features instead of more abstract relations. And
+ then if they're learning the relation, if they're learning, okay, it's something about the height
+ kind of smoothly increasing, decreasing, that's much easier than learning it in a more abstract
+ way that allows you to transfer it now to a new domain of where it's monotonicity, but now
+ instantiated somewhat differently. So this kind of stuff is really hard for people.
+ How do we make it easy? We train people. We give them explicit training on doing this stuff.
+ People do not learn math through soaking up world probabilities. They learn math by,
+ in general, being deliberately taught, trained various things and being put in positions where
+ they have to generalize in certain ways. And this is difficult for us. In the interest of time,
+ I'll skip this. This is a video from 1987 showing that Harvard graduates, for the most part, do not
+ know what causes the seasons. They, one after the other, say that the earth is farther from the sun
+ in the winter. And what's interesting is, right, this is not something they have ever been taught.
+ Okay. It's also showing, one could say, well, okay, they don't understand, you know, earth till taxes
+ and all this. It's more interesting than that. It's that they are misapplying. They're using
+ the wrong, they're failing on this appropriate use of relevant knowledge, right? They are,
+ the idea that the farther you are from the heat source, the less heat you receive is true,
+ right? It's just not the important thing in this context. They're also applying this factoid that
+ they've all learned, right, that orbits are elliptical. And, you know, people have looked
+ at this, right? If you ask people to draw orbit, they draw this huge ellipse, right? So, you know,
+ in actuality, the orbits are, right, almost circular. How long does it take?
+ It's okay. Yeah, it's all right. And because the clip just, it's like a man on the street
+ interview thing where they, yeah, if there's time, I'll play it later. And so they're doing
+ something smart, right, but not what you want, right? They're not using knowledge appropriately.
+ They're also, in this case, they don't ask them this, but in follow-ups in
+ empirical investigation, people have. So they think, right, that the earth is farther from the sun
+ in the winter. They also, at the same time, know that when it's winter in the northern hemisphere,
+ it's summer in the southern hemisphere. So there's a contradiction. And most people,
+ when you point it out, realize that, oh, uh-oh, something is not right. Most, but not everyone.
+ But this knowledge has existed in their minds, their whole lives, and just, you know, hasn't
+ bothered them, right? It has not come into contact. So we have these kinds of contradictions and,
+ right, it's incorrect factually, but they don't threaten, right, our belief that, no, there is,
+ we're capable of understanding. There is understanding. We're just sometimes wrong.
+ Okay. Right. So, yes, some people sometimes don't understand stuff. We all know this,
+ but such demonstrations in general don't lead us to conclude that understanding is impossible for
+ people. Okay. Um, okay. Well, uh, okay. And just real quick, cause it's already at an hour. It's
+ okay. So it tells me, okay, some recommendations for progress. Um, the first is to use human baselines
+ and to distinguish what is possible from what is typical. So, um, let me show an example that, uh,
+ Melanie and her talk also used. So this is a paper. Uh, I think this is a misuse of the word
+ counterfactual. Uh, they, they call this, um, uh, the default condition, the counterfactual condition.
+ So they test various language models on the usual kind of task and then on an alternate version of
+ the task. And, um, now notice, right in this experiment, as is typical, there are no human
+ baselines. Okay. Uh, so this is from Melanie's talk and, uh, I think this is a quote from the paper.
+ Um, so counterpoint is that much more often than not, so do people, right? So if we look at some
+ of this, uh, drawing, okay, we're all better at drawing a thing in its normal orientation
+ than upside down. Okay. We're also all better at recognizing things in their normal orientations
+ than upside down. Okay. Uh, court fingering note melody, right. Uh, well, you know, it's, it's nice
+ if someone can transpose, uh, these keys on the fly, right. Uh, but if they can't, if they can just
+ do the normal thing, right. Well, we don't say, oh, I guess, you know, you couldn't do this key
+ transposition. I guess you don't really understand anything. Right. Um, at the same time, we want to
+ distinguish what is possible from what is typical, right? All of these things playing counterfactual
+ chess with an alternate rule, like it is possible for people, but it's, it's difficult. Like it
+ always comes with a cost, but sometimes some of us can overcome it. And, um, and I think this
+ distinction is important because often we, um, are confused in the discourse. Uh, some people care
+ about this being kind of a model of a cognitive model, using it as a cognitive model. Other people
+ care about these as, uh, industry production systems, right. That we want to use. So there's
+ a paper with a very, uh, uh, direct title GPT-4 camped reason. Okay. And the author, uh, uses mostly
+ mathematical kind of case studies, uh, simple proofs, uh, detecting various contradictions, uh,
+ to show that like, okay, it's, it's very hit or miss, right? Sometimes it gets things right. Other
+ things, it gets things wrong. It sometimes gets the hard things right and the easy things wrong.
+ It's not a sound reason. And, um, very, uh, uh, astutely, he, uh, he addresses the possible
+ critique that someone like me might make, which is, well, but, you know, people are like that too.
+ Right. And he basically says, I don't care. Right. He says, uh, it's, it's, it's a, it's a very, uh,
+ punchy piece of writing. If I find that the car I'm thinking of buying has a flat tire,
+ it won't carry much weight for the dealer to protest that I'm cherry picking the data and
+ that I should take into account how beautifully inflated the other three tires are. And that's a
+ 75% success rate after all, just as we don't want to bridge that is 90% likely to stand up. We need
+ sorting algorithms that work on all inputs, not just most of them. Okay. Um, so I, uh, I agree
+ with all of that. Right. And I don't want a language model as a sorting algorithm. Right. I want
+ a simple, provable computer program as a sorting algorithm. Right. But, uh, that simple proving,
+ uh, uh, provable computer program, right. Is not going to be scalable to other things that we might
+ want language models to do. So we want to have clarity about what it is that we want to use them
+ for. Uh, but if one wants to compare it to human baselines, right, we need to recognize human
+ reasoning is not sound. That's why we invented, we invented machines and algorithms, formal algorithms,
+ right. Because on our own, we can't do that, or at least almost all of us can't, um, be wary of it's
+ just deflationary, uh, kind of, uh, it's just, right. Deflationary explanations, right. And, uh,
+ several other talks have touched on this. Um, the idea that it's just next token prediction
+ confuses, I think Raffaella Millieri used this phrase, confuses the learning algorithm for the
+ learned algorithm. And it mirrors the point, uh, made by Dave Chalmers in his talk, right,
+ that you could say, well, evolution just optimizes for reproduction. Therefore, uh, that that's,
+ you know, how can you have anything other than that? Right. So, so there's a category error here.
+ Um, right. It's an empirical question. What can and can't be learned through next token prediction?
+ What can and can't be learned through natural language? Um, but, uh, it's, it's an empirical
+ question. Um, and, uh, this, this cover image, um, was meant to, um, evoke a cave, um, connection
+ to, uh, Plato's cave, right. And, uh, uh, walk on the conversant in the, the dialogue, right, right.
+ You've shown me a strange image and they're strange prisoners, right. The ones that are observing the
+ world as, as shadows and, and Socrates, uh, it says like ourselves and, you know, Socrates believes
+ that we can get out of the cave through reasoning introspection. Um, but, you know, in a certain
+ respect, right, like this is a, you know, there's a deep observation, right. We too are in a cave,
+ right. We get senses, you know, we, we, we don't have access to the real world. Um,
+ and so this kind of, uh, cartoon, right, of the language models being in the, in the cave, right,
+ but us not, right. That's wrong, right. We, we too, right, are limited to, you know, our internal
+ world, right. And we get access to the external world, right, very indirectly. Okay. You know,
+ we see, right, through light bouncing off things and we interpret and construct some version of
+ reality based on that. The models are doing it based on language, right. It's amazing how far
+ language takes you. Should we expect it to take you all the way? No. Should we expect vision to
+ take you all the way? No. Right. It's, but, but these are not, uh, I would argue qualitatively
+ different things. Um, and- I have to protect you from yourself. I think you want some discussion too.
+ Yeah, I do. Uh, let me, this is, this is the end end. Um, just, uh, and, uh, I think the next talk also has
+ a clip from, uh, Sabine Haassenfelder and I just saw this last night and I want to put it in just
+ about like, uh, AI risk and, uh, AI being like us. Uh, let me just play this. It's, it's 20 seconds.
+ Ah.
+ Yeah. I think it's because my sound is off.
+ See, the thing that worries me about AI is that we expect them to be better than us,
+ more honest, more reliable, more intelligent. But what if they'll be just as dishonest,
+ unreliable and dumb as we are because we can't teach them any better? Well, I'll keep you well
+ informed throughout the apocalypse. So don't forget to subscribe.
+ Okay. Um, and, uh, I, I think this resonates with the, so this is a quote from Denna that Kyle
+ Howald in this commentary raised, uh, and, and that I would very much, I very much agree with,
+ right? That, um, it's a mess and we should, uh, embrace it and study it, uh, as it is. Um,
+ okay. Uh, thank you.
+ There's one already a question from, uh, Steve Hansen. Go ahead, Steve.
+ Can you hear me? Yep. Uh, Steven, is there a video or?
+ I'm trying to, I'm trying to.
+ Okay. Well, nevermind that Gary, that was just a fantastic navigation through
+ what I think is actually a sea of counterfactuals. So, you know, if, uh, this was
+ there, I think I might've destroyed him by mistake.
+ Let me try this again. Okay. That's it. You're on Gary. That was a fantastic navigation through
+ what I think is an ocean of counterfactuals and a lot of this kind of business, actual counterfactuals
+ where if LLMs are just a database, if they were just this, if they were just, well, the problem
+ is we just don't know what they are. And the way that you subtly go through this, providing
+ the contrast to human behavior is very, very important, I think, in terms of understanding
+ what the hell is going on. So one thing that strikes me, um, I have a lot more to say, but
+ I'm not going to take up it every time, but one thing I'd like to ask you about is the developmental
+ aspects of the LLM, clearly somewhere between, you know, a hundred billion and one trillion tokens,
+ or maybe it's only 10 billion. We really don't know where the thresholds are here because no
+ one's actually studied that specifically. So the question is, would a developmental psychologist
+ looking at, would they begin to understand something about the kind of emergence in language
+ aspects that would pop up, you know, somewhere between that X billion and trillion tokens for
+ GPT-4? In other words, it seems like it would be good to understand the dynamics of the language
+ acquisition. Yeah. Well, so I think it's, it's useful to separate the dynamics of language
+ acquisition in a kind of grammatical sense, right? Can it produce grammatical,
+ surface level, sensible sentences and world knowledge, learning world knowledge. And I think
+ everything points to the first being much easier and requiring much less data and less compute than
+ the second. Um, so you see competent performance, I think fairly early on with, you know, I think
+ arguably with, uh, at least in the neighborhood of human input, where the gap is, uh, my bet is not
+ on, in this case on embodiment, uh, that humans have and models don't, but actually on agency,
+ right? And so it's kids are not just spoken to, they're part of meaningful discourse. They change
+ the conversation, right? Uh, the adults are playing an active role here where the adults are inferring
+ what the child wants and delivering language that's relevant to the child in the moment.
+ And so they're getting much higher quality, much, the input is just way, way more relevant.
+ Children faced in the, uh, uh, with the task that the LLMs are just getting, uh, passive text,
+ right? Would not be able to learn language, right? So, so I think that comes first and then,
+ yeah, uh, it seems that so far there's been this scaling, um, phenomenon and I, I think it's,
+ it's a combination. It's not going to be one thing. So it's a combination of yes, having more
+ experience, more, uh, uh, uh, exemplars basically to draw on and match to, which humans also do just,
+ you know, pattern matching. It's not regurgitation. It's just matching similar enough patterns and
+ adapting them to current use, but also, and I think the evidence is there that the models through
+ lowering prediction error are learning something like, you know, they're learning some causal
+ relations, some world, world or situation models, because that model is the way that lets you lower
+ the prediction error, uh, most effectively. We would not expect this to happen in all the same
+ ways that it happens for people. Uh, but having these kinds of developmental studies of the
+ networks is essential. So looking at the time course of training that of course, I mean,
+ that's the kind of thing that, you know, connectionists, we connections did back in
+ the day with toy models. Um, but, but the same, I remember that the same procedures apply, right?
+ Legioning the models in various ways, training them on different kinds of corporate to see what parts
+ are the most important and what parts, you know, in some ways, right, make it worse, right? Because
+ it's just, it's, it's, it's, you know, noise in a bad way. Um, well that, that's great. And again,
+ thanks for the, the, the, the great navigation through all this mess. Thanks. Yeah. Yeah. Just
+ another plugin. Well, did you get to your attendees page? Uh, the comments page.
+ Yeah. I have it. If you don't have it. Yeah. Um, well, yes, if you want to do one, no, no,
+ I want you to, I don't want to read it out. All right. Uh, but what are you looking for a
+ hour? I guess. Okay. Um, so just school through that one.
+ Yeah. So Alberto's comment that machines in order to be intelligent from a moment do not just need
+ data. They need to grow up as children and play games. Um, it's made me think could machine to
+ machine interaction be a way to study the development of category learning. So, I mean,
+ there is a tradition of doing this, uh, that Luke steals, for example, did a while back in the Sony
+ lab. Uh, yes. And I think it's a production, a productive research program. Um, I think it's been
+ hampered right by robotics and robotics are hard. And, uh, again, I think one lesson I've taken from,
+ from the last few years is that, uh, embodiment certainly matters for people, but it's not the
+ only way there, right? Like people who are born congenitally blind learn a whole lot about the
+ visual world through language. Do they have the same knowledge as sighted people? No, but they
+ also don't just have isolated facts. They have coherent theories. They have causal models of the
+ visual world of shape, right? Of this. So, uh, there are multiple ways of, of, of learning. Uh,
+ I think interaction is more important than, than embodiment, uh, and agency in particular, right?
+ So children can ask questions. Uh, that's important, right? Children can change their
+ environment, right? And the thoughts they have right is, you know, right. So, uh, current language
+ model is waiting for us to prompt it, right? Children are not like that, right? They, they're
+ agents in their environment. And so embedding, uh, language models in virtual worlds where they
+ have to make choices, and this is not an original idea by any means, right? I think is hugely
+ important. Um, and you know, we, we, we are running out of day language data to train the model. I
+ think it's silly to think that more and more language data will keep leading to, you know,
+ breakthroughs. Uh, but, uh, you know, actually learning in the way that, uh, animals learn by
+ being agents, like that it's amazing that how far one can get without it, but yeah, I think it's
+ pretty clear that one needs that kind of experience. Before you go to the next one,
+ you have a local one. Yes. Yeah. So I was going to point, I was going to point out the same objection
+ that you add in the final clip so that we wanted the machine to be more, the language model to be
+ more efficient than an actual human. Yeah. But I wanted to shift to another problem at this point,
+ which is, uh, in, if we ask language models to do tasks that we don't know how to do. Yeah. That's
+ even a bigger problem because we don't know just, uh, we don't even know if they are as efficient
+ as a human would be or if, uh, something else entirely is going on there. So that's the real
+ problem of the, the, the real, uh, question to us. Yeah, no, I think true novelty and it's very
+ hard, uh, to sit right to, to have a good distinction between, okay, this is, you know,
+ truly outside of training, right? But if one looks to the history of science, right, where really
+ paradigm shifting, uh, insights, right. Into, into the world, right. These are extremely hard and rare,
+ right. And what's hard is precisely the innovation, right. Uh, you know, within a fairly short span
+ of time, we figure out ways of, um, conveying that knowledge, disseminating that knowledge in a way
+ that's accessible to a much larger public, right. But often the insights, um, you know, are, are, are
+ just, are very, like everything kind of has to go right for, uh, that to happen, right. And we, and
+ I think we have to recognize human intelligence and this connects to Mike, uh, Mike Levin made,
+ right, uh, human intelligence, right. It's, it's a snapshot, right. And so to say that, like, what,
+ what are people good at, right? Well, which people and when, right. Uh, so, you know, we're good at
+ touch typing. Like a hundred years ago, people thought that touch typing was just impossible.
+ You know, no one can do it. It just like, you know, uh, and then there was a guy, I don't know,
+ there was a guy who like went around county fairs. He's the, he taught himself to touch type and he
+ was like this curiosity or people thought he had the supernatural ability, right. Uh, and now we
+ take it for granted. And there's lots and lots of these kinds of, of things. Uh, so I, I am a bit
+ skeptical at this stage about, you know, machine science, right. Where, you know, I don't see humans
+ being out of the loop in the, in the near future, right. Uh, what's interesting is, and what's more
+ likely is that some activities that we now think require great intelligence, synthesizing a
+ literature and distilling kind of important things, I think in some cases are already being
+ automated, right. But I haven't really seen the models produce anything that we might want to
+ call genuinely new, but they could produce inputs to people that might, that might increase the
+ probability of, of new insights. Um, but I, I, I don't think it's because yeah, people have some
+ special ingredient, uh, that allows them to list. Yes. I'm sorry here. Uh, yeah, it's, it's, yeah.
+ Okay. Uh, we need you to guide you through these things.
+ So.
+ Okay. Uh, Julia asked the last, uh, kind of consistency, I think differentiates LMS from
+ people more as Gricean related to building common ground during conversation. An example is asking
+ whether any quantity raised to the power of two is equal to itself. Chad GPT vacillated yes, no,
+ yes, no, and provided plausible sounding justifications either way. That behavior feels
+ to me not human-like. What is your interpretation? Uh, yeah, I agree that it feels not human-like.
+ Uh, there are nice demonstrations of how, you know, this is a sort of, um,
+ the human consistency is sometimes an illusion, right? That we know kind of in the Gricean way
+ that it's like weird to just change your opinion, right? From one moment to the next. The Supreme
+ Court, the Supreme Court on abortion. Yes. It's weird, but what about, where's the common ground
+ between the, uh, the, the Supreme Court that said yes. Well, um, I guess they, you know, the,
+ right. So the legal logic is interesting, right? Because it, it, it tries to have the error, you
+ know, rigor, right? Which it, yeah. But anyway, uh, yeah, and I go there, but, uh, it's, uh, uh,
+ yeah. So, so, um, the kinds of experiments that, right, demonstrate the underlying inconsistency,
+ um, you know, we're often trying to mask. So I don't remember who, who, um, the authors are,
+ but experiments where you ask people to choose, you know, you give them two options, you ask them
+ to choose subjective kind of thing, which, you know, which one do you like more? Okay. And then
+ later they're asked to explain their, uh, choice. Uh, but, uh, some of the time, and they're being
+ asked multiple questions like this. And some of the time the experiment to surreptitiously, uh,
+ asks them to justify the wrong choice. Okay. The one that they did not choose. And a lot of the time
+ people don't remember it because there are a bunch of these questions and they go on to provide a
+ reasonable justification for why they like the thing that five minutes ago they said they didn't
+ like. Um, so I think that's absolutely right that in the real conversation, we know that's weird.
+ We know that people expect consistency and we expect consistency of ourselves. Uh, but it's largely
+ this kind of, I think, monitoring system that kind of often masks what, what underneath is
+ quite a bit of inconsistency and, uh, context sensitivity. Um, it seems that the LLMs from
+ Anna Strasser, uh, LLM studies are based on relatively small samples. Uh, one result was
+ listed as 10 out of 10 studies on humans usually involve more test subjects. How do you argue for
+ such small sample sizes? So I wouldn't argue for such small sample sizes. And in my replication of
+ it, uh, I had a larger sample size, but I think, and yes, uh, I mean, it's, it's very easy to run
+ the model multiple times. You can increase the temperature to make sure there's more variability,
+ uh, or you can just get at the underlying probabilities. Uh, that's often better than
+ just rerunning it. But I think a more general point is that we shouldn't treat multiple runs
+ of the model as different subjects. The model is not, it's neither a single entity nor is it a
+ population. So sampling from a model is not quite the same as sampling different people. Uh, it's
+ also not the same as sampling the same person multiple times. So we, we need to be, um, somewhat
+ careful here. Now training multiple models on somewhat different data with slightly different
+ architectures, treating those as subjects, more like, you know, early connectionism did, uh, that's
+ more, uh, accurate, but of course not, you know, if you're talking about GPT-4, right, not practical.
+ Um, a sort of compromise that, uh, Ben Bergen and his colleagues did in that Turing test paper
+ is to instantiate the diff, uh, same model, right, to prompt it, right, to, you know, have different
+ personalities, to have different assumptions, to, right. And then you can run multiple tests on each
+ of those. And, and, you know, that, that's not as good as actually retraining, but in the absence of
+ that, that at least gets, you know, the variability is one can better make sense of, you know, why
+ these different, uh, uh, prompts are leading to, to different answers, if there's consistency there.
+ Yeah. Uh, one more. Yeah. A quick one. Robert Liu, wait a minute. Pizza box is far from being a cube
+ and it's easier to balance things on a pizza box. Yes. So, um, so that's a, that's a, it's a good
+ point. And, um, one would want to test this systematically. I did try to, um, constrain
+ it at one point to, uh, you know, cubes that have all equal sides, boxes that have all equal sides.
+ Uh, it did not change, qualitatively change the patterns. It didn't seem to matter,
+ but that's the kind of, uh, that's the kind of question. That's the kind of way we do want to
+ think, right? That, okay, in some contexts, cubes and boxes are equivalent, but in other contexts,
+ they're, they're not because, right, there are lots of boxes that aren't cubes. Um, so if you're
+ talking about a cube, you can interrogate the model to better understand, uh, what, what kind
+ of cube, how big in what orientation, same thing for a box, right? And of course, same thing for
+ people. We shouldn't assume that, you know, when we talk about a cube or the person has in mind,
+ right? It's a mathematical abstraction. Uh, maybe they do, but, but maybe not. So we want to,
+ we want to, and we can interrogate it further. Okay. I'm sorry to be such a monster, Gary,
+ but, uh, but the panel session will be at 3.30 and you'll get much, much more time. Yep. Okay.
+ So I want to thank you, uh, and we're going to just about come out.

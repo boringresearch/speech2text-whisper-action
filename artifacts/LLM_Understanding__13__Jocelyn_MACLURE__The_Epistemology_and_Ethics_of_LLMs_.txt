@@ -1,0 +1,559 @@
+ - Silence, please. Hello, hello, hello, silence.
+ We're starting to record now.
+ Was it announced?
+ - It was announced.
+ - Welcome.
+ It's a lot. I don't know if that helps.
+ Welcome to day four.
+ The first speaker today is not Jocelyn McClure.
+ It's Jocelyn McClure.
+ He is a professor of philosophy at McGill.
+ And he was also...
+ In what status were you at Southampton?
+ Were you in faculty or were you...
+ - No, no, no. PhD student.
+ - He did his PhD at Southampton University,
+ which is a sponsor of this event as well.
+ And he was also a collaborator of someone else,
+ a gray eminence of McGill, Charles Taylor.
+ You wrote a book with him.
+ - Yes, that's right. - What was it called?
+ - Secularism and Freedom of Conscience.
+ - Secularism and Freedom of Conscience.
+ And I'll now pass it over to Jocelyn McClure,
+ who will speak English.
+ - Okay. So, is it okay if I stand here or should I...?
+ - Absolutely. There was already...
+ (speaking in French)
+ I can't leave my camera.
+ (speaking in French)
+ - All right. So, hi, everyone.
+ Thank you so much, Stephen, for this kind invitation.
+ It's a real pleasure to participate in this summer school.
+ I really enjoyed the few talks
+ that I was able to catch in the past few days.
+ Very fascinating work.
+ It's quite rather far from my own field of expertise.
+ I'm not, as you will discover very quickly,
+ not a linguist, not a psychologist,
+ not a computer scientist.
+ I am a philosopher working mostly in ethics,
+ pretty much all fields of ethics,
+ from metaethics to different branches of applied ethics.
+ I also work in political philosophy,
+ but I also have a rather strong interest
+ in the philosophy of mind and in social epistemology.
+ Okay. So, this will be a talk in the ethics of AI.
+ I'll start by making a few distinctions
+ that I hope will help in understanding
+ the different kinds of ethical issues
+ raised by progress in artificial intelligence
+ and how we should address these dilemmas and tensions.
+ One of my aims will be to try to show
+ how different views about the cognitive capacities
+ and limitations of AI systems,
+ but also of human agents,
+ how these views are connected to the kind of approaches
+ that we might want to take in the ethics of AI.
+ So, how cognitive issues are related to ethical one.
+ So, that's going to be one of my aims today.
+ Of course, if you want to defend normative views
+ about how we should use AI or not use AI
+ or how we should regulate AI technologies,
+ you need, of course, to invoke different values
+ and value judgments,
+ and you have to engage with normative reasoning.
+ But I think that normative reasoning about AI
+ cannot be severe from considerations
+ in cognitive science and epistemology.
+ Okay. So, one first distinction that I think is necessary
+ is that we want to better understand
+ the different ethical issues raised by AI.
+ It's a very basic distinction,
+ but sometimes it's kind of neglected
+ and it creates confusion,
+ and there's lots of confusion on AI in general
+ and in AI ethics in particular.
+ So, we do have to distinguish between
+ actually existing AI-based technologies,
+ what I will call AI systems.
+ So, AI algorithms that we use as technologies
+ and that changes different human practices.
+ So, that includes all state-of-the-art AI systems,
+ including LLMs,
+ and they raise a host of ethical issues.
+ And we can also think about possible AI systems, right?
+ Not yet existing,
+ but in the space of logical reasoning,
+ we can think about different possible AI systems
+ that haven't been designed yet,
+ but that we can imagine,
+ they are conceivable,
+ and also they are like teams, right?
+ Researchers and engineers working to design them, right?
+ So, that includes AGI,
+ artificial general intelligence,
+ which refers to at least human-level intelligence,
+ and even going beyond human level,
+ superintelligence, the singularity, and so on, right?
+ So, that doesn't exist as of yet.
+ Maybe it will never exist.
+ We don't know.
+ Many think that it will, that we will reach AGI,
+ but that's in the space of possible AI.
+ And we can also think about what is called since cell, I guess,
+ strong AI,
+ which doesn't prefer exactly to the same kind of AI.
+ These are AI that would be conscious,
+ so that would have intentionality.
+ They would be minds,
+ and so they, you know,
+ AI capable of thinking, understanding,
+ referring to things in the world and understanding their meaning,
+ and so on.
+ Maybe you will want to fight me on this,
+ but I don't think that these AI exist
+ and that we're anywhere close to strong AI.
+ So, that's in the realm of possible AIs,
+ and many in AI ethics are working on the ethical issues,
+ you know, that comes with these not yet existing AI system.
+ Okay. So, if you want to do the ethics of AGI and strong AI,
+ of course, we will want to think about what is called a value alignment problem.
+ So, if we have highly sophisticated artificial agents,
+ perhaps they set their own goals and strategies to achieve their goals.
+ How do we make sure that their, you know,
+ interests or strategies or goals align with our most basic values and interests?
+ So, that's one version of the value alignment problem.
+ So, many worry about control.
+ How do we control such sophisticated AI systems,
+ given that they may be even cognitively superior to us?
+ And there are very sophisticated versions of that problem, right?
+ Including some version where the AGI doesn't even have to have something like a will,
+ like we do, like animals do,
+ but still, you know, by wanting to achieve its -- realize its objective function,
+ it would want to have full autonomy over the means to achieve the end,
+ and we would lose control because it would outsmart us, right?
+ And that could create something even like an existential risk
+ or a risk for our very own survival, right?
+ So, that's to my surprise,
+ but it's a very widespread and popular view, right,
+ in AI and in the philosophy of AI and so on,
+ and very serious and distinguished colleagues think that this is maybe
+ our greatest challenges as a species, right, as a civilization.
+ So, that's in the ethics of AGI and artificial superintelligence.
+ If you think that AI might acquire consciousness
+ or become sentient at some point in the future,
+ that might be connected or not to AGI.
+ There are many possible combinations here,
+ but, of course, here we need to worry about the moral status of such entities, right,
+ who would have subjective experience, who will feel things,
+ which could suffer, which could have hopes and dreams and aspirations,
+ like Samantha in her, for instance,
+ or at some point in the movie she has her own conception of her own flourishing
+ and so on, and so we would need to think about
+ should we grant rights to such entities.
+ Okay, so that's a particular space in the ethics of AI,
+ and some colleagues are, you know, that's what they're working on now.
+ I defend what I call in a short piece in AI and Society,
+ a deflationary view about that kind of AI, both AGI and strong AI,
+ and the beginning of a dialogue which Yoshua Bengio took place in that,
+ in these like working papers published by Avya,
+ so Yoshua has a long intro piece where he explains kind of his change of mind
+ with regard to existential risk, right,
+ and he now endorses a view very close, as far as I can tell,
+ to say someone like Stuart Russell's view,
+ and there were a few of us kind of commenting on his paper
+ and where I really just sketch my deflationary view about very powerful future AI,
+ and in a nutshell, and I'm not going to try to convince anyone here
+ who's not already convinced that that would be a separate talk,
+ but my deflationary view is based on the form of what is now called,
+ I guess, biological naturalism, the idea that there, as far as we can tell,
+ there is something unique about the cognitive powers of some living biological organisms,
+ cognitive powers that are the outcome of a long evolutionary process,
+ and this is also, I guess, congenial to Triple E cognition,
+ and this idea that our different senses and cognitive apparatus
+ connect us to the world in a particular way,
+ and that allowed us to develop these cognitive powers.
+ Of course, we're highly fiable cognitive agents as well,
+ but that kind of connection is to the world that allow us,
+ and it's based also on a version of Stevens,
+ a very powerful formulation of the symbol grounding problem,
+ so if I would have to fully develop the view, I would go along these lines,
+ but that's just to tell you where I'm coming from, right?
+ It still requires lots of work to make a convincing case for it,
+ but that's why I'm not overly concerned about these ethical issues here,
+ but I agree that we would have to take them highly seriously
+ if we were confident that we were getting closer to AGI,
+ and that consciousness could be an emergent property in, say, an AGI system, for instance, right?
+ So I guess that consciousness will not be something that we can design right now,
+ given we don't know how the brain produces consciousness,
+ but some think that it could emerge under very different material circumstances and conditions,
+ and perhaps an AGI would become conscious at some point.
+ So if I wasn't defending the deflationary view,
+ I would be highly concerned and I would lose sleep over the issues now,
+ but fortunately I don't.
+ There are many issues that I'm losing sleep over, but not these ones.
+ Okay. So my view entails that I don't think that we should give priority,
+ practically speaking, to the risk that comes with AGI or fully autonomous artificial agents,
+ and I don't think that highly speculative philosophy or theorizing about future AI
+ should be our guide to policymaking and decision-making at this point in time,
+ given all the AI technologies that we currently have.
+ But one maybe qualification, another distinction,
+ we can probably distinguish between two kinds of AI-related catastrophic risks, right?
+ So the first set, that's what I just talked about, that's the risk created by AGI,
+ so AI that we don't have as of yet, okay? So that's something.
+ But we can also think that actually existing AI systems
+ have the potential also of creating catastrophic catastrophes
+ and that they come with catastrophic risks,
+ but that's not because AI are fully autonomous and highly sophisticated cognitive agents,
+ but that's more because of how we use actually existing AI systems.
+ And I do take these risks very seriously, right?
+ So malevolent users of existing AI system by bad actors, yes, that should worry us all.
+ We don't have to make a leap of faith and think, oh yeah, we'll have AGI,
+ and that's no, just the AI that we have now can harm entire populations in different ways by being used in cyber attacks.
+ We already, we're all well aware now of kind of disinformation
+ and misinformation that one can produce with bots and LLMs,
+ and it can be used to create little weapons also.
+ But that's a very well-known risk in tech ethics in general, right?
+ It's usually referred to dual use theory.
+ You can use them to create the good or you can harm with them, right?
+ So that's pretty standard issue in the ethics of technology.
+ Okay, so another branch of AI ethics, I think that's the one that is the most urgent today.
+ That's the ethics of maybe what we could call machine learning or deep learning based AI systems, including large language models.
+ Okay, so this is, you know, you're using our best AI technologies now.
+ Given how they work, they create all these problems and dilemmas.
+ It would be too long to go over that list, but these are all very daunting and serious problems.
+ None of them is easy, but given how widespread AI is in human life now, it's used pretty much.
+ And think about an area of human life now and ask yourself, okay, is AI present there?
+ And it looks like it's pretty much ubiquitous, right?
+ It's pretty much everywhere from our intimate relationships and increasingly with artificial agents to our democratic life with the echo chambers and fake news, disinformation and so on.
+ It's pretty much all over the place.
+ So one issue that I've been busy with in the past few years is AI's explainability problem, right?
+ So you all know this quite well, so I don't have to over-labor the point.
+ But some AI systems are quite accurate, right?
+ They come up with, say, predictions or different outputs that are very often accurate.
+ You know, when you prompt a large language model, very often you will get an accurate answer.
+ But we cannot easily get an explanation of why the AI generated that particular output, right?
+ You cannot look at, you know, you can try to look at the different nodes and the networks and so on.
+ But that doesn't give you anything resembling an explanation, a piece of reasoning, a set of justification and so on.
+ So depending on how you use your AI, that can be very significant, right, if you use it.
+ So these are different kind of AI systems, right?
+ So you guys in your research often use AI as a research tool or in the research space.
+ But we now use AI in different, you know, social contexts, and so you can have an algorithm, right, as a decision support system to decide who has a loan or who has bail or who will be admitted in an academic program.
+ Where are you going to send, you know, more police officers and which neighborhoods and so on.
+ So predictive algorithms to help or automatize decision making in high-stake contexts.
+ We use them as recommender systems, as you know, right, every time that you're using a search engine or a social media.
+ There is a recommender system, you know, working in the background and that is making prediction on what will make you engage or click or buy or different recommender systems to nudge you into doing different things, voting for a candidate or not going to vote, you know, which is pretty significant.
+ So obviously recommender system raises very important questions related to autonomy, right?
+ Are we autonomous if we're always under the influence of predictive algorithms that try to nudge us into believing or acting in different ways?
+ Now this summer school is focused on a large language models and now large language models can be used in different ways, but increasingly as kind of virtual assistants, right?
+ That are used for many different needs that we have and that's, you know, given that we might seek advice from them or create work with them and so on, we want to make sure that they are reliable and so on.
+ And, you know, they can also power social robots used in different contexts, including with vulnerable populations, right?
+ So these different AI systems raise these different ethical questions and these are all very significant issues and I think that that's where the priority should be in AI ethics now.
+ Because yeah, this is all very meaningful and significant, right? So LLMs in particular raise questions about human flourishing and our cognitive development, our well-being, you know, is it good for us, you know, to engage in a very sustained fashion with virtual agents, day in, day out in different contexts, right?
+ So I have a few slides here on.
+ So, you know, a replica at first tried to create a virtual agent that you can, with which you can enter into more intimate relationship, you know, as lovers or friends.
+ Now they kind of turned it into an AI, what they call coach, but unfortunately people call them AI therapists.
+ So, is it good in general? So we need empirical, you know, research on how does it transform us?
+ Sometimes for the better, maybe, but we can have, you know, benefits, sometimes for the worse. But, you know, if we're going to have grief bots, that's usually intimate and delicate sphere of human experience.
+ And yeah, now it's possible, of course, to train a model on the data, you know, created by a loved one who died.
+ And I suppose that people, you know, researchers, including specialists on the grieving process need to figure out, OK, so can there be benefits?
+ Maybe they can. Perhaps it can harm. Also, it can make the grieving process more difficult and create, you know, complicated grief and so on.
+ So we need, you know, research on these issues now.
+ OK, so very, as I said, daunting list of issues. And that's what we're working on now in this branch of AI ethics.
+ OK, so in order to understand the ethical issues, we need to understand how these systems work.
+ You know, all properties of deep learning based systems. You all know this very well. But it's quite important for those who use them, right, to understand, you know, when they produce a particular output, how do they do it?
+ And as we know, it's we're talking about, you know, predictive inferences, though, given, you know, the patterns or broad correlation, you know, seen in the in the training phase.
+ And then you try to find similar patterns in the real world when you apply them.
+ So all the outputs are predictive inferences based on the, you know, relations between the data that are being processed.
+ And that gives us, of course, probabilistic outcomes and in some cases are quite accurate.
+ But that explains why sometimes the results will also be inaccurate or inappropriate.
+ And, you know, one of the reasons why I'm still at this point, I have the deflationary view that I alluded to is that we're not seeing any solutions to these well-known problems, right, as of yet.
+ Maybe you will want to challenge that. But, you know, given that they are massively inductive, you know, machines generalizing outside the training distribution remains a problem that we're not seeing exactly how that can be solved if we stay just within that paradigm.
+ That's why I say so, you know, many want to scale up the approach with more computing power, more data and so on.
+ But it's hard to see how scaling up solves that problem.
+ So this is something that you all understand very well, but that explains why even the most recent models are still plagued with, you know, outcomes that are either inappropriate or wildly inaccurate.
+ And that the so-called hallucination that should be called the contemplation problem remains today, right. So recently, Google's AI is recommended to put some non-toxic glue in the pizza, right, so it would stick.
+ Okay, so we know these problems very well. So I think that there's something like a consensus, right, broad consensus that there are very basic and fundamental cognitive capacities that are still lacking related to reasoning.
+ And I would say both say the kind of, you know, logical deductive reasoning and also practical reasoning, you know, as an ethicist. That's what I'm concerned with the most.
+ And practical reasoning, you know, if you go back to Aristotle is about, you know, how do you come up with wise judgments and good decisions in unique situations, right.
+ And in particular context, you know, how do you connect, as Aristotle put it, the universal, say the universal rule or the general rule with that particular situation, which is brand new, right.
+ General laws, they apply very well when you're in standard situations and that's why we need general good general laws, but you still need good practical judgment, because you know the world change the world is complex, and that requires practical reasoning.
+ And that allows you to make sound decisions in unique and unforeseen situation right that's that's totally missing so when you thinking one approach in the ethics would be well let's part, let's build ethical machines right that are capable of acting on the basis of baby values, or are capable of practical wisdom like bonuses.
+ Okay, so yeah, I'm, let's try to do it but I don't see how you do that on the basis of different deep learning techniques.
+ So, you know, whatever, you know, approach will be required if we want our AI to be capable of practical reasoning right and in a very different direction it's also recognize that common sense like the glue and the pizza thing is absent.
+ Right and, and I would defend, I would define common sense here as that kind of, I guess, faculty related to intuition that allows us to kind of know what we should do without having to think about it too much right and the basis of system one.
+ Even in that new situation you end up you travel to a foreign country, you maybe you don't understand the language very well you don't know the people but in many cases you will kind of know how to act based on common sense.
+ And that allows us sometimes to avoid you know making, you know, bad mistakes or being inappropriate, and so on. So some AI researchers are working how do we endow our AI with common sense right.
+ And that could very well be related to the fact that our affects are usually influential in our condition. Right. So we are, we have capacities related to reasoning, but all this is connected to, to emotions and to what the ancient Greeks would call the non rational parts
+ of the souls or our desires, appetites emotions and, and so on and this is lacking, of course, in AI system.
+ Okay.
+ So, if, you know, one is rather convinced or find plausible what I've been saying at this point. This
+ is to see AI system, not as you know creating the kind of cognitive agents that can like fully replace humans.
+ But that could that can at best you know extend humans cognitive capacities. I think that that's the most like kind of sound way to see how can we integrate AI in our practices, given their capacities and limitations.
+ So, one of my Canadian colleague at U of T Carrie Navold is a philosopher of mine and of cognitive science right she sees AI technologies as cognitive extenders right not necessarily.
+ You don't necessarily have to endorse, you know, the full fledged extended mind thesis, but just as part of our cognitive scaffolding.
+ And, you know, aspects of our cognitive scaffolding that extends our community or augment our cognitive powers that I think there is a real potential for AI there, including for many of you like as as researchers right.
+ So, yeah, much was made of the, you know, different moves made by AlphaGo and how can these moves can then, you know, kind of influence human players and make them better right so that's a good example here.
+ Okay, so recently I was asked to give a grand round that Memorial Sloan Kettering Cancer Center in their kind of psychology and psychiatry department so how to help people who are, you know, who have cancer and their close one their caregivers and so on.
+ And how can you know AI could be used in a safe way in that space and, you know, these are people who wonder about they think that palliative care is very important.
+ They wonder whether should we legalize medical assistance and dying and so on and they have to think about these issues so that's an example of, you know, how many are using large language models right and in there in many cases.
+ And the chat but will give you quite good, you know, good quality answer so let's look at this one so I asked it about the relationship between made and palliative care and it said that the relationship is complex and multifaceted.
+ So palliative care approaches aim at alleviate elevating suffering in patients with terminal illnesses but they differ in their objective and method of care focuses on improving quality of life, and so on, and medical assistance and dying the above intentionally
+ intentionally ending a patient's life at their request right so it makes the right distinctions, it can be used as a good starting point if you want to start, you know, figuring out what's the relationship are they compatible not compatible, and so on.
+ And that can be, you know, a, a powerful cognitive tool for human. Yeah. So, and artists also can use them in highly creative and productive ways so that's a German photographer now using AI quite, quite, quite widely doing very interesting work.
+ You heard about alpha fold for predicting the 3D structure of protein, and so on.
+ But here is a chemist saying that, yeah, that alpha fold is wonderful but it will not replace human researchers right you, you will need it will speed up, you know some research program and very greatly.
+ I think that that's one of the best AI technologies that we have, but there's no way that, you know, biology and biology students will be out of a job because of alpha fold right it's going to be a very powerful tool at their disposal
+ and that will allow them to use their time differently right to further different research agenda. Okay. So, many examples of how we're not replacing human expertise, but augmenting human cognitive powers right.
+ So that's a AI tool for detecting skin cancer. Okay.
+ And again so even very recently I don't know if you, you heard that but Jeff Anton, again, you know, made that prediction that many human workers will be out of a job soon and that we need universal basic income.
+ Because of that you know you famously predicted that radiologists in 2017 that radiologists that we should stop training radiologists, which would have been a terrible advice in 2017 and still today.
+ So that this is not where we are now we are in a space where we can augment our cognitive powers but we have to, you know, put put in place different regulations and other policies to mitigate the risk created by these AI technologies,
+ okay, including the ethical risk. Okay, so that's where we are now. Of course I forgot to start my timer I have until when, Stephen.
+ Okay, but just to give me an idea.
+ Okay, good, good. All right.
+ Okay, so.
+ All right. So, I think that all these considerations lead us to a view in AI ethics, where what is crucial what is should be the priority now is that how do we come up with the right set of institutions and regulations that can ensure what is called in the literature
+ meaningful human control over AI, meaningful or genuine human control and oversight over AI system.
+ I think what is should be the priority, and that includes, you know some some requirements related to their, you know, transparency, so that we know that we're dealing say with, you know content that was created by an AI, or that we can, you know, organizations
+ that use AI to make it the key sensitive decisions that they are always able to explain and justify their, their decisions and that we better understand how you know the recommender systems impact on, you know, on our mental life and our decisions
+ and so on. So, I think that this is where we are with some of my collaborators. We're calling this AI is ethics institutional turn so that's a way to try to, you know, kind of flesh out what meaningful human control over AI requires that's coming up with the right kind of institutional
+ infrastructure so basically that's coming up, you know, an institution was defined by Rawls as a kind of a public system of rules, right, that that create different powers authority, and so on.
+ And that facilitates cooperation right among different agents.
+ So we need the right, you know regulatory framework and the institutional capacity to make sure that the rules will be abided by.
+ And so I think that that's where we are now in AI ethics you know after coming up with these different declarations and like the Montreal declaration for the responsible development of AI and the, you know, there are more than 100 now declarations.
+ Of course these are in all cases, non binding declarations. And because of that you know they can be useful but they are severely insufficient. And now we need to build that institutional capacity.
+ So something that I'd like to discuss with you, given your fields of expertise is a family of objections to that view that are based on the actual limitations of human cognition.
+ Right so I think that these challenges are quite stimulating, although I think that they can be defeated again I have two related challenges in mind, and they are related because are both based on our epistemic limitations as humans.
+ Okay. So there's one set of objections that come maybe from, I guess, cognitive psychology, and it's based on how humans actually think, reason, form beliefs, make judgments, and so on.
+ So that's usually referring to the kind of the bounded rationality view.
+ So that's the first set of objections and the second set. That's more recent in the literature.
+ It's based on a very influential view in the field of social epistemology, and it's based on our very basic epistemic dependence right as individual epistemic agent we're radically dependent right it's just impossible right in all cases to make my own research,
+ by myself at the evidence, and then come to a belief, a conclusion, and so on, right, the, the expertise that that would require is just impossible to, to gain, and I need to depend on, you know, experts, authorities, institutions and so on, to make my mind about, you know,
+ many, many, many different things. So yeah, I cannot really be an evidentialist about everything that's just unsustainable.
+ And I think that's, that's true and those who want us to recognize our very radical epistemic dependence. Usually they have to say well under the right circumstances we need to trust experts and trust institutions and I fully agree with that view and in social epistemology also agree about the fact that our rationality is bounded right and limited.
+ So I agree with with both these sets of observations, I disagree with the inference that is made on their basis about how we should go about, you know, kind of governing AI technology so it's the inference when you applied in AI ethics that I disagree with.
+ So, first, the, well I'll just talk a bit about the bounded rational rationality argument. The second one coming from social epistemology that's what I'm mostly working on with my grad students at McGill right now.
+ Okay, so, and this was the bounded rationality argument that came from the discussion on AI's explainability problem right so the fact that it's a black box that like deep learning models are black boxes that are opaque.
+ So, many were saying well we need to make AI explainable right so either to shift to intrinsically interpretable AI, you know, white boxes.
+ These models sometimes are not as performing as well as black boxes right, or we need to come up with algorithms that, you know, will allow us to explain the outcomes of intrinsically opaque AI system right that's explainable, the explainable XAI research agenda.
+ So, that's that's that's fine that's a techno kind of scientific answer to the problem, and we just have to wait and see, you know, will XAI be successful or not.
+ So far, many, many of my colleagues in AI and related disciplines are saying to me well, we cannot trust you know it's helpful we need to do research with we cannot trust what comes out of the XAI technique so far.
+ But as in ethics we have to decide okay what do we do with the AI system that we are using now, because they are using high stake ethically high stake context, and these are contexts where our basic human rights are at play, our right to equal opportunities
+ at play are flourishing and well being is at play. These are all ethically high stake context and we need to see okay under which circumstances should we be allowed to use them and under which rules and so on so we cannot just wait for the XAI
+ researchers to, you know, solve that that problem.
+ Okay, so some were saying well okay so you're coming up with in that paper, I defended what I call the strong explainability requirement right in ethically high stake context, a strong explainability requirements should be imposed on those who use AI to make, you know, high stake decisions
+ right, if they cannot satisfy the experiment requirement they shouldn't use AI in these circumstances so that was the normative view there that I defended but this view is, is, is attacked on the basis that, wait, look, look at how humans, you know, make these very same decisions
+ right so it's based on a comparison with how the human mind works. And the basic idea is that, you know, say maybe like deep artificial neural networks are not significantly more opaque and epistemically worse than human minds when you have a non ideal theory of how the
+ human minds work. Right, so, and they point out that the human mind and human condition in general is also highly viable, it's brittle, it's opaque, it's biased, it's noisy, and, and so on, and that maybe we're actually better off to revert to impersonal algorithms for making high stake decisions.
+ So a very sophisticated version of this is defended by, by Bruckner.
+ And that's that's a good paper that I, that I recommend, although I disagree with the, with the conclusion. Okay, so let's see what Bruckner is writing here so critics have argued that processing in deep neural network is unlike human condition for four reasons
+ right. So, deep neural networks are data hungry brittle inscrutable black boxes that merely reward hack, rather than learn real solutions to problems. This paper rebuts these criticism by exposing comparative bias within them in the process, extracting some more general lessons
+ that may also be useful for future debates. Okay. And when the same degree of critical scrutiny is directed towards the human side of this comparison, our minds are also revealed to be black boxes played by many of the same vulnerabilities.
+ And that's why I call the argument from the limitation of the human mind. It's a very powerful challenge.
+ Okay, so I think that there's, you know, a lot that is being said there is, of course, true.
+ It's shown by, you know, in many fields, very often right we rely on kind of heuristics associated with system, one, rather than say with the, we don't, we don't apply the axioms of decision theory right when we try to make up our mind and decide
+ what, what to do or who to hire and so on.
+ We often use system to to kind of rationalize, you know, post hoc, the conclusion that we reach based on system one our intuitions our biases and so on.
+ So, in many cases that's also true, right, I don't think that that can be simply denied.
+ So, the, the kind of normative inference that is made you know when you start from that perspective is that okay so maybe it looks like we want to impose a double standard right that we have higher expectations and standards for AI based decisions.
+ You know when you compare them to human based decisions and is really it and and his colleagues asked whether that double standard is justified okay and what got me really interested in that.
+ The issue is, is their conclusion there that with regard to human base, you know decision procedures.
+ The standards of practical reason are rather on demanding right and that's what I strongly disagree with you know that that's not a general a general fact.
+ In some cases, they are but in many cases they are quite demanding the standards of practical reasons.
+ Okay, so what's wrong with that view.
+ So I think that that argument is flawed, not because we can deny that human cognition and judgment is highly viable. It is for the reasons briefly reviewed.
+ Because the argument is based on the white a an impoverished, maybe we call it an impoverished social ontology, and also an impoverished view of actual, you know, human reasoning in under in social circumstances and institutional context
+ Okay, so why is it an impoverished view of both human reasoning and and the social reality. I think that it's based on an individualist and atomistic bias so it's, it's most in most cases it's, it's, it's, it's based on a form of mythological individualism right so we look at how.
+ And, you know, an individual human agent reason, very often studied you know by in in the labs by a cognitive psychologist, and we have these different scenarios and experiments and we see oh right we reason very poorly about where are we influenced
+ by arbitrary factor we smell the smell of the cross on show and then we're more generous and we're very poor at anticipating what our future self will want and so on, but that, you know, it's based on okay so if you test you know the individual human subject
+ it will come up with these different shortcomings. Okay.
+ So, it's based on an atomistic view in the sense that individuals are taking as kind of self contain entities that interact with other self contain entities, and they interact for maybe for mutual benefit, but it neglects how profoundly we are shaped by our
+ interaction with others right so that that's based on on on Charles Taylor's criticism of atomism right in in the in the philosophy of social science and in political philosophy.
+ So if we start with a more dialogical and intersubjective conception of the self.
+ It's, it's also probably based on the kind of internalism in the philosophy of mind right so those who endorse that critique they think okay so let's look at what's going on in the mind of an individual agent, and we see all these limitations and shortcomings
+ and so on. And on that basis we'll say well you know humans are poor reasoner and there are no worse than AI. Okay. So, internalism here I think is also a problem.
+ So, what is neglected, as I mentioned is the, the social or intersubjective nature of reasoning and decision making, especially in these I stay context that I mentioned right so okay if I had to decide what I will do tonight so perhaps I will be a poor
+ reasoner right okay but if I need, if I need to decide who we will admit in our, you know, PhD program in philosophy, next, next year.
+ The decision procedure will be quite different right, it will be deeply intersubjective right, we will be maybe in the committee, or in my case it's an entire department that makes the decision right so I will have to engage in a process of reason giving
+ with my colleagues, and that will be under different rules right and criteria that we elaborated together or that are given by the administration and so on right so it's both the social nature of reasoning that is occluded or neglected,
+ and the institutional nature of reasoning and decision making, especially when you know our very basic interests so rights and freedoms well being and so on are at play.
+ So if we want to compare AI and human based decision making, we need to situate them in the right social and institutional context.
+ And, you know, if you look at what, as I mentioned, is an institution right as a public system of rules and procedures, institutions are designed with the telos of answering some of our basic human needs or interests right.
+ And among the these needs and the aims of an institution it's very often to mitigate the shortcomings of human reason. Right so
+ the reasoning here is a very good example. Okay, so this is, there's hardly more high stakes context and judicial reasoning.
+ When when the rights and basic rights and legal guarantees and so on, all the parties are at play. And we know that judges, you know, can be quite favorable sometimes they get things wrong sometimes they are biased.
+ But, you know, having participated once as a, as an expert in the in a trial.
+ It's, it's, it's, it's very striking how many rules were designed precisely to, you know, increases the chance that we reach the right legal answer to the problem in front of the judge or of the jury, including you know making sure that the judge is in the best
+ circumstances to be non bias and to think clearly and so on. So it would be too long to review all these, these rules and procedures that can be quite burdensome, but their, their goal is properly epistemic right so that we reach the right decision.
+ I think that he was found guilty.
+ And,
+ and more importantly, you know, to go back to my point, so no trial judges.
+ They are sometimes overburdened with too heavy a caseload and so on. So sometimes they are more prone to make mistakes and that's exactly why a right to appeal as to be one of our basic legal guarantee.
+ And interestingly, when you move, you know to a court of appeal, you will have a bench of justices right not just one but justices that will have to engage in reason giving with each other on the basis of the laws on the books and the jurisprudence and so on.
+ So that's what I mean by, we create, you know, in our social reality.
+ We first are, you know, we are in deeply, you know, interpersonal inter subjective relations, and we interact through different institutions, and that's how we make ice take decisions.
+ So that's my attempt to review that kind of, you know, debunking. And I think that we can show in many cases that the standards of practical reason can be quite demanding right then we, we could think, you know, in academia.
+ The review is very imperfect. Unfortunately, I encounter a case of review review or two recently, but that's why, you know, we have, you know, invest in the best cases three reviewers so it balances out sometimes the one that is on reasonable.
+ Okay. So, you know, I think that despite these very sophisticated challenges, what I call the institutional turn is still required.
+ And that's a paper written by one of my PhD students, showing how okay so maybe machine learning can be used in bail decisions but just as a tool. And, you know, when judges sees that their own decisions do not conform with the prediction made by the AI, that should be seen as an invitation
+ to review the case right not to just defer to the AI, but just you know it flags something so maybe something was missed. And to go back to the case right that's a cognitive extender. So I understand that my time is pretty much.
+ Okay, so one last point. So, I'm of course delighted that now we're seeing in a number of jurisdiction, new legal frameworks for AI, so the EU being the most advanced one with the EU act here we have a bill Bill C 27 that is being discussed so I'm, I'm very happy about that.
+ But just to go back to those who think that there's something much bigger at play our very own survival and so on.
+ I think that we're on, you know, we need to give priority to the ethical issues raised by actually existing AI system, but perhaps as an appeasement measure.
+ So disinformation that's a real issue. But there was also some inflate inflationary rhetoric about AI capable of automating away all the jobs and and and replacing us and so on.
+ I think that to those who worry about that. I would say that the kind of institutional infrastructure that we urgently need to build now will allow us to, you know, achieve meaningful control over existing AI systems and to monitor these AI system very closely
+ and to document how they work what's the, what's the data.
+ You know, are they, are they biased, we need to audit them and so on. And I, I think that all the kind of information and regulatory oversight that we need to build now can be used also.
+ You know, as a kind of a warning system if we see that way, wait, there's a risk that we're going to lose control over these system, at least we're building the capacity to monitor them very closely.
+ So I think that they could be on board with the institution this term that I'm advocating for. All right. Thank you. Thank you very much.
+ Thank you. Now is the question and answer. You, you couldn't watch this. This is one of the complications of a hybrid event like this you can only see this you couldn't see these.
+ So, I want you to look at those. And meanwhile, the answer whatever you like. And meanwhile, you're also welcome to raise your hands and ask questions here. We have already a question so even when should I start my discussion.
+ Oh, sorry, sorry. What am I saying. Go ahead. It's yours.
+ I'm deep into this right now. I'm, I'm no longer accomplishment is going. Okay, great. Thank you for such a rich talk that brings up so many important ethical issues.
+ I disagree with you only in quantity, I think not in quality. I want to concentrate on the role of justification. And I want to cast some doubt on how easy it will be to put in legal safeguards.
+ So, I think we're agreed, probably everyone has agreed that only with a stated justification. Can a decision be evaluated. And I think we can also all agree that LLMS can be used heuristically to suggest other ways of making a decision.
+ We're still left with the problem that a reasonable justification can lead to bad consequences, even at the institutional level.
+ I want to start with a case study. This is a simplified version of an actual case that was made famous by Kimberly Crenshaw. So let's say a black woman sues General Motors on the grounds that it's hiring policies, violate title seven and GM says well they
+ are black people, and they employ women, so they don't have to hire a black woman.
+ And let's say GM hires only black men from mechanical and technical positions, and it hires only white women for clerical positions. So, this black woman is in between.
+ Title seven itself protects against discrimination on the basis of, quote, race, color, religion, sex, or national origin.
+ So, it all depends on how you interpret, or, and in a 1976 case, an appeals court interpreted or as ruling out the combination of race and sex, saying that if they combine them that would create a new subgroup and give black women a super remedy,
+ going beyond the intent of title seven.
+ For example they said this lawsuit must be examined to see if it states a cause of action for race discrimination sex discrimination, or alternatively, either, but not a combination of both.
+ But, or, of course, could be interpreted differently and it has been in some cases, as saying that the use of the word or indicates the intent of Congress to prohibit employment discrimination based on any or all of those characteristics.
+ And so, in a similar 1980 case, an appeals court ruled in favor of black women, saying that denying their unique experiences would leave them without a viable title seven remedy.
+ Here we are, 20 years later, more than 20 years later, and there is still no settled interpretation, and no clear path for intersectional employment arguments.
+ So, would LLM do worse chat GPT turns out to know about intersectionality, and it knows about Kimberly Crenshaw, and it argues in favor of the plaintiff in the made up case that I started with it cites the two earlier cases I cited.
+ It says historically courts have grappled with how to handle cases where discrimination claims involve multiple intersecting identities, and it ends up deciding on the basis of the principle of intersectionality and prior cases.
+ The chat GPT doesn't mention, or the word, or at all there by missing the most important feature of what the argument turns on.
+ And emphasizing or by putting it in caps and chat GPT wasn't sensitive to that. Then I put asterisks around it. And that did lead chat GPT to attend to the or.
+ It just said that title seven's use of that term meant that discrimination, based on any one of those characteristics was prohibited, but the legal interpretation has evolved to recognize that discrimination can also occur at the intersection
+ of these characteristics. So, it's still missed the crux of the argument, but it is clearly laying out its justification.
+ And it's not doing so, particularly worse, I would say, than the legal decisions that have been made, even though those legal decisions are correctly focusing on or, and what or means.
+ I want to consider one more case, very briefly.
+ And this is academic hiring, which you alluded to somewhat, although talking about students, rather than hiring.
+ In Abigail Stewart's in my book, we recommend procedures for doing less biased hiring, such as developing criteria stated criteria ahead of time, having those reach general agreement.
+ Also waiting the criteria, restricting how many papers candidates can submit, not looking at red letters of recommendation until near the end of the process, not using proxies.
+ We do an experiment, contrasting actual people and LLM and LLM might do a better job of following the guidelines, because they don't have a horse in the race.
+ Because we can tell it what information to ignore. We can tell it, ignore the school that someone got their PhD from. It's very hard for actual people to ignore information.
+ So, another thing that LLMs can do somewhat better than people is to scan multiple criteria simultaneously.
+ So, another thing we can do is ask it to look at what words and sentiments are being expressed in the letters of recommendation, and we can tell it based on experiments, what words and sentiments are likely to bias reviewers, one way or the other.
+ And LLMs have a much better likelihood of finding those elements, reading the sentiments and acting on their basis.
+ So, I'm a little less skeptical than you are about how we can use LLMs, while agreeing with you that we need to have a discussion about all the justifications, but I'm not convinced that our human institutions do such a great job.
+ All right. Thank you so much, Vivian, for these very astute observations and comments.
+ I don't think that we have much disagreement, and it's true that I didn't stress enough that despite all that I said, right, we have examples every day of the shortcomings of human institutions in terms of, you know, making just, fair decisions, and some institutions are in worse shape than others, and that's entirely true.
+ But I think that we can keep improving them by, you know, trying to, you know, amend the rules and procedures when we see these limitations, but that is, of course, a will to do it.
+ Perhaps what I could add to what you said is, so, with regard to intersectionality, that's a very interesting case.
+ Of course, my worry would be that, say, we would want to use an LLM to think about, okay, so there are some persons who are at the intersection of these different categories and the kind of disadvantage that they can experience is compounded because they combine these different properties.
+ Okay, so let's say that we want to use an LLM to improve upon our judgments, decisions, and so on.
+ This depends very heavily on the training corpus, right? So, if it's the entire internet, so perhaps in that case, it was able to, you know, track some, you know, text and rhetoric on the importance of the intersectional approach and so on.
+ But, you know, if it increasingly gets filled with anti-woke rhetoric, we won't be able to rely at all on the LLM, unless we decide to fine tune it, and this raises different issues that might affect the capacities of the system.
+ So, yeah, it maybe becomes too dependent on the training corpus because what it does is next token prediction and it's based on the, you know, the co-occurrence that was tracked in the training data, so that makes it a very fragile foundation.
+ If I can respond very briefly to that, to some extent that's true for us as well. That is, we too are susceptible to anti-woke rhetoric, and judges are.
+ And I think it's hard in practice, and in theory, to say who's going to be more affected.
+ As you say, it depends on the training data, but to some extent that's true for us as well. So which data do we choose to attend to when we're making our decisions.
+ Some people are only getting their information from a particular source, and some of those people are judges, and more and more of them might be such people.
+ So, in principle, I don't think humans, even human institutions, are immune from the kinds of problems that you're associating with LLMs.
+ Yeah, I fully agree with that conclusion, and I should have stressed also that although I try not to do pure, highly speculative, ideal normative theory, this idea, so it's what we call a public reason view.
+ It's a normative view in the sense that we should aim at making our institution more responsive to increase the reason responsiveness within our imperfect institutions.
+ So it's kind of a horizon, right, that we would want to get closer to, to make them more deliberative, where the different stakeholders or deciders do have to engage with reason giving, trying to just offer real public reason to others that could convince them and respond to counter arguments and so on.
+ So that's not a description of how our institution works. That's kind of the goal, what we would call the regulative ideal, you know, never fully achievable, but that's, we should try to get closer to it and sometimes we do, sometimes we don't, but with regard to the very real limitations that you alluded to, sometimes our institutions are badly designed also, and I'm sorry to say that in the judicial system in the US, you know, I would never
+ build a new society, importing these judicial systems, right, the way that judges are appointed should be, should not be politicized at all. I mean, that's what we try to do here in Canada to control as much as possible.
+ It's never possible to fully eliminate it to, but to reduce the power of elected officials in terms of appointing elected judges, that's doable, right, that's an institutional, you know, fix.
+ Such such problem but but but but I agree that in practice.
+ Very often we we fail.
+ There was something that I wanted to say about the oh yeah and with regard to hiring again very interesting and I guess that one interesting issue would be so so far we've been using decision support tool right coming up with predictive scores on who's going to perform
+ best at work or who's going to keep the job the position for the longest period of times and you have these predictive algorithm. Now we can use LLM is right generating answers in the in a natural language.
+ Is it better to use them than to use just decision support tools. Again, the training, the corpus will be, you know, key here. So I guess these will be fine tune model.
+ But, yeah, as you will know, it's, it's it's it's highly dependent on what will be the patterns tracked in the training data. If these tools will help us to make a fairer decision.
+ But, yeah, it depends a lot on what you add to your neural network right in terms of fine tuning.
+ Any of your questions there. Okay.
+ Thank you. It's not a question. It's a comment on Virginia's experiments if she's talking about the case of the black woman, I think it's very very interesting.
+ I think that your example shows that in human decision making people's interpretation of the connectives are important, be they logical or not, their interpretation is important than our decision making.
+ That it's what your example shows is that it's not the case with LLMs. And, for example, like you said about the, your injection of or in the discussion without with the LLM with a chat GPT, and that my whole experiments have shown that human beings tend to interpret systematically, the or as an exclusive or instead of an inclusive, simply because it's, it's, it's simpler.
+ It's simpler to make interpretations this way because there are two logical possibilities, a, and not be or be and not a, and the third possibility that the joint situation that one of the one of the person who's a woman and black at the same time is more complicated.
+ And so this way, I would say that in S one situations, human beings tend to make decisions.
+ According to an exclusive interpretation of the horror and and human discussions, when we want to make explicit that the third possibility is present, we don't say or we say, and slash or.
+ What you say I think is very, very interesting that this decision making and LLMs is something different from the decision making and human decisions, and I think that the importance of the connectives and our interpretations of the connectives be the logical or not, as I said, is very important in our decision making
+ and it does not the case in LLMs and I think we should think about the consequences of the way decision making with will be made through LLMs in a context in which something else than the importance of the conjunct of the connectives is involved.
+ So thank you so much. I think a lot about your example.
+ Let's go.
+ Yes.
+ For one, I understand, we have to keep in mind in a very good, very good way. How should we regulate the development of AI. And I think you spoke about the role of institutions in that regulation.
+ And in a way I think there might be too much optimism regarding that because from what I, from what I see and from what papers I read.
+ There is a, there is not a real try to regulate it because even if you take the Declaration of Montreal, it is empty. It is not legally binding. It is just a smokescreen to say, we will do good. How will we do good, we won't say anything on that.
+ I think with Bill C27, they say the same thing, we will do good, but no word on how we do it. And it's primarily about protecting private information and not development of AI.
+ And it's, there has been mobilization around the world for regulating the AI since 2016, 2015. And even then there is nothing done about the regulation. It is the industry developing the AI that can make all the decisions.
+ And no other institution is actually regulating it, not the political institution, not a legal institution. And in a way, I, and it's maybe the argument of the sociologist, which right now the development of AI benefits from a carte blanche.
+ Because of the, of the benefits of developing it, every time that we bring up the idea that there might be something bad happening or we wouldn't have to be careful the argument of, yes, but the benefits of developing it is too good and it just goes back.
+ So I would just like to know what you think about that.
+ Thank you.
+ All right, thank you for the question.
+ So, I agree with the starting point you know the very reason why we think that an institutional turn is required at this point in time is that the first phase in AI ethics coming up with a set of abstract values.
+ I think that that something that needed to be done, you know, values are reasons to act gives us reasons to act in particular ways right but in a very abstract way they tell us okay so what is important in that space what should we protect, cherish,
+ and so on. What should be, you know what should guide the development of these systems and so on it was important to both identify the ethical problems and to figure out okay so what are the values and commitments that we want to uphold in, you know, a context
+ formed by AI, but I remember that when we when we published the declaration of Montreal, the, the very first thing that I said say well congratulations that was important.
+ And that was the easiest part in AI ethics identifying the problems and the values. Now the most difficult work begins now. And that's where we are now that institutional turn and institutional turn for us is both first now,
+ ethics should serve as the foundation of new, you know, legal norms. Okay. And these legal norms need to be binding right so self regulation.
+ It would be foolish to think that self regulation with will suffice, it's, it's never works in business ethics it's a it's a foolish position to think that the private corporation can can self regulate and be socially responsible.
+ And this applies to AI as well so we need binding regulations with the capacity to ensure that there's compliance with the new legal regulations, and with the capacity to impose sanctions.
+ And contrast to what you said, that's in Bill C 27, as things are. Now it's not only about the privacy it's about regulating AI systems on the basis of the risk that they create the higher the risk this most more stringent, the regulations
+ be, and that comes with an obligation to audit these systems, and to document, you know how they were trained how they are deployed and so on.
+ So, you can improve on Bill C 27 but there's, there's some substance in it and there's even more in the EU AI Act now which is the most robust framework, so on so I think that that's, that's what we need.
+ Now, and it's it's it's doable we did it in other with regard to other technologies, gene editing and so on so Jonathan likes to focus on the negative, of course.
+ But I think that that's an urgent fight now to come up with these framework in all the jurisdiction in the US. There's also the executive order passed by the Biden administration which is quite demanding also the problem is that it's
+ it's an executive order and not a piece of the justations, we need real legislations, because they stay on the books.
+ We have a little bit more time before it's over. But we have two questions from the attendees and one here. Make it short.
+ This is not a question but I have an observation that is like, harder to convince and AI, like, adhere to what I believe that a person like, for example, like it's hard to prompt activity to say that.
+ Vaccines cause autism you have to trick it in a weird way to say that, but it's so much easier to convince a person with like, completely.
+ Only listens to like conservative media that person is easier to convince that vaccines cause autism, but for an AI there's, there's either a problem with what it's trained on, or it's a problem of how it's coded probably there's like a hard coded restriction.
+ But even if there's not a hard coded restriction I think that the underlying neural network might impact its ability to be convinced.
+ Just a second, you'll have an earnest short question. Yeah, if you're going to do it. Yeah. Yeah. All right. Thanks. Yeah. Yeah, just a quick word. A CBC journalist called me last week to show me how easy it was to jailbreak GPT for zero was actually not even jailbreaking just asking it to generate conspiracy theories and so on.
+ So it seems like opening I just gave up on red teaming altogether. And humans are easy to convince well it depends right sometimes we're social animals right as cognitive agents and yet under some circumstances where you can easily be fooled, but then we're very hard to convince you know to abandon the beliefs that autism can be caused by vaccines.
+ Yeah, sometimes we're quite dramatic as well.
+ Okay, just invite your hand and earnest to turn on their microphones. Okay, so someone online want to ask a question.
+ Hello.
+ Can you hear me. Good morning.
+ Can you hear me. Good morning. It's one at a time. Okay, Ernest, go ahead.
+ Good morning. My name is Ernest. I'm attending the course from Osawa. And as you are in Montreal, I will ask my question today in in French, because I know that you can answer me in French, Mr. Matthew Thank you for your presentation.
+ My question is, I have to question the first one is the comprehensive question concerning the LLM and the second one will be the prediction question in your perspective concerning the opacity of the algorithm.
+ So, for the first question, it's really about knowing what your boundaries are.
+ Because in following your presentations, I saw that you also talked about automatic learning in the LLM. So I would like to know if this model is really linked to deep learning or generative AI.
+ Or from your perspective, you extend it a little bit to automatic learning, machine learning.
+ This is the first question of understanding, just from your perspective, to see how you extend this model.
+ And the question of prediction in relation to the algorithmic opacity of the fact that artificial intelligence algorithms learn more from their mistakes to do better.
+ So, are we at dawn or are we still far from what the language model can do in terms of ethical issues?
+ Are we waiting for something that could be scheduled for tomorrow or are we still at the beginning of things that could happen?
+ The question is asked, go ahead.
+ Thank you very much, Ernest. So briefly, in relation to the first question.
+ What interests me is that I see generative AI and language models as coming from deep learning algorithms with several specifications and so on.
+ What interests me is that even if generative AI generates content that we thought was reserved for human minds, they do it on the basis of the same principles as other deep learning algorithms.
+ And they are subject, for the moment, to the same basic limit on the difficulty of generalizing outside of the distribution, including in training data.
+ And so the problem related to the lack of capacity to reason, common sense, and so on, applies to LLMs as well as to other deep learning algorithms.
+ In relation to the second question, I think we have made a big leap forward, a big phase of acceleration, since the publication of the famous letter asking for a break on the development of the most powerful models than GPT-4.
+ So I mentioned some legislative initiatives in the United States, Canada, and in the European Union, but in Quebec too, I participated with a group of experts under the leadership of the Council of the Nation of Quebec
+ to develop a report that contains dozens of recommendations to the government of Quebec to legislate in these fields of expertise.
+ And the first recommendation is the adoption of a framework law on artificial intelligence and the creation of a kind of office or authority that would have as a mandate to apply the law.
+ So I think we have made a huge leap forward in one year, but there is still a lot to do to get to the proper comprehensive law.
+ Okay, so it's Johan's question. Johan, you don't have to pose it. We have it in front of you. Read it.
+ Okay, so Johan asked, "In the regulation of such highly technical and more importantly misunderstood technologies, who should have the responsibility of regulating AI, computer scientists, philosophers?"
+ Oh, I like that. "Bureaucrats, should the companies developing these systems themselves be involved?"
+ Okay, thanks. So, unfortunately, not philosophers. That I'm absolutely confident that it shouldn't be philosophers.
+ Okay, so, yeah, so we need to develop that kind of expertise and that institutional capacity.
+ And of course, all, you know, shared stakeholders will need to be involved in different ways.
+ As I said, self-regulation is out of the question. The stakes are too high and the incentives are not there for real regulation, you know, pure self-regulation.
+ But it's like what we do with large modern bureaucratic state, right? We develop the institutional capacity and, of course, people in, you know, having the legal expertise and the policy expertise with the technical expertise will need to work together.
+ I think that there will be a role for ethicists there, but more like supporting these endeavors.
+ But what is crucial is that we need to build an institutional capacity that we can trust for compliance and having the, you know, the right rules there in place also to impose sanctions when, you know,
+ reluctant actors will try to, you know, just respect superficially the law or bypass it and so on.
+ But that's what we do with, you know, commercial flights and drugs, medical drugs and so on. So same approach will be required here.
+ With that, I want to thank you very much for what's obviously turned out to be very stimulating talk.
+ Thank you. That was fun.
+ My apologies for the brutality of the chairman, but in this hybrid event, there's no, there's no choice, but something has to be done to regulate it in time, it becomes a free for all.
+ We have to change. Are you leaving? Okay, stay for the.
+ We have to change mental states because we're no longer talking about LNMs directly. This is now going to be, there's going to be a break and then it's going to be a session dedicated to the memory of Daniel Dennett.
+ We've already surged in the presentation of Joss, because Nicholas Humphrey, who was a collaborator of his, and who's with us now.
+ There was one issue that was set aside by Joss, he said, of course it's on the agenda, but I'm not going to discuss it.
+ It will be discussed now. I won't say what the issue is, but it will be discussed by Nicholas Humphrey as well. Thank you very much and take a little break.

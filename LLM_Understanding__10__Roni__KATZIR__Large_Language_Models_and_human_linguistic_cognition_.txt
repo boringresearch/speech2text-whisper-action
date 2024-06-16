@@ -1,0 +1,785 @@
+ That's it. I'm going to go to the first one. I have a full room.
+ Please.
+ Welcome to the second session.
+ Uh, today, and I want to tell everybody that you can, you will be able to recover the recordings
+ in a day of every session and I, and the link is inside the document of the WordPress.
+ Ronnie Katzir is an associate professor in the Department of Linguistics and a member of the
+ Sagal School of Neuroscience at Tel Aviv University. His work uses mathematical and
+ computational tools to study questions about linguistic cognition, such as how humans represent
+ and learn their knowledge of language and how they use this knowledge to make inferences and
+ contribute to the discourse. Ronnie's received his BSc in mathematics from Tel Aviv University,
+ his PhD in linguistics from MIT. He heads Tel Aviv University's computational linguistics lab,
+ and he's in his undergraduate program in computational linguistics and is a tutor in the
+ Adi Lautmann interdisciplinary program for outstanding students. You'll have to send us
+ your outstanding students. Welcome, and it's, you're on. Thank you, Stephen. Let me just share my
+ slides. So I'll be talking about if and how we want to go from the excitement about the remarkable
+ engineering progress in the domain of neural networks to any claims about cognitive science,
+ in particular, human linguistic cognition. And of course, the excitement about the engineering
+ successes of the past decade and more, that excitement is very understandable. We asked
+ Chad GPT to write a Shakespearean sonnet about itself and human linguistic cognition,
+ and it writes something. I mean, it's not great poetry, but it's still impressive. And it's
+ something that would have looked like science fiction just a decade ago. But this is engineering,
+ and the question is whether we want to draw any conclusions from this engineering progress
+ conclusions to the study of mind, of the human mind. And here, there have been mixed reactions.
+ So some people have said that these models are not really thinking models at all, that they're
+ possibly irrelevant to the study of mind. A very catchy term that was used by Emily Bender and
+ colleagues is that these models are just stochastic parrots. They memorize stuff,
+ and then they throw it back at us in some probabilistic way. And that's one view. But
+ of course, lots of other people have reached different conclusions. We heard here on the first
+ day in Richard Futrell's talk the idea that perhaps these models already capture somehow
+ the grammatical structure of language. There have been claims that the activity of the networks
+ somehow corresponds very closely to our brain activities. There is a recent paper. I think
+ we'll hear more about that in Kyle's talk tomorrow about how LLMs have reached some kind of formal
+ competence, formal linguistic competence. And it was Steve Piantados' paper last year that claimed
+ that LLMs basically replace all of theoretical linguistics, that they are the way to do linguistics
+ these days. Okay. Just for convenience, I'll use the term the LLM theory for the idea that
+ key aspects of our human linguistic cognition are shared with LLMs. And of course, there can
+ be lots of different variants of this broad umbrella term. Maybe we share the representations,
+ maybe the learning processes, maybe some other things. I just will use this term occasionally
+ to make it easier to refer to this family of views without implying that they're all the same somehow.
+ Now, to begin with, there is something that is surprising about the claim that LLMs teach us
+ about human linguistic cognition in other domains. And to use maybe the most familiar example in
+ these discussions, in other domains, we usually draw a clear distinction between empirical science
+ and engineering. So if we want to study flying, we might be interested in things that fly in the
+ world like this albatross over here on the top left. Or we might want to be in the business of
+ constructing flying things. And that's engineering, like the right brother is Kitty Hawk on the bottom
+ right. Those are two very different enterprises. Even if some people would be interested in both,
+ and sometimes tools from one domain can be useful in another, those are very different projects.
+ When it comes to thinking, to cognition, things for some reason tend to get blurred. But the
+ distinction is the same. We might be interested in things that think in the world and study perhaps
+ ourselves, perhaps other organisms. Or we might be in the business of constructing thinking things or
+ talking things and build all kinds of machines that do that. It's not at all clear that there
+ will be a lot of overlap between the domains, even though, again, the same person might be interested
+ in both. And occasionally, a discovery in one domain might be helpful in another, but a priori,
+ we can't assume that. So how do we study linguistic cognition? And here I'm just repeating something
+ that I had on a slide a couple of days ago after Richard's talk. And so we perform inference to the
+ best explanation in all empirical domains. This is not specific to cognition in any way. So we try to
+ explain. We look at the data. Of course, we care a lot about the data, but we try to find the best
+ theory, the best explanation. We don't try to match surface frequencies. We don't get too worried
+ when there are exceptions. That's not the thing that we should care about when we construct our
+ theories. We try to build good theories and we compare them. And then we can talk about laws.
+ And laws are just big identifiable parts of best explanations. And laws might be not at all surface
+ true. They might have many exceptions because laws might apply and then other things might happen
+ along the way that will obscure the observation. So we might have a really good theory of how objects
+ fall, but then there are things like winds and friction and so on that make our observations much
+ messier than we would expect just by looking at the law itself. But this is what we do generally
+ when we try to study an empirical domain and the same holds in the domain of cognition. And so one
+ would expect that if LLMs are proposed as a serious theory, then this should be done in these terms as
+ an attempt to say, look, we have a better explanation. We know and we engage with existing
+ explanations from, in the case of linguistics, at least 70 years of serious theorizing of the topic
+ and in some cases some additional centuries and millennia of discoveries in this domain. And we
+ take this into account and we're showing you that LLMs provide a better theory. And that should be
+ the standard by which we evaluate the LLM theory. We compare it to existing explanations
+ in light of existing discoveries. And explanations in this domain, and this includes
+ LLMs, all share several ingredients that interact in all kinds of interesting ways.
+ We can talk about the representation. So we're born with something and we can disagree on
+ what it is that we're born with. And there have been lots of different ideas and proposals and
+ arguments for what we're born with, but we are born with something. That's something that everyone
+ agrees with. So you can think of it since we're used to talking about linguistic knowledge as
+ computational, at least in part since the 1950s. We can talk about this innate part as the innate
+ programming language, the thing that we're born with. Now, this can be a way of writing context-free
+ grammars, or it can be Python, or it can be all kinds of things. It can also be LLMs. LLMs provide
+ their own programming language. Each proposal is a way in which we can then write different weights,
+ just numbers and the connections between the units. And so that's the representational part.
+ So everyone has that component. In linguistics, this got the name universal grammar, which
+ can be a confusing term. So I'll try not to use it a lot. I think it's enough if we talk
+ about the innate programming language. That's one factor. Another factor in explaining things is
+ learning. And we just heard Charles talking about that in the previous talk. I'll talk more about
+ this soon. And of course, this is a major issue in all the discussions of the current models.
+ And we heard different ideas about this the past couple of days. We'll hear more, I'm sure,
+ of the coming days as well. Communication presumably plays an important role in shaping
+ the languages that we see around. So part of the data that we need to account for needs to be
+ understood in terms of communication. So that's another factor. Processing, resources,
+ and many other things. This is by no means an attempt to provide an exhaustive list.
+ But these are all parts of an explanation. And all evaluations of LLMs or anything else in the
+ domain of cognition should tell us what the proposal is really, what the explanation is,
+ and why it is better than other explanations. Something that is usually assumed but not in
+ the LLM world is the following, which is sometimes attributed to Galileo. And that is that
+ if we want to discover things about the world, it's a very good idea to start from the assumption
+ that we can understand it, that the world can be understood. And then if there are things to
+ understand, we might be able to discover them by trying all kinds of things, failing, correcting
+ ourselves, improving our explanations. If we start from the assumption that nothing can be understood,
+ then even if there are things that can be understood, we'll miss them. And in a sense,
+ the LLM theory starts from that position, from saying everything is so complex,
+ let's take something with hundreds of billions of parameters that is completely opaque and that we
+ have a really hard time looking into, and that will be our starting assumption. And that makes it
+ extremely difficult to discover things. Even if there are very simple things that can be
+ discovered, this starting point will make that really hard, and that's something I think to
+ keep in mind. So these are some general a priori considerations. And I think the fact that we're
+ taking an engineering tool and a very opaque one and using that as a starting point, if we're
+ following the LLM theory, that's going to make it really hard for us to see what's happening.
+ It makes it, I think, quite unlikely a priori that we'll find things, both because what are the
+ chances that this engineering tool will just happen to be like us, and because if we start
+ from something so opaque, it'll be extremely difficult for us to see what actually happens.
+ For now, let's put these general considerations aside and look at some of the
+ empirical data. And there are multiple places where we can see that the LLM theory
+ either hasn't told us yet how it will deal with well-known challenges in the study of cognition,
+ or it makes very clear predictions that seem to be completely wrong. And really, I'm going to
+ follow here proposals and observations and forms of argument that were formulated
+ over half a century ago, and that have been very central to linguistics and parts of
+ several other domains since then, and places where we could have pointed out in advance
+ that LLMs were going to have a problem. I'll start with something that is maybe not the most
+ exciting empirical question in the area of LLMs, but it will be helpful for us to have that in the
+ background, and that is competence versus performance. And we know this distinction,
+ not just from the study of language, from lots and lots of different places.
+ When children try to walk, they very often try to succeed. They try to get somewhere
+ and get there perhaps in the straight line, but they very often fail. They're not well
+ enough coordinated to do that. It happens to adults too, just maybe a bit less frequently,
+ so we notice it less. But we very often, at different ages, try to walk a certain way.
+ That's our competence telling us what we're trying to do, and our performance
+ just gets in the way, and all kinds of muscle and coordination problems make us fall.
+ Yesterday, Virginia was showing us a developmental area where it looks like there is a very
+ striking kind of division between competence and performance with respect to utterances
+ produced by children. One of the classic examples of the competence performance distinction is what
+ happens with center embedding, where we know what happens over here as a sentence. I just gave this
+ to ChatGPT with GPT, in this case with GPT-3 a year ago. The mouse at the cap that the dog painted
+ thought sang, and ChatGPT at that time got completely confused by that sentence. But the more
+ relevant point here, since then in GPT-4, this has been fixed, but there are other cases that
+ we could look at. They're just longer. The main point here is that humans follow a very clear
+ pattern with these sentences. We find it hard. We find such sentences hard. We make mistakes and so
+ on. But if we look at them longer, if we sit in a quiet room, if we sleep better at night and so on,
+ then we'll perform better. And if there's noise, if we have a parallel task and so on, then we'll
+ perform worse. We know what the correct thing to do is. It's just that we struggle in harnessing
+ our resources in real time to deal with this. This is not something that LLMs have, to the best of
+ our knowledge. I mean, if they have a distinction of this kind, then it hasn't been pointed out.
+ There are ways to simulate that, and LLMs in different ways can be made to behave as if they
+ have this distinction. But when you look at the architecture, there is no sense in which
+ center embedding is harder, more difficult in terms of the resources that are used,
+ that memory is somehow needed here in a way that it isn't in cases that don't involve center embedding.
+ And that's something to keep in mind. And now for something that I think is
+ more interesting inherently, and also more worrying for the role of LLMs in society,
+ and that is the distinction between what is correct and what is probable.
+ And we have this distinction in lots of different domains. We know that certain things are the
+ right thing, but a very unlikely thing. So in scientific discoveries, the discovery itself
+ might be something that is completely surprising, but the discovery was made. And if there are good
+ arguments, then it is correct, even though it's unlikely. So Richard brought up Kepler's
+ discoveries, but when Kepler formulated his laws of planetary motion, those laws were very surprising.
+ The elliptical orbits, no LLM at the time would have predicted that kind of sentence,
+ but it turned out to be correct. And we have it in lots of areas in art. So good autistic creations
+ are things that are surprising. No one would have predicted them at the time,
+ but they are correct according to something. And we know that they're correct. Not everything that
+ is surprising works. Some things do. Beethoven's late string quartets work, even though they were
+ shocking at the time. Cubism works, even though it was strange and shocking at the time, too.
+ And we find that in lots of different domains, including in language. In language, we have
+ many, many cases where something is just correct, but unlikely. Here is something that I
+ checked with GPT-4 also about a year ago. A continuation of a sentence. The little duck
+ that met the horses with the blue spots yesterday. And two possible continuations. One is R, which is
+ likely, but it's a common error. There is an agreement problem here. It doesn't match the
+ subject. Or destroys, which is grammatical. It is correct, but unlikely. And GPT-4, at least at the
+ time, got the wrong result here. It went for what's probable. Richard was talking about something
+ similar a couple of days ago and had a very nice example with two sentences, or one grammatical,
+ but unlikely sentence, and some incorrect word salad that the LLMs preferred. And there are
+ lots of these. We have this distinction. We can look at those cases in all these different domains,
+ and we know that some things are right, but unlikely, and that other things are likely,
+ but incorrect. And LLMs don't, and they architecturally don't have that. When you
+ look at the architecture at the network itself, it only outputs probability. That's the only thing
+ it knows how to output. So when we try to squeeze something like correctness out of networks,
+ it's a trick. It's trying to make it predict something probabilistically that we will
+ treat as a correctness judgment, but that's not what the network says. For the network,
+ there is no notion of truth. It's not even getting correctness wrong. It doesn't have that category.
+ And I think that's worrying for the role of these models in all kinds of places that affect society,
+ because something that doesn't have a notion of truth is scary, and something that doesn't
+ have a notion of correctness or truth and knows how to hide it so well is even scarier. But here
+ for the study of cognition, it's just clear that something essential is missing, a clear category
+ is missing. Then there are all these many, many different ways in which our representations,
+ so the things that come from the programming language and the learning that we have, are
+ completely different from what we see with networks. Richard mentioned on Monday the argument
+ from the poverty of the stimulus, and then it came up again yesterday a couple of times.
+ Here I'm just going to assume the following form of argumentation that goes under this name,
+ and that has been quite central to discussions, and this is the following. If humans systematically
+ arrive at a certain piece of knowledge, given certain data, and if we can show that linguistically
+ neutral learners don't do that, then humans are not linguistically neutral, if we just
+ show that linguistically neutrals fail to reach that knowledge and that humans do, and so humans
+ come to the task somehow prepared or biased in this direction. Richard suggested that LLMs
+ show that it's easy to learn and that an argument from the poverty of the stimulus
+ falls apart, and I'm going to try to show that that's not the case, or mention a few
+ observations that suggest that this is simply not the case, and that LLMs are,
+ first of all, that they're very different from us in terms of representations and learning,
+ and second that the argument from the poverty of the stimulus might be even
+ strengthened when we use LLMs to evaluate how much information there is in a corpus, but
+ that's more tentative. Ideally, LLMs are not great for conducting this discussion of the
+ poverty of the stimulus, so that's why I mentioned that the more constructive conclusion will be
+ tentative. So ideally, what we would do is we would take a very powerful learner that is clearly
+ capable of learning the kind of knowledge that we're interested in, but is also clearly not biased
+ in any way, in any way that favors linguistic knowledge or learners are biased in one way or
+ another. We would train this learner on a corpus that is something like what children see, and then
+ we would inspect the learner and see what it learned. Now with LLMs, we can't do any of these
+ three things, so they're not sufficiently powerful. I'll say more about this in a moment. They're not
+ sufficiently powerful to learn basic things that humans know. We don't know enough about their
+ biases to just claim that they're not linguistically biased. We don't know how the many
+ decades of working on them, in what ways these decades made them biased in ways that we
+ don't know and that are hard to read. At this point, we don't have good enough corpora that
+ correspond to everything that a child is exposed to over the first few years of their life. That
+ also is something that came up during the talks and conversations here. And finally, we can take
+ LLMs and look at their knowledge. First of all, they don't tell us things directly about grammaticality
+ or knowledge. As I mentioned, they don't have that distinction, but even if we use them as some kind
+ of proxy for a future learner that can talk about correctness, we just don't know. We can't read
+ what's there. Still, we might be able to use them in certain ways, at least as proxies, as something
+ that would give us suggestive arguments. And there have been several such papers recently.
+ The paper by Wilcox, Futrell, and Levy that Bert was mentioning uses LLMs in this way to say that
+ there is no argument from the poverty of the stimulus in the case of WH movement. I'll have
+ some examples in a moment for those of you who are not familiar with that, for the things that we find
+ in questions and in all kinds of other long-distance dependencies in syntax. And they suggest that these
+ LLMs are able to reach the knowledge that humans have and that this dismantles the claims in the
+ linguistic literature that we are special in, that we're prepared somehow to acquire this knowledge.
+ So LLMs are supposed to show that anything could learn it.
+ So I want to make the following small point that we're not talking here about whether it's easy
+ or hard to learn syntax. So Richard was saying that acquiring syntax turns out not to be that
+ difficult. I don't know what exactly he meant by that. We didn't have time to get into that in the
+ conversation. There are different ways to understand difficult, but the argument from the poverty of
+ the stimulus is not that it's hard to learn in general, or it's hard to learn syntax in anything
+ of that kind. And it's really about being able to reach certain conclusions based on a certain
+ amount of input. And if a good general learner can make that kind of inference from the data,
+ then we don't have an argument. If such general purpose learners fail and humans succeed, then
+ we have an argument of this kind. I'm just basically repeating what I had on the previous slide.
+ This is what we're talking about here. So linguists often claim that it's just hard
+ to learn or things like that. It's about very specific inductive leaps based on very specific
+ corpora. And the claim here is that in the literature, in the linguistic literature,
+ the idea is that there is not enough information in the corpus that children see that will allow
+ them to acquire the specific kinds of knowledge of WH movement that they do. And the claim by
+ Wilcox and colleagues is that that's not the case, and that LLMs succeed in acquiring this
+ knowledge from comparable corpora, and that therefore the linguistic claims are wrong. Now,
+ I'm going to talk about recent work that Nualan, Immanuel Shemla, and I did that just probes this
+ question a bit further. And as far as we can tell, the claims about LLMs are
+ very much premature. That in fact, LLMs provide no evidence that a general purpose learner would
+ succeed in acquiring these dependencies, these WH movement dependencies, filler gap dependencies.
+ So we looked at a bunch of different models listed here and trained on corpora ranging from about
+ 10 months of linguistic experience to over 10,000 years of linguistic experience.
+ And we followed Wilcox, Futrell, and Levy in the general kind of paradigms that we were
+ looking at, and they looked at things like this. So the dependency between who, the filler,
+ and the gap here, the empty space here between with and yesterday in 1a. I know who you talked
+ with gap yesterday, that's good. But I know who you talked with Mary, no gap, still a filler,
+ but no gap yesterday, that's not good. And if we don't have the filler, if we don't have who,
+ we have that instead, then we cannot have a gap here. I know that you talked with gap yesterday,
+ no good. I know that you talked with Mary yesterday, no filler, no gap, that is good.
+ And as Wilcox and colleagues discovered, LLMs can make the correct guess here in simple cases.
+ What's the correct guess? They don't, these models, as I mentioned, don't give us grammaticality
+ judgments. What they can say is just probability. And probabilistically, we would expect any model
+ that was able to figure out the pattern roughly to give a much higher probability,
+ much, much higher to the grammatical continuation, because it's also the likelier one. This is a case
+ where grammatical and probable happen to be well aligned. So we'd expect a much higher probability
+ to the correct continuation. But so what we did in our paper is we looked at some more cases of
+ this kind and pushed it just a little bit beyond those very simple cases. So here is one out of two
+ main cases that we looked at. And that is what happens when you have coordination A and B.
+ And in these cases, if you have a gap in one conjunct, then you must have a gap in the other
+ conjunct. So if you have a gap just in one, that's generally not okay. There are some well studied
+ exceptions, but in general, that's not okay. So to A is not good. What fruit did John buy an orange?
+ No gap. And Mary sell gap. That's not good. What fruit did John buy and Mary sell? That is good.
+ Similarly in three, I know who John praised gap yesterday and will insult you. No gap tomorrow.
+ Not good. I know who John praised yesterday and will insult tomorrow. Gap in both conjuncts. That
+ is good. Here, all the models assign, it's not just that they fail to assign a much higher probability
+ to the correct continuation. They actually prefer the incorrect continuation. All of them trained on
+ different corpora of different sizes. They all fail, including those that were trained on 10,000,
+ 30,000 years of linguistic input. That was just graphs with one sentence, but we looked at
+ thousands of different lexical configurations. And with the exception of GPT-3, all the models,
+ including the very large ones, guessed the incorrect, the preferred, the incorrect
+ continuation in most of the cases. Okay. So we can already conclude that the networks are not showing
+ us that they learned the pattern. In fact, very soon I'll show you that there are reasons to think
+ that the networks cannot really learn the pattern, but they don't even approximate it.
+ They're not even close. They're failing completely, almost all the time. They're
+ actually preferring the incorrect continuation. So they're certainly not showing us that the
+ argument from the poverty of the stimulus doesn't go through. Okay. For that, we would need a general
+ unbiased learner that is successful after about eight years, which is here around the Wikipedia
+ models or maybe earlier. So between Childless and Wikipedia, GPT-2 is already hundreds of years of
+ linguistic exposure and GPT-J and three is thousands of years. So even with hundreds and more of years
+ of linguistic experience, current models, maybe future models will succeed here, but current models
+ simply don't show us that there is a problem with the argument from the poverty of the stimulus.
+ Much more tentatively, we retrained one of the models, the Wikipedia transformer, with additional
+ examples, just a couple of hundred examples of the relevant kinds of constructions and the
+ performance improved a lot, which suggests that the models in principle, even though again, they're
+ not going to be able to learn the pattern exactly, they are able to approximate it way better than
+ what they did when trained on the original corpora, which suggests that the original
+ corpora are just not rich enough to support this kind of inference. Another thing that is highly
+ informative about what we're born with is the typology. So we look at different languages and
+ we analyze in depth different languages and then we try to reason about what we need to be.
+ What's a good theory of us? Again, we're doing inference to the best explanation.
+ What's the best explanation that would explain why all languages have this or that property or why
+ most languages are like this? Again, here are the factors that I had earlier, the representations,
+ UG, the innate programming language, learning, communication processing, and so on. There can be
+ all kinds of other things that are part of the explanation, but we need to reason about these.
+ We need to say, okay, in light of what we're seeing, of the data we're seeing, we conclude
+ that perhaps the programming language has this property or that property or that the learning
+ mechanism is like this or like that or that communication works in a certain way and so on.
+ Here are some very central and, in a sense, straightforward
+ aspects of competence, straightforward to describe. The discoveries themselves were
+ very significant and remarkable, but it's easy to understand what we're talking about here in
+ these things. Then I'll have things that are a bit trickier to describe. The fact that natural
+ language seems to rely very heavily on bracketing. This is something that came up a couple of days
+ ago. John will talk to Kim, so to Kim is bracketed together, talk to Kim is bracketed together,
+ and then if we place things in an unexpected place in the beginning of the sentence, talk to Kim,
+ John will, that's okay, but we can only place things that are bracketed together here in this
+ position. We can say, Kim, John will talk to you, or to Kim, John will talk, or talk to Kim, John
+ will. All of these are okay, but when we take something that is not bracketed together,
+ talk to John will Kim, that's bad. This is something that is not just about English,
+ it's something that we see in many, many, many different languages. In fact, it's hard to make
+ the case that languages can choose to ignore this, even though some languages have very free word
+ order, there is still some evidence for constituency there, and this is something we need to explain,
+ something we need to derive. In linguistics, since the very beginning of generative linguistics,
+ this has been part of the story, and it usually goes into the programming language here,
+ the representations, the innate programming language. This is not something that LLMs derive,
+ and to the best of my knowledge, there is not even an attempt to derive it. In fact, there is reason
+ to think that LLMs can't even capture this, but they certainly don't derive it. In terms of the
+ meanings that we have, entailment plays a very central role, which is part of a non-trivial
+ explanation that I won't go through here, for why Kim spoke to every student who ever smoked is okay,
+ but Kim spoke to some student who ever smoked is not okay. This is, for many decades, the standard
+ explanation has been in terms of entailment or subsethood in some sense. This is not something
+ that, and again, it goes into the programming language when we talk about explanations in
+ linguistics. LLMs don't capture this, and they certainly don't derive this. One other thing
+ is that the meaning computations, they make reference to structure, the syntax, but syntax
+ doesn't make reference to meaning or to very small parts of very formal aspects of meaning,
+ so there is modularity here. There are other cases of modularity in the grammar. The arguments are
+ non-trivial, I'll be happy to talk about them in the question period, but they're there. LLMs are
+ inherently non-modular. It's not clear whether we can make them learn something that is so modular
+ as what we have in our competence. LLMs certainly don't predict this. Many other cross-linguistic
+ patterns, as I said, may be a bit harder to describe, so I'll just mention them here and we
+ can come back to them in the question period. One is what I already mentioned about if you have
+ a gap in one conjunct, then you must have a gap in both. You see this in language after language,
+ it's not just about English. Presumably something about the programming language tells us to be
+ like this, that pushes us in this direction. It might have exceptions, but it pushes us in this
+ direction. Not clear how LLMs could capture this, certainly not derive this. Other things like the
+ fact that we can't ask a how question about a relative clause, so how do you know the mechanic
+ could fix the car? We can't answer with a hammer. Or something very similar superficially, like
+ how do you believe the mechanic fixed the car? We can certainly answer with a hammer, but not in
+ relative clauses, and this seems to be without exception cross-linguistically. Certainly
+ cyclizations never happen. We don't have a word that a quantifier like every or some or many or
+ most of five, that would be like this gleeb here, that is true exactly when there are more of the
+ first argument than the second. So gleeb boys smoke, exactly true when there are more boys than
+ smokers. It's not a crazy meaning, we have the verb outnumber that means the same, but we just
+ don't have quantifiers in any language that behave like this. Many other things, to my knowledge,
+ not even the beginning of an explanation of this in that doesn't make reference to the programming
+ language or in any of the attempts to say that LLMs are plausible models of linguistic cognition.
+ In the case of XOR, so the fact that we do not have a word for exclusive or or for NAND in any
+ language, we don't have a single morphine for that. Richard mentioned a couple of works that
+ are in this neighborhood but don't provide explanations for this, and we mentioned the
+ work that Emile Langalle and Benjamin Specter did and work by Shane Stein and Thrillcote, but
+ those are not actual explanations, nor would the authors claim that they're explaining this here,
+ and as far as I know, there really are no explanations at this point that don't make
+ reference in one way or another to the programming language or something that LLMs could could live
+ with. And so these empirical failings that we just saw, I think, are major. These are all very big
+ points about what makes our linguistic cognition what it is, and linguists have engaged with
+ these challenges for many decades, and the LLM literature at this point seems either to remain
+ completely silent on this or to have real problems like not having the right categories, not being
+ able to even approximate the relevant parts here. In the remaining few minutes, I want to talk about
+ something that looks like a particularly striking failure of LLMs, which would make them not just
+ bad models of human linguistic cognition, but also bad models of any kind of thinking things, so
+ bad scientists in general, something that would be bad in an alien or in anything really. So here is
+ a very simple example. So a few strings here, all of them are A's followed by B's, followed by C's,
+ followed by D's, and if you look a bit more closely you'll see that the number of A's and
+ the number of C's is always the same, the number of B's and the number of D's is always the same.
+ We have no problem noticing that. We'd expect any scientist, of course, who looks at this regardless
+ of their, to notice this. We'd expect children to notice this actually. We'd be disappointed
+ if an alien who pretends to be intelligent would not notice this. This is a very basic generalization.
+ Any thinking thing should be able to get this, but LLMs don't. This is what happened when I gave it to
+ chat GPT with GPT-4. I did it a year ago, then I repeated it recently and the results are the same.
+ It thinks that there could be E's in the end. It misses completely the fact that the A's and the C's
+ should be balanced and the B's and the D's should be balanced. I tried to help it, nothing works.
+ So this is very embarrassing, I think, for any attempt to say that these models are
+ automated scientists. If they can get this right, then they're certainly not going to be
+ automated scientists. They can help us, they can help scientists, they can be a fantastic tool
+ to assist us, but they cannot reason, they cannot perform induction, they cannot notice basic
+ patterns here. Now in this particular case, I think there is a solution and it's not my solution.
+ It's in fact a very old solution. It was developed by Ray Solomonoff here on the left
+ in the late 50s and published in 64 and also discovered independently by Kolmogorov and by
+ Chaitin and then made its way into a principle that is known as minimum description length or MDL,
+ which was brought up in the Q&A in the previous session after Charles's talk.
+ It's a very general principle of rational inference that says that when we try to be scientists,
+ we try to find the best overall explanation, so we find the best in terms of shortest,
+ the shortest computer program that prints out the data and then stops. Very often when we're talking
+ about grammars, it's useful to distinguish between the grammar component here, I wrote it as G,
+ and the data given the grammar, the encoding of the data given the grammar, D given G,
+ and we try to minimize the sum total of these two quantities. It corresponds very closely to
+ things that people have talked about under the name of Bayesian inference and it seems to match
+ what subjects do in the lab on several different tasks. So in visual inferences of certain kinds
+ and in fast mapping, it has been claimed that subjects follow this kind of optimization.
+ In work in my lab from a few years ago, we used this principle to build all kinds of learners
+ here in the bottom left here, a learner for phonology that just looks at surface data
+ and acquires a full phonological grammar, including the lexicon of underlying representations,
+ the phonological processes, the rules with their context and their ordering,
+ which to the best of my knowledge remains the only learner in the literature that can do this kind
+ of thing, that can start from just from the surface data and reach these kinds of grammars
+ that are of the kind that some phonologists have proposed for our phonological knowledge.
+ So this is the principle and we can take this principle and use it with neural networks.
+ And this is a paper that Nourlan, Khalgair, Emmanuel, Shemla and I have. It's from a couple
+ of years ago and we just used MDL and we used that instead of the standard training that networks
+ have been using, the same training for more or less four decades that is based on essentially
+ maximizing the likelihood, minimizing D given G cross entropy, the standard quantity that
+ goes into backpropagation and that helps standard networks learn. We replaced that with MDL,
+ which was something that people looked at in the 1990s but then more or less abandoned.
+ And what we saw is that we get networks that succeed according to all kinds of metrics,
+ they perform much much better than all the standard networks that we looked at and not only that,
+ they reached perfect knowledge. So given not so much data, they were able to, after
+ learning converged, which we did with a genetic algorithm, they showed us their knowledge
+ in the shape of a simple story. So the networks can actually be read and you can prove that they'll
+ be correct for all N, not just as an approximation, that they're really correct and they'll stay
+ correct regardless of N. So this is for A to the N, B to the N, A to the N, B to the N, C to the N.
+ You can follow the story here, they develop the evolved counters. So the structure here,
+ we didn't impose a structure, we let the learner search through this huge hypothesis space of
+ different architectures, different connections, different weights and so on. The broken lines here
+ are recurrent edges, the solid lines are normal feed-forward edges and in formal language after
+ formal language, the learner arrived at a perfect network, a small transparent network where we
+ could prove that it's correct for all N, not just as an approximation. This is for addition, which
+ also standard learning doesn't work. Then we looked more closely at the objective function
+ with different regularization options like L1 or L2 and what we saw is that
+ we did it both with the simple architectures from the previous slides and with LSTMs
+ and we saw that standard objective functions, regardless of which choice of early stopping
+ or actual regularization like L1 or L2, your objective function will push you
+ in the direction of a mistake. A point in the hypothesis space is simply incorrect
+ and MDL here on the right, so this is with on the left it's with L1, middle with L2, two kind of
+ familiar regularization options. On the right it's MDL and it's only in MDL that the correct
+ point in the space, the correct LSTM for A to the N, B to the N and what the objective function
+ chooses are aligned. In all the other cases the correct thing and what the objective function wants
+ are separate, so no matter how long you train these LSTMs and how much you try to make them
+ better, they will not work with standard learning because the objective function is wrong. With MDL
+ you get the correct result. Okay, so just to briefly conclude, to evaluate the LLM theory,
+ we need to talk about inference to the best explanation, simply because it's an empirical
+ science that we're dealing with here and that's how we make progress in empirical science and
+ the LLM theory fails. It fails to even approximate constituency, so something that can't learn at this
+ point A to the N, B to the N is not going to get you constituency, let alone these more complex
+ things that I showed earlier with the WH movement. It's certainly not going to explain why
+ language after language makes reference to constituency. Similarly for modularity, for
+ entailment, for competence versus performance and so on. All these things that linguists have
+ built into their explanations and have cared a lot about and these things are not things that
+ the LLM theory can even begin to explain, which means that it's just not on the right track.
+ We started from those a priori considerations, so what are the chances that an engineering
+ breakthrough will somehow be a scientific theory and what are the chances that we'll discover
+ interesting things if we start from the assumption that the world cannot be understood.
+ So given that starting point, the fact that the LLM theory fails so badly is not really surprising.
+ Okay, so I know this sounded quite negative with respect to LLMs, but it isn't about LLMs being not
+ good. They're fantastic engineering tools. It's about the LLM theory. LLMs are really remarkable
+ engineering products. They do lots of things. They can help us in lots of things here. I
+ used them a bit earlier to illustrate a linguistic point and there are of course tons of other
+ ways in which they can be used, but they don't work as scientists, not even as alien
+ scientists. They fail at generalizing in the most basic way and they're really, really, really bad
+ as theories of human linguistic cognition. So if we go back to the question of whether these things
+ are real theories of who we are or whether they're stochastic parrots, I think the answer is clear.
+ This is what they are. The only thing is that I feel a bit uncomfortable with the stochastic
+ parrot thing because I think biological parrots actually are intelligent. They're amazing creatures.
+ They do think and they learn. LLMs don't. They're interesting in other ways, but they're not. But I
+ think the point is clear, so I'll stop here. Thank you. Thank you very much.
+ A little note about the discussants. I've been kind to Roman because his formal discussant
+ is going to be benign, I think. But there are some people in the panel here who are much less benign
+ on this hypothesis, so there will be more coming. You did. You're the mercy. Yes, I am the nice one,
+ and indeed, so I'm again in the lucky position to talk about a presentation that I agree with.
+ But let me ask you a few questions. I have four questions, I think. I'll start from the more
+ empirical one or one. So when you presented work that you conducted with Emmanuel Chemla
+ and another collaborator, you showed sort of filler gap constructions, right? You showed us
+ how CHED GPT-3 got much better than all the other models. So what does that tell us? So I'm wondering
+ if you take it as like it's just a quantitative thing. It just got better. Of course, it was
+ trained on more, who cares? Or do you think that if in the future we will have better models who can
+ handle even your more sophisticated examples, then that would actually be something substantial?
+ Right, thank you. And that's a very important question. And I think in the case of GPT-3,
+ things are a bit mysterious because like all the products of OpenAI, we don't really know what's
+ happening there behind the scenes. But we do know that it's trained on a lot of data.
+ And so many, many orders of magnitude above what children see. So I think the fact that
+ there you start seeing an improvement actually suggests that these models, again, with a caveat
+ that we don't know what's actually happening with GPT-3, but assuming that it is that the success
+ is an LLM success there, then it does suggest that with lots and lots of more data, you can
+ these models can start approximating what children know. But children learn that or
+ reach that knowledge after very few years of evidence. So in this sense, the relative
+ success of GPT-3 serves to strengthen the argument from the poverty of the stimulus. These models can
+ tell us when there is enough, when the signal is strong enough. And it just takes many, many
+ thousands of years until we get to that point. And since children succeed with much less,
+ they're somehow prepared. But of course, as with every attempt to draw a positive conclusion
+ from these things, it has to be very tentative. And so related to that point, actually. So my
+ second question would be, well, OK, so essentially, let's take this and also the very, I thought,
+ very insightful and smart manipulation of you feeding sort of artificially too many of these
+ filler gap constructions, like a lot more that would be representative of real input than they
+ can learn it. So let's take this as arguments or evidence for large language models being different
+ kinds of learners than humans. So essentially, let's take them as not poverty of stimulus,
+ but richness of the stimulus kind of learners. So they learn well from a lot of data. This is
+ not what humans do. This is not what kids do. Fine. But they are these kind of learners. And so
+ I think it's undeniable that they, as you said, they're efficient engineering tools.
+ They can at least imitate or mimic language. What would that tell us about the mind or language or
+ cognition? So assume that we agree, which some people don't, but let's agree that they are not
+ like humans. But they do learn language in a certain sense, at least functionally.
+ Would that be meaningful for cognitive science or linguistics?
+ So I'm not sure. So for cognitive science or linguistics, I would like to find a place where
+ we find some organism or some other cognitive domain where what LLMs do is kind of the beginning
+ of a good theory. If we find that, and it's possible that we'll find that, in which case,
+ this different kind of learning that these models exhibit can become very meaningful and can teach
+ us potentially quite a bit. At this point, I'm not familiar with claims that, OK, so our linguistic
+ cognition is completely different from LLMs. But this other thing that we do or that this or that
+ organism does is a lot like LLMs. But that would be very interesting. So again, I don't mean to
+ be negative about LLMs. I think they're very impressive. And they could, in principle, be
+ a good way to start understanding all kinds of other things. But I don't know what those other
+ things are. OK, so I guess to rephrase this maybe or push the parrot analogy a little bit,
+ if we found other organisms that learned in this way, then they become interesting because they
+ can explain something. So if humans evolved to learn language in one way, but maybe something
+ else evolved to learn some communicative system in this way, then they're interesting. And then my
+ final question is about the under-the-hood problem. So assume OpenAI just made it open,
+ so it was transparent about everything, if we understood exactly what was going on. So not just
+ that they open it up, but we take the time and effort and energy to track down all the parameters,
+ the huge complexity. Our best scientists will work on this for a long time, and we figure out
+ exactly what's going on. Because I think your argument for LLMs not being a good scientific
+ theory, simply because they are black boxes, and so how could that be a scientific theory,
+ is of course a really strong one, but one that is not an in-principle problem, but more like a
+ practical problem. So imagine OpenAI gives access to everybody and we put a lot of energy into
+ understanding it. Would then LLMs qualify as a theory, or at least a candidate theory?
+ Right. So that general methodological worry that I raised about starting from saying that
+ the world cannot be understood, that worry will go away if LLMs become a way of saying the world
+ can be understood. And if someone shows us how to read LLMs with other hundreds of billions of
+ parameters and all that, and someone develops some clean mathematical theory that allows us to
+ understand what is said there, then that methodological worry goes away and it becomes
+ more promising, because then we can start asking questions about, okay, so now that we understand
+ what these models are saying, we can very easily go and check what they predict, and we can make
+ progress in the usual way. So yes, indeed. Now, I think that the empirical failings that I went
+ through with the typologic, all the many, many, many different typological facts and the inductive
+ leaps that we made from the stimulus, and competence versus performance and correctness
+ versus likelihood, for all of that, we don't need to wait until someone comes up with that
+ theory. There we can already use what we know from cognitive science to say, okay,
+ whatever these LLMs are, they're not this, they're not us. Yeah, but for the rest, I would love to see
+ a clean theory of how LLMs work, which would allow us to, of course, understand much, much,
+ much better what's going on there. Thank you so much. Thanks, Ronnie, and thank you very much for
+ the amazing talk. Thank you. Thank you, Judith. A few words about the organization. The way that
+ the panels were set up and the days were set up was not based on the taste, scientific or whatever,
+ of the organizers. It was on the availability of the speakers. So as it happens, the really ferocious
+ LLM people are in the second week, and I hope that you'll be brave enough to reappear in the
+ second week to face the thrashing. So the closest that we have to that here, and poor Ava, she has
+ had to carry, Ava had to carry the lance, which she wasn't really so much behind. So what I want
+ to do is ask, first of all, yes, you get the first crack, but I also want to send a general
+ message to the attendees in the wide spectrum. If you are standard bearers for LLMs and you want to
+ brutalize Ronnie, please let me know. Raise your hands and come in. There are some questions here,
+ which are sort of neutral, but I would really like to have questions that are as
+ determined as the literature is when it says the Chomsky program is over and we've got another
+ model. I want people that have feelings in that direction to express themselves here. But first,
+ Ava, who does not feel that way, go ahead. No, I don't feel that strongly, definitely not.
+ I'm probably somewhere in the middle, but I guess there was a question about this in the Q&A, so I
+ can kind of bring it up just to kind of clarify the sort of other perspective that to Ronnie's
+ talk, which is that these models might actually be useful in some way to address the poverty of the
+ stimulus type arguments. And the argument there is that these models could serve as sort of these
+ proofs of concept of what is in practice possible versus what has been discussed in principle
+ possible in terms of learning in the literature. And one thing I do want to stress though that,
+ and this is I think an important point, is proof of concept type arguments are not, they're not
+ strong enough to be able to say specifically that we therefore have to dismantle all of our hypotheses
+ about how humans learn or how humans represent language. Because all they can do is really just
+ show what's in practice possible in models and at most suggest that that may be also what is
+ happening in people. And so they are sort of a weak form of evidence. So I don't think they
+ necessarily, that's why I don't take the strong position that we're, you know, UG is not a thing,
+ we are over with the sort of Chomsky tradition and program, but rather that this may be
+ the beginnings of something, that we are fine, we now have these sort of other species of learners
+ that are showing behaviors, at least that seem to mimic learning behaviors that we
+ have possibly hypothesized could be learned or from, you know, different types of innate
+ knowledge or biases. And so this is sort of just really what we are saying, I think,
+ or a lot of us are saying on this other side is just that, wait, maybe this is a time to reassess
+ and think about is there the possibility that we can actually find ways to use these models,
+ interestingly, to try to readdress some of these debates? I'll stop there.
+ Thanks. Go ahead.
+ Thank you. Yes. So I'm certainly not opposed to using these models to explore all kinds of
+ possibilities and to examine proof of concepts in different ways. Did you have specific uses
+ of this kind in mind? Because in general, it sounds like a good thing to do. I'm certainly
+ not against that. We do some of that ourselves. The only question is, what do you do with these
+ models in these proof of concept cases? And what kinds of conclusions people want to draw from that?
+ So if you have concrete cases, I'm very happy to talk more about this.
+ So yeah, I think this type of proof of concept evidence comes out of this whole literature around
+ this Bertology set up where we sort of probe these models. And I think it may have been Charles
+ Asmaring mentioned also that the agreement data being sort of flawed in some ways, but that was
+ one claim that these models can learn things like subject verb agreement and so on. And they've
+ also been used to look at whether or not they can reproduce our grammaticality judgments for cases
+ like gap construction and so on, again, with these types of benchmarks. And from that, not to say that
+ those particular papers are trying to say anything about the learnability of these constructions,
+ but I think what it's done is it's sort of opened a window towards, well, what are they doing exactly
+ in the background? Are they actually learning these things? And if they are,
+ can we use that as evidence that it's possible to learn these types of constructions
+ just from corpora of text and transformer model architectures, which I'm not convinced is possible,
+ I shouldn't say. I think there are personally flaws to transformer based architectures. And
+ as you've pointed out in your works, sorry, with LSTMs and other types of architectures,
+ that they may not actually theoretically even be possible for them to learn certain types of
+ hierarchical rule-based systems that we might actually have. But all to say that I
+ am somewhere in the middle saying that I don't want us to sort of completely
+ block out the idea that this is actually a really interesting direction for future work and that
+ these models in some ways have allowed us to ask those questions and to start thinking about this
+ new direction. So my question is just what is it that we would be trying to show with these models?
+ Because if it's just saying that it's possible to learn, that's something that we already knew. So
+ there are old results showing that it's possible to learn much, much, much, much more complex things
+ than anything that I've had on these slides, for example, just from raw evidence. So we're
+ going back to Ray Solomonov, who I mentioned earlier. A bit after his initial discoveries,
+ he also gave us theoretical results on how we can learn just from raw input. And there are other
+ results as well. So it's not that linguistics as a field believes that it's impossible to learn,
+ and so therefore if you show that you can learn, then you challenge linguistics. That's not the
+ case. I don't know, I haven't run the relevant polls, but I think most linguists would agree
+ that we can learn a lot. And that's not how you reason about what we are. So the way one
+ reasons about it is by coming up with a better hypothesis about here is the programming language.
+ So these LLMs are, as I mentioned, they are a UG. They are a programming language where the programs
+ look different. They're configurations of weights. And so that's a hypothesis about UG. And is this
+ new hypothesis about UG better than the previous one, or previous ones? There were several. It's
+ not that one would refute UG or the Chomskian approach by showing that it's possible to learn.
+ It's saying, well, we agree on the general rules of the game of inference with the best explanation.
+ Linguists propose these kinds of UGs, and we're proposing these new kinds of UGs,
+ and ours are better. And that's a good kind of debate to have.
+ Steve, were you going to go-- sorry, were you going to answer,
+ Yvette? Go ahead. No, I was going to ask a follow-up question to what Ronnie--
+ Go ahead. Do it. Do it. OK, yeah, yeah. So when you say that these models are UTs,
+ meaning that the assumptions that they encode are sort of where we begin, that is the UG. So they
+ start with general statistical-based learning, co-occurrence tracking, and no other bias towards
+ category learning or anything like that. And that's what you're saying. That would be
+ their UG. That's their starting bias, and it's just a very, very close to blank slate. Is that
+ correct? Oh, yes. Yeah, I don't know how close to a blank slate it really is, but yes, I mean,
+ that's the whole behind some of these claims, certainly. But I don't know. I think we don't
+ understand enough about the biases of these models, but they are what they are. This is who we are or
+ or that's the claim. And of course, there are different architectures, and some claims would be,
+ well, we don't know exactly what kind of architecture. We are in this LLM world,
+ but we're one of these. And it's essentially different from, say, a programming language for
+ context-free grammars or something else or Python. Yeah, right, that are biased towards specifically
+ learning categories and rules that allow combinations of some kind. Yeah, okay. Yeah,
+ and I agree with that. I think maybe my point about learnability then is a mischaracterization
+ where instead of presenting this as two separate perspectives, it's really about seeing learnability
+ as a scale in terms of this is what I'm getting from your perspective is that innateness isn't
+ necessarily one perspective, but rather sort of the question is more about what is there from
+ the start. So that's the UG question. And how much of it can we sort of take away and learn
+ is kind of the thing that this new LLM tradition is now or body of research is now bringing is that
+ they're sort of saying we can take away more and more of that. It might be. I'm not sure that that's
+ what they're doing, because without engaging with what linguists have so little experience for
+ as part of the innate mechanism that we have, which are not about it's hard to learn this. It's
+ about all kinds of things like, for example, language after language shows this. So without
+ engaging with that, it's very hard to tell what the LLM theory would be trying to use here and
+ in arguing that that it's better that the UG that it proposes is better.
+ Yeah, most people would agree. Yeah. That's getting to smaller niggles. So we'll let's move
+ to I would like to move to something violent before you did to will not be violent before
+ you did picks it up. I want to ask Steve Hanson, I see you there. Are you prepared
+ to play the angels advocate? Steve, he would give you the ferocity that you want.
+ Okay, go ahead. You did and we'll see. So I'm not going to be brutal, but maybe provocative.
+ So let's so here's a proposal. I just want to throw it out there to kind of
+ merge the very computational perspective with the biological one. And so essentially from this
+ discussion you had about sort of innateness or learnability being a continuum or more or less.
+ Here is one proposal. It may be the case that infants or children learn language
+ in a very chomsky and way. So through abstraction generalization on the basis of very little data.
+ And then once the critical period for acquiring a native language or several native languages
+ closes, we become more statistical LLM like learners. So essentially adults. So we know
+ from a lot of work, empirical work in sort of artificial grammar learning paradigms
+ that for the same amount of data or the same type of data, artificial grammars,
+ where there's variability, infants extract generalizations. Whereas adults tend to as much as
+ they can rote learn or kind of map the distributions and the statistics. So how about something
+ provocative like we go from one to the other across our lifespan or something. So we have a biological
+ window of opportunity when we have UG at full sort of functioning fully and operating fully,
+ then the parameters are set or in whatever way we do this, the critical period closes. And that
+ leaves sort of settings that leave a permanent mark or sort of shape our mind and brain
+ in some critical way. Language learning remains of course possible throughout the lifespan,
+ but will be qualitatively different. And so that qualitative shift may be a shift from
+ UG type of parameter setting to a more cumulative LLM type of learning.
+ So I think that's a very interesting idea and one would have to come up with a good story of the
+ changes that happen absolutely. And I think there might be very non-trivial changes that happen in
+ how we learn things in general that correspond to that and of course connect to your talk from
+ yesterday. And yes, absolutely. I'd still be suspicious of any claim that what happens
+ after the critical period is an LLM for the simple reason that as adults we can do the A's and the
+ B's and the C's and the D's from that example and no language model at present can do that.
+ So we probably change quite a bit during those years, but I don't think we change into
+ anything that is similar to those LLMs. Yeah, though I don't know what we do change into.
+ Gary, you're on. Hi, sorry, I'll keep my camera off. I'm not in the best situation for zooming
+ right now, but I needed to channel some ferocity. I can imagine that it must be very frustrating
+ to be a linguist in the generative tradition right now. And I guess one might say that
+ this is what a paradigm shift feels like. So I'm squarely in the camp that this is sort of the
+ final nail in the coffin of the UG program, although I really like your kind of framing
+ of UG as this innate kind of programming language. The thing I would like to, I guess,
+ challenge most is the very idea of a competence performance distinction as being this core
+ foundational thing. To take one of your examples of a child walking, a child who can't walk does
+ not know how to walk, has no competence for walking. We don't talk about acquiring walking,
+ we talk about, you know, the child learns to walk. Now, one could come up with a situation
+ where, you know, a person who is bound, you know, tied up, an adult, right, can't walk
+ physically because they're restrained, but they know how to walk, right. But just because one can
+ create a situation like that does not make that distinction especially meaningful. And
+ something that's been concerning to me for many years is that this distinction as a core kind
+ of assumption of the generative program has led linguists in that tradition to collect very, very
+ limited types of data, namely grammaticality judgments, right, from adults, mostly trained
+ adults. Yet, you know, a child, right, who can't make any of these grammaticality judgments,
+ right, who would fail all of your tests that you are giving to LLMs, you know, nevertheless,
+ has the ability, right, to speak whatever the underlying competence might be based on those
+ results. So I feel like, given how much rests on this distinction, I don't know what we've gotten
+ for it, right, but like it seems to create more baggage than solutions.
+ You know what I mean? And that's not an LLM objection, that's just an experimental
+ psychology, psycho-linguistics objection. Go ahead. Yes. I'm sorry, can I jump in just to
+ babies? No. So there are two things that are just empirically not right. So there is classical work
+ from Esther Thelen, showing that actually babies who can't walk, can walk, or are able to walk. So
+ we are born with a stepping reflex, and actually, under certain circumstances, for example, if you
+ put babies in water, where they are supported by the water, and they weigh less, then they continue
+ showing the stepping reflex throughout, it never goes away. So actually, the fact that they don't
+ manifest walking, because they are heavier than what their muscles can lift, etc., etc., doesn't
+ mean that they don't know how to walk. So this is actually factually not true. Oh, but I would say,
+ I mean, Esther Thelen would be the last person to say that babies have, you know, a competence
+ independent of performance. So walking to some extent is, you know, a reflex, but actual successful
+ walking in mammals is not a reflex, right? We continually adapt to surface changes, there's
+ a whole lot more. So a stepping reflex does not get you walking. So don't be tricked by the word
+ reflex. Actually, there's evidence that even in newborns, there is cortical top-down modulation
+ of the stepping reflex, so it's not that simple. So I fully agree, it's not a reflex, or it's not
+ so simple as a reflex, but indeed, it's not so simple, even in babies. And then the other thing
+ is just kids can give you grammaticality judgments, just don't call it grammatical. You just say,
+ this robot talks funny. Sometimes it gets it right, sometimes it gets it wrong. And then they tell
+ you, oh no, now it got it right. So you can... But the fact of the matter is that, you know,
+ when we test, so when we tested with Anna and Kyle and a few others, so the grammaticality judgments
+ of GPT-4 compared to humans, GPT-4 outperforms humans, right? It's producing more normative
+ grammaticality judgments. These are human adults, native English speakers. But we would not draw
+ from that conclusion, right, that the adults are poorer at understanding or producing language,
+ right? I think the fault is entirely in the kind of using grammaticality judgments as the entire
+ basis for a research program. So, you know, and then when people don't give the desired
+ grammaticality responses according to existing theory, right, that gets ascribed to, oh, that's
+ just the performance limitation. That's just because they can't hold it in memory. It's not,
+ right? And that makes for a very weak research program, its ability to actually deal with real
+ data, no matter how elegant and beautiful the theories may be. I don't understand in what sense.
+ I mean, you've said quite a few things that I just, I don't know if we have enough time for that,
+ Stephen. We don't, but it's going to go on in other sessions. Go ahead. Okay, so do we
+ get to come back to this in the panel discussion today? Yes, yes. Okay, so I'll let other people
+ then talk. The thing is, where's Kyle? Why did he run away? He could have been given a harder time
+ than you were given, but okay, fine. There are other comments from benign people like Virginia
+ and even who's on the other side, but seems to be merciful. Go ahead. Actually, Eva had her hand up
+ first and then Virginia, and then we're out of time. Yeah, so I was actually going to ask a
+ question about kind of bringing both your talk and Charles's talk back to that example you gave about
+ learning the ABC or A to the N, B to the M, C to the N, D to the M language. And I thought it was
+ kind of an interesting case because technically what chat GPT said wasn't wrong. It was just a
+ grammar that overgeneralized produced strings that went beyond the specific set, right? So it was
+ maybe satisfactory given the evidence that it had seen, but it was over-explanatory and didn't just
+ account for these specific strings that it did get to see. And so I wonder if really what the
+ question is, is it just that we haven't exposed these models yet to the right combination of
+ experience and input that they are able to kind of get to the correct systems that we seem to think
+ we have rather than given its experience, that seemed like the right explanatory sort of like
+ hypothesis. So maybe is it that when we learn these grammatical systems, there's more to just
+ how we learn language than the linguistic input we're getting, but we also get a lot of information
+ from how we create categories, how we sort of perceive the world that might change.
+ Okay. The question has been posed now. We have very little time left. Go ahead.
+ Okay. So we can, of course, talk much more about this maybe in the panel
+ later on, but just quickly, I think we all have very clear intuitions about when a generalization
+ is okay and when it's not okay. And there can be, of course, lots of borderline cases where we're
+ not entirely sure, but given some data, some hypotheses are okay, and most hypotheses are
+ terrible, even though infinitely many hypotheses are going to be compatible with the data, of course.
+ And MDL is something that's designed to capture this sense that we have about when a hypothesis
+ is good given the data. And of course, we can argue about whether that's exactly the right criterion
+ or something else and so on, but we have that intuition. It's quite clear that we all look at
+ those data, and it can be children or adults, and it can be scientists or non-scientists, and we'd
+ expect the same from aliens. We reach similar conclusions, and these LLMs just do something
+ else. They fail to generalize, and when one looks at the learning criterion, it's quite clear why.
+ It's not because they can't represent it. They're, as Ziegerman and Sontag showed a long time ago,
+ in principle, you can engineer them to say anything computational, they're too incomplete.
+ It's that they have the wrong learning criterion. They prefer the wrong things. They try to memorize
+ the data. They overfit, even when you try to fix it with regularization, and that's the problem.
+ And therefore, those failures are not an accident. It's not that it tried to generalize, and it's
+ kind of okay, but we don't... It really is not trying to generalize. It's trying to overfit,
+ and it doesn't have a good way of punishing overly complex hypotheses.
+ Okay, no comebacks on that. Virginia, and then the last one is... Gary raised his hand again,
+ and then go and eat lunch. My response is a response to Gary. So Esther Thelen's work
+ showed that children do know how to walk before they walk by putting them in water and showing
+ that it was a problem with their weight relative to the length of their legs and so on. And I think
+ exactly the same thing can be shown with performance, so-called performance issues in
+ language acquisition. That is, you can do things that will systematically alter the performance
+ conditions, and if you show a difference in response as a result, you've got a good argument
+ that it's limitations in the cognitive system rather than limitations in language that are
+ causing the issue. That's for Gary, and then Gary can answer, and then we'll cut it off. Go ahead.
+ Yeah, learning to walk, learning to sit, these are really long protracted processes with many
+ developmental cascades. If it were, you know, it takes many months just to learn to sit.
+ As anyone who's observed real children can attest, there are average milestones, but the actual
+ process for any child is a protracted process with enormous back and forth between the environment
+ and the body, right? And I take the point that it's very instructive to examine, for example,
+ what is the role of memory limitations, particular kind of memory. One can get more specific on
+ certain behaviors. One can increase or lower memory load and so so far, but that interpreting
+ that to mean that, oh, its performance makes assumptions about discrete modular systems
+ that are, I would argue in most cases, unjustified. And so it's not that, oh, if memory affects it,
+ therefore it's not language. Memory is part of language. There is no language without memory,
+ right? Now, as a cognitive scientist, we certainly want to know what is the role, what
+ precise role is memory playing in a particular set of behaviors, but that if memory plays a role,
+ it does not make it, right, not language. So that would be my response to that.
+ Okay, we can't hear you, Virginia. We have a fundamental disagreement there. Maybe in the
+ panel, we can go into this further. We'll leave it with the panel. I'll try a very dangerous
+ experiment with the panel and I may change my mind after five minutes and you'll all agree.
+ I'll try it open mic so that you can, I don't have to mediate who talks, okay. But if it doesn't work,
+ we go back to, okay, thank you everybody. The next speaker will be Carl Friston, who's in the
+ background very quietly and have a good lunch if it's that time of the day for you.
+ Thank you.
+ Koop koop.
+ [BLANK_AUDIO]

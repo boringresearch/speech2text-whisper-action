@@ -1,0 +1,808 @@
+ Welcome to week two, session one, that's 21 of the Summer School of Large Language Models.
+ All of the videos from the first week are online now at the link that you can find in
+ the WordPress document or write to me and I'll send you the link.
+ Our speaker today, oh and there's two changes, well one change, one swap in the program.
+ Danilo Vizdoc will be speaking today at the time that would have been Tom Griffiths because
+ Tom Griffiths got serious COVID and he's transferred optimistically to Friday, the last session
+ where Danilo had been.
+ So this will be Alessandro Lenzi and then next will be Danilo Vizdoc, I will read his
+ bio when it's his turn.
+ The talk by Alessandro is The Missing Links, well you see it on your screen, I won't say
+ that.
+ Alessandro is Professor of Linguistics and Director of the Computational Linguistics
+ Laboratory, Coaling, University of Pisa.
+ His main research interests are computational linguistics, natural language processing,
+ semantics and cognitive science and with that I hand it over to Alessandro, welcome.
+ Thanks a lot Stephen for this introduction and thanks a lot also for inviting me to this
+ fantastic summer school, it's really an honor and a pleasure to talk to all of you.
+ So I will start with, I mean just something I did yesterday on using the last version
+ of Chatti GPT and I asked the model a question like this, a new type of robot called blimp
+ as a kind of artificial arm as one of its parts, the arm as a hook and then I asked the model
+ is the hook a part of the blimp?
+ And this is actually the answer that I got from the system which is not only correct
+ so he infers that yes the hook is a part of the blimp but it's also very analytical logical
+ explanation of its application of the transitive property of part of relations and is also
+ concerned an invented entity like a blimp and so in a way it's hard to imagine that
+ this is not really something close to natural language understanding.
+ And although this is what we experience every time we use the models like Chatti GPT, the
+ main argument of my talk today is that there is still what I would call a semantic gap
+ in large language models which we can define by saying that the larger language models
+ still lack substantial aspects of human semantic competence.
+ I want to stress the word "still" so I'm not saying that these models will never be
+ able to fill this gap, I'm saying that nowadays and perhaps the model as they are still have
+ some limits in specific aspects of human semantic competence and the talk today will be exactly
+ to try to investigate where this semantic gap lies, which aspects are concerned and
+ also possibly imagining which kind of steps are necessary in order to fill it.
+ Part of my arguments are also very sympathetic with the position that has been advanced
+ by Kyle and Mowald and others in their papers in which they distinguish between formal linguistic
+ competence of large language models and which is, I mean, knowledge of linguistic rules
+ and patterns, ability of producing linguistic expressions that are formally undistinguishable
+ from human ones and what they call functional competence, namely a real ability to understand
+ and use a language as we do and part of the arguments by Kyle and others is exactly that
+ language, larger language models have an almost human-like formal competence, but still, I
+ mean, fall short of a lot of aspects of functional competence.
+ First of all, I would like to remind to start from the basics or at least to start from
+ the past in the sense that we should never forget what the large language models are
+ actually are and where they come from.
+ So basically, they are just, let's say, the last generation of what we used to call distributional
+ semantic models, namely, models that really extract knowledge from textual data and they
+ used to represent the meanings, aspects of the meaning of linguistic expressions in vectors,
+ so embeddings that are supposed to encode the statistical distribution of words in linguistic
+ context.
+ And in fact, I mean, if we look at these pictures, which we could, I mean, it's called the Trees
+ of Large Language Models, we can see that the large amounts and numbers of models that
+ have appeared in all these years are just derived by, as I have the roots in exactly
+ models that were very popular until a few years ago, like Word2vec, Fastext, and GloVe,
+ and so on.
+ So on the one hand, there is something which is older in the sense that it's something
+ really that we already have seen for many years, and on the other hand, there is also
+ something genuinely new in these models.
+ So first of all, like the previous generations of what we used to call predict distributional
+ semantics models, like exactly Word2vec, the idea is that large language models can acquire
+ knowledge from text corpora only by train with a self-supervised string prediction task.
+ So they basically, I mean, acquire information about the meaning of words by predicting which
+ other words they co-code with in context, and this is exactly basically the same learning
+ objective of GPT, like used to be, for instance, for Word2vec.
+ On the other hand, there is also something genuinely new in these models, as we all know,
+ which is also, first of all, we know that there are much more complex and deeper, narrow
+ architectures with respect to the previous generation of distributional semantic models.
+ They are trained on a much larger amount of data, that's another thing that we need to
+ take into consideration.
+ And also, and this is also really the most surprising aspect, in a way, the array of
+ knowledge that are acquired from data by this model, it's much larger than the previous
+ generation of distributional models.
+ So traditional distributional semantics models, like Word2vec, for instance, were essentially
+ conceived as models of the lexical.
+ So they were supposed to acquire knowledge about the lexical types.
+ On the other hand, we know that large language models encode the really non-trivial aspects
+ of syntactic structures, as we also see in the last week, for instance, in various talks.
+ Important aspects of sentence and discourse, meaning more knowledge, but also pragmatic
+ dimensions.
+ And all of these things put together is a result in that surprising behavior that we
+ have seen in the first slide, when they are asked to solve also questions about, semantic
+ questions about part of relations.
+ Now, the problem is exactly this.
+ So if we assume, if it reminds us that basically large language models are just the distributional
+ devices, so the devices that learn what they know entirely through distributional learning
+ from contextual, from linguistic information, the question is whether does, whether distributional
+ learning really surfaces in filling the semantic gap.
+ So is distributional learning enough in order to acquire human-like semantic competence?
+ And of course, this in turn can, this question should be split, can be split into two further
+ questions.
+ Namely, okay, but when we speak about the human semantic competence, what does it consist
+ of?
+ What is semantic competence?
+ And then of course, which aspects of this semantic competence can be learned from distributional
+ data?
+ So there is a widespread claim, an argument that basically the semantic, that indeed large
+ language model have a semantic gap, but this semantic gap would mainly reside in the lack
+ of referential grounding in the external world.
+ So this is exactly a picture taken from the paper by Bender and Kohler in 2020 where they
+ proposed this so-called octopus argument, which is a kind of revisitation and renewal
+ of the Chinese argument, Chinese room argument by, by, by John Sir, which is basically, well,
+ any kind of entity, which is just trained on learning distributional statistics is not
+ able to acquire only by distributional statistics aspects that they refer to, to the world.
+ Of course, this, this is an aspect that mainly concern and essentially concern text only
+ large language models.
+ So language models are essentially trained on, on text, on text only.
+ Well, we know that there are other type of large language models, multimodal ones, like
+ also the generation, the last generation of GPT, like GPT-4, GPT-4-O and others, what
+ indeed seem to have also some kind of, some kind of ability to refer and to link language
+ to the world.
+ This is just another trial I did yesterday with a very popular picture that is taken,
+ we usually take in Pisa where there are some tourists that try to, I mean, they, they take
+ a picture in which it seems that they hold the, the leaning tower, but this is just an
+ effect of the perspective and the description that is given by the model.
+ It's in a way quite surprising because it says that the image shows a person standing
+ in front of the leaning tower, appearing to hold the tower in with one hand due to the
+ perspective of the photograph.
+ And then there are a lot of information that, that concern really references.
+ So the fact that there is a person, that this person wears a straw hat and a black shirt
+ and a red, carries a red bag and so on.
+ So it's also pure, in a way it's true, text models, text only models cannot grasp referential
+ aspects of the world, but I mean, these models are, can be, can be made multimodal and also
+ integrated with information concerning not only extracted not only from language, but
+ also from other modalities like images.
+ So I think that this is also, this is essentially the main argument of my talk is the fact that,
+ yes, it's true.
+ I mean, surely grounding and reference to the world is an important limit of many aspects
+ of a large language model, especially the ones only trained on text, but there are also
+ other aspects that, I mean, the semantic gaps concerns other aspects of their semantic competence.
+ And for this, I will rely on a distinction, which is, which was advanced some years ago
+ by an Italian philosopher of language, Diego Marconi, who distinguished between inferential
+ and referential semantic competence.
+ So Marconi talks about the referential competence as the ability to map lexical items on to
+ the world.
+ So basically, which is exactly what we have seen in action when the model was able, for
+ instance, to understand that there was a woman with a red bag in the picture, or when we,
+ for instance, we say hard bark and we are able to point to the specific animal that
+ the name hard bark refers to.
+ But besides the referential competence, there is also another crucial aspect of the numat
+ semantic knowledge, which is what Marconi calls inferential competence, which is the
+ ability to manage a connection among words, underlying some performance as a semantic
+ inference, paraphrase, redefining the synonym, and so forth.
+ And what is inferential competence?
+ Inferential competence is, for instance, knowledge that an hard bark is a mammal, that an hard
+ bark has legs, and all this type of knowledge information, which is also relevant in order
+ to draw inferences about hard bark, independently of our ability to refer to that actual animal
+ in the world.
+ Well, basically, there is a common argument on a large language model and their understanding
+ capability that actually, let's say, inferential competence is, in principle, not a problem
+ for these models in the sense that the idea is the fact that actually, those aspects of
+ meaning that the large language model would acquire would exactly be those aspects of
+ meaning that concern inferential semantic competence.
+ For instance, Piantadosi and Hill in 2022, but also a similar position was taken by Le
+ Public in a more recent paper, they actually claim that the meaning that the larger language
+ models acquire from text corresponds to what they call the role that concepts play in some
+ theory, in some creator mental theory.
+ They actually link their position, their argument, to the so-called the concept or role theory
+ or theory theory of concepts, which was argued for by Gilbert Harman in 1982.
+ Namely, the fact that the concepts are a representation whose content is determined by the relations
+ they have with other concepts, as specified by some kind of mental theory.
+ In a way, this part of information here, so the fact that Harvac is a mama, Harvac has
+ legs, are just bits of this theory, of our theory about, for instance, Harvac that is
+ made also of specific relations that this concept has with other types of concepts,
+ like, for instance, mama legs and so on.
+ So the idea is that this is exactly the information that large language model acquire from text.
+ So they acquire, they represent concepts with their role in some theory.
+ So they are able to acquire from text, let's say, a theory of concepts, or let's say concepts
+ in the sense of a kind of theory that specify their relations that connect with other concepts
+ and so on.
+ Given this assumption that this is exactly the type of meaning representation that the
+ large language model acquire from text through distributional learning, the conclusion that
+ we can draw is the fact, well, since conceptual role theory, or let's say this type of knowledge
+ representation is exactly what support inferential semantics, large language models do acquire
+ inferential semantics from distributional statistics.
+ Moreover, there is also a further argument, which is taken by various authors, that actually
+ even text only models can also feel the referential semantic gap, since there is the possibility
+ of mapping.
+ So a mapping exists between, let's say, the semantic space, the distributional semantic
+ space acquired by these models onto the perceptual and physical spaces.
+ Since it is mapped, exists, and it's possible to be, we can learn this mapping, even a model
+ that acquires only information from text is able in a way to acquire some form of referential
+ semantics, exactly because of this kind of alignment between language and the perceptual
+ spaces and the physical spaces.
+ And this is basically, I think, a kind of revisitation, or let's say different, I mean,
+ it's very similar to what Max Lowers also called the symbol interdependency hypothesis.
+ Namely, that since the sensorimotor information is encoded in language, through language statistics,
+ we can also acquire the sensorimotor information about the external world.
+ Well, basically, so what I will try to investigate, and I will present you in this talk, is exactly
+ something that is related to the question whether distributional learning suffers to
+ let a larger language model at least acquire some true inferential semantic competence.
+ And so basically, the questions I want to ask is whether large language models do acquire
+ a true conceptual theory.
+ So is it correct to understand the distributional semantic space in terms of a conceptual theory
+ in the sense of this sense here, so in the sense of Harman, in the sense of the theory
+ theory of concepts.
+ And so again, what aspects of inferential semantics can or cannot be learned from distributional
+ data alone?
+ Well, on the one hand, if we go back to the first slide of my talk, and we can see this
+ very beautiful logical argument that is presented in this inference, it seems that all these
+ questions have already been, have already an answer.
+ So yes, these models can do all these things because, I mean, if they are able to carry
+ out that type of inference, we should at least assume that they have indeed inferential semantics,
+ that they indeed have, that they are able, they possess kind of a conceptual theories
+ of entities that they have learned from distribution data alone.
+ But I think that if we investigate these issues more closely and more, let's say, systematically,
+ well, I think that the gaps still exist.
+ So again, these models do acquire a lot of information from text, but whether this information,
+ the knowledge they extract from text can genuinely be described as a true conceptual theory is
+ questionable.
+ Okay. First of all, I will present you a couple of ongoing work that I'm doing with some of
+ my collaborators in my group.
+ And one of this research concern exactly Meronymy.
+ So the path whole relation that we have seen in the example at the beginning of this talk.
+ And as we said, I mean, the path whole relation is an important aspect of inferential competence.
+ And let's say, if we have a theory of an entity, we also know which are their parts, which
+ things are not their parts, and so on.
+ And one key property of Meronymy is asymmetry.
+ So Meronymy is an asymmetric relation.
+ So if A is a part of B, necessarily B is not a part of A.
+ And so the question is whether the language models knows the parts of objects and especially
+ knows that the path whole relation is truly symmetric.
+ To investigate this issue, we have collected some Meronymy from various sources.
+ We use the McCray norms, which are human-generated features for a number of concepts.
+ And so we extracted all the features that were specifically labeled as Meronymy.
+ And we also extracted a part of relations from ConceptNet, which is another hand-made
+ conceptual network based on human judgments.
+ In the whole, we extracted almost 1,000 part-whole pairs from McCray.
+ And again, another 1,000, approximately 1,000 part-whole pairs from ConceptNet.
+ And we wanted to test whether a different type of language models, how these language
+ models deal with the Meronymy information.
+ And we did experiments with three models.
+ The first one is LAMA2 without instruction tuning, namely, this is really a foundational
+ model.
+ This means that LAMA2 only acquires information from the prediction learning objective that
+ you have seen before.
+ So it's a basic distributional model.
+ Then we use an instruction version, an instruction-tuned version of LAMA2, which is basically a language
+ model that has been instruction-tuned and specialized for chat.
+ And then we also use the GPT-4 model that also has been tuned by-- which is way bigger
+ than the other models and has also been tuned with reinforcement learning from human feedback.
+ We tested these models on two tasks using prompting.
+ And we prompted these models on a question task about Meronymy and on a statement task,
+ which is basically targeted exactly the same type of information, but in a different way.
+ Also because we know that prompting can be subjected to different types of variations
+ also in the way the task is formulated.
+ So for instance, in the questions task, the prompt was, your task is to answer the following
+ questions.
+ So you must answer strictly with yes or no.
+ The question is, is the wheel a part of the car?
+ Why in the statement task, we presented the part of a relation is a statement, the wheel
+ is a part of the car, and the model has to answer true or false in the task.
+ Now the important thing is that we tested each Meronymy pair, x and y, in a direct and
+ a swapped test.
+ What is the difference?
+ Well, the difference is that in the direct test, the sentence was presented in this way,
+ the x is a part of the y, and the correct answer was true.
+ Why in the swapped test, we presented the sentence in the reverse order, and we said
+ that the y is a part of the x, and in this case, the correct answer was false.
+ And we defined what we call the Meronymy knowledge criterion.
+ What I mean by this, that we can assume that the model knows that the pair x, y is an instance
+ of Meronymy if the model correctly solves the direct and the swapped test for the pair
+ x, y.
+ So basically, a model knows that a wheel is a part of a car only if I say it's true to
+ the statement that the wheel is a part of the car and false to the statement that the
+ car is a part of the wheel in the swapped direction.
+ Now what we found is the fact that these are actually the results that we got for the model.
+ This is the global accuracy of the models, and on the left, it's the question task, in
+ the right, the statement task, and the blue is the concept net data set, and the yellow
+ one is the McCray data set.
+ And as you can see here, if we start with, let's say, foundation models, so just the
+ one trained with distributional learning, performance is really, really bad in the sense
+ that there is just a 27% of accuracy, for instance, on concept net in the question task,
+ which is approximately the 1% in the statement task.
+ In general, you can see that the statement task is much harder for the models than the
+ question task.
+ An improvement exists in the instruction tuned one, so LAMA, you can see it performs better,
+ and of course, I mean, the best model is GPT-4, but notice that in the concept net, even the
+ best models, the best model reaches, for instance, on concept net, just 69% of accuracy on the
+ question task and the 66% of accuracy in the statement task.
+ And in these cases, we have also to remind that, to remember that GPT-4 is not only,
+ is not a foundation model, so it has the statistics extracted from text, plus a large amount also
+ of refinement due to the human reinforcement learning, and even more, GPT-4 is not only
+ trained only on text, but is also multimodal, so it has been trained also on images, so
+ in this sense, there is also information coming from external to language.
+ And despite the dimension, there is still quite a big gap in the ability to properly
+ recognize the Meronymy and the directionality of Meronymy, the symmetry of Meronymy.
+ Then, we also wanted to understand the fact that we also wanted to explore the fact that
+ maybe this performance might be due to the fact that these models do not know some of
+ the Meronyms, so although it might be unlikely, given the amount of text they've been trained
+ on, that's still a possibility.
+ And we know that all these models are models that are especially optimized for generation,
+ so they are all generative models, all decoder-only large language models, so they are optimized
+ for text generation.
+ And so, we also designed a part generation task.
+ So in these cases, the task of the model was to generate part of objects, and we gave the
+ models the holonyms, the concepts, the target holonyms that we used in the previous experiments,
+ we asked the model to generate parts.
+ And these are the statistics, so you see that we only did this with the two best models,
+ so GPT-4 and the LAMA-instruct, because the non-instruct model was, the performance was,
+ and since this model is not optimized for chat in a way that we expected to have in any case
+ a very noisy result.
+ So you can see here that these models generate a lot of parts, a lot of Meronyms, and we
+ also carried out the manual validations of all these Meronyms, and you can see that we
+ validated all the Meronyms generated by LAMA, and we got an accuracy of almost 93 percent,
+ so all 93 percent of the parts were correctly generated, were correct parts.
+ And also, we did a sample, we took also a random sample of 300 holonyms, and we manually
+ validated all the parts generated for these three holonyms, and again, for GPT-4 the accuracy
+ is very high, between around 97.5 percent of accuracy.
+ So this means that these models generate a lot of parts, no, a lot of parts of these
+ entities.
+ And so we then, we decided to carry out another experiment, which is exactly to say, okay,
+ let's try to test these models on the same task that we've seen before, so the question
+ and the statement task to understand the, for Meronymy identification, by using as data
+ the parts that they were generated by these models.
+ So basically, the aim of the experiment was to answer a question like, but do these models
+ know that the parts that they generated are actually parts and satisfy the asymmetric
+ property of Meronymy and the Meronymy knowledge criterion?
+ And this is what we got, and we can see that, again, for LAMA, only approximately 45 percent
+ of all the parts, so of all the Meronyms that were provided, given, that were generated
+ by the model, were also recognized correctly by the model itself as parts.
+ And again, GPT-4 has a much higher performance, but notice that, for instance, in the question
+ statements it reached only 81 percent, which goes down to 74 percent in the statement task.
+ So this means that even for GPT-4, approximately one-fourth of the parts that were generated
+ by these models were actually not recognized by these models as being part, didn't satisfy
+ the Meronymy knowledge criterion that I showed you before.
+ So basically, the conclusion is that the larger language models do not always know that the
+ parts they generate are parts or they do not know that these parts have the properties
+ of Meronyms.
+ And this is an instance of what has been called the generative AI paradox, namely the fact
+ that in many cases these models perform much better in generation rather than in understanding.
+ So in a sense, there is a mismatch between what they generate and what they truly understand
+ for languages.
+ And this case of Meronymy seems exactly to be one instance, one example of this problem.
+ As a last task on Meronymy, we also tried to design a Meronymy logic test.
+ Basically, the idea was to give the model sentence pair that differ for their truth
+ conditions.
+ You can see, for instance, in some cases one was true and the other was false, like the
+ tail is a part of the dog, true, the dog is a part of the tail, false.
+ In other cases, both sentences are true, the tail is a part of the dog, the arm is a part
+ of the body.
+ In the fourth case, two sentences are false.
+ And then in the fourth case, we have the reverse of the first case.
+ So the dog is a part of the tail, is false, and then the tail is a part of the dog, is
+ true.
+ So basically, the idea was exactly to test whether the model was able to assign the right
+ truth conditions pairs to the sentences, again, to understand that this is true and the other
+ is false, or in this case, to say that this is false and the other one is true.
+ And we did this test in one version, which is like this, with this type prompt, and in
+ a second version of this prompt, we also give the model a rule to be applied.
+ So we specifically ask the model to apply the rule that concerns the asymmetry of Meron.
+ So if I is a part of B, then B is not a part of B.
+ And these are the results.
+ And we carried out these, we performed these models, these experiments only on GPT-4, which
+ as we have seen is just the best model.
+ Now, interestingly, notice that the models, without the rule, they have quite a very high
+ performance, 92%, in recognizing, for instance, that correctly recognize the true-false pair.
+ But interestingly, this performance changes if the same sentences are presented in the
+ reverse order.
+ So while in these cases, so when we have these cases, in which the two sentences appear in
+ the order true-false, the performance is higher, but drops when the order is reversed.
+ Interestingly, by providing the rule that should be applied by the model in performing
+ this task, the performance of the model drops.
+ And so it makes the model, it provides, I mean, it gives confusion, so it makes the
+ model be confounded rather than help the model even move.
+ So and now in a second experiment, the second, let's say, case study, we have been investigating,
+ this is really something that is still to be largely completed, so just really preliminary
+ result.
+ We investigated the causal relation.
+ Why causal relations?
+ Because again, cause-effect connections are an important ingredient of theories, okay?
+ So knowing a theory of events means also being understanding whether these models, two events,
+ between two events, there is a causal relations or not.
+ Moreover, causal relations is strictly related with temporal precedence, because the cause
+ precedes the facts, but causality is not merely temporal precedence.
+ So the first causal relations cannot be reduced only to temporal precedence.
+ So what we built is a data set of sentence pairs that contains implicit causal relations,
+ namely what I mean by this.
+ These sentences contain event pairs, which are related by causal relations because of
+ our, let's say, knowledge of the world.
+ Also let's say inferential knowledge or general knowledge, but they don't, there is no explicit
+ connective link in the two sentences.
+ And we had 200 sentences in which there is an implicit causal relations, and 200 sentences
+ by connected by an implicit temporal precedence relation, and 200 sentences that contain events
+ that are not linked neither by causal nor by temporal relations.
+ And all these sentences were classified by five expert annotators in order to identify
+ whether the two events were causally related, temporally related, or neither of them.
+ I will focus only on the two cases of causal and temporal sentences.
+ So we decided to understand whether semantic large language model were able to identify
+ the correct relation and also the direction of these relations linking the two events
+ by let's say, understanding or by connecting, sorry, there was an airplane passing by.
+ By understanding whether the, which was the connective that explicitly, the correct connective
+ corresponds to a certain relation.
+ So this means that starting from a certain event pair, we designed sentences that linked
+ the two original sentences by certain connective corresponding to causal relation, where the
+ cause precedes the effect, like in the first cases, the causal relations in which the cause
+ follows the effect, and again, the temporal relations precedes the following event and
+ the reverse situation in the four cases.
+ So in these cases, A, B, we could consider a kind of iconic order in which the cause
+ and the preceding event appears before the effect of the following event, and B, A, the
+ anti-iconic order in which the cause and the preceding event appears after the effect of
+ the following event.
+ In these cases, each relation order was explicitly associated with the connective.
+ So what we did, we took four models, four large language models, all of the instruction two
+ in the family, so Bloom, Falcon, Lama, and Mistral, and basically what we explored, instead
+ of using a prompting experiments, like in the case of Meronimi, we actually measure
+ the perplexity of the sentence with the models.
+ So we use the models in, let's say, in their original and more direct way of providing
+ the probability, and so the perplexity, of a certain sequence of elements given a context.
+ And basically, we see that we designed for each event pairs four possible items, in which
+ one the connective was the correct one, given the relation, and given the direction of the
+ relation.
+ So Luke, Cathy's hair, because Luke's hairs were too long, and that's the correct one.
+ And three others, destructors, in which we have the same events in the same sentence,
+ in the same order, but with connectives that were not consistent with the relations expressed
+ by the two events.
+ And so basically, the idea is the fact that a semantic relation and order is correctly
+ identified if the model assigns a lower perplexity to the sentence containing the right connective.
+ So in these cases, we expect that the perplexity assigned by the model to the first sentence
+ is lower than the perplexity assigned to the other sentences.
+ And in these cases, if so, we score the hit, and we measure the accuracy.
+ Okay, this is the global accuracies of the models.
+ And we see that in all the models, the general accuracy is not, I mean, is way over the baseline,
+ but it's also is actually not beyond the 60-65% globally.
+ But it's interesting to see just also where the models goes wrong.
+ What is the confusion?
+ What is the problems of these models?
+ And I will show you just an example from the best model that is the demistral one.
+ In these cases, you can see that in the diagonal, we find the correctly understood relations.
+ We see that, for instance, even for the causality relations that are in the direction AB, so
+ the cause precedes the effect.
+ We have 78% of accuracy, but 12% of cases are confounded with the reverse order.
+ Interestingly, the best results we are obtained when the models, when the effect is presented
+ after the, when the cause is presented after the effect.
+ Is that in any cases, we found that in the case of temporal precedence, we found a significant
+ number of cases of temporal clauses, which are interpreted as being causal related.
+ So this means that the model is very good identifying causes when there are causes,
+ but many cases of temporal, simple temporal precedence are confounded to be, to be caused.
+ And also there is quite a significant number of cases in which the model also confound
+ the order or the order of the events, which is again a piece of evidence that these models
+ have, I mean, strive to cope and to deal with the clear distinction between causal semantic
+ relations versus temporal precedence relation.
+ And also we're considering the order in which these elements, these relations are applied.
+ So I'm coming to the, to some conclusions about this, about from, from the evidence
+ I've also shown you.
+ So again, distributional semantics, we started from the idea that large language model are
+ actually just distributional semantics models or just a derivation of this, the same approach.
+ Truly they identify highly sophisticated distributional associations between linguistic expressions.
+ But I think that they still lack semantic spaces organized in terms of true theories.
+ And the fact that some of the evidence that I show you today are really consistent with
+ other works that have been carried out recently, other results that appear recently in which
+ is exactly, which exactly pointed towards the same problem.
+ So these models are really not able to recognize through theories in the sense of concepts,
+ especially if we understand, if we remind what is a theory.
+ So a theory is not just association.
+ So a theory is a structured network of entities and events that are linked by relations that
+ specify their functional role in a system.
+ So understanding what a theory is, that means understanding that it calls something X calls
+ Y it's not the same as X precedes Y or A is a part of B is not the same as B is a part
+ of A and so on.
+ So basically we can see that the distributional semantic space of car probably in even in
+ the more complex model resembles something like on the left of this figure, while when
+ we think about a theory or we talk about a theory, we should think about something closer
+ to the one in the right in which we really have knowledge about comes in terms of associations
+ with other concepts, which also make in which the different role and the different functions
+ of the different entities in the overall theory is sticking to account and distinguished.
+ Interestingly, I think that another piece of small piece of evidence, I understand this
+ is more anecdotical, but I think it's a nice aspect, it could be a nice aspect to reflect
+ on is exactly the fact that even the larger the models encode a lot of features, a lot
+ of aspects, but it's can this model, these aspects are especially in many cases are described
+ as being conceptuals and so on, but actually they are not really semantic feature.
+ Okay, what is this?
+ Perhaps you have read the recent paper appeared by people from Anthropic that was entitled
+ Mapping the Mind of a Large Language Model in which basically they applied, let's say
+ sparse encoding methods in order to identify the features that are encoded by by large
+ language models and also to identify which features are most activated by words in that
+ are given to input to a large language model.
+ Okay, in this paper and this work by the people in Anthropic, they also identify what they
+ call a part of member of a feature, which is exactly this one.
+ So the feature, this is the number of the feature.
+ And if you go to their site that you can visualize what are the words that this feature activates
+ most and correctly we see that for instance, is the word part of that activates most this
+ type of feature.
+ But notice that the immediate instance of this uses of part of this is not a real baronymic
+ relation.
+ Notice we have something like it was at this point that realized it was part of the problem
+ and not part of the solution.
+ Okay, they are all part of this great big conspiracy.
+ They are part of me.
+ So what does it mean?
+ It means that this so-called alleged semantic feature, it's not really semantic features.
+ It's the pattern part of that these models learn to encode.
+ The problem is that the pattern part of is of course a way to express meronymy, but it's
+ also a linguistic way to express other type of relations or is also used not to express
+ really part of relations in the strict sense of the term.
+ So in these cases you see again what we call semantic features are in some cases really
+ very frequent patterns or surface patterns that these models are learned to encode.
+ But I think there is still a distinction between this pattern and this so-called feature and
+ truly semantic features and truly semantic dimensions that these models in some cases
+ might not really still be able to encode.
+ And I would like also in this talk, in this presentation I've talked a lot about semantic
+ relations and see some cases in which even the largest language models have some problems
+ in identifying this type of semantic relation.
+ Now we should not forget that the identification of semantic relation was also a pain in the
+ neck of good old distributional semantics in the sense that the classical distributional
+ semantics models have always had problems indiscriminated between different semantic
+ relations.
+ This was just the case of for instance the neighbors of words like car, good, and bye
+ and we take a framework to back and we can see that among the closest neighbors of car
+ we can find a co-hyponym but also an hyponym, good as its nearest neighbor almost synonym
+ like excellent but also an antonym and so on and the same with bye and the antonym cell
+ and so on.
+ And in fact a lot of work has been devoted in the distributional semantics in order for
+ instance to identify semantic relations in distributional spaces.
+ And for instance one notorious one famous hypothesis that took a lot of attention in
+ distributional semantics was the idea that the semantic representations were or might
+ also be encoded really in the linear were linearly represented in the semantic spaces.
+ This was the so-called linear representation hypothesis that was advanced by Tomas Mikolov
+ in 2013 and actually it has been also has received new attentions on large language
+ model recently in some papers.
+ So basically the idea that well if we can see concepts like man and woman and king and
+ queen as dots as points in a vector spaces actually the relationship that exists between
+ man and woman what we could call the gender relation because woman is a feminine of man
+ is actually encoded by this linear vector here by this vector here by this direction in space.
+ So this direction in the vector space encode the semantic relation gender which makes possible
+ to say and that there was the hypothesis that for instance the relationship that connects
+ man and woman is the same as the relationship that connects king to queen and so basically
+ even if these elements are in different areas of the semantic space the distance and the
+ vector linking these pairs of elements are the same and this vector would represent the
+ gender relation.
+ Now this was a very interesting hypothesis and very powerful hypothesis about the structure
+ of the vector space but unfortunately has been although it has received also a lot of
+ attention has also been received a lot of empirical falsification in the sense that the relationship
+ are not so neatly encoded in the vector spaces.
+ Just to make an example this linear representation hypothesis was exactly used in test in analogy
+ in a logical test analogy resolution test and interestingly these are just accuracy
+ in the test where this analogy works pretty well not thought perfectly are in analogies
+ concerning morphology.
+ So for instance walk is to walk like seeing is to sing or and so on or walk is to walking
+ like read is to reading so the past progressive and so on but when we took it into account
+ well when you consider it does have a sense they encode a lot of semantic relations like
+ hypernemy, meronymy and so on the performance of these models on these analogy tasks drops
+ significantly.
+ Alessandro I'm afraid I have to interrupt it's almost an hour now and if you want some
+ discussion I think yes I'm just closing okay.
+ So just to close by so the idea is the fact that large language models hold their behavioral
+ success to the existence of strong correlations between world co-occurrence statistic and
+ semantic relations but despite this correlation there is the semantic gap I've talked about
+ derived from the lack of a perfect isomorphism between distributional statistics and concept
+ and logical properties.
+ And so basically of course the success of these models really depends on the fact that
+ we have a close overlap between distributional spaces inferential space or the physical and
+ perceptual spaces but this overlap is not perfect and it's exactly this type of let's
+ say the difference and the discrepancy between these different spaces that generate the semantic
+ gap.
+ So basically the idea is the fact that the reason of the semantic gap really lies in
+ the very type of knowledge that they extract from linguistic data and so the fact that
+ they actually do not extract really structured theories that might support an authentic inferential
+ competence in the world.
+ What are the solutions?
+ I think that the one solution is exactly that we can focus on methods that can leverage
+ information acquired from statistical data but can also learn to represent it as a truly
+ knowledge structures.
+ Possibilities would be that we can for instance enrich the prediction learning objective with
+ the semantic constraints to obtain a more refined semantic space.
+ This is what actually a lot of research that was investigated in distributional semantics
+ models which was called retrofitting namely the idea that we could try to refine the learning
+ objective or neural networks in order to learn specific semantic relations or for instance
+ also try to make these models learn semantic relations in theory directly from ground and
+ data rather than by from scratch from a large amount of text only.
+ Okay, thank you and sorry for being late.
+ Thank you very much Alessandro and now you're discussing Friedemann Puhler-Müller from the
+ Freie Universität Berlin will discuss not the cartography of the mind but the cartography
+ of the brain I think.
+ Go ahead Friedemann.
+ Thank you very much and thank you Stephen for the introduction and thank you Alessandro
+ for your fantastic talk.
+ I will make a few comments indeed touching upon the brain but also let me just start
+ with a more general approach and I apologize in advance in case Alessandro you sent me
+ kindly your slides.
+ I may have a citation here which was on one of the slides I saw but which was not in the
+ presentation anymore so in this case please correct me and okay so you made a very important
+ point GPT and other large language models cannot do some things about semantics.
+ They are missing something you speak about the semantic gap.
+ This may be related as you mentioned by the fact that they are missing symbolic representations
+ or in your words also they are missing true knowledge structures and real semantics in
+ a sense and in particular inference schemes and some of them easily formulated in terms
+ of predication are missing.
+ So if we say rabbits have ears and ears do not have rabbits this is a relationship everybody
+ knows every human but obviously as you very importantly showed JetGPT is not bad at that
+ but there is room for improvement likewise with inference schemes of the sort of a more
+ complex type and you also touched upon but only very peripherally on grounding in the
+ world as something that could be a factor but if I understood you correctly then please
+ again correct me if I'm wrong my impression was you would suggest that adding this information
+ about grounding might not help so much or are you or is this right?
+ Do you want me to answer now I would say no this is not fully correct in the sense that
+ I'm not saying that it's not adding much I'm saying that on top of lacking grounding information
+ so there is also a lot of information that really cannot be recovered by statistics alone
+ which concerns let's say more inferential schema.
+ I actually believe that probably one of the problems of this model is that they could
+ learn things like for instance part of relations by being exposed to grounding the data so
+ in that sense I'm not saying that grounding is not essential I'm saying that the reference
+ problem is not the only problem that these models have and even if they are fed with
+ images or with multimodal data I think that a lot of problems come from the fact that
+ they lack some inferential pattern and also let me add one thing when I say that they
+ lack inferential pattern I'm not aiming for including symbolic representation in them
+ right so I'm not sorry for the fact that the way to go is towards having symbolic structures
+ let's say that they lack some aspects that on the other hand the symbolic models of course
+ are able to deal with the quite neatly which are some inferences but okay so yeah thank
+ you for the for thank you for the clarification let me just let me just continue and my one
+ point I wanted to make is that if you look at standard semantic theories they also you
+ may also bring up against those that they do not include true knowledge structures in the
+ sense of something that would allow inferential schemes it's also if you if you look at for
+ example the Collins Loftus model or the or any or if we if we replace here the concepts
+ by words and look at the co-occurrence probabilities in in recent distributional models there's
+ just there's just a correlation structure is mapped but not these logical inference
+ schemes likewise if we if we look at semantic feature models they also are composed of a
+ particular representation is is is described in terms of a set of features and feature
+ values and those would also not necessarily be easy to translate into into inference schemes
+ so and so if we and we and we may now we may now say that these semantic models are in
+ a sense if they come with features and these features and we restrict consideration to
+ those that have that have semantic grounding in the world and then we and clear criteria
+ for what what the feature corresponds to in the world we have a we have a pathway from
+ this type of model to the to a grounding approach and my question would be whether indeed semantic
+ representations are similar between these different types of models or whether we could
+ expect that by by by complementing distributional semantic models with with with grounding we
+ might improve the semantic representations already and and and finally I will make a
+ few brief comment how this might might indeed lead to something like basic inference schemes
+ this is a citation you which I found on your previous slide and there you say that it's
+ a that it's that we actually would hope that there is a degree of correspondence between
+ I overlap between this between the semantic information coming from distributional statistics
+ and from the world and so ideally they would provide the same information some people have
+ claimed that others but but when one might indeed object and say is this indeed so would
+ word word correlations so the question how frequently how well do words co-occur in text
+ and would world world word correlations so how how good is the consistency between the
+ occurrence of a word and certain pattern in the world in in the environment in the grounding
+ pattern how would how would they relate to each other would they be indeed congruent
+ or only similar or a little bit overlapping and and of course everybody knows that we
+ can we can convert this distributional semantics into semantic vectors and measure for example
+ the similarity between two the semantic similarity of two words in this particular framework
+ in the distributional semantic framework we can also do the same thing in a grounding
+ perspective for example by using features grounded features and build huge vector spaces
+ with those and also likewise measure angles between or including distances between the
+ conceptual representations and and and and now the the question might be whether these
+ vectors are in a sense the distributional and the grounding ones are the same indeed
+ as hoped or rather not so much and one way of of assessing and visualizing visualizing
+ these similarity spaces is is called a method called representational similarity analysis
+ this got famous in the brain research domain but it can also be applied to looking at cognitive
+ and semantic measures and compare those and and and one could one could for example then
+ use one particular distributional semantic approach and compare it with a grounding experiential
+ semantic approach this is the result here we have a hundred words or so divided in six
+ categories arm related words animals tool words and so on so forth and and so each word
+ category has I think 16 or so items and you can see the matrix would show you the similarity
+ of of a given word with with other words from the same category subcategory from a larger
+ category your action words and here at the lower right object words and and then and
+ then and then of course the diagonal is here the self-similarity which is of course always
+ very high therefore we don't look at it and and then we see so and what we can see here
+ is that the degree of dissimilarity is rather low sometimes for the for the individual categories
+ especially here and sometimes there's a huge difference a great dissimilarity here in red
+ and and yellow between the action word and object word categories for example now the
+ interesting thing is if we if we look at distributional models and and experiential models they produce
+ very different patterns and the correlation between those two is not overwhelming and
+ if you if you look more qualitatively at what they do you see for example here that the
+ space of action words is nicely divided into subcategories in the experiential grounded
+ model but the distributional model makes a big mess here so it's not really well able
+ to to separate different types of action words likewise here in the object word space we
+ see here in the distributional model a very nice delineation of this of this category
+ this is food words in this case and while here in the in the in the experiential grounding
+ model we do not see much it seems that this category this subgroup is subdivided in different
+ parts but on the other hand here we see a very good a very good mapping of this of this
+ category of this category of animal words which is not so clear in the distributional
+ model so essentially we see semantic similarities of different kinds are most in best captured
+ in the by the different models there has been recent research on the on brain activation
+ where people then looked here for example a study by Fernandino where they where they
+ looked whether the brain activation patterns would actually be similar to the to the semantic
+ similarity structure of of different semantic models and their their message in a 2022 paper
+ was in PNAS they said grounded models did much better than than than than competing
+ semantic models here for example in red distributional models so they say if we look at the brain
+ at least if we restrict consideration of those areas here in red which are thought to be
+ semantic hops then we see that the similarity of brain activation the similarity structure
+ of brain activations is is is best matched by the similarity structure of the grounding
+ of of the grounded the semantic vectors and this is so we we took a slightly different
+ approach we we did not restrict our consideration caro francesca carota and and in collaboration
+ with with nico griego scottis group we did a series of studies of a similar sort already
+ much earlier and and also here in this study we compare directly experiment and experimental
+ model experiential grounded model with a distributional model and and found here entirely distinct
+ brain areas that mapped these semantic similarity so unlike the previous study by by ferrandino
+ we see just dissociated brains areas that map the different types of semantic similarity
+ so from here the suggestion arises adding grounded semantic information to distributional
+ semantics may lead to a more complete picture of the semantic space so so we would then
+ include of course symbol referent relationships world word learning and likewise and and
+ and those would likewise go into representational semantic similarities and yeah so so this
+ is this is one of the suggestion i would make the other vaguer suggestion or more tentative
+ sorry not vague but more tentative suggestion is that if we build networks now not according
+ to the most efficient method at the moment but if we allow the networks to become more
+ similar to the brain and biologically realistic we may observe and we did this in a series
+ of simulations experiments that with realistic neural network structure and heavy learning
+ so a realistic type of learning also not error back propagation or some some other error
+ driven algorithm and we we we see the development of categorical representations and and and
+ indeed symbolic representations in the sense that we we we see then in the network representations
+ of a word form interlinked with neurons that that that symbol that symbolize or or index
+ grounded in different semantic features of the reference of the of the category term
+ and as so the individual neural elements may correspond to a feature like has four legs
+ or barks here in the case of the word dog and the different dog exemplars and and and
+ and here it's entirely clear that if we activate the word form representation we get activation
+ of these these and of these semantic feature neurons in the conceptual part of the of the
+ grounded representation but the other way round the activation does not work if we only
+ activate this single neuron and its few connections to the word form representations will not
+ be sufficient simply because more activation is necessary to activate the linguistic semantic
+ representation so far my comments i thank you very much and it's a thanks again for
+ an excellent talk and thank you for an excellent commentary yeah yes if i can add the okay
+ uh well i i think i kind of agree with you in a sense that there is some of the results
+ that you you you show that in line with the positions i had in the sense that the if you
+ go to the slide about the uh the distributional space right the difference between the distribution
+ of the similarity and that one no no no exactly so it's interesting how the distributional
+ model poor distribution information is a much more messy organization a poor exponential
+ one right and this is concerned only semantic similarities where in a way one if we what
+ i consider in the talk are different type of semantic relations that are already i think
+ even more complex the semantic stimuli so i think it is exactly is consistent what i
+ claim in the sense that of course there is an overlap between what is encoded in language
+ about the world and the world itself okay there is an overlap so that we can recover a lot
+ of semantic information from distributional data alone but this type of overlap is not
+ the perfect isomorphism is not the perfect alignment so to speak that's why in a way
+ uh i mean we cannot simply take a distributional data as a surrogate for experiential experiential
+ one i totally agree that for instance adding also uh that's why this is also what i mentioned
+ in my last slide so for instance why not trying why not imagine that these models actually
+ learn basic semantic relations from the grounded world in the sense i guess that uh i mean
+ uh basic cognitive relations like part of or location or spatial relations are truly
+ acquired not by a language but are acquired especially from uh from ground and experience
+ so and indeed so if you look in the literature in the in the philosophical literature in
+ the psychological literature is indeed so that for example uh you claimed that that
+ from experiencing billiard balls you can learn the concept of of causality exactly and then
+ one step further it was uh it was um uh it was piaget who actually is who actually said
+ that uh that the child learns the concept of causality now not with billiard balls but
+ rather with making an action and observing the consequence exactly so basically exactly
+ even for causation so to speak so the problem is that of course these models learn this
+ type of relations only by and through linguistic patterns the problem is that these linguistic
+ patterns do not uh uh let's say isomorphically uh uh correlate with the causal relations
+ so because for instance we express the causal relations in languages not always in the same
+ I mean we don't describe in language cause and effects in exacts that always in the same
+ way which experience them okay uh and that's why I think that's also what I think it's
+ where lies the problem so the fact that these models only acquire semantic relations through
+ uh through language and uh so I think that one way of course one possibility that's why
+ I something I did that I skipped in a slide I said okay some people say okay let's assume
+ that you could interface this model with some symbolic knowledge base okay but I don't think
+ I don't I don't think this is the correct answer because we we need to to make models
+ that are able to learn this type of relation and to structure this kind this type of conceptual
+ theory from data the problem is that these type of theories are probably uh learned from
+ the wrong type of data or uh or and so on because for instance even the so-called multimodal
+ language models like gpt4 gpt and so on do not learn some relation from scratch image
+ data from multimodal they simply combine uh let's say a huge uh uh model learned from
+ language from a huge model learned from uh from data from from from image data I think
+ that for instance it will probably uh a viable possibility would be to explore whether basic
+ semantic relations could be learned first from non-linguistic data and then use this information
+ as a kind of semantic constraints for the model then to apply this type of relations
+ to other data and so on yeah yeah this is very important point and and and it could
+ be that the two strategies would be complementary and this is also what this slide by the way
+ suggests because here we have an integrated model where the uh where the where the semantic
+ similarity spaces are so to speak uh uh summed up and uh and and here you see a very nice
+ delineation of all the subcategories so taking the best of both two of of both worlds exactly
+ so I think my position is of course that distributional data allow you to project the ground and
+ knowledge also to other things that you have not directed experience right uh but in a
+ way uh you you need to have some ground and information from from started with in order
+ to learn basic uh let's say the basic component of the concept of theories and those basic
+ components like causal relations part of location and so on I think are not directly to be
+ learned from from linguistic structures that's the idea yeah sure I think we fully agree
+ there okay uh we have some questions do you want to continue or there's some questions
+ from no no no please please okay uh Julia but keep the but keep the questions short
+ and the answers short we have very little time left yes Julia Zimmerman and then Nicola
+ Goulet hi um thanks for the talk I was wondering um when you interpreted the part of feature
+ from Templeton um why not interpret it as moronomy plus a metaphorical extension of
+ moronomy uh that's a possibility uh the problem yeah absolutely uh but that's exactly the
+ point in the sense that uh uh in a way a moronic and moronymic extensions uh it's not the same
+ one as a true moronym in relation that's what I meant okay indefinite I think this type
+ of information it's really something which is encoded in a linguistic pattern the linguistic
+ pattern exactly encode their true moronomy plus a lot of extensions of it in a non-true
+ moronymic uh uh moronymic uh interpretation so of course my point is showing that the
+ small example is the fact that we should be I mean we still have to understand uh to what
+ how this type of basic and semantic relations are truly encoded uh by these models uh these
+ uh alleged semantic features of the models uh may still be uh a lot of connected to surface
+ linguistic patterns rather than true truly semantic uh elements that was my point okay
+ uh Nicola question yeah I was wondering if you think that semantic formalisms like abstract
+ meaning representation or the more recent one Bible net meaning representation are of
+ interest in the context of bridging the gap caused by the missing link you described you
+ mean the abstract meaning representation yeah for example because it seemed very similar
+ to the graph you showed on your last slide with uh yes or no in the sense okay yeah
+ uh the point is uh that's what I okay uh I think that the problem is I would like the
+ model to learn these uh I mean we we might try uh to learn this type of representation
+ from uh annotated data for instance in which we have this explicit relationship it would
+ be like like saying okay I have some uh uh I learned that this type of relations from
+ uh pairs that I know from uh that are mero names or encode some other type of uh some
+ other type of relations okay in that sense I think that might be a useful uh uh try and
+ useful experiments to do uh what I wouldn't like to do is to have a kind of a neuro symbolic
+ approach in which you have uh let's say the language models and uh for instance a formal
+ language on which you want to map on which you want to translate uh your linguistic expressions
+ for instance like in the probabilistic language of thought uh hypothesis which I mean I think
+ it's it's a really fine model but uh it's assumed that you basically took the language
+ models and the language model translate the natural language into these formal structures
+ that are then given an input to a formal engine so I think that in these cases uses this type
+ of combination of language model and symbolic representation I don't find it very interesting
+ for me at least at least in the sense of asking the question how we do we learn this type
+ of knowledge how do we learn this type of uh of structure in that sense perfect thank
+ you okay uh I'll end this session now and remind you that the next speaker will be Don
+ Needlestock and not Colin Griffiths who has been moved to Friday at 3 30 p.m. because
+ of COVID thank you both very much thank you thank you thank you Friedemann for your very
+ nice discussion yeah thank you for your excellent talk and for uh yeah for the nice interaction
+ Thank you very much.
+ See you.

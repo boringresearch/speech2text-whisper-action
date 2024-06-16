@@ -1,0 +1,756 @@
+ Melanie Mitchell is professor at the Santa Fe Institute. Her current research focuses
+ on conceptual abstraction and analogy making in artificial intelligence systems. She is a student
+ of Doug Hofstadter's among others, is that correct? Yeah. You say very quietly. Melanie is the author
+ or editor of six books and numerous scholarly papers in the fields of artificial intelligence,
+ cognitive science, and complex systems. Her 2009 book, Complexity, a Guided Tour, won the 2010 Phi
+ Beta Kappa Science Book Award and her 2019 book, Artificial Intelligence, a Guide for Thinking
+ Humans, is a finalist for the 2023, was a finalist for the 2023 Cosmo Prize. Did you win it? No.
+ It was it, but it's still a finalist for that. The last thing I want to tell you is that when
+ the clock time for this is over, which is 90 minutes from now, I'm going to read a
+ memorial reminiscences from Doug Hofstadter for 10 minutes. So if you want to hear more about
+ Dan Dennett, stay for 10 minutes after the end of Melanie. Go ahead, please.
+ Okay. Thank you. Thanks to everybody for coming. I'm going to talk about the challenge of
+ understanding the world for humans and AI. We've been in the deep learning revolution for a while
+ and AI has gotten astoundingly better at many things, but do they actually understand the data
+ that they process? This is really the question that I think this entire summer school is looking at.
+ And does it matter? Well, let's look at some failures of understanding in AI systems,
+ particularly AI systems before the generative AI revolution. So this particular
+ paper focused on images that were, image categories that were in the ImageNet
+ image recognition challenge. It's like a school bus. This is a neural network that's been trained on
+ ImageNet that can recognize the school bus correctly with 100% confidence. But if the object
+ is transposed or rotated via Photoshop into various poses, it changes the classification
+ dramatically. Now the network is 99% certain it's a garbage truck, a punching bag, and a snowplow.
+ So this shows a kind of brittleness of whatever understanding the system could be said to have
+ of this object in that it's not robust to these kinds of changes of pose. And this kind of
+ brittleness is seen in machine learning, in computer vision, and language in general.
+ For instance, here, this is a picture of a vision system on a self-driving car that is
+ correctly recognizing cars, but is recognizing these pictures of bicycles and people on an ad
+ on the back of a van for e-bikes. It doesn't distinguish between things that are in ads
+ and things that are in the real world, sort of giving us a lack of understanding of context.
+ This was perhaps shown even more by this example where a Tesla driver tweeted that when he was
+ using his self-driving car software, his car kept slamming on the brakes in this area with no stop
+ sign. But after a few drives, he noticed this billboard, which you can see blown up here is an
+ ad with some kind of official holding up a stop sign in the billboard, which the car interpreted
+ as a real stop sign. And I should say, I don't have a slide for it here, but people are now
+ trying to fool robo-taxis in San Francisco by having t-shirts that have stop signs on them,
+ and they stand out in the sidewalk, and this car sometimes will stop in response to the t-shirt.
+ We've seen a lot of examples of shortcuts in machine learning systems. So for example,
+ in this paper, these researchers trained a deep neural network to distinguish malignant
+ and non-malignant skin lesions. But what they found when they looked into it, how it was doing
+ this classification, they noticed the algorithm appeared more likely to interpret images with
+ rulers as malignant. Well, okay, so images with malignant lesions typically had rulers because
+ the pathologist wanted to measure the size of the malignancy. And so the neural network learned that
+ convenient shortcut to getting correct classifications without really understanding
+ what the humans were trying to teach it. Google Translate can still make mistakes
+ based on ambiguities in words. So here, if you try to translate this sentence, the legislator
+ accidentally left a copy of the important bill he was riding in the taxi. If I translate that
+ into French, Google translated bill as facture, which is the wrong sense of the word bill. This
+ is more like an invoice than a legislative bill. And in fact, in the real world, people have found
+ that translation software is not robust enough to be trusted, like if we're going to use it for
+ critical cases, like translating asylum requests can make errors that can really be harmful to
+ humans. But now we're in a new age of large language models and other generative AI systems,
+ and there's some feeling among people, a lot of people, that they've achieved a richer human-like
+ understanding than previous AI systems. And indeed, I can ask Chat GPT to translate this same
+ sentence into French, and it gets the right translation for bill. And I can ask it why it
+ translated it that way, and it will tell me in a very verbose way, as it tends to do, about why
+ it's translating it that way. And it's clear that the bill refers to a legal document, etc. If the
+ context were different, it would be different. And it does seem to understand the sentences that it's
+ processing. And Terry Sanofsky, who is a neuroscientist and a neural net pioneer, wrote this
+ very interesting paper on large language models in which he said, you know, it was if a space alien
+ suddenly appeared that could communicate with us in an eerily human way, LLMs are not human,
+ but they're superhuman in some aspects. Some aspects of their behavior appear to be intelligent,
+ but if it's not human intelligence, what is the nature of their intelligence? And this is what
+ we're all kind of grappling with. How do we characterize what these systems are, what their
+ intelligence and understanding consist of? Well, some people have made a lot of, you know, optimistic
+ claims about large language models. Blais Aguera Iarcus, who's a researcher and executive at Google,
+ wrote that these systems really do understand a wide range of concepts. And I think he would say
+ that "understand" in a human-like way. But he says its understanding is informed purely by text,
+ but it's real understanding. On the other side of this debate, we get people like Jake Browning
+ and Yan LeCun, who say a system trained on language alone will never approximate human
+ intelligence, even if trained from now until the heat death of the universe. So they are on that
+ other side. They would not attribute human-like understanding or intelligence to these machines.
+ Well, a group of researchers did a survey of the NLP community a couple years ago, and they asked
+ people to agree or disagree. Some generative models trained only on text, given enough data
+ and resources, could understand natural language in some non-trivial sense. And the result was
+ really split along the middle. You know, 50/50 had strong opinions, negatively or positively,
+ about that. I don't know what would happen if people were given the same survey today.
+ It would be interesting to try. But people seem to have strong opinions on this.
+ Well, here's someone who claimed that these systems understand in a human-like way.
+ Ilya Siskover, co-founder of OpenAI, said that when we train a large neural network to accurately
+ predict the next word in lots of text, it's learning a world model. This text is actually
+ a projection of the world. What the neural network is learning is more and more aspects of the world,
+ of people, of the human conditions, their hopes, dreams, and motivations. The network learns a
+ compressed, abstract, usable representation of that. And to some people, this notion of compressed,
+ abstract, usable representation might be what the definition of understanding is.
+ And I think Siskover would say definitely these machines are understanding.
+ Well, this notion of world models, you know, he said these systems are learning world models.
+ This notion of world models is a term that's been used, but what does it actually mean? Well,
+ probably the best example of looking at world models in neural networks is the case of Othello,
+ the game of Othello, not the play, Shakespeare play, where these are two different papers that
+ looked at systems that are trained on sequences of text that represent Othello game sequences,
+ and then probed the neural networks for world models. So let me just tell you a little briefly
+ about this. You know, Othello is a game that's played on an 8x8 board, and you have
+ black and white tiles that are placed down. A tile has to be placed, the board starts like this in
+ image A, and a tile has to be placed in a way that captures a piece, that surrounds the piece
+ either in some direction with pieces of the opposite color. So here's black moving here,
+ and then the piece, the white piece that was captured, flips to black. Okay, and then here's
+ another move where white moves here at D3, and the piece in the middle is flipped to white. And so
+ you keep going on until one side or the other. The board is actually, nobody can make a move,
+ and then the person with the most pieces wins. So what these groups did is they took a relatively
+ small transformer, one with eight transformer block layers, and they fed it sequences of legal
+ moves generated from random games. They were legal moves, but the games were simulated by
+ searching along game tree. So they're tokens like this, E3, D3, C5, that represent board positions,
+ and the classification task or the prediction task was to predict the next legal move in that
+ sequence, so the actual move that was in the simulated sequence, sort of like predicting
+ the next word in a text the way that chat GPT might do. Okay, so this system didn't know,
+ it wasn't told that it was playing a game, it wasn't told that there were alternating players,
+ it wasn't told that there was a board or anything like that. All it was given was these tokens,
+ E3, D3, C5, but, and it did learn, it learned very well to predict the next sequence in the token.
+ Okay, now what did it learn, actually? How is it doing this task? Well, the researchers trained
+ a linear probe, a simple linear classifier, that input activations from one of these layers,
+ one of these transformer block layers, and then used that to, trained it to predict the contents
+ of each board position. So basically, the way that they did it, it's a little bit hard, complicated
+ to explain, but you know, they took this linear classifier, which input the transformer activations
+ after a set of tokens were input, and it trained this thing to predict for each board position,
+ each of the 64 board positions, whether the position was filled with, if it was black's move,
+ whether it was filled with a black tile, or if it was white's move, whether it was filled with a
+ white tile, meaning from the point of view of the person, of the player, the current player,
+ whether it was mine, yours, or empty. Okay, and so this thing is taking transformer activations
+ and asking, do those activations encode the state of the board at any given point in a sequence of
+ tokens here that represent play? And they found that when it was evaluated on unseen test data
+ and looking at different layers of the transformer, it was able to predict with 99% accuracy
+ something that it hadn't been trained on, that was the board state that was generating this sequence.
+ Okay, and then the authors also showed that they could do causal interventions based on these probe
+ results to change the state of the board in the mind, if you will, of the transformer. So the claim
+ was that these transformer had, by being fed sequences of text that were generated by an
+ unseen game board and rules of the game, to be able to predict the state of the world that generated
+ this data. So that's kind of what Sutskever is claiming for language in general, that the world
+ generates the state that we talk about and our talking about it allows the transformer
+ architectures to learn a model of the world. Okay, well, the game of Othello is very different.
+ This is very cool result, but the game of Othello is very different from the wide open world. So
+ it's not totally clear that you can make conclusions from one to the other, but some prominent people
+ in AI were very impressed by this. This is clear evidence of a language model developing an internal
+ world model, says Chris Ola from Anthropic and Andrew Ng said that, do they really understand
+ the world or just give the appearance of understanding? And he took evidence from Othello
+ to show that these LLMs build models of the world, how the world works, which makes me
+ more comfortable in saying they do understand. Okay, so that's one set of opinions, but others
+ aren't so confident in this understanding interpretation. So Yann LeCun, of course,
+ famously doesn't think LLMs understand or perform sort of the kind of reasoning that you would be
+ able to do by understanding. He says they're more like systems that do approximate retrieval from
+ their training data. And Raoul Kampampati of Arizona State says it even more like snarky way.
+ He says emergent abilities, the preferred euphemism for what your LLM does when saying
+ approximate retrieval sounds too unsexy. So these two are on the opposite side of the understanding
+ debate than Andrew Ng and Chris Ola. So how do we evaluate understanding in large language models?
+ We don't have the same kind of experimental sort of linear probes that can map
+ chat GPT's internal states to the world models. No one quite knows how to do that.
+ But we can do sort of more behavioral experiments. Well, we can just look at their behavior,
+ kind of give them a Turing test. And that's, I think, what most people tend to do and think that
+ they these systems understand. And of course, it's subject to the ELISA effect where we humans tend
+ to project understanding onto anything that talks to us in natural language. Well, then we can do
+ something a little more objective. We can test them on benchmarks that are meant to test understanding.
+ So there was recently a news feature in Nature, which said AI from April 15th, that said AI beats
+ humans at basic tasks. Okay. And the tasks that they gave were reading comprehension, image
+ classification, competition level mathematics, etc. And they've been they now nearly match or exceed
+ human performance in these tasks. And here's the plot that came went with the article. This was
+ actually from adapted from the recent AI index report. So here's the human baseline on various
+ benchmarks. And notice the names of the benchmarks basic level reading comprehension,
+ visual common sense reasoning, multitask language understanding. So these terms are being used
+ to describe the benchmarks. But the problem is that these are based on specific benchmarks.
+ And it's not always the case that even if a benchmark has the word comprehension or
+ understanding in it, that doing well in it requires comprehension or understanding.
+ And that's because of these kinds of shortcuts that we've seen in that I showed like for the
+ ruler in the skin cancer image, but there might be much more subtle ones. And there's also the
+ question of data contamination, to what extent do these benchmarks actually or similar questions
+ kind of appear in the training data. So I think the problem is, you can't really say that
+ just because a system has surpassed humans on a particular benchmark, that it really has achieved
+ sort of the human level understanding that it takes to do the bit more general task of say,
+ visual reasoning. And that's sort of a fallacy that this nature paper is just propagating.
+ Okay. So, you know, there's been a lot of papers detailing the kinds of shortcuts that can be
+ learned by machines in vision and language and other tasks. Okay. A very popular thing to test
+ their understanding has been to give them standardized tests designed for humans. You know,
+ we've seen the headlines of ChatGBT passing business school, law school, and medical school exams.
+ But we have the same problem with questions of data contamination and shortcuts,
+ and more generally the issue of test validity, you know, that performance on such tests might
+ not correlate with performance in the real world in the same way it would for humans or we would
+ hope it would for humans if the test is valid. So it's not totally, you know, you can't necessarily
+ conclude that these standardized tests have shown the kinds of understanding that humans need to
+ pass these tests. And then, you know, so there's been a lot written on that. I won't go into that
+ in detail. Finally, you know, we can evaluate them on the tasks that require the correlates
+ of understanding, that is the ability to make abstractions and to reason. Well, here's a paper
+ that tested GPT-4 on several, you know, tasks that involve abstraction and reasoning. And the blue
+ lines are how well GPT-4 did on the original version of the task. The red lines show how well
+ they do on what these people call counterfactual tasks, that are tasks that meant to test the same
+ understanding, sort of abstract understanding, but changed the content of the test so that it would
+ be less likely to be in the training data. So just to give you an example, let's look at the code
+ execution task. So here, GPT-4 is very good at looking at little snippets of Python code
+ and printing out what the code would return. And here's like a prompt, you're an expert programmer,
+ which is the following code snippet return. And you can see that GPT-4 does quite well on this.
+ But the authors came up with this counterfactual task, which is the same task, except they say
+ there's a new program language, Thypon, which is, you know, an imaginary one, which is identical
+ to Python, except that lists and arrays and so on use one indexing instead of zero indexing,
+ you know, that a list would start with one instead of zero. Now what does the snippet print? And you
+ can see they gave it lots of different tests along these lines, and you can see that its performance
+ dropped dramatically. And the conclusion from this paper was, while current LLMs may possess
+ abstract task-solving skills to a degree, they often also rely on narrow, non-transferable
+ procedures for task-solving. So this kind of generalization or abstract task-solving that
+ understanding permits doesn't seem to be always being used by these systems.
+ And there was another paper called Embers of Auto-Regression that showed something very similar.
+ And I'll talk a little bit about my own group's work in this area. So we look, there was a paper,
+ this paper from 2023, from a group of cognitive scientists at UCLA who showed that in many domains,
+ four different sort of idealized domains, GPT-3, which is the one they tested on,
+ was able to beat UCLA undergraduates in analogical reasoning. And this got some
+ press, you know, found that undergrads get beaten on questions like those that helped get them into
+ college. So they, Webb et al, adopted the letter-string analogy problems of Hofstadter
+ that I myself worked on in my PhD. So questions like this, we have a string of letters that changes
+ into another string of letters, do the analogous change to this new string of letters. And, you
+ know, using notions of sequence, successorship, and predecessorship, and grouping in the alphabet.
+ And so there's a whole variety of analogy problems that can be expressed in this
+ idealized domain. And so what they found, and I'll just give you briefly, was here's the accuracy
+ of GPT-3, and here's the accuracy of humans. So these humans are UCLA undergrad psychology majors,
+ and you can see that, you know, the best ones got all of the problems right, but this is the average.
+ And they concluded that there are emergent abilities for analogical reasoning in LLMs,
+ and this was only one of four domains, but it's the one that we looked at. So what we did, my
+ collaborator Martha Lewis and myself used this counterfactual task paradigm to evaluate the
+ generality of this, okay? And we found we repeated the experiment, but now we also added some later
+ GPT models, and we also repeated the human experiment using the prolific academic site
+ rather than, you know, psychology majors. And we found, actually, even on the original tasks,
+ in our study, people did better than these systems. So, you know, this is just a difference
+ of population. But then we looked at the counterfactual study, which is instead of giving
+ an alphabet in the original order, we swapped some letters. So here the letter M is swapped with the
+ letter E. So this is sort of analogous to that Python, new version of Python. So here we're
+ just saying, here's a new version of the alphabet, sort of counterfactual version of the alphabet.
+ Now do this analogy problem. And you can see here that, you know, MVGHI, well, there's a V here
+ instead of an F, and that changes to MFGHI. What does FGLIJ change to FGLIJ? Well, it should change
+ to FGHIJ. So we also looked at alphabets involving non-letter symbols, the same general idea.
+ And we asked people and these GPT variants on these problems. And this here is the number of letters
+ permuted in the alphabet. And this is the symbol alphabet. And this is the accuracy. And you can
+ see the blue dots are humans. They are staying fairly constant across the different counterfactual
+ tasks. And the GPT variants, this is the original task. They're doing not as good as the humans,
+ but not terribly, but their performance goes way down with the different variations. So we concluded
+ that these systems actually have not achieved general analogical reasoning abilities, at least
+ in this domain. So the take-home message here is that large language models are better, often
+ dramatically, on solving reasoning tasks that are similar to those seen in the training data,
+ but not to those that are not similar. This reflects some failures of abstract understanding.
+ So how is it that we can get machines to learn and use human-like concepts and abstractions?
+ Well, let me give you a really short overview of how some people in cognitive science think
+ about human concepts. We think about concepts as being mental models of categories. If you
+ have a concept of a dog, there's a category dog, but your mental model of the dog might involve
+ things that you've experienced with dogs and other more abstract notions of dogs than
+ strict just listing of pictures of different dogs. And we have mental models of whole situations.
+ And events and one's own self and your internal state. So concepts are these rich mental models.
+ So let's consider a relational concept, the concept of something being on top of something else.
+ We know that concepts have compositional structure that if you understand one thing being on top of
+ another, you can say that another thing's on top of those things and so on. If you understand a cat
+ on top of a television, you can also understand a television on top of a cat.
+ I got this middle picture to be drawn by Dali, but when I tried to get it to draw a television
+ on top of a cat, it wasn't able to do that, at least when I tried it. Concepts have causal
+ structure and enable predictions, reasoning, and common sense. Babies at a very early age learn
+ about blocks that are on tops of other blocks and how you can change the state of those blocks
+ and what happens if you push on it. Kids learn to the horror of their parents
+ how to get their own bodies on top of things. They understand the concept so that they actually can
+ reason about how to change their own state so that they're on top of something.
+ And kids learn sort of the topological notion of on top of that shoes go on top of socks
+ in the sort of three-dimensional way and therefore you have to put your socks on first.
+ So just some few examples. And also concepts can be flexibly abstracted to new situations via
+ analogy and metaphor. We have all these metaphorical uses on top of that don't involve spatial
+ configuration. You know, I'm on top of my work, at the top of the hour, at the top of one's voice,
+ and so on. So we're really good at this kind of metaphorical extension of concepts.
+ Larry Barsalu, a cognitive psychologist, gave this definition of concept. It's a competence
+ or disposition for generating infinite conceptualizations of a category. So you can see that it's a generative
+ model. And that's, you know, you can see that with my examples of on top of. And George Lakoff and
+ colleagues wrote extensively about how abstract concepts are actually learned via metaphors
+ involving sort of more core primitive concepts like social interactions being mapped onto
+ physical temperature. She gave me a warm greeting or status being mapped onto physical location.
+ She's two rungs above me on the corporate ladder. There's also some people who have proposed the
+ so-called simulation hypothesis that concepts, both abstract and concrete, are grounded in mental
+ simulations of physical situations. So Barsalu believes that. Also people like Josh Tenenbaum
+ have written about simulation is the way that we understand concepts and we understand the data
+ that we encounter in because we simulate, we're able to internally simulate what's going to happen
+ and how these it's going to, you know, relate. We can make predictions and do reasoning via simulation.
+ And Spelke and others have proposed that all concept learning builds on some innate or perhaps
+ early learned systems of core knowledge, which they propose involve things like objectness,
+ numerosity, things like some sets are greater than other sets, some things are bigger than other
+ things, basic geometry, topology, and agents and goal-directed behavior. So I'm going through this
+ really fast because I want to get to this work from Cholet, which I think is really interesting.
+ So Cholet is a researcher at Google who wrote this paper on the measure of intelligence
+ and he was trying to come up with a way to sort of have a benchmark or a corpus of tasks that
+ are built on these sort of core knowledge primitives and that require you to be able
+ to do concept induction and abstract reasoning and to fairly compare humans and machines
+ on this kind of understanding task. So here's an example of a task from his corpus. The whole
+ domain is on this grid, these 2D grids, and there's 10 different colors and so what happens is you can
+ give some number of demonstrations, these are like training examples, where one grid transforms into
+ another grid and I'm here giving three demonstrations of the same abstract transformation and now your
+ job as a solver is to generate a new grid that applies the transformation to this test input.
+ So you have three training examples and now you have to generate something that solves the problem
+ with respect to this test input. So it's a very small few-shot learning task and you can probably
+ see what's going on here. You have to understand what an object is in this world, you have to
+ understand sort of spatial direction, that this thing is pointing in a certain direction, you have
+ to understand the notion of boundaries and some other very basic spatial concepts. Here's another
+ task from the arc corpus and here you have to understand sort of shape invariance, you shape
+ shapes the same shapes, the equivalence sort of class of certain kinds of shapes get colored to
+ the same color no matter what direction they're pointing, no matter what orientation they're in,
+ no matter how big they are. So Chollet came up with a thousand tasks, this is called a task,
+ published 800, held out 200 as a hidden test set and then set up this competition on the Kaggle
+ platform. So this was in 2022 I think and people could enter programs, you know, after looking at
+ the 800 published tasks they could enter programs that would be then tested on the hidden tasks.
+ And in the end there were like 900 teams and the best program got about 20 accuracy on this
+ hidden test set. Each program got three guesses per task and if one of them was right the task
+ was considered to be solved. The ensemble of the top two programs was about 31 accuracy, these were
+ program synthesis methods that tried to create a program that would do this grid transformation.
+ Okay and then there was another competition the following year, 2023, where you could win
+ a thousand Swiss francs for every percentage point above the current world record and I think
+ the outcome of that was somebody got up to 34% and so that's where we are now. But there's
+ some problems I think with the original tasks. I think they're a wonderful benchmark for
+ looking at sort of understanding basic concepts but some of them are actually too hard for humans in
+ Chalet's corpus and I think that's sort of why these systems are doing so poorly. But also they
+ don't systematically test understanding of concepts, you know, here I mentioned, you know,
+ shape and variance but just because a program might be able to solve this doesn't mean it has
+ a general understanding of shape and variance. You really have to test it systematically on
+ variations of that underlying concept. So that's what our group did. We created a new benchmark
+ that we called Concept ARC, which these are my two collaborators on that, and our Concept ARC
+ benchmark is a set of concept groups, 16 of them, each of which, for each of which we created many
+ variations that varied in complexity and degree of abstraction. But we also tried to design them to
+ be easy for humans and here are some of the concept groups that we looked at. So let me give you some
+ examples. We had a total of 30 tasks per concept group with 480 tasks. So here's an example from
+ our corpus of one of the top, I'm sorry, above versus below or top versus bottom. I can't remember
+ exactly what this was, but anyway you can see it's like remove the top, the bottom object. That's
+ what the transformation is. And we tested this on people on prolific. We also tested the Kaggle
+ winning program and GPT-4 using a text only version of these problems where we just give sort of the
+ cell values of each row and column of the the grid. And everybody got it correct, but that doesn't
+ mean that everybody understands the concept of top and bottom robustly. So here's another problem
+ testing that same concept. So color the top row red. Everybody got that one right.
+ And here's another one. This one is remove the top and bottom object.
+ Humans 100%, but the two programs we looked at were incorrect on this. So they didn't have as
+ robust an understanding. Here's another example concept. This is from looking at the concept of
+ center. Here the idea is to extract the center color. Okay everybody, well humans seven out of
+ eight humans got this correct. The prolific platform's a little bit, you know, it's a noisy
+ measure of humans because some people aren't really trying. This one is extract the center object.
+ Humans 100% got that correct. These two programs got it incorrect. And this was to take
+ move the colored dot to the center and extend it. Humans got that very easily,
+ but these programs got it incorrect. And when we did a very thorough comparison on both the
+ text-only GPT-4 and the vision version of GPT-4, when we could give it the image versions, here's
+ what we found on these different concept groups. Basically humans overall are doing quite well.
+ Everybody's given three guesses, humans and the programs. The Kaggle first place gets about 51%
+ overall, which is better than the 20% it got on the original ARC set because these are easier,
+ but still far from humans. GPT-4 with text only gets about 33%. And GPT-4V with images surprisingly
+ only gets 15% because the image processing abilities of these multimodal language models
+ don't seem to be that great, to be honest. So that was a little bit surprising. But anyway,
+ to conclude my last minute, can AI understand the world? Well, I think in principle, yes.
+ There's no reason why an AI system in a machine in principle can't understand the world. I mean,
+ we can debate about that if you want later on. Current AI is amazing in many ways, but it has
+ many failures of understanding which make it untrustworthy. And we've seen that with many,
+ many examples that people have shown of various tests of AI systems. And I would say that to
+ understand the world in a human-like way, AI systems are going to need some kind of human-like
+ core knowledge systems and the resulting concepts that I talked about that are mental models built
+ up via composition, analogy, metaphor, and causal structure. Can AI systems achieve all this without
+ embodiment or active interaction in the real world? That's an open question. And I think
+ that I would argue that embodiment and active interaction are going to make it a lot more
+ easy to gain understanding of the world. But I'm not sure whether they're never going to learn
+ that from language and say images alone. So I don't know. All right. So I'll send my slides
+ to Stephen, and he can post them. And here are some citations to some of the papers that I
+ used in making this talk. And I'll stop now and happy to chat. And I think maybe Kyle is going to
+ do a response. Thank you very much. Yeah. Thanks, Melanie. That was great. And as usual, always
+ so clear and balanced, kind of explaining everything on both sides in a really
+ clear and short way. So I have some slides. Is that OK to share some slides? Yeah, that's fine.
+ Yes, you can share. Great. So yeah, I was going to a bit. Let me just zoom things in the way here.
+ Yeah, you can see these now. Yeah. Yeah. So I was going to do a bit of a response and also kind of
+ while I'm at it, sneak in a bit of a Dennett tribute, in part because over the last year,
+ I've been working with the philosopher on some questions about language models and meaning and
+ reading a bunch of Dennett. So we kind of respond to him. And so I had some specific Dennett thoughts.
+ I thought this would be the right venue to share. So one of the things Melanie mentioned was Eliza.
+ So Eliza is like the kind of simple chat bot from years ago, which was basically doing very simple
+ kinds of look up. And I think we'd all agree it's very easy in that case to say, no, Eliza
+ doesn't really understand because it's just doing some kind of simple look up. And if you actually
+ go and look up the answers and kind of understand what it's doing, that's going to give you a much
+ better understanding of the system than positing some kind of understanding. And I think part of
+ the reason why the questions of do LLMs understand seems kind of more complicated is because
+ understanding what they're doing is more complicated. And if you end up with an answer like,
+ well, it's a big neural network and it's predicting the next word. Well, it's kind of. Now it's also
+ doing this LLH stuff. And here's this literature on interpretability, blah, blah, blah, blah, blah.
+ It's not a very satisfying explanation of its behavior. And so I think this gets into kind of
+ interesting questions, thinking about the intentional stance and what that might have to say
+ about something like understanding. So this is kind of Janet's very famous idea that the system
+ has attitudes, like specifically often thinking about things like belief, if and only if its
+ behavior is well explained by the hypothesis that it does. So if an alien is predicting human behavior
+ at the atomic level, even if it could for some reason do that perfectly, the alien would still
+ be missing something about explaining a human getting coffee or performing everyday activities
+ if it did in some way posit that humans have beliefs, desires, and intentions.
+ And in fact, explanations that don't have those things wouldn't be tractable. And Janet's story
+ is that's what belief is in some deep sense. And it kind of raises the question if something like
+ that is a way to think about understanding. So if I have chat CPT, here I had it generate a story.
+ I told it to generate a story about Dan, a French professor at Harvard, who works on Proust and AI.
+ And it generated just a horrible story. I won't even read this. It's just like a kind of cheesy,
+ corny story. But then you could ask this question of is it fair to say in some sense that this has
+ beliefs? And on the one hand, if a human's interacting with chat GPT, right, and gets
+ this output and then wants to continue the conversation, it's kind of natural and maybe
+ even useful to say, well, it seems to think Dan is a French professor. It seems to think Dan has
+ brown hair and uses heat pronouns. It seems to maybe have some beliefs that a French professor
+ has students and give lectures. In this example, it seems to say the professor is sipping tea,
+ which it thinks is Proustian. So attributing these kind of beliefs might actually be helpful
+ in predicting its behavior at some very high level. At the same time, predicting its beliefs
+ is going to also mislead you in all kinds of ways, assuming that it has beliefs and understanding.
+ Like all these examples Melanie showed, malignancies measured with rulers,
+ stop signs and billboards, right, all these well-tested examples in which assuming some
+ kind of higher understanding is actually just going to end up disappointing you because the
+ model is actually doing something which is not that richer, deeper kind of thing that humans
+ naturally want to attribute. So I think there's a DENET passage in the intentional stance, which I
+ think is actually about verbat monkeys, but it's kind of interesting to think about in the context
+ of language models. And so I'll kind of read this out, which is not wanting to feed the galling
+ stereotype of the philosopher as an armchair answer of empirical questions. I will nevertheless
+ succumb to the temptation to make a few predictions. So this is before these experiments have been done
+ with verbat monkeys and kind of questions about their intentionality. It will turn out on further
+ exploration that verbat monkeys and chimps and dolphins and all other higher non-human animals
+ exhibit mixed and confusing symptoms of higher order intentionality. They will pass some higher
+ order tests and fail others. They will in some regards reveal themselves to be alert to
+ third order sophistications while disappointing us with the failure to grasp some apparently even
+ simpler second order points. No crisp rigorous set of intentional hypotheses of any order will be
+ clearly confirmed. The reason I am willing to make this prediction is not that I think I have special
+ insight into verbat monkeys or other species, but just that I have noted as anyone can that much the
+ same is true of us human beings. We are not ourselves unproblematic exemplars of third or
+ fourth or fifth order intentional systems. So this gets at this kind of question, I think,
+ that's come up a couple of times, the relationship between AI systems and non-human animals and how
+ we can think about this relationship. I don't think there's an obvious answer here, but I think
+ this passage kind of has some interesting resonances, right? This idea that in some ways
+ they can pass some of these sophisticated tests and in other ways completely fall down on them.
+ So maybe something to discuss. This is this paper where with the philosophy I mentioned where we get
+ into that a bit more. And then I thought I would take one more minute to tell a quick
+ Dennett story specifically about Dennett as crossword constructor.
+ So I had given a talk at the Santa Fe Institute where Melanie posted me a talk about language
+ models. And at the end, Dennett kind of popped in on Zoom. I had no idea he was in the talk,
+ which was kind of exciting and terrifying. And he asked this question how language models would do
+ on a particular kind of word game. And the word game was something like this. So I'll start by
+ giving you a country and give me the name of world capital that starts with the last letter of the
+ country. Next, give me the name of a country that starts with the last letter and so on iteratively.
+ And so I said, I don't know. And I followed up by email with him and showed him that, look,
+ ChatGPT can kind of do this task. And I mentioned I had done some work on word games and language
+ models and was also a crossword constructor in my spare time. And it reminded me when Nick Humphrey
+ was talking about this that he seemed quite proud to tell me that he had done this Quinean crossword.
+ So I feel like this should be better known. This is Quinean crossword to illustrate the indeterminacy
+ of radical translation. And this has this really cool property that there's one set of clues
+ and there are two possible answers. And so as a crossword constructor, I can tell you this is a
+ really, really difficult feat of crossword construction. And he did this not knowing this
+ was the thing anyone had attempted in the crossword world. In the crossword world, it's called a
+ Schrodinger puzzle. And actually, it's a really nice puzzle. I solved it twice, I guess, with both
+ solutions. And I recommend solving it. There's also a really nice kind of humanist moment here,
+ a great human need. I won't spoil the answer or both answers, but they're both, I think,
+ really nice and kind of fitting for Dennett. OK, so to bring it back to Melanie and a kind
+ of more concrete question, I wrote down a couple kind of ways that understanding came up, both in
+ Melanie's talk and in some of the other sources she was citing. And on the one hand, we can talk
+ about do models understand? And on the other hand, often it gets couched as seem to understand,
+ understand in some non-trivial sense, can be said to understand, understand the world as opposed to
+ simply understand in some more general sense. And so I guess what I was thinking is kind of what
+ hinges in particular on this word understand? And kind of how should we be thinking about understand
+ versus these kind of hedged versions of understanding or other kinds of related phenomena
+ that we might talk about? And yeah, maybe I'll put that back to Melanie there.
+ Yeah, thanks. That was great. I'll just say that at another meeting I organized here at
+ SFI on understanding, David Chalmers gave this great talk about conceptual engineering of the
+ word understanding. And he had all these sort of prefixes like E understanding and C understanding
+ and just kind of a taxonomy of understanding that he felt we would have to split up the word
+ 26 ways to really make sense of what everybody means by it. So maybe that's the only solution.
+ Yeah. I mean, having spoken with philosophers a bunch, I think a philosopher's answer is often to
+ break them up. As a linguist, my inclination is just that the meaning of understanding is how it's
+ used kind of in the world, and it's going to be some fuzzy vague thing. And then when you try to
+ pin down exactly what it means to understand, you get into these like linguistic questions. So yeah,
+ were any of his definitions particularly salient or relevant for these questions,
+ for the kinds of questions that... I think it's probably clear. What we most care about is the
+ downstream application in some sense of whether they're understanding and what that means for
+ all kinds of things in the world. Yeah. Yeah. No, I agree. Yeah. I mean,
+ I can't remember all of his... I'd have to go back to his talk, but he had,
+ I think they were quite salient. And the talk's on YouTube if anybody wants to look it up.
+ Yeah. And he's speaking here on Monday, I think. Right. So maybe he'll talk about the same kind of
+ thing. Yeah. Let me just intervene. I'm not going to say anything about the topic. I want to say
+ something about Kyle. Yeah. He'll see my face and say, "Kyle, that was a spectacular
+ discussion and I wish it were a model for everybody else for their discussions. I think there was an
+ unfair lead you had because Melody sent you her stuff. And so it's my fault. I should have asked
+ everybody to send their material to their discussant, but I think you did a terrific job,
+ really a terrific job. Thanks. And if it turns out not to inspire any commentary,
+ it's because you did too good a job. Any commentary? Either from here. I see there's
+ some compliments. Catherine, I complimented you, Melanie, for your talk. And then Alina,
+ thank you for the talk. What do you think is lacking in LNMs or AI in general for a more complete
+ world understanding? That's a good question to ask you. Yeah. I mean, I wish I could answer that
+ completely, but I don't think any of us really know. And none of us have a complete world
+ understanding, of course. So I'll just try and riff a little bit on that. What's lacking,
+ concepts of the kind that I talked about with all of these abilities for compositionality,
+ for metaphor, for infinite generation of instances. I think it's important to say that
+ none of us have a complete understanding of the world. None of us even have a very small
+ understanding of the world. We understand a little bit. And different people understand
+ different things. And one of the important things about human intelligence is our ability
+ to call on other people in our social networks or to use cultural technologies to complement
+ our understanding. And I think AI really focuses on this individual agent that's supposed to do
+ everything rather than some kind of more collective society like agents. Minsky talked about the
+ society of mind. And I think that this sort of more social, more ability to sort of go beyond
+ one's own understanding is what really accounts for human intelligence. So that's my riff.
+ I think Gary has a question. Gary, you're on.
+ Yeah, thanks. And let me second or third the comments of that. Melanie, that was a fantastic
+ talk. And Kyle, thanks for that really wonderful commentary. Melanie, so I wanted to ask. So kind
+ of in response to the last question, you had a slide, Can AI Understand the World, where one of
+ the points was that AI systems may need human-like core knowledge systems and resulting concepts.
+ And I wanted to kind of get more clarity on that because the kind of core knowledge systems that
+ Lispelki enumerated, one might say that those are the easy things to learn. That's a separate
+ question of whether humans have those kinds of innate core knowledge systems. But for example,
+ kind of inducing a sort of concept of object from visual experience is not a hugely difficult
+ problem and kind of figure ground segregation. And for humans also, it doesn't come for free.
+ So there's a prolonged developmental trajectory. And so I guess I'm wondering whether things like
+ number causality, arguably those kinds of things are learnable. How strongly do you feel that they
+ have to be built in in a way that Spelki proposes? And then another question is, so you said in that
+ same bullet point, mental models built up their composition, analogy, metaphor, and causal
+ structure. And I think there've been some demonstrations of LLMs learning this kind of
+ stuff. LLMs are great at metaphor, interpreting metaphor, explaining, you know, what do these
+ things that kind of relying on the same metaphorical frame have in common. They're arguably very good at
+ that. The gap might be that, you know, they're not like these metaphors were invented by people
+ over time. They're not invented by individual language learners who are learning it from input.
+ But like they are the products of human culture and ingenuity. And there, I think we have much
+ less evidence that LLMs are coming up with novel metaphorical constructions that make sense of the
+ world in the way that natural metaphors do for people. So yeah, that's all.
+ Yeah, no, I think that's a good question. So on the core knowledge stuff, so I, you know, I'm not,
+ well, I'll push back a little bit that things like object-ness are easy to learn. You know, there
+ were huge, ImageNet had a huge number of training examples, and yet the programs that were trained
+ on ImageNet didn't learn about objects. They didn't learn how to segment. And that was, you
+ know, something that you had to learn and be trained on quite separately. And I think that was,
+ you know, one of the, I remember there was like when DeepMind trained, used reinforcement learning
+ to get one of their systems to play Atari games. And could do Atari, they could play Atari games
+ really well, like Breakout, was really good at Breakout. But then somebody did an experiment
+ where they moved the little paddle in Breakout a few pixels, and the system just couldn't do it.
+ Because, and the reason was it hadn't learned about objects. And they had to sort of program
+ in the notion of objects. It had just learned about pixel configurations. So I'm not sure
+ how easy it is to learn about objects in general. And, you know, we know that like, one of the things
+ that chat GPT is at least, or these vision, multimodal vision systems are bad at is counting.
+ So I don't know, I don't know how easy they are to learn, or whether you have to have them built in.
+ So that's, I think, kind of a question that we should invest in.
+ Yeah, yeah. Well, so, I mean, it would be kind of remarkable, right, if one could learn a stable
+ concept of objects from static images, right? And humans don't, and one wouldn't expect them to.
+ But yeah, I take your point that, you know, even a young child, right, like, is more robust to this
+ kind of, right, you know, translation, manipulation, right? And yeah, absolutely.
+ Yeah. And your second point, which I'm now trying to remember, you remind me-
+ It's about metaphors.
+ Oh, yeah, metaphors, right, right. Yeah, I'm not sure, you know, impressionistically, I would say,
+ yes, chat GPT is really good at metaphors, you know, it can understand metaphors really easily.
+ But I haven't seen a study, and maybe there is one about sort of new novel metaphors that no
+ one's ever used before, if it can figure those out. Because, you know, most metaphors are obviously
+ in the training data. So I'd love to see that.
+ Yeah, yeah, I'm not aware of that study either. Yeah, I'm drawing on, like, your example of top
+ of the world and top of one's work, right, that, you know, and I completely take your point that,
+ like, the human concept of top is this sort of generative causal flexible kind of entity,
+ right, that can accommodate all of these uses. But at least in that case, like chat GPT can
+ interpret all of these phrases and variants of those phrases. Sure.
+ But that's still not the same, yeah, as extending it, right?
+ We need the counterfactual test. So, yeah.
+ Yeah, thanks.
+ We have lots of questions in the comments. Are some of the people who put up those comments
+ brave enough to raise their hand? It'll save time.
+ Okay, Julia, go ahead. I'm going to try to give you access right away.
+ For everybody else who wants to do it, please do it. Julia? Do I have to do something else?
+ Sorry, it takes a minute for the privileges to change. Thanks so much, both of you. That was
+ great. I was wondering, so looking at, like, the interior layers of models, sometimes you can find
+ really easy to interpret looking artifacts. Like, we passed a bunch of individual tokens through
+ and saw, like, for the word bank, you can see clusters that seem to align with the word,
+ the senses that a human would recognize for the word. So how is it that the model can build up
+ concepts at the word meaning level without having these lower level concepts that are
+ necessary for people, like the ones that would enable, like, top and bottom, those tasks that
+ you were talking about? Is it because that kind of information is different in that it can be
+ encoded through one-dimensional relations of symbols in the language that the LLM has access
+ to, whereas these other primitive concepts cannot be encoded that way? Or, yeah.
+ That's an interesting question. I don't know. You know, I think if you ask,
+ you know, on our tests on the arc, little arc problems that we gave GPT-4,
+ I'm not sure what it wasn't, you know, we didn't describe it in terms of language. We didn't
+ describe the scene in terms of language. We left it as kind of a more visual task, either
+ by giving it the text, a text version of the grids that just give the, you know, different colors in
+ the different squares, or by giving it an actual image. I think that maybe that there's a textual
+ understanding that these systems might have that doesn't yet transfer to their more, you know,
+ visual understanding. And if we said something like, oh, there's a, you know, we use the word
+ "top" or we kind of gave it more of a high-level description of these scenes, it would be able to
+ do much better. But of course, the whole point is to be able to abstract that from the image.
+ So I don't, you know, I don't know, I've been surprised, I have to say it, how much these
+ systems are able to absorb via language about sort of the physical kinds of concepts. And it just
+ goes to show how expressive language turns out to be. But yeah, you know, but what's also been
+ surprising is sort of how far behind the language-only versions, the multimodal versions,
+ seem to be, at least in reasoning. Stephen, should I call on people?
+ Yes, please.
+ Okay, so there's a question from Finn. Yeah, Finn doubler asked, raised his hands,
+ but then he says he's not asking. Finn, do you want to ask a question?
+ Well, I don't know. Bill Clancy is there. Bill, you want to ask your question aloud?
+ Lawrence, I see, good. We have a clear hand there. Lawrence, go ahead.
+ Sure. Yeah, I'm thinking about, in terms of how humans understand the world and navigate the
+ world, right? One of the ways we navigate the world is by understanding it, and using our conceptual
+ apparatus to interpret it, right? That's what we usually think about in terms of rationality.
+ But we also know that we have a sort of a secondary system for navigating the world,
+ and that's heuristics, right? So this is Herbert Simon and Gertie Gerenzer and that whole crew.
+ So I'm wondering to what extent you think that the concept of heuristic might better apply to
+ large language models than concepts and understanding and rational and logical
+ application of concepts to some kind of understanding of the world.
+ Yeah, I mean, heuristic, I'm trying to think about that. I'm not sure if there's that much
+ difference between what I was calling a shortcut and a heuristic. Sometimes we have heuristics,
+ which work really well most of the time, but sometimes they don't because they're heuristics,
+ they're kind of shortcuts. And then when they don't work, they become called cognitive biases.
+ And it's certainly been shown that large language models have absorbed similar cognitive biases to
+ those humans have, which maybe isn't that surprising, that they'll use the same kind of
+ judgment heuristics that humans use. So maybe heuristic is a good way to think about it,
+ but I'm not exactly sure how to kind of formalize that.
+ Thanks. Friedemann has raised a hand, so I think that means he wants to ask a question.
+ Friedemann?
+ The trouble is that as I flick through all of these comments, sometimes they turn themselves
+ on by themselves and I may be unintentional. Friedemann, are you there?
+ Sorry for this. Do you understand me now? Yes.
+ Okay. Now it seemed to be impossible to get the microphone going, but now it's working.
+ Thank you. Yeah. Thanks for an excellent talk. It was amazing to see what GPT cannot do. And
+ it's really great how you demonstrated this. But what could be the solution? Is there a possibility
+ to force this kind of system towards maybe building the right representations? And is it
+ so that one might be able to force it to build symbolic representation as Josh Tenenbaum
+ suggested before, that that might be a critical step towards better performance?
+ Yeah. I mean- What's your solution? Is there a solution?
+ Yeah. I don't know. I don't know what the solution is. Obviously, that's a big open question,
+ but one thing that a lot of people have been doing is having the system generate code instead of
+ language. And these systems are quite good at generating code. And often if you ask them a
+ question, give them some kind of reasoning problem in language and they try and solve it in language,
+ they get it wrong. But if they try and write a Python code to solve it, it'll get it right.
+ So some people are trying to use large language models trained on code to do
+ the kind of program synthesis that you might need for, say, those ARC problems. That's one approach.
+ But I don't know how general that's going to be. I'm not sure you can write code to solve all
+ the problems that are going to come up. And it's arguably not human-like. So I don't think that's
+ what we're doing, but who knows? I don't think we have a Python code generator in our brain. But
+ anyway, I think one thing that I would say is that we might... And this is the thing that Gary
+ Lupien brought up, that he was sort of, I think, asking how much do we have to build into these
+ systems? How much is built into us? That's very controversial. How much do we have to build into
+ these systems as prior knowledge to have them be able to bootstrap sufficiently? And I think that's
+ one big question that people are grappling with. So I don't know.
+ Well, the alternative approach, if I may make a mini remark, the alternative approach might be
+ to change something in the neural architecture that makes the system build representations.
+ And in our work, we have been showing that if you make the neural network more neural,
+ more brain-like, that's a necessary consequence that symbolic representations emerge or
+ something that can be likened to symbolic representations.
+ Yeah. I like that approach. I think that, yeah.
+ Thank you. I like your talk very much.
+ Thank you.
+ Okay. This is Professor... This is Sam.
+ There you go.
+ Yeah. I'd like to tell something about what happened to me last fall. Here at UCAM,
+ I teach logic. And during my last fall term, I had two students who gave the same answers
+ to the questionnaire. So I checked with ChatGPD and I've seen that they have cheated because they
+ were not allowed to use ChatGPD. And I noticed that ChatGPD was... They had 42% as final grade.
+ So ChatGPD was not very good in that course of logic. And it was the course of introduction
+ to logic at undergraduate level. And I noticed that ChatGPD was particularly bad at solving the
+ kind of problem that is close to what you presented in the experiments you talked about.
+ For example, I think about a problem in which I take logical formulas written in the
+ North American way of writing logical formulas with the symbols that we use here in North America.
+ And I gave a class about the Polish notation. And I asked the students to translate the
+ formulas in the Polish notation. And I think that in order to succeed that exercise, they had to
+ abstract the formal structure of the formula and then to translate it to the Polish notation. And
+ the translation involves analogy to abstract the formal structure and then to analogically
+ translate it in the Polish notation. So I want it possible that you, Melanie, comment on this. I
+ think it's quite close to the experiments you talked about in your amazing talk.
+ Yeah. I don't have much to say. I mean, that's another interesting example.
+ Of course, these language models are moving target because they're always being retrained on stuff
+ that people have prompted them on. So if you give the same test again, there might be some data
+ contamination. I don't know. People have shown again and again that these systems have trouble
+ with abstraction and generality. So I guess that's just another example.
+ I think I will make use of this lull to read the statement that Doug Hofstadter, Melanie's
+ former advisor, sent about Dan Dennett. And we can take it. If the people in the
+ general audience that have raised their hands but that have not spoken up
+ decide to get some courage, they can do it after I finish. He wrote, "I just received the very
+ sad news about the passing of Dan Dennett, a lodestar in my life and in many thoughtful
+ people's lives. Dan was a deep thinker about what it is to be human. Quite early on, he arrived at
+ what many would see as shocking conclusions about consciousness, essentially that it's just an
+ emergent effect of physical interactions of tiny inanimate components. And from then on, he was a
+ dead set opponent of dualism, the idea that there is an ethereal non-physical elixir called
+ consciousness over and above the physical events taking place in the enormously complex substrate
+ of a human or animal brain and perhaps that of a silicon network as well, executing algorithms.
+ Dan thus totally rejected the notion of qualia, pure sensations of some such things as colors,
+ tastes and so forth, and his arguments against the mystique of qualia were subtle but very cogent.
+ Dan had many adversaries in the world of philosophers but often quite a few who shared
+ his views and as for myself, that's Dan, Doug Hofstadter, I was almost always aligned with
+ him. Our only notable divergence was on the question of free will, which Dan
+ maintained exists and is in some sense a free, whereas I just agree that will exists,
+ but maintain that there's no freedom in it. Scott Kim joked that I believed in free won't
+ rather than free will. It was very clever but really the negation should apply to the free
+ rather than to the will. Dan was also a diligent and lifelong student in the sense of studier of
+ evolution, religion, artificial intelligence, computers in general and even science in general.
+ He wrote extremely important and influential books on all these topics and his insights will
+ endure as long as humans endure. I'm thinking of his books and now here's a litany of his books,
+ Brainstorms, The Intentional Stance, Elbow Room, Consciousness Explained, actually Explained Away,
+ Darwin's Dangerous Idea Evolution, Kinds of Minds, Inside Jokes. He was a terrific, this is not Doug,
+ this is me saying he was a terrific joke teller and creator. Breaking the Spell from Bacteria to Bach
+ and back, he was also a musician, a wonderful musician, a pianist and of course there are other
+ ones and of course his last book I've been thinking, his most, really the last book,
+ his last book ever, which was and is a very colorful self-portrait, a lovely autobiography
+ vividly telling so many stories of his intercontinental life. I'm so happy that
+ Dan was not only completed, has not only completed it but was able to savor its warm reception all
+ around the world. Among other things that book tells us about Dan's extremely rich life,
+ not just as a thinker but also as a doer. Dan was a true bon vivant, if anybody has ever had a meal
+ or a drink with him you know what that is and he developed many amazing skills such as that of a
+ house builder which you saw in Nicholas's presentation today, a house builder, a folk dancer,
+ and a folk dance caller, a jazz pianist, a cider maker, a sailor and carer of yachts, not the big
+ ones owned by Russian oligarchs but beautifully crafted sailboats, a joke tailor par excellence,
+ enthusiast for an extreme, an expert in word games, a savourer of many cuisines and wines,
+ a woodcarver, a sculptor, speaker of French and some German and Italian as well and also grew up
+ in his father was a some working for the government and he also grew up in Arabic countries
+ and probably has some residual knowledge of that too and he's an ardent and eloquent supporter
+ of thinkers who he admired and felt were not treated with sufficient respect by the academic
+ world. Two of these were Doug Hofstadter and Nick Humphrey. That's my part I added. Dan was also
+ the most devoted husband to his but after after he had they had Dan's approval they were much more
+ widely recognized. Dan was almost was also a most devoted husband to his wife Susan. They were married
+ for nearly 60 years and a great and he was a great dad to their two children Peter and Andrea. He
+ entertained the kids by building all sorts of things for them and he supported them through
+ thick and thin. I saw them up close and really admired his ardent family spirit. Both Dan and
+ Susan had near misses with death over the past decade or two and on one of those occasions his
+ own close call when his aorta was ruptured he wrote a remarkable essay called if I recall correctly
+ thank goodness. Goodness note he wouldn't say thank God because he was also an ardent critic
+ of religion which was all about how the human inventors and practitioners of modern medicine
+ had saved his life and the lives of countless others and that it was deeply wrong to thank
+ God for saving anyone's life and that and that what should be thanked was human goodness
+ incarnated in the form of all those people who so deeply cared about their fellow helping their
+ fellow humans doctors nurses medical researchers. Although Dan understood why his religious friends
+ prayed for him he thought that such actions were profoundly misguided and the belief in divine
+ intervention was not a healthy approach to life. Like his friends Christopher Hitchens Sam Harris
+ Harris and Richard Dawkins the quartet was nicknamed the four horsemen of the apocalypse.
+ Dan was a committed atheist and unlike me that's unlike Dan and me for that matter I am also an
+ atheist. He didn't shy away from applying that word to himself with all its flavors of an aggressive
+ anti-religion stance and he tried to explain with great patience and subtlety what is so compelling
+ about religion to the human mind but what is at the same time so wrong with it. Probably Dan's two
+ greatest heroes were Charles Darwin and the philosopher Gilbert Weill who was his doctoral
+ advisor at Oxford. Although he had quite a few others including for example Cole Porter and
+ J.S. Bach. Dan had many friends of many sorts in many lands all around the world. I was proud to
+ be one of them. He and Susan loved hosting their friends and their farm in Maine which they owned
+ and operated for about 40 years. The end of it is told in his most recent book his biography
+ which they owned and operated for sorry and Dan himself did much of probably most of the physical
+ maintenance of the home and fields and trees learning a great deal from his Maine neighbors
+ called Bertha and Basel and Bertha. I add that because he didn't have it in here Basel and
+ Bertha. Dan loved Maine and he loved calling it down east as the Maine folks do and he loved the
+ jargon he picked up from the farming and from sailing and he employed it often in his writings.
+ I was often a bit thrown by some of the terms he dropped with such with such ease and naturalness
+ as if everybody were as familiar with farm life and the sailing life as he was. I once offhandedly
+ called Dan a till-ossiper to the till of a boat and he loved the epithet and even embraced it with
+ delight in his recent autobiography. Dan was a bon vivant I said a very zesty fellow who loved
+ travel and hobnobbing with brilliance whenever he could. In his later years as he grew a little
+ teetery he proudly carried a wooden cane with him all around the world and into into it he chiseled
+ words and images that represented the many places he visited and gave lectures at. Dan was a truly
+ faithful friend to me over the four plus decades that we knew each other. He always supported my
+ ideas and I'm proud that he often sought feedback feedback from me on drafts of manuscripts while
+ he was writing and I often provided detailed suggestions. Seldom did I disagree with the
+ thrust of his ideas. I usually just provided suggestions for how to phrase a sentence a tad
+ bit more clearly or perhaps some examples that would support his point. I'm proud that over
+ the years I moved him close to my closer to my position on the importance of using non-sexist
+ language in one's speech and writing. Some of Dan's insightful essays such as Real Patterns
+ which I'm almost done which talked about what's what exists in the abstract new two-dimensional
+ world of John Conway's amazing game of life and by analogy about what exists in our 3D world
+ were deep mind openers as was of course his brilliant short story Where Am I which was
+ mentioned by Nick this morning if you listen carefully in the chapter on Brainstorms which
+ led to our friendship and our intimate collaboration on the anthology that was the book they wrote
+ together The Mind's Eye way back in 1980 and 1981. Dan appreciated me in ways that I will
+ never forget and he counseled me wisely emphatically concerning romantic dilemmas during the year I
+ was on sabbatical in in the Boston area. I can testify to that there was a time when he told me
+ not to consider someone as a potential partner because Doug was interested in her and he needed
+ her more. He was deeply considerate and compassionate and as I say filled to the brim with zest and
+ enthusiasm. He was a great dad and a great husband and a great friend as well as a great intellectual
+ and a great writer. He was bigger than life as my friend David Polachanski described him one time
+ when we were together with guests at Sam's and Susan and Dan's farm in the early 80s. I personally
+ will miss deeply miss Dan and so will so many other thoughtful people even people with whom
+ Dan seriously disagreed such as my old doctoral student Dave Chalmers who will be here soon
+ whose ideas on consciousness are diametrically opposed to Dan with their friendship and warm
+ warm because I was warm because they were they both valued honest human contact and respect and
+ clear communication far above such goals as fame or power or status. Dan Bennett was a mensch and
+ his idea on his ideas on so many subjects will leave a lasting impact on the world
+ and his human presence has had a profound impact on those of us who were lucky enough to know him
+ well and to count him as a friend. Requiescat in pacem Dan. Yours Doug. Now we are at 4.50.
+ We have four more minutes if there are any brave spirits if not
+ I will now announce this day finished. Our first speaker tomorrow will be
+ Kyle who gave that wonderful discussion today. Bye-bye.

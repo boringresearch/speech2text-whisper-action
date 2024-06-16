@@ -1,0 +1,582 @@
+ fellow at Caltech. His research aims to build AI that can understand and reason about mathematics.
+ To that end, he has focused on using machine learning, especially large language models,
+ to prove theorems in formal environments such as COQ and LEAN, which he will define for you.
+ He has received the Siebel Scholar Award. Before joining Caltech, he received a PhD in
+ computer science at Princeton, and he did his bachelor's at Tsinghua University,
+ if I didn't mispronounce it, in computer science and mathematics. Welcome, Kai Yu.
+ Thank you, Stephen, for the really nice introduction. I'm Kai Yu, and I haven't updated
+ the slides, but I recently left Caltech and joined MetaAI as a research scientist.
+ So I'm really excited to talk to you about my work to build AI that can understand and reason
+ about mathematics, or an AI mathematician. So please feel free to interrupt if you have
+ any questions. And mathematics has been an important goal of AI since day one. In the 1950s,
+ Alan Neville and Herbert Simon, who are the two AI pioneers, developed arguably the first AI program,
+ Logic Theorists. So this program is an automated theorem prover that could prove 38 theorems
+ from the book Principia Mathematica. Moreover, it pioneered concepts such as heuristics and search,
+ which became central to symbolic AI. And then AI has evolved over seven decades.
+ Today, large language models, or LLMs, are predominant. Yet, mathematics remains a central
+ challenge. Mathematics is often highlighted as one of the most important performance measures
+ for LLMs. For example, GPT-4 outperforms most humans in the SAT math exam, and Clowder is
+ evaluated on many benchmarks related to mathematics. So the enthusiasm for AI to solve math has also
+ led to the AIMO prize. That's a $10 million prize for developing AI that can win a gold medal in the
+ International Mathematical Olympiad. So why has there been such a long-standing interest in
+ AI for mathematics? One reason is definitely intellectual pursuits, because mathematics is a
+ hallmark of human intelligence, and achieving that has always been important for AI. But in addition,
+ due to the foundational role math is playing, advances in AI for math will impact a wide range
+ of things, like science, engineering, and also including finance. So given the importance of
+ AI for math, the next question is, what is the state of the art, and how to build it?
+ So here is a very simple recipe. First, you take a large language model, pre-trained on
+ generic internet-scale datasets, for example, LAMA or GPT-4 or other open source language models.
+ And then you continue pre-training it on math-specific data. So those are like
+ web pages from archive or online math forums, like Math Overflow. So in this step,
+ the language model becomes more specific in the domain of mathematics. And then finally,
+ you fine-tune the model on a carefully curated dataset. So this dataset is usually much smaller,
+ but also much more expensive. It consists of math problems with detailed step-by-step solutions.
+ So researchers have built many math language models using variants of this pipeline. And it
+ can be further improved in many ways. For example, you can always use a larger model or construct a
+ larger and cleaner math dataset. However, an important question is, how far can we get?
+ Is it possible to achieve human-level mathematics merely by scaling this up?
+ And to answer this question, let's look at a few gaps between LLMs and human mathematicians.
+ First, today's models are really good at elementary math up to the high school level,
+ but usually not anything beyond. Because as we move forward towards college or even
+ research-level mathematics, the data becomes much more scarce, making it very difficult to train
+ a data-hungry large language model. Also, checking the model's output becomes difficult.
+ When the problem is not about calculating a number, but involves some kind of abstract
+ mathematical reasoning, it's become difficult to tell whether the reasoning is correct
+ or it's just wrong. And this is true even for human mathematicians, and it's partially why
+ math papers take so long to review. So therefore, it's hard to evaluate
+ the model's output or to provide any useful feedback for learning the model.
+ And second, mathematicians do a lot of experiments and exploration. They formulate conjectures,
+ perform calculations, and look for examples or counter-examples. And all these are later
+ consolidated into the final solution, which then may look very nice, clean, and polished.
+ However, if you only train the model on the final results, on the final solution,
+ without this exploration process, this might be limited.
+ And finally, we humans learn mathematics not by studying one million problems.
+ We learn a clean and powerful set of rules and apply them consistently.
+ In contrast, language models do not learn this kind of interpretable and verifiable knowledge.
+ So these challenges lie between the current LLMs and human-level mathematics. I don't see how we
+ could address them merely by scaling up the existing pipeline. But if scaling is not enough,
+ what else do we need? I want to argue that one important missing piece is formal mathematics,
+ which uses logic and formal language to express math in a way that is rigorous and checkable by
+ computers. So it relies on a class of tools called proof assistants, also known as interactive
+ theorem provers. And popular examples include Isabelle, Coq, and Ling. So they are conceptually
+ very similar, at least for the purpose of this talk. So we will use Ling for illustration.
+ You can think of Ling as a functional programming language that is very similar to Haskell,
+ but it can be used to write not only conventional programs,
+ but also mathematical definitions, theorems, and proofs.
+ So we will see what do we mean by that. So with Ling, writing mathematics is like developing
+ software. And this is a piece of code in Ling. And first, it defines the concepts of natural numbers.
+ And then it defines addition between two natural numbers. And finally, it states and approves a few
+ theorems about addition. For example, addition is commutative, a plus b equals to b plus a.
+ So this is only one file in Ling. And files are organized into larger units,
+ such as libraries and projects. And just like software projects, formal math projects
+ can also be open sourced on GitHub and reused by other projects.
+ So a notable example is Mathlib. That's the math library of Ling. It covers diverse topics up to
+ the graduate level, including algebra, analysis, geometry, and currently it has 77,000 definitions,
+ 142,000 theorems and proofs contributed by over 300 developers. That's 1.6 million lines of code,
+ and it's growing rapidly. So if we compare formal math to the traditional way of doing math,
+ like using pencil and paper, formalization brings a few advantages that can potentially
+ help AI to learn mathematics. And when we use AI to generate formal mathematics,
+ the output can be verified by proof assistance, such as Ling. It produces either a yes or no
+ answer or sometimes more detailed feedback. And this is very important because, first,
+ it enables us to evaluate the model rigorously without worrying about hallucination. And second,
+ the feedback can serve as learning signals to improve the model, which mitigates data scarcity.
+ And more ambitiously, by grounding AI math reasoning within this feedback loop,
+ we want the model to explore the mathematical space by itself. For example, it could come up
+ with conjectures and try to verify conjectures. And during this process, the model can bootstrap its
+ capability in math, grow a library of interpretable and formally verified knowledge, and even discover
+ new math. So my research approaches AI mathematicians following this paradigm. And a central problem here
+ is how do we generate formal math? So this problem can be divided into several sub-problems.
+ First is theorem proving. Here, the model is given a theorem statement and generates a proof,
+ a formal proof. And second is auto-formalization. The model is given informal math written by humans,
+ for example, textbooks or papers, and it translates them into formal math.
+ And third is conjecturing. Here, the model explores the space of mathematics theorems
+ and generates conjectures that may be true and that may be useful. So in the rest of this talk,
+ I will dive deeper into our recent projects on theorem proving and auto-formalization.
+ And then finally, I will briefly discuss conjecturing as a future direction.
+ So we will start with theorem proving. And in this part, I will focus on
+ Lindojo, published at NeurIPS last year, and briefly mention a related project called
+ LincoPilot, which is still under review. So the task is, given a formal theorem statement,
+ we want to generate a proof. And note that generating the proof can be very difficult,
+ but checking the proof is relatively easy because Lin can tell you this proof is correct,
+ whereas this proof is incorrect. So unlike many tasks in machine learning,
+ here the goal is not to mimic the ground truth proof written by a human, but the model is free
+ to generate any proof as long as the proof can be checked by Lin. So here, then, a natural idea is
+ to fine-tune a language model, taking the current proof state as input and generating either the
+ next step or the entire proof. And many prior works have used LLMs for theorem proving following this
+ idea, but unfortunately, none of them can be easily reproduced or built upon. So first, many
+ of these approaches rely on private datasets. Second, none of them have released the model
+ checkpoints or code for training and evaluating the model. And third, theorem proving often requires
+ a tool for the model to interact with Lin or other proof assistants, but only some of those prior
+ work has released this tool. And finally, the compute requirement for training the model
+ ranges from 1K GPU hour to 48K, which is quite exclusive to industry labs.
+ So in this work, we introduced Lindojo to address all these aspects. It provides tools, datasets,
+ and models, all of which are completely open sourced. And our model is efficient and can be
+ trained on a single GPU within a few days, which gives researchers access to language model-based
+ theorem provers with a low computational cost. So before diving into more details, let's see a very
+ simple demo. Are you able to see my editor? Yes. Okay, so this is Lin. We are using Lin in VS code.
+ Here you see two theorems, theorem 1 and theorem 2. And for each theorem, you have a theorem statement.
+ So this is a statement, and then followed by the proof. And this is a statement, and this is the
+ proof. And right now, the two proofs are generated by humans, written by humans. So I want to show how
+ to use machine learning tools to help you write the proof. So first, our model can give you suggestions
+ on the next step. For example, if I remove this step, and I type, "suggest" tactics.
+ And so here on the right, you see the suggestions generated by the model. And you can click on one
+ of them to use it in the proof here. And not only can you suggest only a single step, but you can
+ also ask the model to generate the entire proof. For example, if you remove the entire proof here,
+ and you type, "search proof." And here on the right, you can see the suggestions generated by the
+ model. However, searching the proof is very challenging, and it's not always going to be
+ successful. For example, if you try it on the second theorem, you type "search proof." I mean,
+ you can wait some time. Well, it's okay. Actually, here it succeeds. But you see here, the reason
+ it succeeds is there's a similar theorem with the same name in Maslib. So that's kind of cheating.
+ But even when it does not succeed, it's possible to write part of the proof by yourself. You can
+ write the first step, and then you can do search proof here. So here, the model is running locally
+ on my laptop, so it's very easy to install and use. You don't need a GPU to use it. You can run it on
+ a CPU. And it's a tool called LinkoPilot. So you can add LinkoPilot as a dependency to your link
+ project, and you import it here. And under the hood, LinkoPilot used the models we built in
+ Lindojo. So I'm going to use this demo as a roadmap. For the rest of the theorem proving talk, I will
+ try to explain what's under the hood of this demo. So let's go back to the slides. So first is
+ generating suggestions for the proof steps. Here, we've seen suggest tactics. But under the hood,
+ what happens is if you type suggest tactics, it will get the current proof state, especially the
+ current goal, and feed it into a language model for generating suggestions. And here, you can use
+ BeamSearch or other sampling algorithm to generate multiple candidates. I'm showing three candidates
+ here. And proof steps like this, they may use existing definitions or lemmas as premises
+ highlighted in the red color. And usually getting those premises right is often the most
+ challenging part in theorem proving. And following prior work, our baseline model here is just a
+ transformer language model that directly maps the state to the proof step. And in particular, we
+ choose a model called ByT5, which is a variant of T5 with about 300 million parameters, which is
+ fairly small in the modern standard. And in practice, this works quite well. But here, it
+ has one problem. So this baseline model has one problem. It only sees the current proof state,
+ but it has no knowledge of what premises you can use. And it can still use the premises if it
+ memorizes names during training, but memorization is inefficient and difficult to generalize.
+ So therefore, in this work, we introduced a model called Reproval, Retriever Augmented Proval. So
+ our model explicitly retrieved premises from a large math library and used them to augment the
+ proof step generation. So here, we have a proof state in red, and we have a library of premises.
+ So first, we embed the state and each premise into vectors. And then we calculate the cosine similarity
+ between the state vector and each premise. And then we can use the similarity to retrieve the most
+ similar premises. And finally, we combine the retrieved premises with the state and use it for
+ generating the next step. So here, there are two parts. So we use a method called
+ dense passage retrieval for selecting premises. And we use the Bi-T5 model for generating
+ proof steps. And these two parts are fairly standard, and they are trained separately.
+ We first train the retrieval, and then given the retrieval, we train the generator.
+ So however, the model challenging here is, how do we get the training data for training the model?
+ Because for training the generator, we need pairs of proof states and the next step.
+ And for training the premise retrieval, we further need the entire library of premises.
+ And we also need to keep track of where each premise is used and where each premise is defined.
+ And LinDojo provides a general tool for extracting these kind of datasets from Lin projects,
+ including but not limited to MassLib. And it relies on a feature called meta-programming in
+ Lin4, which gives you access to Lin's internal information, such as premises, location, and also
+ abstract syntax trees. I won't go into too much detail about meta-programming, but really want to
+ emphasize that support for meta-programming is really what makes Lin promising compared to other
+ proof systems for machine learning. So for this specific study, we extract a dataset from MassLib.
+ It contains about 100,000 theorems and proofs, and together with individual proof steps and premises.
+ And we use this dataset for training the reproval model that can generate suggestions for proof steps.
+ So now we have, we are able to generate proof steps, but then how do we find complete proofs?
+ It turns out we can easily find complete proofs by combining proof step generation with search.
+ Say we have this initial state in red, and the model generates two candidates for the next step.
+ And we can execute these two candidates in Lin, try to get the next state. And then we can do that
+ repeatedly. So by doing so, we generate a large number of paths. And our goal is to search for a
+ path from the initial state to a solved state. And this path is essentially a proof. And here the
+ search algorithm can, we can use any classical algorithm, like best-first search or Monte Carlo
+ tree search. So you have a lot of choices here. However, regardless of what algorithm you choose,
+ there's a technical challenge is, so you, how your model in Python can interact with Lin
+ programmatically. So using Lin Dojo, you can turn any theorem in Lin into an environment in Python.
+ So here is how it works. So assume you have a theorem in Lin like this, and you have the original
+ proof. So first we replace the original proof with a special proof step called repo. And, you know,
+ proof steps in Lin, they usually have predefined behavior. But here we implement this step to have
+ no predefined behavior. What it does instead is to perform IO, which provides a command line
+ interface for controlling its behavior. And once you have a command line interface, it's easy to
+ wrap it in any language, for example, Python. And so this interface allows our machinery model in
+ Python to access and modify Lin's internal state. So let's look at some experiments. We use about
+ 100K proofs for training and 2K theorems for testing. All of them are from MESlib.
+ And in testing, we give the model 10 minutes. So the model has to prove the theorem in 10 minutes,
+ and we measure the percentage of success. And our main method is best first combined with proof
+ steps generated by reproval. And we compare it with a few baselines. One baseline is tidy,
+ which is the built-in proof automation in Lin. So tidy, it's purely based on heuristics and search.
+ There's no machine learning in tidy. And a second baseline is we replace the proof steps generator
+ reproval with GPT-4. So we give GPT-4 a state, and we ask it to generate tactics.
+ So here are the results. The y-axis is the success percentage. So higher is better.
+ And the x-axis are two different data splits. In the random data splits, we just split the
+ theorems randomly into training and testing. And in the normal premises data splits, we
+ split the data in a way that the testing theorems require you to use a normal premise.
+ So that essentially makes the testing set more challenging. As you can see, the numbers are
+ usually lower there. And different colors are different methods. So first, if you compare
+ gray and yellow with blue and green, you see that reproval, either with retrieval or without retrieval,
+ performs much better than baselines like tidy. So that's the result. And then we compare the
+ two baselines, like tidy and GPT-4. And also, if you compare gray with yellow, you see that
+ adding the retrieval provides a further performance improvement.
+ And so that's the result. And finally, as we've seen in the demo, the models in these projects
+ can be used directly in Ling and using the VS Code interface through a project called
+ pilot. And so in building Ling code pilot, it involves two challenges. So first, we need to
+ run the model in Ling. But in Ling, we don't have like a library for deep learning. For example,
+ there's no PyTorch in Ling. So how do we run the model in Ling? And this is achieved by training
+ the model in Python and wrap the model in C++. And then we can run it in Ling through Ling's
+ following function interface, or FFI. And a second challenge is most Ling users do not use
+ CPUs in their regular workflow. So we really need the model to be efficient enough on consumer CPUs,
+ like on my laptop. So we solve this challenge by using an efficient inference engine called
+ cTranslate2. So we have open sourced everything related to Lindojo and Ling code pilot. And our
+ models are on HuggingFace for download. And Ling code pilot is currently the second most popular
+ package written in Ling. And it's only next to Meslib. So I want to conclude the theorem
+ proving part with a user testimony from Kevin Buzzard, who is a math professor at UCL.
+ I added Ling code pilot as a dependency for the repo I'm using in my undergraduate class. And it
+ really can do a bunch of the problems, sometimes in a totally different way to model my solution.
+ I also tried it on a question someone asked on the Ling Zulupe chat. And it solved that too,
+ and very quickly. So Kevin has been very critical of AI for theorem proving. But now at least he's
+ open to try future versions of these tools. Because as he commented, who knows what language models
+ we'll be capable of in the future. And so that concludes the theorem proving part. And
+ anyone has questions before we move on to the next part?
+ There is one question in the chat that I asked Jen Hookerton to ask aloud. But you can see it also.
+ He just a second. Do you see the chat, the attendee questions?
+ Jen, go ahead and speak because you're enabled with the mic.
+ Yeah. Hello. Greetings. I hope you can hear me. Well, I can hear you. You said in the beginning,
+ basically you already answered that you have connected the theorem provers with the
+ language models. I was just in the beginning, I was surprised that there was a scarcity of data,
+ math data in terms of language models. Because with 1% coverage, I've been following the lean
+ prover for some years now, on and off. So it's really interesting to see your work combining all
+ this into one package. Maybe I should ask you that why is it so difficult for the language models to
+ find the proofs? And can you maybe elaborate a bit about in quality wise, what is the search pace like?
+ So I think one thing that makes it difficult is some of the proof steps can be very complex.
+ So here you see the three proof steps. Each of them has a premise that's the name of an existing
+ lemma. And so because there are so many existing lemmas you can use, here the search space is very
+ big. And also these three proof steps are already quite simple proof steps. Because in lean you can
+ also have an arbitrarily complex term in the proof step. And it's very difficult for language to
+ compose those terms correctly. And in practice, we find that language models are usually
+ better at producing short and simple proofs. And if the proof is long and if there are a lot of
+ tactics involving these complex terms, usually it doesn't work. Does that answer your question?
+ Maybe a follow-up. Can you use these symbolic systems to generate math-based language data for
+ for language models? Has that been done or what is the situation?
+ I think that's a good question. I don't think there are a lot has been done. Because a challenge
+ is how do you combine language models with more symbolic components. I think adding the retrieval
+ is in some sense a step in that direction. Like you use language model to generate proof steps.
+ Whenever you want to generate a premise, you want to use a retriever to do a lookup to see
+ what premises are already there. But beyond that, we do need more ways to see how this kind of
+ symbolic behavior can be encoded into a method based on language model.
+ Okay, thanks.
+ Okay, thank you. And then that's the theory of proofing part. And let's go to the next part of
+ this talk. So far, we've been talking about theory of proofing in formal math. However,
+ only a small part of human mathematics has ever been formalized. If you compare
+ mathlib to the body of math knowledge developed by humans over centuries.
+ So next, I will talk about auto-formalization. That's a task that goes beyond formal math
+ and taps into the space of informal mathematics.
+ So here I'm going to present our recent work published at ICML this year. And so currently,
+ a major bottleneck of formal math is first you have to manually translate from informal to formal.
+ For example, from math textbook and papers into Ling. And so currently it's manual,
+ but auto-formalization involves doing this translation automatically.
+ And if you can do that, not only can you remove the formalization bottleneck,
+ but if you consider from an AI perspective, auto-formalization really
+ enables the AI formal mathematician to understand human written math.
+ And auto-formalization has two sub-tasks, auto-formalizing theorems and auto-formalizing
+ proofs. For theorems, the model is given a theorem statement in natural language
+ and outputs the corresponding formal theorem. And for proofs, the model outputs the formal proofs
+ given everything else, basically given the theorem statement, either formal and informal,
+ and also given the informal proof.
+ And when auto-formalizing theorems, a major challenge is how to evaluate the results.
+ So here the informal theorem says there exists an infinite number of primes. And the formal
+ theorem says for any natural number n, there exists a prime number p greater than or equal to n.
+ And you can tell it's a very straightforward formalization, and it's correct. But it is not
+ the only incorrect formalization. For example, you can change it to p strictly greater than n,
+ or you can restrict n to be also a prime number. And all three theorems here look different,
+ but they're essentially the same thing. And it's easy to find many more equivalent theorems here.
+ So if the model outputs one of them, how do you know it's correct?
+ So you may say, oh, I want to have a ground truth, and I want to check whether the model's
+ output is logically equivalent to the ground truth. Unfortunately, this kind of equivalence
+ checking is computationally intractable in practice. So therefore, prior work has resulted to
+ either using humans to evaluate, which is very slow and very expensive, or using proxy metrics
+ such as the blue score, which is very inaccurate. And without a reliable way to automatically
+ evaluate it, it's really difficult for machine learning to make any measurable progress on this
+ task. So that's the challenge in auto-formalizing theorem statement. And how about proofs?
+ And a challenge there when we formalize proofs is informal proofs written by humans
+ have a lot of gaps. And some of the gaps are explicit. For example, mathematicians often say,
+ oh, this is left to the reader. And there are also other gaps that are more implicit,
+ which we will get into later. But in contrast, formal proofs must be gap-free in order to be
+ checkable by computers. And therefore, auto-formalizing the proofs often require the
+ model to fill in all the gaps, which can be quite challenging. And by now, we've seen two key
+ challenges in auto-formalization. For theorem statements, there is no reliable automatic
+ evaluation. And for proofs, the model struggles with filling reasoning gaps. And in this project,
+ we want to address both challenges. And this sounds quite intractable. But one lesson we learned here
+ is things intractable in general can often made trackable if we pick a restricted but interesting
+ enough domain. So here, the domain we choose is Euclidean geometry. It's one of the oldest branches
+ of mathematics and has been used to test humans for 2,000 years. And recently, it has also received
+ a lot of attention in the AI community due to DeepMind's alpha geometry work, which can already
+ solve some IMO geometry problems similar to the level of gold medalists. And in this work,
+ we show Euclidean geometry can also serve as a controllable domain for auto-formalization.
+ And we construct a Lean Euclid, which is the benchmark for auto-formalizing Euclidean geometry.
+ It consists of geometry problems from Euclid's elements and other existing datasets. So here is
+ one example problem. For each problem, we have the informal theorem statement and the proof
+ and also the diagram. So this is from, this is proposition one from Euclid's elements.
+ And when constructing the benchmark, we manually formalize the problem into formal
+ theorems and the proofs in Lean. And this formalization process is not directly related to AI,
+ but it's aesthetically very pleasing because to our knowledge, this is the first time Euclid's
+ proofs are formalized facefully in proof assistance such as Lean. And here, faceful,
+ it means there is a direct correspondence between the informal proofs and the formal proofs.
+ So, and during this process, we did find a few interesting errors made by Euclid.
+ And here is an example where Euclid made an error. I'm not sure if we have time to cover it in detail,
+ but at a very high level, on the left is proposition 24 in Euclid's elements,
+ and it has a diagram and it has a proof. And in the proof, Euclid kind of assumed that the diagram
+ looked like the one on the left, which is correct. But when formalizing the proof,
+ we find that if the diagram instead looked like this, you use the diagram on the right-hand side,
+ Euclid's original proof no longer works, and you have to fix the proof in some non-trivial way.
+ Okay, so let me skip the proof.
+ So, in this Euclid benchmark, it has two key advantages when it comes to
+ auto-formalization. So first, in this benchmark, we can evaluate whether
+ an auto-formalized theorem statement is equivalent to the ground truth.
+ Remember that I said this equivalent checking is intractable in general, but we show that if you
+ restrict to a specific kind of theorem in Euclidean geometry, by having domain knowledge and using
+ automated reasoning, it's actually possible to do this equivalence checking.
+ And second, in Euclid, we can fill in reasoning gaps in the proofs automatically,
+ and this is because in Euclidean geometry, there is a well-understood type of reasoning gaps,
+ which we will get into later. So this is how we do equivalence
+ checking between two theorems. And so given two theorems, T1 and T2, we want to know if they are
+ equivalent. And what we did is we tried to use SMT solvers, or satisfiability modular theory solvers,
+ to prove their equivalence in both directions. So first, we try to prove T1 implies T2, and then
+ try to prove T2 implies T1. And if we can prove both directions, we conclude that they are equivalent.
+ And then we come to these reasoning gaps in proofs. And so we address a specific kind of reasoning
+ gaps that's very common in geometry called diagrammatical reasoning gaps. So let's see it
+ through an example. So here, this is proposition one in Euclid's elements. It says given two points,
+ A and B, we can construct an equilateral triangle. And then here is the proof given by Euclid. It's
+ very straightforward. So first, you draw a circle centered at A and passes B, and then you draw
+ another circle centered at B and passes A. And then you take the intersection and name it C.
+ And then finally you connect everything, and that's an equilateral triangle. I want to ask
+ if anyone disagrees with this proof or find any issues with this proof?
+ Okay, no. Then the problem is, let's go back to the previous step.
+ So when picking C, did we ever prove C actually exists? How do these two circles actually have an
+ intersection? It turns out the two circles intersect. It does not follow from any axioms
+ in Euclid's elements. And no one bothers to prove it, including Euclid himself,
+ because it's just obvious in the diagram. And so this is what we call diagrammatical reasoning gaps.
+ And they are just ubiquitous in geometric proofs. Usually you don't think it's problematic,
+ because, I mean, that's okay. But it becomes problematic if you want to formalize this proof
+ in Ling or in any other rigorous formal mathematics language. Because when you do that, you first have
+ to define what does it mean to say, oh, this is obvious in the diagram, because there's no diagram
+ in Ling. And so it turns out philosophers have studied this problem and proposed a solution.
+ In 2008, Avigate et al. earlier, who is now a professor at CMU, introduced the formal system E.
+ So in the formal system E, they tease out a set of unspoken axioms, and they call it
+ diagrammatical rules. And they model diagrammatical reasoning as logical inference using
+ diagrammatical rules. And if you pick one of the rules, you see it's very, like, it's just like a
+ trivial fact. If you look at the first one, center unique, it just means a circle only has one
+ center. It cannot have two different centers. And so there are all these kind of very trivial rules.
+ But when using this trivial rule to do logical inference, you can model what is obvious in the
+ diagram. And so this formal system E, it was proposed as a philosophical framework, but it
+ was never instantiated computationally. So part of our contribution here is we tried, we implemented
+ this system in Ling, and we designed an automated reasoning engine for actually carrying out this
+ diagrammatical reasoning. And the engine is also relying on SMT solvers.
+ So let's put everything together here. In Ling Euclid, we have informal geometry problems
+ and a ground-choose formal theorem that's annotated by humans. And when auto-formalizing theorems,
+ the model produces an auto-formalized theorem statement. And we can check if it's correct
+ by checking the equivalence with the ground-choose using SMT solvers.
+ And when auto-formalizing the proofs, the model gives you a proof. And we send the proof to Ling,
+ which identifies a list of reasoning gaps. And then we use the SMT solver to try to fill in those
+ gaps automatically. And the proof is accepted if all the gaps can be filled. And this result will
+ tell you if the proof is correct. So let's see some experimental results. Here, our main contribution
+ is proposing this framework and also set up the evaluation. So the models here, the evaluation,
+ are relatively simple. It's basically GPT-4 and the GPT-4 vision. And we use few-shot prompting,
+ which means we give the model three or five examples. And we ask it to learn from those examples.
+ So here is auto-formalizing theorems. Higher is better. You see a few trends. One is if you go
+ from zero-shot to one-shot to five-shot, which means if you give the model more examples,
+ it can learn better. And another trend is if you compare green with blue. Green is better because
+ green is GPT-4 vision. So it has access to not only the text but also the diagram, which shows
+ if you give the diagram to the model, it can do better in Euclidean geometry. So this is similar
+ to humans, I guess. So that's auto-formalizing theorems. And we also have results for
+ auto-formalizing the proofs. I won't explain it in detail because the theories are exactly the same.
+ Basically, more examples help and adding vision helps.
+ And here, I think it's the main takeaway for this specific project. So we address two challenges
+ in auto-formalization. One is auto-formalized theorems are difficult to evaluate. The other is
+ auto-formalizing proofs requires you to fill in the gaps. And we show that they can all be
+ addressed if you restrict to a particular domain and if you have domain knowledge as your leverage.
+ So any questions about auto-formalization before we go into the final part?
+ Caillou, can you see the comments? Do you see any comments to which you want to reply now?
+ I've upgraded several commentators to wait until you've finished, but are there any that you want
+ to answer now? Sorry, I cannot see it because I'm sharing the screen. Oh, okay. Let's say,
+ let's put it this way. The ones who have been upgraded to, do you want to ask one of your
+ points now, but not something that's going to prevent Caillou from finishing his talk?
+ So I'm asking this from Syaira Islam, from Steve Hansen, from Julia Zimmerman, and also again from
+ John Hukkinen. Anything that you want to hear and have answered right now?
+ You can turn on your voice and say so. They all seem ready to wait till you finish your
+ presentation, Caillou. It's very clear. It's extremely clear what you're saying.
+ Is that a question? Sorry. No, no. I'm just saying everything is very clear so far.
+ Okay. Thank you. Thank you. And we're close to the end. So finally, I want to
+ just very briefly discuss conjecturing as a future direction. You know, let's go back to this diagram.
+ So you consider the scope of mass knowledge. The smallest rectangle is formal mass. You can
+ think of it as the mass in mass lip that people have already formalized. And a larger rectangle
+ is informal mass. You can think of it as the human mass knowledge over the previous 2000 years.
+ And I would say an even larger space is the space of potential mathematics you can do
+ or you can discover. So if you work on theorem proving, you are essentially restricting yourself
+ to formal mass because the input is a formal theorem statement and the output is a formal proof.
+ And if you do auto-formalization, you're kind of bridging informal mass and formal mass.
+ But what if you really want to go beyond what humans can possibly do? I guess it sounds
+ not realistic right now, but what if you think in longer horizons, like in maybe
+ one or two decades or even longer, I think what must be done there is the model
+ must be able to generate conjectures or what we call conjecturing. Because only if the model can
+ generate a conjecture and try to verify that conjecture, can we discover new theorems and
+ proofs that humans don't know yet. And actually, we've already seen some work in that direction,
+ although I'm not sure if they are framed in this way. So I want to consider alpha geometry.
+ And I think it's highly related to conjecturing because I'm not sure if you are familiar with
+ the approach, but at a high level in alpha geometry, they generate 100 million synthetic
+ theorems and proofs. And once they have this huge data set, they use it to train language models.
+ And this process of generating 100 million problems is conjecturing. Because even if you
+ collect all the geometry problems that humans have written, you collect all problems sets,
+ all books in the library, I guess it's not going to be 100 million. But if you want to train the
+ model to be this good, it's necessary to have an algorithm that can give you essentially an unlimited
+ number of problems as what's done in alpha geometry. However, a problem is the specific
+ method they use to generate these conjectures is just very highly specific to Euclidean geometry.
+ What they do is essentially they try to sample a lot of things, like sample a few points,
+ sample a few lines, sample some circles, some triangles, and then do some filtering and then do some automated reasoning on this
+ diagram. And then that gives you a problem and a proof. But obviously this only works for
+ Euclidean geometry. So one very interesting challenge in the future would be what are the
+ other domains that are still feasible but interesting enough for we to study conjecturing?
+ Or can we generate conjectures in a large number of domains for general mathematics?
+ And so another question in conjecturing that's worth investigating is,
+ so what is a good conjecture generator? How do we even evaluate success?
+ So obviously we want to consider correctness. That is, the generated conjectures should be
+ correct. Or sometimes if we don't know if it's correct, it should be at least plausible.
+ Because if the algorithm gives you a lot of conjectures and they are just obviously wrong
+ conjectures, then that's not useful, right? However, finding correctness is not enough.
+ Because even if you have an algorithm that can generate you a lot of seemingly correct conjectures,
+ they are seemingly correct, but they can be totally trivial. For example, they can be
+ two greater than one, three greater than two, four greater than three, and an infinite number
+ of these conjectures. All of them are correct but they're just useless. So therefore, a central
+ question for investigation is, how do we measure the usefulness or interestingness or even the
+ beauty of the generated conjecture? So that concludes this lecture and I'm happy to take
+ questions. Thank you. It was excellent. I think you're rivaling the last prize that we gave for
+ the best talk so far. This is like the theorem for infinite number of primes. I'm going to ask
+ people in the order that they posted their questions. Julia, you get first crack.
+ Hello. Thanks so much. I was wondering, for one thing, different mathematicians have different
+ styles in their proofs and I was wondering how much of that can be disentangled in the proofs
+ for the LLM? Can you get just the bits that have to do with the structure of math itself out from
+ the personal preference? I think the short answer is in the current state of LLM for theorem proving,
+ we don't distinguish between different proofs of the same theorem. That's related to a technical
+ detail in Ling. In Ling, it has this property called proof irrelevance, which means if two proofs
+ prove the same theorem, they're essentially not distinguished in any way. But I think that's a
+ technical concern. But in the future, if we want to push further in auto-formalizing proofs, for
+ example, given a proof written by a mathematician, we want to use it as an inspiration for the prover.
+ In that case, the style of writing proofs and also different ways to write the proofs might
+ become important. But right now, I would say it's not there. Okay, cool. For the training data,
+ it sounded like you used a web-based corpus. It has a lot of information in natural language as
+ well, not just math. What would happen to the model if it only trained on formal proofs?
+ Because for people, we seem to need the scaffolding of human language to learn math.
+ Here in the work I'm presenting, the model is only trained on formal proofs. Because even,
+ for example, on the slide on the left is a Ling source code. In practice, there may be some natural
+ language as comments in this source code. People may drop comments here and there, but it's not
+ written in a systematic way. So then we decided not to utilize this kind of information.
+ I think maybe a more reasonable and more promising approach is if you use a larger model like GPT-4,
+ it has already seen a lot of math knowledge in training, in its internal storage. Then presumably
+ that part of natural language math can be utilized when you ask it to generate formal math.
+ Very good. Next question, Sayeras Islam.
+ Hi, I really thought the talk was interesting. I've been wondering, in the other talks,
+ people have argued that LLMs might not be just a stochastic parrot. It actually understands
+ what it's trying to produce. So if that were the case, then why would we need the
+ proofs to be converted to formal mathematics? Instead, why don't we just have the input directly
+ be the informal proof, and then it outputs an informal proof as well?
+ Because if the output is an informal proof, it's very difficult to check whether the informal
+ proof is correct. You can only use humans to check it, but that would be not scalable. But
+ if you do it in a formal proof, as long as the model outputs a formal proof, the environment can
+ give it feedback, like this proof is correct, or maybe this step is wrong,
+ and you can use this feedback for evaluation and also for improving the model.
+ Very good. Steve Hanson's next in line. And a side remark, Brendan Considine had a question,
+ and then I upgraded him to panel, which he didn't want to do. So Brendan, if you want to ask it,
+ then please ask it again in comment, and then I can read it out. Steve Hanson, go ahead.
+ There's nothing coming from Steve Hanson. He tried. I'll ask him to.
+ Oh, goodness. The trouble is that I had all these comments, and then they disappeared
+ when I did the upgrade. Yes, I found them. Okay. I have Brandon's point. Hi, Caillou. Thanks.
+ You're going to go ahead and do it? Go ahead. If you want. Yeah, I enjoy the talk. Thanks, Caillou.
+ I'm just curious about if you can characterize the generalizability of
+ lean copilot in terms of propositional proof complexity or automatability, and how would you
+ compare your solver with more classical solvers in decidable theories? Can you compete with maybe
+ satisfiability and how do you position it generally in terms of more expressive or
+ less expressive theories? Thanks. I see. So the first question is how general lean copilot is.
+ I would say it depends because in the current version of lean copilot, the model is fixed. It's
+ trained on a specific version of mass slip. And if you do it in this way, the model may become
+ outdated. For example, after a few years, if you don't update the model. And another issue is if
+ your project is just very different from mass slip. For example, if you are formalizing a specific
+ branch of mathematics that's not in mass slip. And if you try to use lean copilot as like an
+ all-machinery method, if your problem is very far in a very different domain from the training
+ data, usually generalization would become a concern. I would say there are ways to mitigate
+ this. For example, we can constantly evolve the models, like retrain the model and retrain it on
+ not only mass slip, but also on all other repos we can collect online. So that's probably the
+ easiest way to try to mitigate this thing. But I would say it requires more engineering than
+ research. But there are also deeper research questions like how do we train a model and
+ generalize to other domains. I think that will be less certain what is the right way to do.
+ So that's the first question. So I think the second question is how would you compare lean
+ copilot with automated reasoning tools like SMT solvers and SAT solvers? Is that the question?
+ Yeah. They also have refutations as well, right? So if it's unsatisfiable, then maybe there's a
+ short proof. Yeah. I would say, for example, taking SMT as an example, SMT is very good
+ at the particular kind of problem it can encode. I mean, if the problem has a few real numbers
+ and integers in this series, then you can apply SMT solvers. But in more general and more abstract
+ mathematics like college level or beyond, usually the problem is not just about a few real numbers
+ and a few simple operations. In that case, SMT may not apply, at least not apply to the entire
+ problem. It may be applicable to a sub-problem. And also, I would say you can actually combine
+ lean copilers with SMT solvers. You can write a specific, a concrete tactic for calling the SMT
+ solver. But you can embed this tactic within the search loop in lean copilot. So in this way,
+ lean copilot can use SMT solver as a tool. So I would say they are pretty complementary,
+ and there are a lot of ways to combine them. Very good. I've located Steve Hansen's comment.
+ He's been having intermittent technical problems. Some days it works and some days it doesn't.
+ But I thought he said it's unclear how the training is done. What is the LLM trained on?
+ The steps of the proof, developing a proof navigation or hypothesis space. In what sense
+ is this really learning to prove anything similar to a human? So the LLM is trained on,
+ I think it's easier to explain our baseline. So our baseline LLM is trained on a pair of
+ state and the proof step. So you have this, a lot of pairs, you extract these pairs from
+ human written proofs. So each pair is a state, proof step, state, proof step, and you train the
+ LLMs to predict the proof step given the state. Okay, he can't reply because he's technically
+ disconnected. Could you, now I have an anonymous, I don't know if it's the same anonymous attendee
+ that has made a lot of good remarks throughout. It could be just a generic thing, but this anonymous
+ attendee is, could you please define what you mean by restricting to a domain? Is a domain a finite
+ system of definitions and axioms? Would, for example, Euclidean plane geometry be an example
+ of a domain with Euclides axioms? Then there's another one from him, but answer that one first,
+ please. By restricting to a domain, we mean we only deal with, for example, Euclidean geometry
+ problems, or maybe another domain's elementary number theories, or maybe elementary combinatorics.
+ And more technically, for example, here we focus on Euclidean geometry, then basically there,
+ all the theorems take a specific form. Let me try to find an example. So here are the forms of the
+ theorems. So basically it's all like, if you have some points, some circles, and some lines, if they
+ satisfy some relations, then you have some conclusions. So all theorems look like this.
+ But in general, not all mathematics theorems look like this. And so by restricting to this domain,
+ I just mean we can make these kind of assumptions on what the theorem might look like and what the
+ proof might look like. Now I don't know if this is the same anonymous attendee, and I can't speak for
+ him or her, but here is two proofs could be based on completely different sets of background results
+ used. For example, the Pythagoras theorem has many proofs based on just cut and paste constructions
+ involving a small number of triangles and rectangles. But there are also proofs based on
+ infinite subdivisions of the triangle and summing a geometric series. In what way would be the
+ resulting formal things related? So I think the question is just there are many different
+ proofs to prove the same theorems. I think then it depends on what your tasks set up.
+ In theorem proving we study, we don't distinguish between different proofs. So as long as the model
+ finds a proof that can pass the link checker, we treat it as a success. But when auto-formalizing
+ the proofs, because the model is given the informal human written proof, in principle it should
+ output the same proof as the formal version of this proof to link. But also I think a caveat there is
+ that's what is supposed to do, but in practice we don't actually check if the proof is the same.
+ So theoretically the model could output a completely different proof, although I don't
+ think there's a reason for it to do that. The reason we cannot check is basically this check
+ has to be done by humans. There's no way to automatically check it. Well to a cognitive
+ science audience that's a little bit ambiguous. I mean is there anything that a human can do
+ that is cognitive is not something that you could do somehow algorithmically or with algorithms
+ and statistics? I think there are a lot of things that human mathematicians do. I wouldn't say
+ computers cannot do it. I would say just state-of-the-art methods haven't been doing it.
+ I'm not sure if it can or it cannot. I think for example when humans prove a theorem
+ sometimes it makes analogies like when you prove a theorem in this mass domain maybe you have
+ knowledge in from another mass domain and there are some analogies between these two and then you
+ use that domain as a reference. But I think computers are right now not doing that.
+ You used the notion of domain again and that was the first question. Are there mass domains? Is
+ there a cartographic mapping of mass where there are sort of natural boundaries rather than just
+ arbitrary ones? I don't think there's a natural boundary. I think the word domain I'm using here
+ are just different topics in mathematics like algebra and geometry or maybe more fine-grained
+ topics within each category. Okay sorry I interrupted you. We're going to go on to finish.
+ And also I think even for the use of geometric intuition, the use of diagrams, although we involve
+ that to some capacity in this project, I think it's relatively less explored in machine learning
+ methods. I think this was a wonderful presentation and I'm glad that you're coming back to comment
+ on Steve Wolfram which is some of these questions are going to arise again there. We seem to have
+ reached a sort of a calm spot for questions and so I'll give you a rest before you have to do the
+ the next job. I have one last little question layman's question. I'm not a mathematician. I've often
+ wondered whether a tool could be developed that could search all of the archived written in some
+ sense mathematical literature to be able to do a more effective job in determining whether something
+ that somebody wants to prove now has already been proved. Are we closer to that something that could
+ be searched for? Has this been done before or has part of this been done before? I think what the
+ question is like you want a better search engine for mathematics. Yes. Yeah I think there are some
+ work in the formal domain like so they are not searching archives. They're like searching
+ mathlibs. So when you want to write something in mathlib you want to know if there are existing
+ things already done. I think there's a tool called the Moogle. So basically you
+ replace the G in Google with Mo. So there are definitely people trying to do that. I think
+ currently it's not that active line of research. I think that's kind of related to this mismatched
+ incentive in different communities. Because I heard from many mathematicians that they think
+ this search engine is really useful. They think it's really helpful. But I think from the AI
+ community and the machine learning people this kind of topics may be less interesting.
+ In other words they don't ask as scientists certainly do has this already been done. That
+ doesn't bother them. I don't have examples for archive but for mathlib it's definitely
+ already done. But I would say a prototype is already done and it's definitely not mature.
+ Okay thank you very much. I think it was a wonderful talk and I look forward to
+ hearing you again this afternoon. Okay thank you. Thank you for inviting me.
+ (indistinct)

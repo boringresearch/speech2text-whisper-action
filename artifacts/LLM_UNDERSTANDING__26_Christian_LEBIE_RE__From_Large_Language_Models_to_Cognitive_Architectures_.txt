@@ -1,0 +1,613 @@
+ Thank you. Thank you for the invitation, Stephen. So the title of my talk is from large language
+ models to cognitive architectures. It's meant to imply some evolution from one to the other.
+ The direction in my talk is going to be the opposite. As Stephen mentions, I'm not going
+ to assume that the audience is familiar with the concept of cognitive architecture. So
+ the first half of my talk will be going through a history and an introduction to the concept
+ to try and ground it thoroughly. And then the second part of my talk will be reviewing
+ a set of presentations that were given at the AAAI symposium that we organized last
+ fall on the topic of integration of cognitive architectures and generative model to try
+ and give a broad idea of the different ways in which those two concepts could be combined.
+ So the concept of cognitive architecture really originated with a fairly famous talk that
+ Alan Newell gave at Carnegie Mellon in the Carnegie Symposium of Cognition, where he
+ reviewed the research that was going on at the time in cognitive science and computational
+ modeling and gave that talk called "You cannot play 20 questions with nature and win." And
+ he was objecting there to the primary approach that dominated psychology at the time, which
+ was to divide the very general question of understanding the human mind and human cognition
+ into narrower and narrower questions that could be addressed experimentally and computationally.
+ But his point was that that divide and conquer approach was just a divide approach, and there
+ was no path there to put the successes that were achieved at the leaves of the tree, if
+ you will, back to the root. So what he suggested there was the development of computer models
+ that could do tasks, complex tasks, in their entirety, do all the stages of the task and
+ also have a general approach to cognition that wouldn't focus just on one particular
+ task, but one single program that could do many tasks.
+ So he… let me see, I'm having problems advancing the slides.
+ There are probably the slides.
+ Yeah, I'm having problems advancing the slide. Well, I can do it this way. So he introduced
+ the concept of cognitive architecture, and that concept itself had broader roots in the
+ computer field originating with Fred Brooks, the inventor effectively of the concept of
+ computer architecture designing the IBM 360. And that emphasis in Newell's terms there
+ in his 1990 book, The Unified Theories of Cognition, that he was focused on the fixed
+ structures that formed the framework for the processes of cognitive performance and learning.
+ And of course, on top of that framework, there will be all sorts of knowledge acquired and
+ deployed and so on and so forth. But he was focused on the invariant structures of cognition.
+ And obviously there, and the quote from Anderson below, makes clear that there are different
+ levels of abstraction in which one can do that. And that's also a concept that Newell
+ introduced and explored through his concepts of the bands of cognition. The idea there
+ that there are timescales that correspond to very different kinds of phenomena but can
+ also map to very different sort of levels of mechanism from the biological band that is
+ more directly concerned with the details of the brain and timescales in the milliseconds
+ to the cognitive band. That's really the band ultimately where a lot of cognitive architectures
+ are situated, which are about the basic acts of cognitions, in particular what he called
+ the deliberate act level, on the scale of 100 milliseconds. And as you go further and further
+ up, you get to things like the rational band, which concerns more complex cognition, which
+ potentially has modeling frameworks like Bayesian inference that are leveled above, all the way to
+ the social bands and the evolution of knowledge and ideas. Now potentially that concept of
+ cognitive architecture is very difficult to evaluate. And Newell already recognized that
+ and produced a list in his book that John Anderson and I expanded on in a BBS
+ paper in 2003. You can see that those were Newell's criteria for human cognitive architecture,
+ not necessarily for an AI architecture, but he wanted to capture the full breadth of human
+ cognition. You can see criteria there that go from behaving as an arbitrary function of the
+ environment and operating in real time in the environment and exhibiting sort of rational
+ adaptive behavior, to behaving robustly in face of error and expected unknown, to integrating diverse
+ knowledge using vast amounts of knowledge, using natural language, learning from the environment,
+ to higher level criteria like exhibiting self-awareness in a sense of self, acquiring
+ capability through development or through evolution, and then finally very much in reference
+ to human cognition, be realizable within the brain. Those are a very broad set of criteria compared,
+ for example, with the Turing test, which focused on sort of one particular way of testing
+ cognition. We evaluated those criteria for two of the approaches at the time, one of which was what
+ we call classical connectionism, essentially the PDP approach of the 80s and 90s, and the other one
+ was our cognitive architecture at the time. The goal was not to determine which one was better or
+ worse. The goal was rather to understand the strengths and weaknesses of those two very
+ different approaches to human cognition and to point the way toward further progress and where the
+ areas, the aspects of which progress was really most needed, and then potentially ways of combining
+ the two approaches. That's also something that the paper sort of went into some details in how
+ constraints from the PDP framework actually guided the development of ACT-R.
+ A few years ago, Kotsuruba and Tsotsos wrote a very thorough survey paper that they called 40
+ years of cognitive architecture, and now essentially we're almost 50 years, and they did a fairly
+ systematic review of cognitive architecture. You see one of the graphs there about the list of
+ cognitive architectures and the various references that were made in them. You can see like everything
+ else, there are some that are more popular than others, but the criteria was that all those
+ cognitive architectures had to be implemented, philosophical ideas did not count, and in at
+ least some kind of broad use. They had to be at some level of abstraction in the sense that
+ neurocognitive architectures were okay, but purely neural architectures were seen as something that
+ was at a level of abstraction below the one they wanted to consider. So here is a timeline of
+ cognitive architectures. The coding itself is interesting because it indicates the diversity
+ there, where red refers to purely neural architectures, blue refers to hybrid architectures,
+ and green refers to symbolic architectures. You can see that there are different phases
+ at which the some, for example, in the 80s there were symbolic architectures that turned out to
+ have a period of popularity, whereas more recently neural and hybrid architectures have come to
+ dominate. And then they elaborate a taxonomy there of these architectures, and indeed it's
+ a very rich space in which in particular between the purely symbolic architectures and the purely
+ sort of neural architecture, there is a rich space of different hybrid architectures and different
+ ways of integrating symbolic and neural aspects. And we ourselves have to have explored that space,
+ Actarian of itself can be thought of as a hybrid architecture combining symbolic representation and
+ neural-like statistical processes, but we further explore integrating it with other symbolic
+ frameworks like task networks or integrating it with purely neural cognitive architectures like
+ the Libra architecture. So it's certainly a very rich and complex space to explore, and a lot of
+ people have explored that space over the last 40 or 50 years. They go on to review the various
+ components of these architectures. One of those is perception all the way to robotics that Stephen
+ mentioned, those constraints going back to the neural test, the constraints of being embodied
+ in the world. That's a very powerful constraint. So for example, here they have various levels
+ of thoroughness of integrating perception in the architecture. And you can see the architectures,
+ and you'll see this for all the various capabilities, run the gamut, because developing
+ a full architecture can be a very time-consuming and complex endeavor. So necessarily some architecture
+ focused on some aspects more than others. Attention. I think in cognitive architectures,
+ we don't believe that attention is all you need, but it's certainly a very important concept
+ that is instantiated in different ways in various aspects, perceptual versus cognitive.
+ Certainly working memory is an important aspect of that. And there are different classes of
+ mechanisms that can be implemented. So again, like everything in cognitive architecture,
+ and we believe ultimately understanding the human brain, it's quite a complex system,
+ and a lot of different aspects to consider. Action selection, how the architecture goes
+ and acts in the world and selects actions is also a fundamental aspect, ranging from
+ systems that are primarily reactive to systems that have planning as there is a core concept.
+ Action that goes from being completely deterministic to being probabilistic,
+ and then various criteria on what guides action selection and how we learn rewards and utility,
+ and we improve our effectiveness in the world. Memory is a particularly important aspect there,
+ ranging from working memory to long-term memory, distinctions between semantic and episodic
+ memories, procedural versus declarative memories, global memory, sensory memories, and so on and
+ so forth. Again, it's a very rich space that many architectures, including ACTAR, have been
+ centered around. ACTAR was originally purely a theory of memory, and certainly what distinguishes
+ human cognition is the fact that we accumulate a very rich set of experiences over a lifetime
+ that really constitute the basis for our behavior. Learning is usually seen as a primary
+ constraint on cognitive architectures. A few don't emphasize it, but usually there is an assumption
+ that knowledge should not be engineered, but rather should be learned, and that includes a
+ range of learning mechanisms, from symbolic learning to statistical learning,
+ learning declarative knowledge, learning procedural knowledge, and then various
+ mechanisms for automatic learning that are inspired by reinforcement learning,
+ Hebbian learning, error-driven learning, etc. And those architectures have been applied
+ to various domains, and different architectures had different
+ focus, depending where they were coming from. Some architectures were coming from cognitive
+ psychology, and their fitting human data is obviously a primary constraint, whereas other
+ architectures were coming from AI, and therefore AI agents playing games, virtual agents,
+ robotic, cognitive robotics, robotic agents. Some architectures were coming more from a
+ human performance, human factors perspective. They were applied then to the design of systems,
+ to human-computer interactions. Some were focused on natural language processing as an important
+ aspect. So you can see there that there is a really wide range, and I think very much from
+ the perspective of the list of criteria in the New World Test, that testing architectures against
+ a very broad range of human activity is an essential constraint.
+ A few years ago, it occurred to a number of us that after decades of exploring the space,
+ that a number of fundamental lessons had been learned, as you would expect and hope that
+ happens with actual scientific progress, as opposed to the development of computer systems.
+ So we wrote an article in AI magazine to try and popularize that idea, and what you can see there
+ is an illustration of our respective cognitive architectures, ACTAR, SOAR, which was New World's
+ original architecture that now John Laird, one of New World students, is leading the development of,
+ and SIGMA, which is an architecture inspired by SOAR, but developed by Paul Rosenblum on
+ concepts of semantic networks. And even though those architectures looked very different
+ and used different vocabulary to describe their functions, it turns out that they very much
+ converge to a similar view of the structure of cognition and some of the basic assumptions,
+ and that's illustrated there in the graph on the top left of the principal modules and their relation.
+ Going a little bit more in depth, we listed the detailed set of assumptions about the structure
+ and processing that takes place in the architecture, the content of the memories,
+ the forms of learning that takes place in the architecture, and the relation to perception
+ and motor capabilities. A little bit of an exercise there on the left is that we coded
+ the architectures and at various points in development, in particular in 1993 and then
+ 2016 when we started working on that paper, and we really concluded, you can see sort of a little
+ multi-dimensional scaling exercise there at the bottom, that there had really been a convergence
+ in that space of assumptions. So there can be
+ two objections to this kind of thing. The first one is that the graphic that I showed on the
+ previous slide is basically our motherhood and apple pie. Yes, those modules are pretty obvious,
+ and yes, they sort of interact that way. That's not particularly interesting. And it turns out
+ that that's not quite the case. There is a bit more there that meets the eye. And so one of the
+ things that we did, and one of my colleagues, Andrea Stocco, has led that effort, which is to
+ take that structure of the common model that is shown there at the center and to map it on the
+ brain, the various structures of the human brain, and then use neural imaging data as a way of
+ validating that architecture. The mapping of the various models, modules on the brain had already
+ been done partly in the context of the cognitive architecture, especially using techniques like
+ functional magnetic resonance imaging. So we could start with that mapping onto the brain,
+ then apply statistical techniques like dynamic causal modeling to try and correlate
+ neural imaging data onto the activities of the modules. And then we evaluated the common
+ model against a number of potential alternatives in the literature, variants of hierarchical
+ organizations and hub-and-spoke organizations. And we used the data from the human connectome
+ database, which is a very large public database of high quality neural imaging data.
+ We took a broad range of tasks from that database and evaluated the predictions
+ using dynamic causal modeling of the common model structure against those alternative structures.
+ And it turns out using a couple of standard measures, one is expected probability and the
+ other is exceedance probability. It turns out that the patterns, the structure of the common model
+ explain the temporal patterns, spatial patterns of activity of people doing those tasks much
+ better than any of the competing proposals. And it turns out also we did a sensitivity
+ analysis that showed that, yes, every component, it's not just a matter of having a more complex
+ architecture. All the components, all the connections between the various modules were
+ actually essential to that accounting. And sort of the second objection that can be made is that,
+ okay, well, we get the structures, but what are we really telling me about the mechanisms?
+ And you can take this a little bit further. And in particular, Andrea earlier had developed a fairly
+ detailed model of the role of the basal ganglia, which is a structure of the base of the brain
+ that's associated with the control of behavior. And it is mapped in the common model onto the
+ procedural module that control our actions. So he had a detailed models of the internal
+ structure of the basal ganglia and the various pathways. And he showed that what seems like sort
+ of a hopelessly symbolic construct, right, very good old fashioned AI like production rules,
+ what they actually do is specify pathways of testing and information transfer
+ within that networks that implement the basal ganglia. So I think it's an important thing to
+ realize that in modern cognitive architectures, that some of the what seems like old fashioned
+ paradigms, like propositional representation or production rules and so forth, can really be mapped
+ in a meaningful way onto the processes of the brain and that they basically an abstract way of
+ describing those structures. So this was my introduction to cognitive architectures.
+ And you can see that they have some aspects in common with generative models, but also
+ important differences. So that raised the potential topic of trying to integrate the two approaches.
+ And we issued a call proposal for a triple AI false symposium last year, which
+ we found we also had a couple of symposia to discuss the common model. And we found that
+ generally to be a good forum for engaging the community. So we had a number of potential ideas
+ and topics for which the approaches that could be taken, we have received a fairly rich set of
+ submissions. So that's the first day, that's a program of the first day. And we'll go through
+ that program and I'll highlight some of the talks to try and illustrate the various ways in which
+ those two concepts can be can be combined. John Laird gave an introduction where he pointed out
+ the complementary strengths of weaknesses of the two concepts. So for example that cognitive
+ architectures are distinguished by the complexity of those various modules and mechanism and their
+ learning mechanisms, whereas large language models effectively lack much of that complexity or the
+ capability for online learning, for example, or various mechanisms for reasoning. Conversely,
+ large language models are able to store quite an amazing body of knowledge and show
+ amazing fluency at using language to access that knowledge. And so that knowledge aspect has
+ something that's always been sort of neglected in cognitive architectures and language as well,
+ to some extent. So there was a natural complementarity there that supported the
+ desire to try and combine them. So the lead talk was by Oscar Romero here at Carnegie Mellon and
+ they explored various ways of combining cognitive architectures and large language models.
+ Their use case was a cell phone-based cognitive agent for visually impaired assistants. So that
+ was sort of a way of grounding the kind of capabilities that they wanted to explore.
+ So they illustrate there on the right a number of modular approaches. So for example, on the top left
+ you could use cognitive architectures as a way of essentially reason in a chain of thought LLM
+ prompting. Or you can use, you can embed the large language models in various modules of the
+ architecture. For example, on the top right the perceptual motor modules, or on the bottom left
+ also the memory modules, which are the stores of knowledge. And finally, you can use the large
+ language model essentially for an internal simulation there, sort of a world model to drive
+ cognitive architectures. And you can see here, as was evident in the structure of the common model,
+ that working memory really plays a central role and that it's going to be, I think, a common
+ aspect of a lot of these integrations.
+ Other approaches, so they essentially had a neuro-symbolic approach where generative models
+ correspond to essentially an internal implementation level. So for example, on the top right there was
+ a version of the Clarion architecture where the connectionist level takes the form of an LLM.
+ And finally, on the bottom right, there's a couple different grain scales at which to combine
+ cognitive architectures and large language models essentially as agents in a diverse society of mind
+ type where the two different kinds of agents have different capabilities and can sort of combine
+ their judgments. So we tried to go through the various sessions and to some extent increasing
+ order of depth of integration. So the first session there that we call offline integration/content
+ is about using large language models as for the store of knowledge that they really are
+ and in particular using them to generate a knowledge database offline that can then be
+ used by the cognitive architecture. So one example talk about this was by a number of colleagues
+ at Ohio State in the Air Force Research Lab where they took an actor model of analogy
+ that would perform various aspects of analogy like retrieval of knowledge and mapping and abstraction
+ generalization. And obviously in those models, again, the knowledge engineering is the bottleneck
+ because cognitive architectures historically have not focused on knowledge. So they use a large
+ language models to extract chunks in the form of subject-relation-object triples as well as other
+ things like sentiment and confidence scores, then filtered those triples and that was a particular
+ domain of sports and then the knowledge base was Wikipedia and used the LLM to filter that external
+ knowledge store and then represent those pieces of information and then deploy the analogy reasoning
+ model and evaluate its capabilities. So that's sort of the low hanging fruit there of using
+ large language models for offline knowledge extraction. The next step in ambition is to
+ use them in the same way for knowledge extraction but in an online interactive way.
+ Similar domain of analogy, Forbes and Collaborator described the use of large language models
+ in their companion cognitive architecture where they had a rule-based semantic parser based on
+ various ontologies like FrameNet and Psyche and then they augmented it with an older version
+ of large language model BERT to augment the analogy process and in particular to classify
+ the frames for this ambiguation and predict the plausibility of facts and they have a number of
+ other uses that they were planning to push that further. Another instance of knowledge acquisition
+ by John Laird and colleagues was to use large language models as a source of knowledge but for
+ interacting cognitive agents, cognitive agents interacting with an embodied environment and you
+ can see a representation there in the top right in terms of a simple robot. Again there are different
+ levels of knowledge extraction can be done from indirect extraction of knowledge graphs to direct
+ extraction of task knowledge which is what they focused on potentially all the way to direct
+ knowledge encoding. You have the LLM generate the program for the cognitive architecture and there
+ was another talk in the symposium that took that approach. They go on fairly systematically at
+ evaluating the challenges of that kind of knowledge and also the requirements of that knowledge and
+ then they ran a test they had a procedures essentially a pipelines for prompting the
+ large language models interpreting testing and verifying the knowledge generating then encoding
+ and applying and refining it in that domain and on the bottom right there's a classification of the
+ what the knowledge that was extracted and then you can see that it runs a wide range
+ from very relevant and reasonable all the way to uninterpretable. So I think that's going to be
+ obviously there's been some concern about confabulation on the part of large language
+ models and certainly filtering the knowledge generated before it's used in the cognitive
+ architecture using the mechanism of the cognitive architecture to determine which knowledge extracted
+ from genetic models is reliable and relevant is obviously very much a part of that.
+ Going further in depth there were a number of talks that looked at integrating generative models
+ for more basic functions than just supplying knowledge. So one of them suggesting the need
+ for an additional level in cognitive architectures that they call middle memory
+ which would effectively be used to resolve the potential conflicts between the bottom up
+ vectors being generated by those cognitive by those generative models to the top down
+ task context and symbolic structures used by the cognitive architecture and again there the concept
+ of providing an attentional context in order to put those two systems together.
+ Another proposal by Mike Whitbrock and colleagues was what they called the language model
+ based cognitive architecture and it was a bit of their integration similar to the distinction of
+ system one and system two with you can think of generative models in the Kaneman dichotomy
+ as basic automatic systems that just take their inputs and filter them through the answer
+ whereas you can think of cognitive architectures as more of a system two type system
+ that can reason that has iterative processing and planning and those kind of things
+ but they viewed language as the integrative framework for those two kinds of systems
+ and they deposit various kinds of long-term memories to perform that integration and leverage
+ the concept of buffer that is a central concept of the common model that is the interface between
+ the various modules that constitute working memory and they discuss various ways of augmenting
+ pre-trained modules to integrate them in the cognitive architecture and finally the last
+ session was more ambitious a more diverse way of looking at the integration or the unifications
+ of generative model and cognitive architectures in particular there were a couple talks by
+ Orobia and Kelly and Furlong and Ilya Smith that proposed a unification of the of the two paradigms
+ the first talk was through concepts of heavy and learning and free energy that Carl Friston talked
+ about the second one through vector symbolic algebra so basically to bridge the gap fully
+ bridge the gap between neural and symbolic representation and processes a couple other
+ talks that we will look at here was the talk by Gonzales and colleagues about using generative
+ models to generate a representation to use in the cognitive architectures and in particular in the
+ modeling paradigm called instance-based learning which bases decisions on experiences and they
+ evaluated three different kinds of generative models on the ability to generate that situation
+ representation and the kind of performance that would result in the the cognitive model
+ finally there was a paper by Brian McGurko and colleagues that looked at a cognitive perspective
+ on grounding topic near and dear to this symposium and they differentiated various kinds of grounding
+ sensory motor communicative epistemic relational and referential groundings and showed in some
+ examples on the right how do those concepts of grounding could be instantiated in the integration
+ between generative models and cognitive architecture and then they went to some some broader issues of
+ generative models like alignment and intractability and again looked at how cognitive architectures
+ could provide part of the solution there were a number of posters as well then there was a
+ wrap-up session and I sort of put in my own thoughts there and what occurred to me after
+ going through the symposium that in as much as we started with the conception that cognitive
+ architectures and generative model were really mirror opposite in their strengths and weaknesses
+ there was certainly also a sense in which they they shared a surprising number of of assumptions
+ so for example the central concept of attention in generative models especially in transformers
+ is quite similar to the central concept of working memory in cognitive architectures
+ similarly the token versus vector duality is quite similar to the symbolic
+ sub-symbolic distinction in cognitive architectures both paradigms have a probabilistic soft mag
+ behavior they can both be tuned through reinforcement learning the the time scale of
+ generative models especially large language models in term of generating the next word
+ is very much the time scale of the deliberate act level that is the in the in the neural bands of
+ cognition which seems to be where the the cognitive architectures have focused and where the common
+ model is situated and the the the loop there of always sort of producing the next word and then
+ iterating on that is similar to the some of the assumptions of sequential processing that
+ are assumed in the common model and even that that's the concept of prompting is not that
+ dissimilar to the interaction between the the the central procedural module with the the various
+ modules of the architecture such as accessing knowledge or encoding a particular percept
+ now there's certainly aspects of differences as well i mean you can sort of think of the
+ current state of generative models a suit of the behavior stage in cognitive in psychology before
+ the emergence of of the cognitivism and the assumptions of internal mechanisms and and
+ structures the fact that large language models have to be pre-trained in a batch mode as opposed to
+ the kind of continuous online learning of cognitive systems is is a major difference and the fact also
+ that they by and large lack the kind of internal control that is essential to making a complex
+ modular cognitive architecture operate is also a major difference we laid out a bit of a road map
+ for future potential interaction between the two i mean certainly it seems that 50 years of cognitive
+ architectures have explored the space of complex human level cognitive systems and that's something
+ that as ai is looking at augmenting the capabilities of generative models should be of interest
+ it certainly seems that modular integration was the low-hanging fruit in term of building complex
+ systems that includes generative models and cognitive architectures in whole or part
+ as components of the system and then finally it seems fairly clear that cognitive science
+ in as much as it's been preoccupied for over a century with evaluating the human cognitive system
+ should also have a lot to say as an evaluation framework for generative models
+ and finally i'll leave you there with pointers to a couple references so there is a website
+ slash online journal called the common model of cognition bolton where you can
+ read a lot of papers associated with the the common model of cognition and then on the right
+ is the proceeding of the triple ai fall symposium where almost all of the papers were published
+ online thank you
+ thank you very much christian and now uh you're discussing to your fellow carnegie melon
+ graduate uh charlie lupian will speak
+ you uh could you move your own that's yours
+ um
+ thanks christian um so i have questions um and i that i'd love to get your feedback on uh drawing
+ on some of the slides that you presented in the enterprise more generally um so this idea of bands
+ of ignition i think is super useful for uh if for nothing else for kind of realizing that there are
+ often qualitatively different processes at work at different timescales uh on the other hand
+ it seems like this sort of framework encourages people to sort of specialize in timescales much
+ in the same way that uh newell critiqued uh kind of psychology research at the time for specializing
+ in in tasks and not integrating across tasks and so the first question is um it seems clear that
+ what happens at the cognitive band is informed by what happens at the on social time scale so for
+ example things like uh written systems notations a lot of our you know the our cognitive chunks
+ that these kind of concepts are the products of uh cultures they're not reinvented by individuals
+ in the moment and uh cognitive operations happening on the time scale of seconds are
+ being informed by things that happened uh at these much longer timescales so that's that's one
+ question so what what in your views the connection how is it best modeled within the cognitive
+ architectures approach um and then the the other questions stem from um this by the way for anyone
+ who's not read this paper um you you should it's it's a wonderful paper it's it's a great snapshot
+ of the kinds of questions that people were interested in in the 70s and uh many of these
+ questions are still ones that people are taking uh kind of an active interest in in this sort
+ of uh dichotomous way which just goes to make newell's point and and there are many ways of
+ reading this paper um even if you're not compelled by the cognitive architectures approach you will
+ you will learn a lot from reading this paper um okay but um i wanted to focus on this um newell
+ test that um christian discussed specifically these four and so i have a question for each
+ so first being uh use of natural language language and so for all of these uh christian these are
+ obviously your takes on on the issue i'm not expecting kind of uh you know the ground truth
+ answer just i'd love to know how you think of it so what in your views the proper place for natural
+ language in uh cognitive architectures um obviously it's the number nine learning from uh one's
+ environment is is uh key if you have a model of cognition that doesn't incorporate learning from
+ your environment uh you're obviously missing something but what kinds of learning do you think
+ uh are currently missing or not modeled to your satisfaction that that you think we should be
+ focusing on um and then relatedly 10 acquiring capabilities through development i mean that
+ that learning is part of development um but uh a question i have is what
+ what sort of assumptions do you take as good starting points about um the starting points
+ for for a cognitive system so what kinds of things do you feel compelled to try to explain
+ the development of versus things that you're comfortable saying well we might want to explain
+ how they evolved biologically but we can take you know some sort of core system or knowledge system
+ some set of um basic learning abilities uh basic perceptual abilities what what have you as the
+ starting point and i don't need to explain uh the development of that um and then lastly evolution
+ um what what in your views in most need of explanation here so the evolution of what
+ that those are my questions thanks well thank you very much uh could you go back to could we take
+ the slides in in order uh that's great so so that that first concern about sort of the the various
+ levels and the possibility to to pick and choose between those various levels
+ uh i mean first of all i think that's probably unavoidable right so like by analogy to the
+ the physical world uh there is physics and there is chemistry and there is biology and there is
+ social sciences and they look at you know phenomena that are uh that they focus on and
+ in fair isolation because those are so different and they're so rich and but they are grounded in
+ each other right so social systems are grounded in biology biology is grounded into chemistry
+ chemistry is grounded into physics so so i think that the challenge here is not to sort of pick
+ and choose the right level but rather to have a description of the phenomena at each level that
+ are grounded sort of you know turtles all the way down so i think that that's the challenge for the
+ field to be able to relate the various paradigms that have arisen at each level so for example
+ sort of neural level models cognitive models more rational level models that i would put for example
+ bayesian inference in and so on and so forth to relate them to each other not to view them as
+ separate and competing paradigms that said we made the argument in the the 1998 book that that i
+ authored with john anderson that was titled the atomic components of thought that there is a
+ special in that that complexity hierarchy that there is a special sort of favored atomic level
+ and again sort of making the analogy to the physical world sort of atoms is that privileged
+ level on which our world is built below that is the soup of particles that sort of gather
+ at that level but then above that is the combinatorial buildings of molecules an
+ increasingly complex system through chemistry and biology and all that and that seems to be
+ a general property of complex systems so they call that the hourglass diagram where you sort
+ of or the the bowtie the vertical bowtie if you will so to take another example the internet
+ and you can see in the internet sort of the tcp ip level is the central level they are below that
+ you have a lot of different hardware implementations of that and different sub levels above that you
+ have more and more complex protocols like http and so on and so forth being built but that's really
+ the the the core level so there is interesting argument there about the nature of complex systems
+ and the sort of the the primacy of one particular level certainly for cognitive architectures that
+ deliberate act level that that's one of the key assumptions of the common model and that seems to
+ be something that that has been learned interestingly enough the original version of actor when i got
+ involved with it in the early 90s was situated as a substantially higher level within the cognitive
+ band you had production rules that could accomplish seconds or even tens of seconds of cognition they
+ were really at the unit house level and we learned partly again applying neural constraints of oh
+ what kind of constructs at that level could even be plausibly implemented using stock neural
+ constraints at the time like hopfield networks and it became clear that a lot of them could not
+ and that's what we sort of threw out and simplified at the symbolic level and really focused on
+ and one implication of that was to break it down from the unit task level to that deliberate act
+ level that seemed to correspond to to the the core processes in the various modules and then once you
+ had broken it down you had an adaptive system that could operate sort of much more much more
+ naturally much more adaptively much more flexibly so so that that's sort of the that that evolution
+ there and it's interesting that different cognitive architectures seem like so for example
+ seem which came from very different paths so newer was on the the computer science side of things
+ herb simon john anderson here were on the psychology side so the cognitive architectures
+ certainly came from very different perspective but they seem to have converged to to that sort
+ of common understanding of the the right place of the complexity again not to deny that you
+ cannot have models at different levels but that seemed to be a privileged level there
+ uh yep
+ so first of all i should say you were very kind here to focus on those because looking for example
+ at number four use vast amounts of knowledge about the environment we rated classical
+ connectionist as worse certainly looking at where generative models are now there's been a
+ remarkable evolution we're obviously the the the the top of the heap and just incredibly capable
+ in that respect so you know let's chalk that up to evolution again we were not trying to
+ necessarily score points rather than sort of take our perspective on where things were at the time
+ the proper place of natural language is an interesting one right so it's a it's a it's a
+ fundamental conundrum in in cognitive science of whether language underlies symbolic thought or
+ vice versa uh i don't have a strong opinion about that uh i tend to be of the general assumption
+ that seems to be the the sort of how things have evolved in cognitive architectures that
+ symbolic processing and and all the various sort of underlying statistical and neural like processes
+ that can underlie symbolic processing come first and then language is sort of a capability on top
+ of that and there've been some some very impressive models of language built on that like for example
+ rick louis had had a very very interesting model showing how constraints on the the speed of
+ cognitive processing and limitations of working memory led led to various patterns in language
+ production so so that's the thing that i think is the default take in cognitive architecture
+ and that's sort of my my my default takings as well in general i've been very mindful of the
+ complexities of language and that's something that can sort of absorb your entire career so i've
+ largely stayed away from that but i just uh uh taking the language take for on development for
+ example so there've been some some interesting models in particular contrasting sort of pdp
+ versus uh cognitive architecture models of the learning of past tense right and the patterns
+ like over regularization through development and so on uh so i think that that uh that that that
+ language is actually a good dimension a good phenomenon to look at development
+ we've never quite uh sort of come up with that that idea that you express of a core system
+ from that point of view like what are the original production rules through which everything can be
+ built uh i think that that that that that's it's been challenging to to try and come up uh neil
+ start gun uh has developed a related framework called primes in which he looks at those kind
+ of issues so but uh another take on development that we uh we another potential approach that we
+ raise is the the the change of uh cognitive uh capacity parameters with development so for
+ example the parameter in the acta cognitive architecture that controls spreading activation
+ has been associated with working memory capacity and that's something that has there's suggestions
+ that that that that capacity increases through development so that's another potential take at
+ development uh what kind of learning are currently missing so so i think that cognitive architectures
+ generally have a fairly good take on both sort of the acquisition of knowledge and the strengthening
+ and uh and decay and forgetting of knowledge uh similarly for the development of skills
+ represented as procedural knowledge uh one kind of learning that has been missing and i'm currently
+ working on is what the connection is called hard learning which is the learning of in the
+ representation inside the network what used to be called the the hidden units and the correspondence
+ of those representations that are learned in the cognitive architecture like actor is in term of
+ similarities between concept which you can sort of imagine abstractions of the overlap between
+ distributed representations so whether cosine similarity or distance and uh that that's the
+ kind of that that's one form of learning that i'm currently working on is can can similarities
+ between symbolic concept be learned within the cognitive architecture uh so the the final one
+ evolution uh so what is meant there is the evolution of the human cognitive architecture
+ through uh entire evolutionary history and looking at the sort of the current picture
+ of the cognitive architecture of the common model it certainly is the case that some capabilities
+ developed later than others and there's some indications from evolutionary biology of the
+ path that was followed and i'm surprised that people have not played more the kind of games
+ of saying okay well if you remove sort of the goal buffer and the intentional module from the
+ cognitive architecture what kind of behavior can you have without that if you remove declarative
+ memory or if you in in in various ways sort of limit their capabilities either parametrically
+ or otherwise what kind of and does that map to sort of the the capabilities along the evolutionary
+ path that led to humans i think cognitive architectures provide a potential way to do
+ those kind of explorations computationally and again i'm surprised that that more people haven't
+ tried to do that because that seems like a natural thing to do so related to this uh one can also
+ imagine trying you know you're you're an animal with the kind of brain that it has and it has to
+ do something right and it has to do it with the brain body that it has and so um kind of these
+ natural constraints right and and animals find all sorts of uh ingenious solutions to these
+ to these uh natural problems right where one might a priori think that oh no you you could
+ not possibly solve this kind of problem with this kind of system and and yet often uh defines way so
+ a kind of uh it was flipping it around a bit so in the case of neural networks this the sorts of
+ systems i'm most familiar with right one can limit it in various ways and train it on a task and see
+ what kinds of representations it learns given that the set of limitations that uh right whether it's
+ uh architecture the types of inputs that it's getting to see you know is right are there
+ parts of the solution space that can be exploited that one might not have believed uh existed
+ no that's right and again i think people well people who use cognitive architectures have been
+ very focused on sort of you know reaching the human level and potentially even some some some things
+ that i've done for sort of practical application purposes to say well what happen if we relax some
+ of these constraints or parameters like the the constraints on working memory and you essentially
+ have a little bit of a superhuman architecture and that's certainly been very very useful and
+ interesting uh if you don't mind going back to the first slide i i i realized that i forgot to
+ answer one of your questions is the connection between the cognitive and the social level
+ so one interesting assumption there uh with the social level is that neural sort of put it at the
+ time scale of days to months or even higher which is certainly fine because that was the
+ green scale at which sort of social phenomena happened back then of course in the last few
+ decades there's been the technology of social networks which bring those kind of phenomena
+ down down to the rational and even down to the cognitive banks right i mean things happen on
+ twitter slash x in seconds to minutes and you have a very large number of people being exposed to an
+ idea or something and then aggregating reacting to it responding to it elaborating to rating and so
+ on and so forth and you have the kind of social phenomena that would take days and weeks and months
+ and years before that takes place within seconds or minutes does that fundamentally change the
+ nature of those social phenomena i think that that's a good question but certainly uh something that i
+ that a number of us have been doing more recently is to use cognitive models of individuals which
+ has always been the focus of cognitive psychology and try to apply it to social phenomena what
+ happens when you put a thousands or hundreds of thousands of cognitive models together and they
+ decide how to propagate ideas and concepts over social networks and i think there's a
+ potentially a lot of very useful things that could be done with cognitive models and cognitive
+ architectures in social science and social psychology because i think the the computational
+ means are there to scale up from the historical focus on individual cognition to social scale
+ cognition great thank you so much oh let's take okay thanks uh gary and christian for this very
+ good cmu to cmu interaction um i've elevated a few people from from the attendees to the to the
+ panelists so that they can they've made comments before so they can make them there are no
+ spontaneous comments right now among the attendees but for example anna strasser um julia zimmerman
+ robert lou and and david and are invited to in to speak if you want i've i've raised your
+ i've given you the capacity to do it and second i'm muting you now and uh panelists of course yeah
+ julia go ahead hello thanks for the talk um so i was wondering on one of your slides you noted
+ a connection between tokens and vectors on the one hand and the symbolic and sub-symbolic
+ representations on the other um could you explain a little bit more about how the vector could be
+ analogous at to the sub-symbolic level yes so uh one one direction uh so so as my bio mentioned i
+ was a connectionist researcher in the 80s in my my grad school days and i described myself as a
+ recovering connectionist uh so so one of the things i've been trying to do within the context of the
+ acta cognitive architecture is to try and abstract some of the the key and unique and extremely
+ important characteristics of neural networks and connectionist models into a cognitive architecture
+ like acta which is grounded at the symbolic level in symbolic representations and one of the
+ approaches that we took was really through that concept of similarity which one one of the the
+ previous speakers mentioned the importance of similarities and differences and guiding
+ generalization so the idea there is not to represent sort of the the specific distributed
+ representation that are learned in in connectionist networks or in generative models that drive
+ generalization and inference but rather to abstract them in the concept of similarity which is
+ essentially sort of the the the distance by one metric or another between those representations
+ and then have mechanism like partial matching another mechanism called blending which are ways
+ of using those similarities to get the kind of generalization processes that are typical of
+ connectionist models and distributed representations at the symbolic level
+ so i think those have been quite successful for counting both of the the power of similarity-based
+ generalization in human behavior as well as the kind of errors for example that that can be caused
+ by that and as i mentioned my current focus is to try and abstract the mechanism by which those
+ representations those distributed representations are learned in nearby by connectionist algorithms
+ and find a way to learn those representation those learn those similarities directly in the
+ the cognitive architecture rather than have to depend to import them from neural imaging studies
+ or generative models as one of the talk at the symposium described. Alina go ahead.
+ Hi thank you for your talk. I have a clarification question so is there a fundamental difference
+ between cognitive and behavioral models or they can be modeled using the architectures that you
+ describe mostly about cognitive models. I'm asking because I'm interested in planning
+ and I plan to measure planning by behavior but I plan to model that behavior using
+ mostly cognitive models so yeah interesting how you can use those for behavioral data.
+ So I'm sorry I didn't quite get the question so it's the difference between cognitive models and
+ and behavioral models so how the cognition for example planning how it's represented in behavior
+ so can the same models be used.
+ So I'm not sure what example of behavioral models you have in mind
+ certainly so one of the key neural criteria is interacting with the task interacting with the
+ world so we've gone a long way from sort of the brain in the box that would sort of think about
+ some abstract problems and come up with a solution to models that act in the world whether that's sort
+ of cognitive robotics model actually implemented of cognitive of non-robotic platform versus models
+ interacting with simulated task environments so for example interacting with psychology experiments
+ in exactly the same way that a subject sitting in a psychology experiment would do which is to pass
+ the screen and typically type responses using keyboard or mouse or whatever so they very much
+ those cognitive models are very much behavioral model in the sense that the the cognition comes
+ out in term of behavior in the world. Have I answered your question so again I'm not sure that
+ I that I completely understood it. Yes I think so you're lost the sentence.
+ Thank you. Okay thank you Alina. This is the last chance for the panelists who have watched yes okay
+ Anna go ahead. Anna.
+ Sorry I forgot to unmute myself so I repeat my question. I would love to pose a question
+ about the knowledge knowledge acquisition you reported from and especially about the procedure
+ of testing and verifying so if you using generative models you of course know that the outputs are not
+ reliable and I would be very curious to hear about what kind of procedures one can apply to verify and
+ test outputs because it is a dangerous thing to get 40 outputs into a nice act R model.
+ Yes so I think it so the answer depends obviously what task you're doing and what kind of
+ embodiment you're assuming so for example in the kind of environment in which that in which that
+ was mentioned so the the layer that all people there that sort of imagined robotic environment
+ you could imagine the testing of verifying being of the form well of well I've gotten
+ I've asked the the large language models on how to do the task and it's given me some a series of
+ steps to do that. I could just do them right and figure out okay does it work and if it doesn't
+ work then you can either reason about it and strike out that knowledge or you can depend on
+ learning mechanism to for example adjust the utility of these pieces of knowledge and say well
+ that usually doesn't work right that has a low utility. You could imagine before doing that
+ engaging in some reasoning and try for example based on your on your other knowledge to try
+ and figure out well is it possible that that it would work or is there some particular issue with
+ that can I for example mentally simulate the steps that are proposed and find some discrepancies so
+ that's often what you do for example when you know you gave some of those typical puzzles to
+ to chat GPT or whatever and you read the steps and you check oh is this solution plausible right
+ or is it misunderstanding or are there some steps that are impossible so it really depends on the
+ specifics of being able to do the testing and verifying depends on the knowledge available
+ depends on the ability to test it in the world or whatever environment you embodied in you know any
+ kind of form reasoning a form of reasoning reasoning by analogy I mentioned one of the the approaches
+ to extracting knowledge you sort of ratings of plausibility to to to do that knowledge filtering
+ so so I don't think that there is sort of a a simple easy solution in many ways so we live in
+ a world now where we as sort of human beings are exposed to a bewildering array of sources of
+ information through the internet especially and we have to decide there whether the information
+ that we received in a particular context is credible or not and to try and apply critical
+ thinking to gauge it against its plausibility and its accuracy against sort of everything else that
+ we know so that's certainly not something that happens magically automatically it's a it's a
+ painstaking process it's a difficult process to apply that that kind of the consistency judgments
+ I think it's a very complex process and it's there's not a single answer to that
+ okay last question from from the panel and not for the panel from the from the attendees
+ anonymous asks regarding the view that cognitive structures for symbolic processing precede
+ and provide a basis for language ability how do llm's fit or change it llm's are use the
+ sub-symbolic vector-based processing to model language first and we are still figuring out how
+ to get them to be better at tasks involving symbolic reasoning as many talks including the
+ last one have shown yes so
+ I'm not sure exactly what the question is or what I can add to my to my previous comments I mean it
+ certainly is the case I mean the first thing that happens in in a general in large language models
+ is the tokenizing so it takes that language and extract tokens which you can think of as symbols
+ and then also the the the the the vector level applies and the representations of for those
+ tokens learned so so in that sense you could say as well that the symbolic precedes the sort of the
+ the the language there in that way or at least the development of the semantics of the language
+ so so yeah I don't I think the relation between the two is certainly is certainly very complex
+ and I mean one of the talks the talk by Witbrock and colleagues at the symposium
+ proposed making language essentially the grounding representation in cognitive architectures so to
+ organize cognitive architectures around language rather than symbols so so that certainly is an
+ interesting possibility to be explored I am Duwasowski will be speaking in a couple of days
+ on language change and I would say that saying language is the grounding of language is about
+ it's it's really gone a long distance but anyway that's it for the questions I want to thank you
+ very much and Michael Levin's talk will be starting at 1 30 you have a little bit more time for lunch
+ now thank you very much for watching

@@ -1,0 +1,859 @@
+ -How do you pronounce it, Kyle? -Mah-ho-wald. -Mah-ho-wald, okay. Is it Irish?
+ -I found out it's Luxembourgish, which is, that's why it's phonotactically a bit strange.
+ -Kyle Mah-ho-wald is an assistant professor in the Department of Linguistics at the University
+ of Texas, Austin. His research interests include learning about human language from language models,
+ as well as how information theoretic accounts of human language can explain observed variation
+ within and across languages. Mah-ho-wald has published in computational linguistics, machine
+ learning, and cognitive science, and he has won an outstanding paper award at EMNLP. What does that
+ stand for, Kyle? -Empirical methods in natural language processing, though it's kind of like
+ that, it's part of the ACL, the ACL family. -As well as the National Science Foundation's career
+ award. Take it, Kyle, it's yours. -Great, okay, let me go ahead and share some, oh, it actually
+ says I need to stop sharing so that I can share. -Okay, I'm going to turn myself off.
+ -Someone is sharing this Word document. -Oh, I'm sorry, it's me again. I'm just sharing that
+ document. It's all yours. -There we go. -Sorry, that's why I couldn't find myself.
+ -Okay, now I should be able...
+ All right, so we should be able to see that? -Yep, that's great.
+ -Okay, yeah, so today I wanted to start off by thinking about a bit about just how far
+ language models have come really in relatively recent years. So this is way back in the ancient
+ history of 2011. Here is some output from what was at the time a high-performing neural network.
+ So here's some text that came out of this 2011 RNN. In the show's agreement, unanimously resurfaced,
+ the wild pastured with consistent street forests were incorporated by the 15th century B.E.
+ So, I don't know, doesn't make a lot of sense really. If you compare that to kind of anything
+ that a modern language model generates, it's clear that something's really happened here,
+ right? There's been a pretty big jump. That's kind of what we've all been talking about
+ over the last few days, is that something seems to have really happened. So,
+ one of these papers releasing this model kind of patted itself on the back as a surprisingly good
+ language model, praised the richness of the vocabulary, said the text is mostly grammatical,
+ the parentheses are usually balanced over many characters, and you may see,
+ kind of see where I'm going with this. This is in the 2011 Sootskiver et al. paper kind of praising
+ itself as how great it's doing as a language model, when really, in hindsight, we've come a
+ very long way from that point, right? And you can basically, this is from WAML, but for any
+ modern language model, you can generate lots and lots of sentences, which will basically be grammatical.
+ One more vignette to kind of illustrate this point. So, the PIPP construction, this is due to Chris
+ Potts in a nice paper last year that was in honor of his PhD advisor, Jeff Pullum, looked at this
+ really interesting construction, which is the PIPP, which is, if you could say that we were happy with
+ the idea, we decided not to pursue it, that they were brilliant linguists, they just couldn't figure
+ it out, the PIPP construction takes this and then fronts an element, so you get things like this,
+ happy though we were with the idea, we decided not to pursue it, or though they were brilliant
+ linguists, they just could figure it out, becomes brilliant linguists, though they were, they just
+ couldn't figure it out. So, this is reasonably rare, but it's going to occur fairly often in a
+ purpose, but Pullum had made this observation, and kind of when Chris was his student had challenged him,
+ can you find examples like this, where this fronting crosses a finite clause boundary,
+ so this is in linguistics, this tense verb here creates a finite clause, and so you can say something
+ like happy though she knew we were with the idea, she decided not to pursue it, and so this is like
+ a little syntactically complicated, but I think for the most part we agree that even if it crosses
+ a finite clause boundary like this, it's grammatical, but what's interesting about this is that this is
+ really, really vanishingly rare, and so in this paper, the Characterizing English Proposing and
+ PIPP Constructions paper, Chris Potts does this nice corpus analysis, and he kind of exhaustively
+ looks for these, and in a corpus of about seven billion plus sentences, finds 58 of these, where
+ they cross finite clause boundaries, and what's really striking about this particular number is
+ that it means that an adult human English speaker might go, you know, 30, 40, 50 years, and never
+ actually encounter an example like this in the wild, and yet still agrees it's grammatical, and I
+ think, I think kind of as we've been talking about the last few days, this ability to generalize even
+ to something we haven't seen before really gets at the heart of what we're interested in in
+ linguistics, and I won't go into all the details on it, but there's some nice experiments with
+ language models in Chris's paper showing that language models, you know, aren't perfect with
+ this, but actually can generalize pretty nicely to even these finite clause crossing examples.
+ Okay, so those are a couple of vignettes to kind of get started about what we're thinking about,
+ so kind of my overall plan today is to have four kind of overarching questions. The first
+ have language models meaningfully learned any syntax, and I'm going to kind of go through some
+ evidence for that and argue that, yes, I'll admit they haven't learned everything about syntax,
+ right, it's possible to trip them up in certain cases, but I think it's fair to say that first
+ under some definition of meaningfully, right, it's not all just smoke and mirrors, they really have
+ learned something that I think is linguistically interesting. The second question is, should this
+ information cause us to update some of our beliefs about language processing in humans, and again
+ here I would say like somewhat cautiously the answer is yes, and I'll talk a bit about that.
+ I'll kind of raise this question if language models are black boxes, how can they tell us
+ anything? I'm going to show some work from my own group showing that really they don't have to be
+ entirely black boxes. I'm going to try to for the first time run with this glass box metaphor and
+ argue they can actually be pretty transparent, and they're becoming more and more transparent
+ in some sense, right, so kind of small models that we can study and analyze are becoming more and
+ more transparent, even as large models that are closed source and run by big companies
+ are becoming less and less transparent in some sense. And four, does this mean we should abandon
+ linguistic theory and just do NLP instead or just do vertology or LLMology? And the answer is no,
+ definitely not. I'm going to argue that that would be the totally wrong approach, but that actually
+ there's a path towards language models and linguistic theory working well together, and I
+ think this is already happening, and I think some of that's already come out in this summer school,
+ and I hope we can discuss this and bring even more of that out, that really I do think there
+ is a great path towards connections and that this is actually a really exciting time at this
+ intersection. Okay, so for this first question, have language models meaningfully learned any syntax?
+ So I think I'm going to say that they do well on testive syntax, I'm going to make some argument,
+ they don't just memorize grammatical structures but generalize, and that this is kind of in
+ contrast to the fact that in other kinds of realms of cognition, and we've seen a lot of examples of
+ these, they do seem to mess up some other stuff. So on the first point, grammaticality judgments
+ like the kind I was showing with Happy Though She Knew We Were with the Idea, we have nice methods
+ for studying these from psycholinguistics, but because of the nature of language models and
+ because we're to some extent trying to study the behavior of a system which is at least to some
+ extent black box, it's hard to actually get a good handle on what its knowledge of language is in some
+ sense, and similar, you know, it can also be hard to do that for people, but some of the same methods
+ work, right? So the gold standard that's emerged here, and this is something Richard touched on in
+ his talk on Monday, is minimal pair likelihood comparisons, right? So minimal pair is a kind of
+ tried and true method in linguistics to change the smallest possible thing you can between two
+ sentences, or between two words, or whatever your unit is that you're looking at, and then hope that
+ whatever difference you're observing in your measurement or in behavior is coming from exactly
+ that minimal pair. So subject-verb agreement has been really well studied in this area, so this is
+ knowing that if you say the key to the cabinet, you want to say is on the table, but if it's the
+ keys to the cabinet, it's are on the table, right? This, we'll talk about this a bit more, but this
+ is kind of well studied in part because it seems to require some kind of long-distance dependency,
+ right? It's not just the case that you agree with the nearest noun, even though that heuristic might
+ work some of the time, it's that you actually need to have some notion of what's the subject of the
+ sentence, and then when you get to the verb, look back at that subject to know how to do the
+ agreement. And then filler-gap dependencies, right? This is work that Richard has been very involved
+ with and talked about where, you know, I know that the lion devoured a gazelle at sunrise sounds good,
+ I know what the lion devoured at sunrise sounds good, but you can't say I know that I know what
+ the lion devoured a gazelle at sunrise, or you can't say I know that the lion devoured at sunrise,
+ and, right, you can do careful minimal pair comparisons, as Wilcox et al. did, and study
+ whether language models are nominal like that, right? The problem that can make this tricky is
+ that lots of constructions aren't as amenable to these kinds of careful minimal pairs, right? It's
+ hard to devise these kinds of cases. So then... - Piles, Piles, so slow down a little bit because
+ not everybody's a unilingual first language English person listening. - Yep, sure. - But slowly.
+ Yep. I'm trying to go back. Huh. Can't seem to go back for me.
+ There we go. Right, so for the filler-gaps, right, the kind of key point here is that
+ with these long distance dependencies, I know that the lion devoured a gazelle at sunrise
+ is grammatical. I know what the lion devoured at sunrise is grammatical, but you can't say I know
+ what the lion devoured a gazelle at sunrise, right, and you can't say I know that the lion
+ devoured at sunrise, and so knowing what goes in this slot is going to crucially depend on what
+ happened here. Okay, so the kind of methodology that's emerged is to develop benchmarks and kind
+ of standardized tests for things like grammaticality of the sort we're discussing, and a well-known
+ such example is blimp, the benchmark of minimal pairs, benchmark of linguistic minimal pairs,
+ which looks into a bunch of categories, right, that are of linguistic interest, so like anaphoric
+ agreement, right, many girls insulted themselves, in contrast to many girls insulted herself,
+ which is ungrammatical. Rose wasn't disturbing Mark, where the verb disturbing typically takes
+ an object, whereas Rose wasn't boasting Mark, boasting doesn't take an object, so that one's
+ ungrammatical. Carlos said that Rory helped him, whereas Carlos said that Rory helped himself,
+ all right, there's rules about whether you use him or himself here, right, and so these are
+ designed to be pairs of sentences which minimally differ, such that it's basically one word that's
+ going to be the difference between grammatical and non-grammatical, and so the method has typically
+ been to measure the probability of the acceptable example and the unacceptable example, and do a
+ comparison on those, with the hope being that whatever difference emerges is because of this
+ grammaticality contrast, right, and what I can show here is that this performance, here we can
+ show performance on blimp score, which ranges from zero to one, for this baby LM model, so baby LM
+ was a competition to train language models on what were supposed to be developmentally
+ plausible corpora, right, so in contrast to something like chat GPT, which is trained on
+ vastly more data than a human would see in their lifetime, this was 100 million words with the
+ limit that you could train your model on, right, and then the idea was to see if you could still
+ get something which did reasonably well on something like this blimp benchmark, and so human score is
+ here around 0.87, and so on the baby LM corpus, right, on this 100 million word training, the best
+ performing models got pretty close, they didn't quite get to human performance, right, they're
+ around here at 0.83, 0.84, and so this is pretty significant progress, although I would say still
+ not quite at human performance, and this is for models which are much smaller than the kind of
+ chat GPT size models. I'll give a head, this is this was our team at UT Austin, it was in there, so
+ we did all right, but we didn't win. Okay, so you could then say, well, you know, there's some issues
+ with blimp, the minimal pairs aren't perfectly controlled, the sentences are a bit artificial,
+ and so there have been other proposals, like there was a recent one in PNAS from this Dentele et al
+ paper, to look at a bunch of interesting grammaticality contrasts, and instead of using
+ minimal pair comparisons, look at some important difficult phenomena like anaphora, center embedding,
+ long distance agreement, and ask, basically ask the models whether or not they're grammatical,
+ right, so here is an example, here are a couple examples, right, so the babysitters that no child
+ obeyed have shown any gratitude to the disappointed parents, right, this would be considered ungrammatical
+ because, right, the babysitters that no child obeyed have shown any gratitude, this is a negative
+ polarity violation, whereas, you know, something like no ambassadors that the diplomats consulted
+ had ever seen brutality in the foreign war is grammatical, and the method here is to basically
+ just ask the model, right, this is using models like chatgpt and gpt3, which you can interface
+ with in natural language much more easily than smaller models, and basically ask the model,
+ is this grammatical or is this not grammatical, and a reasonable goal, right, is to say, well,
+ if people can do that task then so should models, but the problem is that if you're asking for a
+ grammaticality judgment from a model just by asking it, is this grammatical, you're kind of mixing
+ two things, you're mixing what the model in some sense knows about language with what the model
+ knows about what grammaticality is, and so I think there's a kind of thought experiment which makes
+ it easy to see this difference, which is that if you imagine training on a corpus where you completely
+ remove the word grammaticality from the corpus, it's going to turn out that the model has no
+ idea what grammaticality means, right, and so by asking the model what's grammatical, you're tying
+ up these pieces, and another issue, right, is without minimal pairs you can't do this likelihood
+ comparison. So this Dental et al study found that models were actually pretty unimpressive across
+ the board at these categories, but in a follow-up study led by Jen Hu, I'm with me and Gary Lupien
+ and Anya Ivanova and Badru Levi, we looked at a response to this where we got human acceptability
+ ratings, that's what we show here on the y-axis, and then created minimal pairs for these sentence
+ is, right, looking at the differences and surprises, and then plotted them against each other, and what
+ you actually see is pretty nice correlations between human judgments and model judgments,
+ so these refer to the OpenAI series of models, and what you also see here, right, is that there's
+ actually quite a lot of gradients and grammaticality judgments, so one of the categories here is adverb
+ order, and you've got sentences like "Gary still perhaps drives to work," which in the data set is
+ labeled ungrammatical, but people actually were pretty mixed on that, right, that was the case
+ where there was quite a bit of mixed judgment, and then there's also cases, I'm going to skip
+ center embedding for now, there's cases like anaphora where getting the judgment depended on
+ singular they being ungrammatical, but this is something that's rapidly changing in lexicon,
+ right, so "the grimy blacksmith who worked for the royal knights evidently hurt themselves with the
+ sharp tools," here this was labeled ungrammatical in this set, but themselves, right, could, if you
+ accept singular they, which many people do, refer here to blacksmith, right, and so people were kind
+ of mixed in these judgments, and models were also mixed, and so what you actually see is a nice kind
+ of range of grammaticality here, such that some are kind of more clearly grammatical, some are
+ more clearly ungrammatical, and there's a middle, and models of humans seem to have some alignment
+ on that. Okay, so that's some evidence that there's some alignment between humans and models,
+ but as we've been thinking, right, we should also consider alternative explanations for what could
+ be happening here, so specifically we should think, like, is the model, as has been argued by many,
+ just doing this kind of stochastic parrot activity and spitting out what was in its training corpus,
+ and I think there's evidence that it's maybe doing more than just that, right, so there is a nice
+ paper from Tom McCoy et al, called Raven, where they look at if you just generate from a model,
+ so this was a GPT-2 type model, the Transformers, like a GPT-2 type model, how many of the n-grams
+ that are produced tend to be unique, and you can compare that to a human-generated corpus,
+ and what you see is it's actually the case that once you get up to, like, five or six grams
+ from both models or in a human corpus, right, and five or six grams, right, these are five or six
+ word phrases essentially, what you're seeing is that most of them tend to be unique, and by the
+ time you get to around, you know, nine or ten word phrases, they're almost entirely unique, whether
+ generated by models or by people, right, so this is some evidence that it's not just the case that
+ models are spitting out what they've seen before, right, we could also, there've been lots of cover
+ tests looking at our models just using lexical cues in some straightforward way, so there is a paper
+ looking at the subject verb agreement test, where instead of using sentences which are plausible,
+ like the key to the cabinets is on the table, using sentences in which words of the same part
+ of speech are randomly substituted in, so you get stuff that actually sounds kind of semantically
+ empty, like it presents the case for marriage equality in states becomes, it stays the shuttle
+ for honesty, insurance, and fines, right, so the first one makes sense, the second one is kind of
+ semantically empty, and they found that models were actually still able to do the grammaticality task
+ even without these kind of obvious lexical cues that it might rely on that you get from having
+ semantically reasonable sentences, and then there was just a week or two ago this paper posted from
+ Patil Yumole et al., which was this really nice pre-training paradigm, and I'll show some examples
+ from my own group about a pre-training paradigm in a bit, where they went into the input corpus
+ and then messed with the input such that you never actually see a subject, so here a sketch of a light
+ doesn't appear versus sketch of a light don't appear, they messed with the input such that you
+ never see a subject modified by a prepositional phrase in the input, and then test whether models
+ still know that the verb has to agree with the subject and not the prepositional phrase item,
+ and you've seen prepositional phrases in other places and so you can still learn what they are,
+ and models actually seem to do that surprisingly well, so a bit more evidence of generalization.
+ So that's a bit of a case that they're not just stochastic parrots, but I think
+ one of the things I've been arguing for recently is that we should consider more than just core
+ phenomenon here, there's also a lot to think about in terms of how language models learn rare or
+ unusual constructions, and so there have been some nice position pieces from Adele Goldberg
+ and Leni Weisweiler and others making this point that something that language models
+ are actually quite good at, and that it's interesting to explore, is kind of rare constructions
+ which are sensitive not just to these higher order grammatical properties, but that interact with
+ lexical items in particular ways, so I think one nice example of that that I'd like to talk about
+ a bit is this AANN construction, so this is the article adjective numeral noun construction,
+ which is this kind of quirky construction in English, which is this is the kind of default
+ way you might say this, right, the family spent five beautiful days in London, but English has,
+ you know, I don't think it has to be this way, but it turns out that in English you could also say
+ the family spent a beautiful five days in London, right, and what's weird about this is that you've
+ got this singular A, right, usually A goes with a singular noun, but here A is taking a plural noun,
+ days, and this is this is a bit unusual. It also means that you swap the normal order
+ of the adjective and the numeral, so normally it'd be five beautiful days, but here it's
+ a beautiful five days, and what's interesting about it is the A is obligatory, so you can't
+ say the family spent beautiful five days in London. The A can't do its normal thing of taking a singular
+ noun, right, you can't say the family spent a beautiful five day in London, and yet for the
+ non-linguist in the audience these stars mean it's ungrammatical, and the modifier is obligatory,
+ right, you can't say the family spent a five days in London, or at least that's often judged as less
+ good, and like I mentioned, you've got this kind of requirement that whereas normally five becomes
+ before beautiful, here you've got the opposite, and it's obligatory, right, so you can't say the
+ family spent a five beautiful days in London, it's a beautiful five days, right, so what seems to be
+ happening here is that this five days is being coerced into a kind of singular unit that takes
+ an adjective and an article, which is normally singular.
+ So this first paper we're going to mention here, I looked at, oh yeah, before we got to the model
+ results, right, the adjective, this construction is also constrained in interesting ways by the
+ words in the construction, right, so the adjective can be quantitative, right, you can have a mirror,
+ five days, a whopping six hours, it can be qualitative, this works best with measure
+ nouns, but also some others, right, so you can have an amazing five days or a lovely six hours,
+ in these cases amazing and lovely are modifying the days and the hours, whereas if I say a mirror
+ five or a whopping six, in those cases those are modifying the number itself, and interestingly
+ they can't be stubbornly distributive, so a blue five pencils, right, just doesn't sound right to
+ most English speakers. The noun, right, is typically measure and unit nouns, although it also works
+ like a mirror five hours, but it also works with other kinds of nouns, so you can say I had a mirror
+ five pencils left on my desk, I'm going to skip through a bit faster here for time, okay, so what
+ we then did here was looked at prompting a GPT-3 model to get ratings, grammaticality ratings, for
+ these constructions, varying a whole bunch of properties, so varying the nouns, varying the
+ kinds of adjectives you see in there, and then getting human comparisons using, getting human
+ ratings for these sentences of mechanical turk, so these triangles represent the human rating,
+ and the bars here represent GPT-3 ratings, and what we see is we get actually quite a lot of
+ similarity between model judgments and human judgment as to how much they like these different
+ sentences, so what you see here is that both humans and models prefer get the adjective to
+ be quantitative, so like a mirror five miles is somehow better than a great five miles.
+ An astonishing hundred students is better than a tall hundred students, right, so these stubbornly
+ distributed ones, like color words, right, are less popular, again, right, a blue five, a whopping
+ five pencils, and an elegant five pencils, models, and humans rate better than a blue five pencils,
+ that's what you see, these lower bars here are for things like a blue five pencils,
+ and then you get this other effect, right, that for qualitative adjectives those are just about as
+ good, but temporal, right, so a great five hours is about as good as a mirror five hours, so I'm
+ going through that a bit fast, right, but the kind of takeaway is that even for a very, a relatively
+ rare and quite specific construction like this, we're seeing some reasonably subtle similarities
+ between model and human ratings of these sentences, and then the last thing I'll say in terms of
+ grammaticality, all right, is that it seems like language models kind of pass the smell test on
+ grammaticality in some sense, right, so you can generate lots and lots of text from language
+ models, you can do this with chat GPT for instance, and by and large it's going to be grammatical,
+ right, it's much harder to find examples, right, linguistics gives us lots and lots of plausible,
+ you know, examples of ungrammatical sentences that if you learn the wrong rules maybe you'd
+ have learned this, right, like is the man who tall is happy, right, that's not how we form a question,
+ and language models, like modern language models, by and large aren't going to generate things like
+ this. There are, right, rigorous tests, and so when Rony and Richard were talking about across
+ the board movement, right, you can get into cases like I know who John met recently and is going to
+ annoy you soon, which are quite subtle, right, like I could even imagine some prosy where maybe
+ this one could be made to work, and models might get chipped up there and diverge from human judgments,
+ but I think it's kind of striking that we've kind of gotten pushed into these cases which are really
+ very sensitive as opposed to kind of these these kind of easier to get cases. This I think is in
+ pretty sharp contrast to these examples we've been seeing from others, right, talking about things
+ like language understanding or more general cognition, so over here are some examples from,
+ like here's from Josh's talk, right, where you show a model this blurry word and it says that
+ it's a person with short hair and wearing a shirt with a collar, right, I feel like many of the talks
+ in this that we've seen this week have involved these kind of funny and striking examples of
+ models being really silly. Those are pretty easy to get still in reasoning and kinds of different
+ areas of cognition. Those examples are harder to get in terms of grammaticality, and so I think
+ there's some difference there, and so I would tentatively argue that, right, models, you know,
+ we have to keep pushing on them to see if they're relying on tricks or heuristics, but it seems like
+ they have learned something about grammar, right, so we could ask should this cause us to update
+ some of our beliefs about language processing in humans, and I would argue that from the perspective
+ of 10 years ago, the success of language models is surprising, and so with that surprise does come
+ some information, right, and that we should think about that seriously in terms of how we have been
+ thinking about some linguistic questions, and then I'll briefly go through a case study looking at
+ grammatical subject to illustrate that. Right, so this is a position piece I'll mention that I wrote
+ with Anya Ivanova and Petrenko and others asking, looking at this language and thought
+ separation, right, and so one reaction that people seem to have is, well, okay, language
+ models have gotten good at getting the form of language right, but who cares anyway, right,
+ isn't the interesting thing how they think and reasoning, but I think from the perspective of
+ linguistics, this really does matter and is something that we can think about, right,
+ and this was something, we can come back to this, which Richard had mentioned, right, which is that
+ going back to 1957, Chomsky had this famous statement that colorless green ideas sleep
+ furiously versus furiously sleep ideas green colorless, right, is an important contrast
+ that, and the claim was this could not be identified in any way with the notion higher
+ order of statistical approximation to English because it is fair to assume that neither sentence
+ one nor two has ever occurred in an English discourse, hence in any statistical model for
+ grammaticalness, these sentences will be ruled out on identical grounds as equally remote from
+ English, and I think in a meaningful way we've seen that models, you know, even without being
+ explicitly trained on things like parts of speech, kind of emergently learn them well enough to know
+ that they can rule in this one and rule out that one, but this really wasn't obvious that this could
+ happen kind of at scale until really quite recently, and so here's from 2006, right, the question of
+ learnability and the potential need for innate constraints remains, machine learning methods have
+ successfully learned small artificial context free languages, profound difficulties in extending these
+ results to real language corpora have led computational linguists to focus on learning from
+ parse trees presumably not available to the child, connectionism is no panacea here, indeed
+ connectionist simulations of language learning typically use small artificial languages despite
+ having considerable psychological interests, but they often scale poorly, and so this is from
+ actually Trader and Manning, right, in an article which was very pro-problemalistic methods of
+ language, but in 2006, right, it still just didn't seem like something that didn't have
+ a lot of really richly built-in syntax was going to be able to learn much,
+ right, the same was true, you know, in 2011, here's a paper from Josh and others writing about
+ connectionist model science set these challenges by denying the brain encoded first knowledge,
+ this runs counter to the rich, the strong consensus in cognitive science and artificial
+ intelligence that symbols and structures are essential for thought, there's a really interesting
+ paper from 2014 by Marco Barone et al called Very Good in Space where they propose this totally
+ fascinating kind of compositional method based on distributional semantics that's really kind
+ of close to imagining what language models would be able to do in terms of putting together
+ compositions, but just kind of doesn't take the next step to assume that just by training
+ the next words you end up getting a lot of these kinds of things, here's Everart et al saying for
+ these reasons and others usage-based approaches that reject generative procedures and apply
+ statistical methods analyze data, they'll distinguish these cases, right, it compares cases like how
+ many cars did they ask if the mechanics fixed to how many mechanics did they ask if fix the cars,
+ and I think this is again a case that language models probably would be able to at this point
+ tell apart these just based on, you know, statistical methods, and then in 2016 I think
+ within linguistics it's really this Lindzen et al paper which shows some in hindsight very limited
+ success in getting an LSTM, which is, you know, an earlier kind of language model, some limited
+ success in a subject-verb agreement task, so this is that keys to the cabinet or on the table kind
+ of task, and it worked only with specific training, but they still conclude, right,
+ LSTMs are sequence models, they do not have built-in hierarchical representations,
+ we have investigated how well they can learn subject-verb agreement, a phenomenon that
+ crucially depends on hierarchical syntactic structure, and when provided explicit supervision,
+ LSTMs were able to learn to perform the agreement task, although their error rate increased on
+ particularly difficult sentences, right, so this was like a very small success on this task using
+ just an LSTM, but then from there, right, there's lots of unexpected success, right, in 2017 the
+ transformer comes around, and there's Elmo and Byrne and GPT-2, I think we've kind of seen this
+ story now of GPT-3 and China GPT and baby LLM, which is doing with smaller corpora, and you really
+ see this explosion in these methods being successful in kind of detecting and generating
+ grammatical sentences, and so I think there's, insofar as, you know, there are claims in
+ linguistics, and I think, I mean this was something I believed 10 or 15 years ago, that we would not
+ see models which could do this well just by being trained on a word prediction task or, you know,
+ the language modeling objective in terms of learning grammar, that this should, insofar as
+ there was questions that depended on the answer to that being no, it might push us more towards
+ thinking more towards this LLM view, right, that, you know, how much memorization versus abstraction
+ is there in language, right, so Adele Goldberg has argued for a while that a lot of language
+ learning actually depends on memorization of not just words, but also chunks and phrases and
+ constructions, right, the LLM view seems to kind of naturally fit with that in a bunch of ways.
+ Does processing happen in discrete layers? So, right, language models do a lot of mixing, right,
+ so there are some kind of layer-wise effects, but there's also a lot of mixing that happens.
+ Questions which we can come back to about how much is in the data and what are the biases and
+ disorders, what's the basic unit, and so on. I just want to skip ahead, but in the interest of time.
+ So, let me just skip, I just want to skip this section, I can come back to that later.
+ So, what I want to then ask is how can we use language models, right, to actually study and
+ tell us something about language if they're black boxes, and kind of this question of, well, why
+ if we are really interested in studying what humans do and human minds are already black boxes,
+ what do we get by, instead of studying that black box of human minds, studying language models
+ instead? And I think an argument I want to make there through, again, a case study of this same
+ construction I talked about before, the ANN, is that really we can think of them maybe more as
+ glass boxes, so this is a new metaphor I'm trying out, which is that models are more than just chat
+ GPT, we can actually, you know, if we are in control of the model, so training the model ourselves,
+ studying the model ourselves, and not just relying on something from OpenAI,
+ we can actually see into them and understand something about them, right, but kind of pushing
+ on this glass box metaphor, right, it's easy to get kind of blinded by glare, or you might drop the
+ box, right, there's lots of ways to do this and get the wrong answer, and so we have to proceed
+ with caution and good experimental methods, and so, yeah, I wanted to illustrate a kind of case study
+ of this and work with Konishka Minstrow, who's a postdoc with me, kind of pushing even further
+ on this ANN construction, right, so this is the a beautiful five days construction,
+ and looking a bit more into that in a more glass box kind of way, right, so we had this idea that,
+ you know, could we use this to study how language models learn rare things,
+ and our hypothesis was that they do that, right, a model could learn rare things, like the ANN,
+ by analogy to learning less rare things, right, and so ANNs, the idea, the method here
+ is going to involve not just taking an existing language model,
+ but treating our own language models on highly controlled input corpora, and we're going to do
+ that, and then look at how well it learns the ANN, specifically by looking at, does it learn to
+ assign higher probability to the ANN, a beautiful five days, compared to all these degenerate
+ alternatives that we talked about, like a five beautiful days, a five days, a beautiful days,
+ and beautiful five days, right, and we're going to train an autoregressive language model, so basically
+ a GPT-2 kind of model, this is actually an OPT, but the same idea, with a relatively small number
+ of parameters, and we're going to train it on the BabyOM corpus, I mentioned that's 100 million words,
+ which is believed to be kind of within the realm of what, you know, a 10-year-old child might have
+ accessed, and we're going to systematically mess with the corpus, specifically we're going to find
+ all of the ANN constructions in the corpus, there's around 2,300 of them, and we're going to get rid of
+ them, and then train a model again, and see what it's learned. If the model is purely just
+ memorizing, and not doing anything very interesting, if we get rid of the ANNs, it's not going to learn
+ anything about them, but if it's doing some kind of generalization, we might expect some more
+ interesting kinds of behaviors. So specifically, I'm going to show a few different kinds of tests
+ here, so right, this panel here, we're going to be testing how well does the model learn the ANN
+ construction, right, a beautiful five days, and we're going to compare across four different
+ conditions here, and the first one, right, chance here is very low, because it has to say the ANN
+ is better than all the other alternatives, and the first one, this is just the default condition,
+ where we train on the regular corpus, and our small model does okay, it's just below, these
+ skylines here are like large language models on this task, right, and so our small model is just
+ a little worse than the large models. Then we're going to try it on this corpus that we messed with,
+ where we got rid of all the ANNs, and it takes a sizable hit, but it's still way above chance,
+ right, so here it's like at 46% or something, right, and chance is down here at like,
+ what is chance, 1/16, right, so this is way way up here, and then as a control,
+ we're going to compare this to going, we're going to go into the input corpus,
+ instead of removing all the ANNs, we're going to replace them with ANNs, right, which is
+ A5 beautiful days, and then do another version where we replace them with NAANs, right,
+ which is a quite strange thing, which is 5A beautiful days, right, which sounds totally
+ bizarre, and then figure out if those get learned, figure out if we train on those, you still learn
+ the ANN, and the answer is, like, in all of these cases, whether we get rid of the ANN,
+ or we train on this strange version, you still kind of learn better than chance for the ANN,
+ okay, that turns out to be in sharp contrast, if we try to test for its learning of the ANN,
+ of 5 beautiful days, right, so now we're going to be testing, like, does the model,
+ can we get the model to learn A5 beautiful days, if we train on the regular corpus, of course it
+ doesn't, if we get rid of the ANN, of course it doesn't, if we put in artificially insert
+ NAANs, it does learn it a bit, but nowhere near as well as it learned the ANN when those were in
+ there, and if we put NAANs in there, it doesn't learn anything, and now, again, we're going to
+ test, can we get it to learn 5A beautiful days, and again, it learns it a bit when we put exactly
+ that structure into the corpus, but it's, again, not nearly as good as the ANN, so what this suggests,
+ right, is that it's not just the case that any old version of this construction can get learned by
+ the model, there's something special about the ANN relative to A5 beautiful days and 5A beautiful
+ days, what's special about it, so we had some hypotheses, which is that there's other stuff in
+ the language, right, it's not just that constructions exist in isolation, there are other things in the
+ language that seem like they support this, right, so you also can have things like a few plums,
+ or six months is a long time where a measure phrase is treated as singular, and I'm not going
+ to go into a ton of detail on this, but we have then, right, these are much more frequent, something
+ like where a measure phrase is treated as singular is much more frequent than the ANN itself,
+ and if we get rid of these more frequent things, those actually show quite significant hits on
+ performance, so the claim that we want to make is that language models are showing some evidence of
+ the structure in the language, such that this very particular and rare structure, the ANN,
+ is learned in part by shared structural similarities with these more common structures,
+ right, and so takeaways on this section, right, it's not the case that it's a black box, and
+ doing a study like this, we know exactly what's in the training data, we know exactly what's in
+ the input, and we know exactly how it's trained, and we could even stop it at various points of
+ training and figure out what it's smart at each time point, so this is very, very, this is a ton
+ of control over kind of all the aspects of this training process and all the aspects of the testing
+ procedure in a way that we can't get with humans, right, so there is not just replacing one black
+ box with another, I think it's giving us an additional tool here, but at the same time,
+ right, we have to be careful with the glass box, our own experiments had some issues with, you know,
+ when we're trying to remove ANN from the input, that turns out to be really difficult, and so,
+ right, we're still like, I have ongoing updates to that process, and so the need for good experimental
+ methods is very real, so an idea in Rony's talk, Rony mentioned some key aspects of competence
+ include constituency, right, so knowing that talk to Kim, John Will is better than talk to John Will
+ Kim, I actually had the thought that this would be something, I think, that could be very amenable
+ to testing using this similar kind of method to the ANN, right, so there's a prediction that LLM
+ should prefer this one, and dis-prefer, not disperse, or that they dis-prefer this one,
+ talk to John Will Kim, I suspect they will because these kinds of constructions occur,
+ but what would be really interesting, and I think maybe would get more at an interesting question,
+ is like, this should be true even if we remove examples of this front-end structure from training,
+ then the only reason it should prefer this is because it's worse to think about constituency,
+ so maybe there's some interesting thing to explore here. Okay, and to conclude, I wanted to finally
+ consider this last question about a path towards interdisciplinary and informed linguistics.
+ So again, inspired by yesterday, I think there's a potential for a kind of Danetian take here,
+ and Ryan Neft has this really nice book on philosophy of linguistics, who's the first I
+ know of, though maybe it happened before, to think, propose this idea of linguistic theory as real
+ patterns in the Danet sense. So real patterns in the Danet sense, right, he uses this example of
+ the game of life where you've got some grid worlds, and then a very particular set of local rules
+ for doing manipulations in that world that can then give rise to these much larger patterns,
+ and this is Conway's game of life, and he has this idea that, okay, maybe you can understand
+ everything perfectly just by looking at this lower level, but whatever is happening at this
+ higher level is a real pattern, right, and you're not understanding the system fully unless you're
+ understanding things at a higher level also, right, and so linguistic theories in this Neft
+ real pattern sense are compression algorithms, right, language models are also compression
+ algorithms, and as Richard said, right, they're the best ones we have for language in practice,
+ and so as Danet says, the pattern is real if there's a description of the data that is more
+ efficient in the bitmap, whether or not anyone can concoct it, and so if language models are learning
+ an efficient compressed representation of the data, and the data is being generated by something which
+ has this underlying structure, if they're doing a good job, they should really be learning that
+ also, and so I think this is a theme Tom Griffiths has written about this, and Paul Lanz's talk also
+ kind of talks about this in terms of cognitive realism, this idea that it's important to think
+ about not just the kind of lower implementation level, but to think of linguistic theory as
+ providing and studying these patterns at the higher level, right, also I think Richard and
+ Karl Friston's talk also talked about kind of information theory as a potential bridge between
+ things, right, and so far as language models are compression algorithms, and theories are compression
+ algorithms, information theory is a really natural way to study compression algorithms, think about
+ those connections, I think there's a lot to think about there, and then we can get to this question
+ of, you know, kind of underlyingly thinking about these different levels, at what, in what sense
+ should we actually expect to find say representations of syntactic trees in language models, right, so
+ something like the key to the cabinet is on the table, where is has to agree with key,
+ the best explanation for that that we know of is that there's such a thing as a grammatical subject,
+ and there's some kind of hierarchical structure, so regardless of how much intervening material
+ there is here, the verb is going to agree with the subject, right, and so, you know, maybe a model is
+ going to be able to solve this problem without explicitly representing a grammatical tree or
+ hierarchical structure, but that doesn't necessarily mean that we should describe that
+ without that, right, and so Dennett, a kind of unintentional language, I've crossed out
+ intentional language here, language without appeal to linguistic theory, this is my own,
+ just to be clear, my own edit here, right, so but this modified version of Dennett,
+ certainly we can describe all processes of language without appeal to linguistic theory,
+ but at enormous cost of cumbersomeness, lack of generality, and unwanted detail,
+ we would miss the pattern that was there, the pattern that permits production and supports
+ counterfactuals, right, and so like one answer, right, is that I think grammatical theories can
+ be useful in real patterns, even if they turn out not to be explicitly there as representations in
+ the brain, or explicitly there as representations in model, and then answer two is that if the
+ behavior is being captured by a language model, right, and it's not just a trick, it's not just
+ the case that it's doing some kind of cheap heuristic, right, then we might say that the
+ language model is instantiating that real pattern, and I think this is what's happening to some
+ extent, and then that becomes a really exciting avenue to explore, which is to see how can a system
+ like a language model be giving rise to that real pattern or that behavior
+ in a way which we actually have a lot more granularity and control over than human brains.
+ Yep, that right, so like I've been saying, kind of underlying all of this, I think,
+ and this project is the need for really good experimental methods, so certainly it's possible
+ to be right for the wrong reasons, so McCoy et al. had this nice paper showing that if you're
+ trying to do a natural language entailment task, it turns out that models will happily pick up on
+ the fact that often a sentence which is entailed by another sentence has a lot of overlap in words,
+ and so models might say that the doctor was paid by the actor, means it's logically true the
+ doctor paid the actor, even though that's obviously not right, right, just it's relying on some cheap
+ trick. Other examples of that, McCoy et al. had this nice example showing that combat, it's hard
+ to get combat to take the third person singular s merely because combat is frequent in corpora
+ relative to combat, and so it just kind of doesn't like to generate that as much,
+ right, and so we need to push on these kinds of cases where it turns out the model is doing
+ something dumb or boring or not the kind of human-like generalization we're interested in,
+ but I think linguistics and cognitive science and psycholinguistics have left us, I think,
+ well-prepared for that task because we have to think about the same kinds of confounds and
+ alternative explanations with designing human studies and doing work with humans.
+ And then I guess the final thing I think to say, right, is there's a huge amount of work now going
+ on in, sorry the animation's got messed up here, right, in causal abstraction and mechanistic
+ interoperability and counterfactual pre-training and all kinds of methods for trying to better
+ understand what's happening in here, right, and this goes back a long time. Smolenski in 89 said
+ we should develop new formalizations of the fundamental computational notions that have
+ been given one particular formal shape in the traditional Isabella paradigm, and so here I pulled
+ from Roni's talk, right, the massive parameterization of the element during the other hand amounts to
+ saying that human linguistic cognition cannot be understood. So I would not say that it can't be
+ understood, I would say we need better methods, and that I do think there's hope that we can
+ understand this black box better. So right here is from Aurora et al. some really nice methods for
+ studying causal interventions, using causal interventions to study grammaticality
+ and how grammaticality emerges, and so I'm optimistic that as these methods develop
+ we'll get more and more insights into how these kinds of linguistic real patterns are being
+ implemented in models. So I'm just about out of time here, so I had, I know Roni is responding,
+ so I had a couple kind of preemptive responses to what Roni's talked about before, but maybe
+ I'll come through that in a bit, let me go back, and let me I think end there and take
+ questions and comments, and yeah thanks to all the collaborators who are listed, pictured here and
+ kind of loosely organized by projects I worked with them on that I mentioned, and yeah I'm
+ looking forward to further discussion. Thank you again, so you've done two star performances here,
+ but since Persian rugs are never perfect, I had to turn on the CC while you were talking because it
+ was beginning, there's too much of a divergence between what your lips were saying and what the
+ words were, and you want to, it's a trade-off, we got a lot of benefits out of turning on the CC
+ because we saw how, I don't know which model is behind this translator, how it gets things wrong,
+ but that happens, in this sense we're also like the model, we get things wrong in our heads if
+ you talk too fast as well, you need feedback on that just like the models do, here's the feedback,
+ but it was a terrific talk. Ronny, it's your turn. Thank you Stephen, and thank you Kyle for a great
+ talk, I really liked it, and my main difficulty as a commentator is that I agree with most of what
+ you said, so I'm not sure I'll have a lot to say here in the commentary, and so I'll go quickly
+ over the four main points that you started from, and try to highlight where I agree,
+ which is kind of easy, and a few points where I either disagree or would be happy to hear a bit
+ more about the way you see things, so the first point was about whether LLMs have meaningfully
+ learned any syntax, and your conclusion that yes, not everything, but yes, and I think, I mean I
+ generally agree with that, but I think that a lot depends on how we understand meaningfully, and for
+ what purpose it is, and of course there can be so many different purposes here for meaningful
+ learning, and from completely engineering oriented, good enough for all kinds of products,
+ through meaningfully enough to help us reason about models of cognition, and all the way to
+ kind of meaningfully in the sense of really being like us, and for some of these
+ senses of meaningful, I think yes absolutely, I mean these models are really quite striking,
+ and they clearly learn a lot, and will probably continue to learn more with further improvements
+ and developments. I'll come back to the one sense where I think they haven't learned meaningful,
+ which is kind of being like us, but I think for many other senses, including for senses that are
+ very relevant for cognitive science, yes definitely, I completely agree with that.
+ Should this cause us to update our beliefs about language processing or about cognitive theory in
+ general? Here I think it gets more complicated and more, maybe more controversial, more interesting,
+ and I'll come back to that in a moment. LLMs don't have to be black boxes, that was the third point,
+ absolutely, I completely agree, and I think it's really interesting and important to try to get to
+ the glass box version. No need to abandon linguistics, that was the fourth point,
+ I'm certainly not going to argue with that. So that leaves us with the second point about
+ should this make us update our cognitive theories, basically, and I think that from
+ where I stand, the answer is that there could be all kinds of interesting updates that would come
+ out of examining LLMs. I'll try to mention one or two, and there can probably be more, but
+ up until now I haven't seen any real case for updating any major chunks of
+ linguistic theory or cognitive theory in general. Again, this doesn't rule out
+ future revisions based on LLMs, it's just that I haven't seen cases or compelling cases of this
+ kind. So I'll go quickly over some of the arguments that I listed a couple of days ago for
+ that linguists use, the kinds of reasoning that linguists use for constructing their
+ theories, some of these are much broader than just being about language. We ended up talking about
+ walking and other things the other day, some of these things really are quite broad, some of them
+ are narrower. So one was the distinction between confidence and performance.
+ So for many cognitive processes, we can see that humans do one thing when they're relaxed and
+ slept well at night and all that, and they perform quite differently when they're under
+ time pressure and all that, and again, it can be things from walking to putting together words,
+ subtle errors of different kinds, and they can correct themselves when they're given more time
+ and all that. And with LLMs, in some sense, this is a case where it's not exactly a black box,
+ because we can look at at least the open models there, not the open AI ones, but the actual
+ open source ones, and see that they don't really have a separate notion of, a meaningful
+ separate notion of competence and performance. And so for cases like the Gurdaba examples that
+ you mentioned, and with these beautiful alignments of the performance of models earlier ones for
+ that paper, as you mentioned, and human judgments, and those other cases of alignment, yes,
+ those alignments are striking, but including the errors, but the human errors are very different
+ in exactly the sense that given more time, humans will, or a quieter room, or better rest,
+ humans will say something different and the models will not, which is not surprising, because we know
+ that they don't have a separate sense of resting or something like that, at least not yet. I mean,
+ one can imagine different models that will have that, but current models don't have that kind
+ of distinction, and that's a significant architectural difference, at least with current
+ models, similarly for probability versus grammaticality. So when in those tests that
+ are aimed at grammaticality evaluations of models, I think there is a real issue here that the models,
+ and again, this is something that is not a black box for the open models, because we can see that
+ they only output probabilities, they only tell us what's likely, they can't, architecturally,
+ they can't tell us that this is likely, but incorrect, they don't have two separate channels,
+ they just tell us what the probabilities are, and humans do, so we do have this distinction
+ that helps us make distinctions that are significant, and so those cases where we
+ have something that's completely surprising but true on various levels, and other cases
+ that are actually quite common but incorrect, like agreement attraction or problems with
+ central bidding, and so on. Again, current models don't have that distinction. I think it's a place
+ where it can be interesting to think about how one might design future LLMs that will have that
+ distinction. I think it's a very important distinction for lots of different reasons and
+ in different ways, and it can be an interesting challenge, and so the grammaticality judgments
+ that people have looked at, including in that work that you mentioned that we did, we also
+ tried to reason about grammaticality from these models, but it's always from these probabilities,
+ and those are two separate notions, so you can try to make all kinds of inferences about what some
+ other model would say about grammaticality, but it would be a model that would have grammaticality in
+ this model zone. And then the evidence that linguists have used over the years to reason about
+ and make certain claims about representations and about the learning process, and those include
+ things like the argument from the poverty of the stimulus, and the typology, the fact that
+ it's not just that English has this thing about only constituents being able to be there in the
+ beginning of the sentence in a non-canonical position, but that this notion of constituency
+ appears in language after language, and lots and lots of other such cases, and here, yes, I can
+ easily imagine an LLM showing us that, for example, that something that linguists thought
+ had an argument from the poverty of the stimulus supporting it is actually easily learnable from
+ eight years of linguistic experience. I don't know of such cases yet. I mean, it's quite possible
+ that we'll find such things, I think, in the places where people have looked, including where
+ we looked recently following Richard and others. So far, I'm not aware of any case where
+ linguists really thought that there was an APS, an argument of this kind for a particular thing,
+ and LLMs disprove it. Again, this could happen tomorrow, but so far, we haven't found such cases,
+ or at least I'm not familiar with such cases yet. Similarly, for the typology, the fact that some
+ things appear in language after language, and other things don't, and the particular skewed
+ distribution for things, because some things can have exceptions, but still it's not noise,
+ it's possible that LLMs will help us reason about that and conclude that this interesting
+ pattern that linguists thought supported certain properties of particular programming languages
+ that they proposed actually can arise from completely different programming languages,
+ so different universal grammars like an LLM, as a theory of UG with programs being configurations
+ of weights, and maybe it will turn out that this thing really doesn't need to follow from
+ what linguists have said, but again, I'm not familiar with such cases. So as far as I'm
+ aware, existing arguments from the poverty of the stimulus and existing arguments from the typology
+ still stand. I'm all for continuing to look at these cases using LLMs, but as far as I'm aware,
+ these arguments still stand. And the learning itself, which is in a way also a bit of an argument
+ from the poverty of the stimulus, so you had on that slide among other things there that example
+ with the A's and the B's and the C's and the D's, and where humans can look at just a handful of
+ examples and systematically reach a certain conclusion, and no current model does the same.
+ So we seem to still learn in very different ways. So about whether we need to update our
+ theories of cognition or particularly linguistics, I haven't seen the evidence yet. I think all the
+ existing arguments for those existing proposals still stand, but I do agree that the LLMs provide
+ a fantastic tool for re-examining these arguments and maybe eventually reaching different conclusions,
+ so I'm all for that. So as I said, I mostly agree with what you said and I think it was
+ extremely interesting, and so I'll stop here. Do you want to respond to Ronnie or do you want
+ to start with your questions? Yeah, there's a bunch there. I guess I could. Maybe the part to
+ briefly respond to is just thinking about, so like the example that Ronnie mentioned, which I've taken
+ from his slides of, you know, counting A's and B's, which models kind of often fall apart with
+ counting and things like this, I think taps into something that we talk about a bit in this position
+ paper I mentioned about formal and functional competence that models have all these failures
+ like we've seen with whether it's counting or reasoning, and I feel like sometimes those can
+ bleed in to language, and so like center embedding feels like a case like that where I've seen some,
+ you know, that models might be helped by like things like chain of thought or that, you know,
+ are used to help models reason better, like you're having a scratch pad. Those kinds of
+ things seem like they might be able to help it, be able to figure out like some, you know,
+ quadruple center embedding kind of sentence, but that feels like a bit different from their ability
+ to do kind of like on the fly language production and grammar, and I feel like the same kind of
+ distinction also gets, we run into like when you're saying would be great, and I agree,
+ it'd be great if we could like in some sense just ask models what's grammatical and what's
+ not grammatical and have them give an answer which was separate from just probability and likelihood,
+ but then that again is getting into this space of, I don't know if you would agree, that feels like
+ that's then asking models to also do something which is extra linguistic, which is to be able
+ to reason about grammaticality, and in terms of like wanting models that are kind of human-like
+ in some way, that seems totally fair, but it feels like it's something separate from its
+ linguistic abilities. Does that make sense or do you think that those are inseparable?
+ So I'm not sure what would, so are we talking about whether this still allows these LLMs to be
+ good theories of who we are? Specifically who we are linguistically, I feel like there's the kind
+ of overall cognitive package which would involve being able to reason and kind of do metalinguistic
+ reasoning about what's grammatical and the difference between what's grammatical and what's
+ likely, as opposed to just the ability to produce consistently grammatical text.
+ And so it's something that kind of we've talked about a bunch and like that in the Zhenhu
+ response paper we talked about a bunch, that it is easy to imagine a model, like imagine a
+ model that had perfect grammatical knowledge and could just never make a grammatical mistake,
+ could produce constructions perfectly, but was unable to tell you what was grammatical and what
+ wasn't. Would that be missing something fundamental about linguistics or would that be a
+ failure, like another kind of cognitive failure? So I don't know, we do have these
+ distinctions, so since the best theory of how we can deal with these on the one hand surprising
+ sentences that we were okay with and on the other hand common sentences that we reject,
+ and that's for the likelihood versus grammaticality, and the other thing is the
+ competence performance or how we manage under different resource burdens. Those are major
+ properties of our system, so if LLMs at this point, and at least for the models that we can look at,
+ they really don't have that distinction. We can try to make them give us something that approximates
+ it, but they're designed in a way that doesn't have that distinction, so that makes them
+ different from us in fundamental ways, and then similarly for all those many cases where it looks
+ like they don't learn what we learn from similar data, and if you use them as the basis for agents
+ in language communities, they would give rise to completely different cross-linguistic patterns
+ from what we see, so that makes them very very different from us in terms of their representation
+ and learning, again complex interesting objects in their own right, and one can think about
+ what it would take to make them more like us in terms of either those architectural distinctions
+ or the specific representations and learning. I think that those are extremely interesting
+ questions, but at this point for all these major points they're just too different from who we are,
+ so when we try to reason about the best theory about who we are, it's very different from what
+ they are, which is fine. I think it's still useful to use them and to consider them. It also helps
+ reason about these things, which is very good. I think it helps sharpen these points in ways
+ that were very difficult before. Okay, Gary, you're on. Yeah, I have a comment on this very
+ topic. So the reason, and I'm finding myself more in agreement with I think Kyle's point,
+ and let me try to rephrase it maybe a little bit, which is running in your talk the example of
+ A to the N, B to the N, like those kinds of learning, those kinds of rules, right? There's
+ an assumption that that is relevant to language, learning language production, because to be a
+ competent language user requires processing rules of that sort, if I understand correctly.
+ But that's an empirical question, and it's not clear to me that that is the case. Similarly,
+ to the point that while people's grammaticality judgments can vary if they're tired, if they're
+ being rushed, that's true. But actual language use is not reasoned deliberate kind of cogitating,
+ right? It's fast in the moment use. And so if one wants a theory of how linguists go about making
+ these distinctions or distilling these abstract rules, right, that's one thing. And we can ask,
+ can LLMs be good theoretical linguists? But that's separate from the question of, right,
+ are LLMs good models and good theories of language as kind of used and learned by people,
+ right? And a point against the latter is that, well, you know, if they require many orders of
+ magnitude more language input, well, that's a strike against that. But it seems like if they
+ are approximating what actual people are doing, in many cases better than formal theories, then
+ doesn't that in fact make them better models, maybe poorer models of linguists? But is that
+ the target? May I respond to that? Or Kyle, do you want to? No, no, go ahead. Okay. So it's not about,
+ nothing here I think is about theories of linguists. Linguists are scientists who look at
+ language, but other people can look at language and linguists can look at other things where
+ ultimately looking at human cognition and I think when we look at human cognition and try to
+ reason about it, we try to come up with the best theory of what we have here. We're not trying
+ to reason about what linguists like or anything like that. It's about what's the best explanation,
+ what's the best theory of who we are and or those parts of who we are that we can
+ ought to understand at this point. And I think the A's and the B's and the C's and the D's,
+ maybe that's not about language and maybe that's one of those things that linguists can look at
+ and are not linguistic in any traditional sense. Maybe I don't know a priori. It's possible that we
+ use different mechanisms for that, but the theory of who we are should explain how we look at just
+ a handful of those examples and reach systematically those conclusions about it and also how we can make
+ mistakes about other strings there that we'll correct if we're put in a quiet room or something
+ like that. And I think for that, LLMs are not a good explanation and other things are, so yeah.
+ Okay, Kyle, go ahead.
+ Yeah, I mean, I kind of would just echo, I think, Gary's point that the counting examples
+ feel to me separate in a way that's a little hard to articulate from the linguistic examples.
+ And so these failures, like I said, it's really easy to find all these kinds of failures in
+ reasoning. I think people like all week are doing a good job of showing failures in reasoning and
+ failures of common sense and failures of social reasoning and pragmatic. But yeah, it still feels
+ salient to me that it's harder to find examples where it just completely messes up the grammar
+ of a sentence. And it's possible to find those examples by working really hard at constructing
+ kind of the examples from the hardest parts of linguistic textbooks. You can find such examples.
+ Yeah. Okay, let me ask you, can you see the open comments in Q&A?
+ I can, yeah. I'm going to read the first one, but you eyeball it and see if there's something
+ you give more priority to. Julia asked, there's two comments by Julia, why do you think tokens
+ aren't as important as we thought? Something close to that was on one of the slides. Sorry if it's not.
+ Yeah, that's a great question. So yeah, tokenization, right, is how models break up
+ text into basic units. And something like GPT uses some variant of a byte pair, including algorithm,
+ where it's just using frequencies to get chunks, which ends up being often like chunks at the level
+ of the word, but sometimes more themes, kind of smaller than words, or sometimes strange things.
+ I think that kind of tokenization scheme is something that clearly, I think almost everyone
+ would agree, is not what humans are doing, is breaking things into these discrete and strange
+ chunks, such that if something's in all caps, it might be a totally different token than if
+ it's lowercase, with no relationship between them. Like, it's just clearly not human-like,
+ I think. And yet it turns out not to matter all that much. And if you could tokenize a language
+ model at the level of the character, and the model seems to kind of recover the right representations
+ anyway, you could tokenize in some different and strange way. It might affect model performance
+ a bit, but you can still get a model that learns interesting language. And so it seems like,
+ I don't know, for a while, tokenization is obviously, on human-like, there's going to
+ be some big improvement modeling that comes from figuring out how to make that better and more
+ human-like. And it seems like maybe the lesson that's emerging instead is that these kinds of
+ big networks are robust to different kinds of tokenization, even if they're not optimal in
+ various ways. If we're going to take seriously the idea that this could tell us something about human
+ language, which I think I would, an answer might be, there's kind of an old psycholinguistics debate
+ about what's the basic unit. If you have a word like friendliness, you could ask, is friendliness
+ when it's processed broken up into friend plus leave plus this, or is it just memorized and stored
+ as a whole unit? And I think there's kind of an answer suggested by models, which is that maybe
+ kind of all of these things are true at once. There's some kinds of basic units, but then
+ there's also storage at a slightly higher level and a slightly higher level, and models are kind
+ of integrating over all of those levels. And I think that's reasonably consistent with psycholinguistic
+ evidence in people. And so maybe that's a kind of example of something where I think
+ an insight from thinking about how models are solving some problem could kind of push us in
+ some direction. I'm like an old debate in psycholinguistics. Okay. Julia has a preemptive
+ follow-up that she wrote before you answer. To counting in patterns, sorry, where am I?
+ To counting in patterns, agreeing with Kyle, it seems it's not part of the technological package
+ of language as learned by LLMs and not part of the minimal viable package of language, which
+ is a new insight to that technology. I wrote a paper on this, said Julia. Okay. That's just
+ an information. That would be interesting to see. Yeah. Okay. By the way, another affirmation you
+ had in another group is, although I don't think this is very useful because it's not Academy
+ Awards or America has talent, whatever, but you were voted for the best paper. And I said,
+ I only added, yes, perhaps, perhaps, but so far we're only halfway through. Okay. Okay. Well,
+ now did you see as you went over that? Yeah. This Robert Liu question looks interesting.
+ Do you want him up there? I can, I can read it. I can read it also. All right. So about your
+ manipulated input corpus and filtering out a certain class of constructions from the training
+ corpus, do you rely on old school corpus query languages? That's regular expressions, proximity
+ and syntactic tagging. Taggers are not perfect. Is it possible that some positive examples slip
+ through the net and LLMs are smarter than CQL and see them nevertheless? This is a great question.
+ It was the same question a very astute reviewer had for this paper. And it turned out, yes,
+ we were relying on the part of speech tagging and regular expressions to remove the A and N
+ construction. And it turns out that was an imperfect method. And so we ended up having to go back and
+ do a kind of more like basically using a very, very general regular expression that dramatically
+ included like way more false positives and then go through by hand and pull out the real examples
+ of the A and N. And so, yeah, that's a super interesting point and definitely gave us in
+ doing that an appreciation for, again, something that's come up a bunch this week, which is data
+ quality issues and training language models are really big because models are so good at picking
+ up kind of strange and subtle things that are hard to anticipate. Having a really clear idea of what's
+ in the data is important. Okay, there are others. Did others jump out at you? Otherwise, I'll pick
+ one myself. Well, nothing that jumped out. Yeah, do you want to pick one? I haven't had a chance to
+ read through all of them. I don't know who this anonymous attendee is and I don't know if it's
+ always the same anonymous attendee, but I'll read out his or hers. One of the major, well, you read
+ them. Okay, one of the major differences from who we are that keeps getting brought up is the notion
+ that we make binary correctness slash chromaticality judgments that are fundamentally different from
+ the likelihood measures underlying LLMs. Could the discussion address this? It seems to me that most
+ people make binary judgments when forced to do so. Most of the time in actual performance situations
+ when encountering an ill-formed utterance, people try and make best guess assumptions about what
+ might be intended. LLMs in this way are a better fit to human processing than not. Yeah, interesting.
+ So again, this is about how do we make a binary correctness or chromaticality judgment which is
+ different from the likelihood measure underlying language? Yeah, I agree. To me, I think this is an
+ interesting open question even with humans, which is how does whatever knowledge of language people
+ have get translated into binary chromaticality judgments or even gradient chromaticality judgments?
+ I'm always kind of struck by the way that a lot of these debates about language models and debates
+ about methods and language models echo things that were happening in psycholinguistics in the
+ pre-language model era. So I had worked on some papers when I was in grad school in like 2015,
+ 2014, 2015 on grammaticality judgments in people and methods for thinking about how to get them.
+ And it's actually getting grammaticality judgments from people can be surprisingly tricky. Also,
+ first because if you just ask somebody, you know, is this grammatical? They might be bringing like
+ different kinds of social ideas about what grammaticality means into that. They might be
+ over analyzing it or thinking about the sentence in a way that they wouldn't just naturalistically.
+ If you get binary judgments that just if you do so right then there's an of course choice method
+ which is often used where you compare sentence a to sentence b and ask people which is better.
+ This of course then you run into the issue of what is what's the comparison.
+ You can get ratings. The ratings depend on that people will give can depend on what other items
+ are in the list of items that are being included. And so there's a whole bunch of subtle issues
+ there that I don't think are I think we have a lot of insights about how to do this with people but
+ you know it's not perfect. You're totally solved. And in so far as getting these kind of judgments
+ from models is like a much younger endeavor. I think there's a lot to still think about there.
+ Okay Robert Liu wrote back to thank you and to say he wasn't a reviewer.
+ We have a comment from well I'll read one from Valérie Payen Jean Battiste. We agree that LLM
+ does not represent the human mind if we can ever say that humans are intelligent. In any case I
+ had the impression that LLMs were being analyzed too much as objects outside our control when in
+ fact they are tools in our system of activities. These tools come to us with perceptions, baggage,
+ and values of their designers. The important thing is to know how to train them rigorously
+ to produce and reach our objectives. Thanks for the talk. Yeah I think that's kind of an unfortunate
+ result of how things have developed a bit in the field is that like the chat GPT interface
+ is so pervasive as kind of the face of language models that I think it often comes across that
+ these are fundamentally this black box where all you can do with them is like type into your browser
+ and you get like an oracle like answer comes back and that's all we can say about it. Which is not
+ the case because you can train your own models. I think that's been even more recent. I think
+ the era where we can train our own language models which are small enough to train on like an academic
+ cluster like a relatively small GPU cluster like the one we have in linguistics at UT and have them
+ actually you know learn enough that you can actually do interesting linguistics with them
+ as opposed to just having them not have learned anything at all. That's like a relatively recent
+ development and maybe the last two years where that's possible and so I'm optimistic we're going
+ to keep seeing more and more kind of careful linguistic work with language model. Anna Strasser
+ also has a question. I'm going to comment. I'll read it because I find at this late point if I
+ give it live it takes too long. Okay great talk. Could you please elaborate a little on what you
+ think meaningful means with respect to your first question? What do you think of the Danetti indifference
+ between competence between competence and competence with comprehension versus competence
+ without comprehension? And would you share any would you share my provocative statement that
+ humans linguists excluded have grammatical competence without comprehension? So yeah so
+ the first part so what does it mean to meaningfully learn something about grammar? I think I was just
+ trying to draw a distinction between meaningfully learning something about grammar and kind of
+ being able to do some kinds of grammatical tasks and benchmarks just by relying on some cheap bag
+ of tricks like you know knowing that if this word appears in the sentence it's grammatical and if
+ this word doesn't you know like language models love taking up on tricks like that if they did
+ that I think we'd all agree if they were doing that alone we'd all agree they hadn't really
+ learned anything about grammar so meaningful meaning they've learned at least some of the
+ kind of interesting things that we as linguists care about and my argument was yes they have.
+ And would I share the provocative statement that humans have grammatical competence without
+ comprehension? Not totally sure what it means but I would agree that humans right we know for sure
+ that you know a five or six year old child has tons and tons of linguistic competence
+ but if we ask them you know questions about grammaticality or any kind of question about
+ that requires like some knowledge of linguistic theory right they wouldn't be able to do it
+ that doesn't mean that they don't have that knowledge in there and so I think that is in
+ some ways an interesting analogy to language models. Okay terrific now we're going to end the
+ session and it looks like we're switching gears from language to mathematics but I want to suggest
+ we're not switching gears and that in fact mathematics in every proposition in every
+ formal sort of formal proof or or verbal version of proof is in fact English, French, German,
+ Latin, Italian so we're on the same subject but a special subset of it. Thanks everybody wonderful
+ session Kyle and and Ronny. Thanks and sorry if I talk too fast but it's uh it's hard to talk
+ to the get a sense when you're talking to the black boxes how fast you're going.
+ you
