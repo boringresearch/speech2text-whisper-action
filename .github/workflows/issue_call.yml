@@ -41,6 +41,7 @@ jobs:
       suffix: medium
 
   upload_artifacts:
+    needs: run-transcriptions
     if: |
       !cancelled()
     runs-on: ubuntu-latest
