@@ -39,3 +39,30 @@ jobs:
     with:
       youtube_url: ${{ matrix.link }}
       suffix: medium
+
+  upload_artifacts:
+    if: |
+      !cancelled()
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Download all artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: downloaded_artifacts
+
+    - name: Commit and push artifacts
+      run: |
+        # Set up Git
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        
+        # Copy artifacts to the repository directory
+        cp -R downloaded_artifacts/* .
+        
+        # Add, commit, and push changes
+        git add .
+        git commit -m "Add transcribed artifacts"
+        git push
