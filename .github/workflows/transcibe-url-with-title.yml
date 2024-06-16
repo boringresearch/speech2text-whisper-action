@@ -50,7 +50,7 @@ jobs:
         # Transcribe wav to text using whisper
         cd /app/whisper.cpp
         ls
-        ./main -m /app/whisper.cpp/models/ggml-${{ inputs.suffix }}.bin -f /tmp/youtube.wav -ocsv -oj -otxt -osrt -olrc -of output
+        ./main -m /app/whisper.cpp/models/ggml-${{ inputs.suffix }}.bin -f /tmp/youtube.wav -l auto -ocsv -oj -otxt -osrt -olrc -of output
 
         # Rename output files with the video title
         cat /app/whisper.cpp/output.txt
