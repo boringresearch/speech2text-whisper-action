@@ -1,4 +1,4 @@
-name: Transcript YouTube Video With Title
+name: transcibe-url-with-title
 
 on:
   workflow_dispatch:

@@ -45,9 +45,6 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-        # Copy artifacts to the repository directory
-        cp -R artifacts/* .
-
         # Add, commit, and push changes
         git add .
         git commit -m "Add downloaded artifacts from run ID ${{ github.event.inputs.run_id }}"

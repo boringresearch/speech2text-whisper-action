@@ -1,4 +1,4 @@
-name: Process YouTube Links from Issue
+name: transcribe-urls-from-issues
 
 on:
   issues:
@@ -35,7 +35,7 @@ jobs:
     strategy:
       matrix:
         link: ${{ fromJson(needs.extract-and-run.outputs.links) }}
-    uses: ./.github/workflows/transcribe-youtube.yml
+    uses: ./.github/workflows/transcibe-url-with-title.yml
     with:
       youtube_url: ${{ matrix.link }}
       suffix: medium
