@@ -32,6 +32,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Download and Transcribe YouTube Video
+      continue-on-error: true
       id: download_and_transcribe
       run: |
         # Download YouTube video
@@ -60,6 +61,7 @@ jobs:
         mv /app/whisper.cpp/output.lrc /app/"${video_title}.lrc"
 
     - name: Upload Output Files
+      if: steps.download_and_transcribe.conclusion == 'success'
       uses: actions/upload-artifact@v3
       with:
         name: ${{ steps.download_and_transcribe.outputs.video_title }}
